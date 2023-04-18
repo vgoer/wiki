@@ -2,7 +2,7 @@
 title: DWM
 description: dwm桌面环境
 published: 1
-date: 2023-04-18T17:29:29.739Z
+date: 2023-04-18T17:29:32.654Z
 tags: desktop environment
 editor: markdown
 dateCreated: 2023-04-18T17:27:02.225Z
