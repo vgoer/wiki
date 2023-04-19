@@ -1,0 +1,79 @@
+---
+title: 03.后端安全
+description: 后端安全
+published: 1
+date: 2023-04-19T17:20:15.442Z
+tags: web safe
+editor: markdown
+dateCreated: 2023-04-19T17:20:15.442Z
+---
+
+<center>后端安全</center>
+
+[toc]
+
+## 后端
+
+> `back-end`:跑在服务器上的应用程序 （php)
+
+```php
+<?php
+    echo "hello back-end";
+ ?>
+```
+
+>1.基础，网站必备（一个大脑）一个有思想思维的人
+>
+>2. APP后端，各种应用程序的后台
+
+
+
+#### 1. 框架
+
+> 快速开发，低耦合，便于维护，方便简单
+>
+> *特别多*
+
+
+
+#### 2. 潜在漏洞
+
+> 很多很多: 做的越多，错的越多
+
+* 权限鉴权
+* sql注入
+* 逻辑漏洞
+* 等等
+
+
+
+学习下get请求和post请求
+
+#### 3. get和post
+
+区别：
+
+```tex
+GET比POST更不安全，因为参数直接暴露在URL上，所以不能用来传递敏感信息。
+
+GET请求在URL中传送的参数是有长度限制的，而POST没有。
+
+GET请求只能进行url编码，而POST支持多种编码方式。
+
+GET参数通过URL传递，POST放在Request body中。
+
+GET产生一个TCP数据包；POST产生两个TCP数据包。
+对于GET方式的请求，浏览器会把http header和data一并发送出去，服务器响应200（返回数据）；
+而对于POST，浏览器先发送header，服务器响应100 continue，浏览器再发送data，服务器响应200 ok（返回数据）。
+ 
+与 POST 相比，GET 的安全性较差
+```
+
+**注：HTTP请求，最初设定了八种方法。这八种方法本质上没有任何区别。只是让请求，更加有语义而已。**
+
+****
+
+
+
+
+
