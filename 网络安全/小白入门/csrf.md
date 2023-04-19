@@ -2,243 +2,118 @@
 title: 07.csrf
 description: csrf跨站请求伪造
 published: 1
-date: 2023-04-19T17:24:35.811Z
-tags: web safe, csrf
+date: 2023-04-19T17:25:06.783Z
+tags: csrf, web safe
 editor: markdown
 dateCreated: 2023-04-19T17:24:35.810Z
 ---
 
-<center>xss</center>
+<center>CSRF</center>
 
 [toc]
 
-## xss
-
-> xss(Cross site script)  跨站脚本攻击
-
-> 原理： 前端代码有问题 ==允许用户嵌入东西== `html css javascipt`
 
 
+## csrf
 
-### 分类
+> `scrf(cross site request forgery)` 跨站请求伪造
 
-```js
-反射型  --  前端-> 后端 -> 前端
-储存型  --  前端-> 后端 -> 数据-> 前端
-DOM型  --  前端
+> 攻击**盗用你的身份**，以你的名义对网站发送恶意请求
+
+```
+// 登录之前我盗取cookie
 ```
 
-
-
-### 反射型
-
 ```php
-// 结束表单数据， echo出来
-$xss = $_POST['xss'];
-if($xss != null){
-    echo $xss;
-}
-<form action="" method="post">
-    <input type="text" name="xss"> 
-    <input type="submit">
+// 登录设置cookie
+<form action="" method="get">
+    用户名：<input type="text" name="name" id=""><br>
+    密码：<input type="password" name="pass"><br>
+    <input type="submit" value="login">
 </form>
-
-// 这样我们就可以在input框输入任意代码 
-<script>alert(aaa)</script>
-<script>location.href="地址"</script> 链接劫持
-<h1 style="color:blue">xss</h1>
-// 插入beef (js学过)框架
-    
-// js设置cookie   setcookie('1','a',time()); php
-   // document.cookie = name+value;
+ if($_GET){
+     $use = $_GET['name'];
+     $pass = $_GET['pass'];
+     if(isset($use) && isset($pass)){
+         if($use == "admin" && $pass = "admin"){
+             setcookie('name','aaa');
+             header('Location:main.php');
+         }else{
+             header('Location:index.php');
+         }
+     }
+ }
 ```
-
-把中了`hook.js的url生成短链接` --> 也会中招
-
-短链接：[站长之家](http://tool.chinaz.com/Tools/dwz.aspx)
-
-
-
-> 防御
 
 ```php
-// 过滤  尖括号 <> 进攻 防御相辅相成的  你给他绕过
+// 订单页
+<form action="one.php" method="get">
+    	id:<input type="text" name="id">
+        moeny:<input type="text" name="moeny">
+     	<input type="submit" value="提交">
+</form>
 ```
-
-> 赶紧学 html、css、js(*javascript*)==重点==
-
-> 学习没有捷径  --- 加油
-
-
-
-### 存储型
-
-> 原理：前端代码 允许用户嵌入 代码
-
-```tex
-最常见： 留言功能-->（任何地方都可能存在）
-危害很大
-留言框 --> 存到数据库 --> 数据库返回给前端(显示所有用户留言)
-// 插入js代码  任意用户打开留言网页，都会执行代码
-```
-
-```php+HTML
-<body>
-    <form action="" method="get">
-        <input type="text" name="xss2">
-        <input type="submit" value="insert">
-    </form>
-</body>
-</html>
-
-<?php
-
-    function p($arr){
-        echo '<pre>';
-        print_r($arr);
-        echo '</pre>';
-    }
-
-    $name = $_GET['xss2'];
-    $sql = 'select * from admin';
-    $sqli = "insert into admin(username,password) values('".$name."','123')";
-
-    $link = mysqli_connect(
-        'localhost',    //连接mysql地址
-        'root',         // 连接用户名
-        'root',         //连接用户名密码
-        'test'         // 连接数据库名
-    );
-    if(!$link){
-        printf("cont's to mysql %s",mysqli_connect_errno());
-    }else{
-        echo 'hello'.'<br>';
-    }
-    // 插入数据
-    if($result = mysqli_query($link,$sqli)){
-        //p($result);
-        echo "ok";
-    }else{
-        echo 'no';
-    }
-    // 查询数据
-    if($result = mysqli_query($link,$sql)){
-        // 返回查询的数据
-        while($row = mysqli_fetch_assoc($result)){
-            echo $row['username']."<----->".$row['password'].'<br>';
-        }
-        //释放内存
-        mysqli_free_result($result);
-    }
-
-    //关闭连接
-    mysqli_close($link);
-
-?>
-```
-
-> 下面就可以插入你学过的js+css+html代码了
-
-```html
-<script>alert(1);</script>//从数据库拿出留言，所以每个字段都会执行
-// hock.js beef -- 钩子
-// 可以放任何的js代码 --> 键盘纪录 cookie盗取等等
-```
-
-
-
-### DOM型
-
-> 原理：前端代码 允许用户嵌入东西
-
-```html
-<body>
-    <input type="text" id="text">
-    <p>this is xss</p>
-    <div id="xss"></div>
-    <input type="button" value="click" onclick="xssfun();">
-</body>
-<script>
-    function xssfun(){
-        // 创建节点
-        var a = document.createElement('a');
-        // 文本节点
-        var linktext = document.createTextNode('dom xss -html');
-        // 给节点  属性和值 任意
-        a.className = 'dom xss';
-        // 获取value
-        var link = document.getElementById('text').value;
-        console.log(link);
-        a.href = link;
-
-        document.getElementById('xss').innerHTML = '<a href="'+link+'">'+linktext.textContent+'</a>';
-        document.getElementById('xss').appendChild(a);
-    }
-</script>
-<!-- 跳出a链接 --!>
-```
-
-
-
-### xss绕过
-
-> 如果过滤了 `<  >` 符号怎么办
 
 ```php
-// 反射xss 过滤
-<form action="" method="post">
-    <input type="text" name="xss" id="">
-    <input type="submit" value="pass">
-    </form>
-
-function str_pass($a){
-    $a = str_replace('<','aa',$a);  // 字符串替换
-    return $a;
-} 
-$xss = $_POST['xss'];
-if(!$xss == null){
-    // echo $_POST['xss'];
-    echo str_pass($xss);
+// one.php  数据处理
+$cookie = $_COOKIE['name'];
+// echo $cookie;
+if(!isset($cookie)){
+    exit();
 }
-// 可能会过滤的 script  <  >  26个英文字母一般不会过滤
+if($cookie != 'aaa'){
+    echo 'exit';
+    exit();
+}
+$id = $_GET['id'];
+$moeny = $_GET['moeny'];
 
-// 正则匹配  更加强大 方法很多
-// 逻辑过滤 yara -> 逻辑强
+if(isset($id) && isset($moeny)){
+    echo '买'.$id.'花费'.$moeny;
+}else{
+    echo 'please input:';
+}
+$pass = 100 - $moeny;
+
+$sql = 'update stu set password = "'.$pass.'" where username = "'.$id.'"'; //修改数据
+echo $sql;
+$link = mysqli_connect( //连接一个数据库
+    'localhost',
+    'root',
+    'admin..',
+    'test'
+);
+if(!$link){
+    echo '错误'.mysqli_connect_error();
+    echo '失败';
+}else{
+    echo 'yes';
+}
+echo '<br>';
+$res = mysqli_query($link,$sql);
+if($res){
+    echo "花费了$pass";
+}
 ```
 
-```php
-// 绕过
-比如上面过滤了小写s 我们就可以用大写的S绕过
-手法千奇百怪呀！
-总结常见绕过姿势，
-熟练js和闭合标签    
+> 盗取cookie
+
+```html
+// 其他页面修改请求数据
+<img src="http://www.safety.com/csrf/one.php?id=bb&moeny=10" alt="">
+// 因为我们没有cookie，不能进入数据处理
+// 所有我们只有先登录 ， 在请求这个页面 借用cookie 修改订单
 ```
 
-> 分析过滤的内容
 
 
+#### 防护
 
+```
+1. http头 有 Referer 头    判断网站是在哪里来的
+```
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+> 进攻者也可以修改
 
 
 
