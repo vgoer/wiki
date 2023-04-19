@@ -1,0 +1,86 @@
+---
+title: 09.代码审计
+description: 代码审计
+published: 1
+date: 2023-04-19T17:28:25.967Z
+tags: web safe
+editor: markdown
+dateCreated: 2023-04-19T17:28:25.967Z
+---
+
+<center>代码审计</center>
+
+
+
+[toc]
+
+## 代码审计
+
+> 检查源码中的安全缺陷，**看源码**
+
+> 设计模式(36)  *
+>
+> 算法 
+>
+> > 一劳永逸的，什么代码都可以用
+
+```
+// vscode 
+
+ctrl + shift + f  //全局文件中查找
+ctrl + f 		  //当前文件查找
+```
+
+
+
+> 代码审计工具：其实和你人共审计的步骤一样
+
+```
+// 审计工具
+RIPS  
+```
+
+官网：[RIPS](http://rips-scanner.sourceforge.net/)
+
+```shell
+# docker 搭建
+docker pull kws1/rips
+docker run -d -p 80:80 -v /path/to/src:/src kws1/rips
+# 把需要的映射到容器里面 /path/to/src
+# admin:admin
+```
+
+> 使用[blog](https://www.lmlphp.com/user/56/article/item/6641/)
+
+审计cms：[emlog](https://www.emlog.net/download)
+
+
+
+```
+1. 熟悉程序语言
+2. 熟悉代码风险操作
+2. 熟悉设计模式
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
