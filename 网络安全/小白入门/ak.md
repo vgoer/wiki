@@ -2,7 +2,7 @@
 title: 12.序列化和反序列化
 description: 序列化和反序列化漏洞
 published: 1
-date: 2023-04-19T17:32:05.255Z
+date: 2023-04-19T17:32:08.772Z
 tags: web safe
 editor: markdown
 dateCreated: 2023-04-19T17:32:05.255Z
