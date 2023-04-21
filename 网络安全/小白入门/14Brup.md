@@ -2,7 +2,7 @@
 title: 14.Brup
 description: brup web的瑞士军刀
 published: 1
-date: 2023-04-19T17:34:16.190Z
+date: 2023-04-21T05:02:46.885Z
 tags: web safe, brup
 editor: markdown
 dateCreated: 2023-04-19T17:34:12.188Z
