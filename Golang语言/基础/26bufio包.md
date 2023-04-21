@@ -2,7 +2,7 @@
 title: 26.bufio包
 description: bufio包
 published: 1
-date: 2023-04-21T09:49:44.337Z
+date: 2023-04-21T09:49:48.332Z
 tags: golang
 editor: markdown
 dateCreated: 2023-04-21T09:49:44.337Z
