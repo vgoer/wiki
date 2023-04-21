@@ -2,7 +2,7 @@
 title: 02.template库
 description: template库
 published: 1
-date: 2023-04-21T10:19:25.041Z
+date: 2023-04-21T10:19:28.963Z
 tags: golang
 editor: markdown
 dateCreated: 2023-04-21T10:19:25.041Z
