@@ -2,7 +2,7 @@
 title: vim
 description: vim编辑器
 published: 1
-date: 2023-04-19T15:28:10.631Z
+date: 2023-04-21T05:10:31.761Z
 tags: app, vim
 editor: markdown
 dateCreated: 2023-04-19T15:28:06.052Z

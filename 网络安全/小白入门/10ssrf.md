@@ -2,7 +2,7 @@
 title: 10.ssrf
 description: 服务端请求伪造
 published: 1
-date: 2023-04-21T05:01:44.262Z
+date: 2023-04-21T05:11:55.612Z
 tags: web safe
 editor: markdown
 dateCreated: 2023-04-19T17:29:36.043Z

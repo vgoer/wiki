@@ -2,7 +2,7 @@
 title: 01.Linux简介
 description: linux简介
 published: 1
-date: 2023-04-21T04:57:32.412Z
+date: 2023-04-21T05:10:08.882Z
 tags: linux
 editor: markdown
 dateCreated: 2023-04-20T11:08:06.411Z

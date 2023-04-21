@@ -2,7 +2,7 @@
 title: Wayfire
 description: wayfire桌面环境
 published: 1
-date: 2023-04-19T15:32:45.609Z
+date: 2023-04-21T05:11:11.074Z
 tags: desktop environment, wayfire
 editor: markdown
 dateCreated: 2023-04-19T15:32:40.930Z

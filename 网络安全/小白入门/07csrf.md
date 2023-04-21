@@ -2,7 +2,7 @@
 title: 07.csrf
 description: csrf跨站请求伪造
 published: 1
-date: 2023-04-21T05:00:57.062Z
+date: 2023-04-21T05:11:48.599Z
 tags: web safe, csrf
 editor: markdown
 dateCreated: 2023-04-19T17:24:35.810Z
