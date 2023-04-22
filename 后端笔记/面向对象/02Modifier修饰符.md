@@ -2,7 +2,7 @@
 title: 02.Modifier修饰符
 description: Modifier修饰符
 published: 1
-date: 2023-04-22T18:01:02.735Z
+date: 2023-04-22T18:01:05.743Z
 tags: oop, php
 editor: markdown
 dateCreated: 2023-04-22T18:01:02.735Z
