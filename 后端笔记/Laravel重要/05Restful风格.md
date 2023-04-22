@@ -2,7 +2,7 @@
 title: 05.Restful风格
 description: Restful风格
 published: 1
-date: 2023-04-22T18:41:38.037Z
+date: 2023-04-22T18:41:41.154Z
 tags: laravel
 editor: markdown
 dateCreated: 2023-04-22T18:41:38.037Z
