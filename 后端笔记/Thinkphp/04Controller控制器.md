@@ -2,7 +2,7 @@
 title: 04.Controller控制器
 description: Controller控制器
 published: 1
-date: 2023-04-22T18:18:40.339Z
+date: 2023-04-22T18:18:43.333Z
 tags: thinkphp
 editor: markdown
 dateCreated: 2023-04-22T18:18:40.339Z
