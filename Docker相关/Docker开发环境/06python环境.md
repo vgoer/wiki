@@ -34,3 +34,13 @@ docker exec -it python sh
 docker exec -it python python3 -v  # pip3 -v
 ```
 
+
+## python
+docker pull python
+docker run itd -v /home/python:/home/python id
+
+docker exec -it id bash 
+
+## 修改源
+pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
+pip install --upgrade pip
