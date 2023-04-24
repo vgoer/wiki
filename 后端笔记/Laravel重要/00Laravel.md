@@ -2,7 +2,7 @@
 title: 00.laravel
 description: laravel
 published: 1
-date: 2023-04-22T18:36:27.446Z
+date: 2023-04-24T10:32:46.939Z
 tags: laravel
 editor: markdown
 dateCreated: 2023-04-22T18:36:24.368Z

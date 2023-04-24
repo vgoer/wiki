@@ -2,7 +2,7 @@
 title: 04.OOP特性
 description: OOP特性
 published: 1
-date: 2023-04-22T18:08:41.421Z
+date: 2023-04-24T10:33:46.842Z
 tags: oop, php
 editor: markdown
 dateCreated: 2023-04-22T18:08:38.570Z

@@ -2,7 +2,7 @@
 title: 05.DBclass
 description: DBclass
 published: 1
-date: 2023-04-22T18:09:50.908Z
+date: 2023-04-24T10:33:48.451Z
 tags: mysql, oop, php
 editor: markdown
 dateCreated: 2023-04-22T18:09:47.955Z

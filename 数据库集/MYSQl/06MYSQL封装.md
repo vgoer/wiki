@@ -2,7 +2,7 @@
 title: 06.MYSQL封装
 description: MYSQL封装
 published: 1
-date: 2023-04-22T17:54:51.553Z
+date: 2023-04-24T10:34:03.790Z
 tags: mysql, php
 editor: markdown
 dateCreated: 2023-04-22T17:54:48.680Z

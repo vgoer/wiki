@@ -2,7 +2,7 @@
 title: 02.数据Date
 description: 数据Date
 published: 1
-date: 2023-04-24T10:36:19.532Z
+date: 2023-04-24T10:36:22.567Z
 tags: vue2
 editor: markdown
 dateCreated: 2023-04-24T10:36:19.532Z

@@ -2,7 +2,7 @@
 title: 28.builtin包
 description: builtin包
 published: 1
-date: 2023-04-21T09:52:55.082Z
+date: 2023-04-24T10:30:49.663Z
 tags: golang
 editor: markdown
 dateCreated: 2023-04-21T09:52:50.836Z

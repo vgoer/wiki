@@ -2,7 +2,7 @@
 title: 02.Url模式
 description: Url模式
 published: 1
-date: 2023-04-22T18:16:42.599Z
+date: 2023-04-24T10:33:30.768Z
 tags: thinkphp
 editor: markdown
 dateCreated: 2023-04-22T18:16:39.661Z

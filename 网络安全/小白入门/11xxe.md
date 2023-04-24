@@ -2,7 +2,7 @@
 title: 11.xxe
 description: xxe可扩展标记语言
 published: 1
-date: 2023-04-21T05:11:58.736Z
+date: 2023-04-24T10:34:23.215Z
 tags: web safe
 editor: markdown
 dateCreated: 2023-04-19T17:30:32.118Z
