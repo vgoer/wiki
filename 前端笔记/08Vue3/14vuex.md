@@ -2,7 +2,7 @@
 title: 14.vuex
 description: vuex
 published: 1
-date: 2023-04-24T12:10:18.750Z
+date: 2023-04-24T12:11:16.911Z
 tags: vue3
 editor: markdown
 dateCreated: 2023-04-24T12:10:15.417Z
@@ -197,4 +197,49 @@ const logOut = () => {
 ```
 
 
+
+> axiox 封装
+
+```shell
+# request/service.js
+import axios from "axios"
+
+
+// 创建实例
+const Service = axios.create({
+    timeout: 8000,
+    baseURL: "https://axxx.com",
+    headers: {
+        "Content-Type": "application/json;charset=utf-8",
+    }
+})
+
+import { ElLoading } from 'element-plus'
+const loading = null
+//请求拦截器 loding效果
+Service.interceptors.request.use(config => {
+    loading = ElLoading.service({
+        lock: true,
+        text: 'Loading',
+        background: 'rgba(0, 0, 0, 0.7)',
+    })
+
+    return config
+})
+
+import { ElMessage } from 'element-plus'
+// 相应拦截
+service.interceptors.response.use(response => {
+
+    loading.close()
+    return response.data
+}, error => {
+    ElMessage({
+        message: '错误',
+        grouping: true,
+        type: 'error',
+    })
+    loading.close()
+})
+```
 
