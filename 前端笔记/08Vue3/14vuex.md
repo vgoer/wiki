@@ -2,7 +2,7 @@
 title: 14.vuex
 description: vuex
 published: 1
-date: 2023-04-24T12:10:15.417Z
+date: 2023-04-24T12:10:18.750Z
 tags: vue3
 editor: markdown
 dateCreated: 2023-04-24T12:10:15.417Z
