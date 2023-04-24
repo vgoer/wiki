@@ -2,415 +2,87 @@
 title: 12.vuecli
 description: vuecli
 published: 1
-date: 2023-04-24T10:47:47.119Z
+date: 2023-04-24T10:48:18.178Z
 tags: vue2
 editor: markdown
 dateCreated: 2023-04-24T10:47:47.119Z
 ---
 
-<center>步骤</center>
-
-
+<center>vue-cli</center>
 
 [toc]
 
 
 
-### 步骤
+### vue-cli
 
-> 123
+> vue-cli是一个基于 Vuejs 进行快速开发的完整系统，俗称vue全家桶，是使用Vuejs框架开发项目的利器。
 
 
 
-1. 新建项目
+vue-cli有三个组件
+
+```
+1、CLI：@vue/cli 全局安装的 npm 包，提供了终端里的vue命令（如：vue create 、vue serve 、vue ui 等命令）
+
+2、CLI 服务：@vue/cli-service是一个开发环境依赖。构建于 webpack 和 webpack-dev-server 之上（提供 如：serve、build 和 inspect 命令）
+
+3、CLI 插件：给Vue 项目提供可选功能的 npm 包 （如： Babel/TypeScript 转译、ESLint 集成、unit和 e2e测试 等）
+```
+
+
+
+#### 搭建
+
+> 1. 安装nodejs   `node -v `查看版本，如果没安装，看node这章
+> 2. 安装webpack包管理工具，webpack是vue-cli构建工具
+>
+> > `npm install webpack -g`
+
+> vue -V  //查看版本
 
 ```shell
-vue -V
-vue create 项目名称
-npm run serve  //启动项目
+vue2                                vue3
+npm install vue-cli -g;            npm install @vue/cli -g;
+vue init webpack 项目名称           vue create 项目名称
+            npm install   //安装依赖
+npm run dev                        npm run server //开发者模式
 ```
 
+> 安装vue-cli3.0,本地已经全局安装了vue-cli2.0的情况下,  先卸载vue.2
 
 
-2. 构建好模板
+
+```
+// 如果全局vue了   就开始创建项目了    一路回车就行
+vue init webpack 项目名称         vue create 项目名称
+npm run dev                     npm run server
+npm run build    //编译命令
+```
+
+项目结构
 
 ```js
-1. src/components 下新建公共模板  common
-	提取页面公共部分，Header.vue  Footer.vue
-2. App.vue 引入模板
-    <Header></Header>
-	import Header from './components/common/Header'
-	export default {
-      name: 'App',
-      components: {
-        Header,
-      }
-    }
-3.引入样式和js  把样式放在 public/static 下
-去修改public/index.
-html
-	//路径是 <%= BASE_URL %>static/...
-  <link rel="icon" href="<%= BASE_URL %>favicon.ico">
-  修改页面图片的话，去Header.vue  直接 static/img/...
+build    //构建脚本目录
+config   //配置目录
+node_modules   //node依赖工具包目录
+src      //源码
+	assets  //项目的js文件，图片等资源
+	components  //组件目录
+	router   //路由文件
+	App.vue  //入口组件
+	main.js  //入口组件的js文件
+static    //静态资源目录
 ```
 
 
 
-3. 添加路由
-
-```js
-1. // 把没有公共的部分，就当首页，在 components/Home.vue
-
-2. 下载路由组件
-	npm i vue-router --save  
-3. 在src下新建routers/index.js 放我们的路由
-
-    // 引入vue
-    import Vue from 'vue'
-    //引入路由
-    import VueRoute from "vue-router"
-
-    // 挂载路由
-    Vue.use(VueRoute)
-    // 引用组件
-    import Home from '@/components/Home'  //记得是 @/
-	//new 路由对象
-    export default new VueRouter({
-        mode:"history",//使用js bom对象中history模式  并且不会有 /#
-        //路由列表
-        routes:[
-            {
-                path:'/',          //路由
-                name:'home',       //名称
-                component:Home,    //模板
-
-            }
-        ]
-    })
-4. 在 main.js 引入路由文件
-    import router from './routers/index'
-    new Vue({
-      router,  //路由传到app页面
-      render: h => h(App),
-    }).$mount('#app')
-    //在 App.vue 加一个路由标签  页面就可以出来了
-    <router-view></router-view>
 ```
-
-4. 登录页面
-
-```js
-1. 在模板文件下新疆 Loign.vue
-把样式啊，html文件放到模板文件内
-
-2. 修改路由文件  routers/index.js 
-	记得引入模板文件
-    routes:[
-        {
-            path:'/',          //路由
-            name:'home',       //名称
-            component:Home,    //模板
-            meta:{          //元数据 
-                index:1,     //名称和值 判断是否是首页
-                auth:true,
-            }
-        },
-        //登录路由
-        {
-            path:'/login',
-            name:'login',
-            component:Login,
-            meta:{
-                index:0,
-            }
-        }
-    ]
-// 访问 /login 发现模板处突了
-3. 到App.vue做判断
-  <div id="app">
-    <div v-if="$route.meta.index === 1">  获取到元数据里面的  meta.index
-      //模板标签
-      <Header></Header>
-      <Menulist></Menulist>
-      //路由标签 
-      <router-view></router-view>
-    </div>
-    <div v-if="$route.meta.index === 0">
-      <router-view ></router-view>
-    </div>
-  </div>
-一个路由匹配到的所有路由记录会暴露为 $route 对象 
+npm i vue-router --save   //當前目錄安裝路由
+npm i axios --save   //异步的通信插件
+npm i qs --save  //数据转换
+npm i element-ui --save  //UI组件
 ```
-
-
-
-> 很重要  vue  连接 tp后台
-
-* 下载几个插件
-
-```shell
-npm i axios --save         //异步的通信插件
-npm i qs --save            //数据转换
-npm i element-ui --save    //UI组件
-```
-
-* 在src新建servers/request.js 请求的文件
-
-```js
-//引入axios异步请求插件
-import axios from 'axios'
-const qs = require('qs')
-
-let cancel ,promiseArr = {}
-
-const CancelToken = axios.CancelToken;
-
-//请求拦截器
-axios.interceptors.request.use(config => {
-    //发起请求时，取消掉当前正在进行的相同请求
-    if (promiseArr[config.url]) {
-        promiseArr[config.url]('操作取消')
-        promiseArr[config.url] = cancel
-    } else {
-        promiseArr[config.url] = cancel
-    }
-      return config
-}, error => {
-    return Promise.reject(error)
-})
-
-//响应拦截器即异常处理
-axios.interceptors.response.use(
-  response => {
-      // return response
-      return response.data
-  }, 
-  err => {
-      if (err && err.response) {
-        switch (err.response.status) {
-          case 400:
-            err.message = '错误请求'
-            break;
-          case 401:
-            err.message = '未授权，请重新登录'
-            break;
-          case 403:
-            err.message = '拒绝访问'
-            break;
-          case 404:
-            err.message = '请求错误,未找到该资源'
-            break;
-          case 405:
-            err.message = '请求方法未允许'
-            break;
-          case 408:
-            err.message = '请求超时'
-            break;
-          case 500:
-            err.message = '服务器端出错'
-            break;
-          case 501:
-            err.message = '网络未实现'
-            break;
-          case 502:
-            err.message = '网络错误'
-            break;
-          case 503:
-            err.message = '服务不可用'
-            break;
-          case 504:
-            err.message = '网络超时'
-            break;
-          case 505:
-            err.message = 'http版本不支持该请求'
-            break;
-          default:
-            err.message = `连接错误${err.response.status}`
-        }
-      } else {
-        err.message = "连接到服务器失败"
-      }
-      // message.err(err.message)
-        return Promise.resolve(err.response)
-  }
-)
-
-//请求的默认前缀  --- 这里请求的tp模块 ，可以改的
-axios.defaults.baseURL = '/admin'
-
-//设置默认请求头  
-axios.defaults.headers = {
-    'X-Requested-With': 'XMLHttpRequest',
-    'Content-type': 'application/x-www-form-urlencoded'
-}
-
-//设置超时请求时间
-axios.defaults.timeout = 10000
-
-
-//get请求
-let GET = (data = {}) => {
-  return new Promise((resolve,reject) => {
-    axios({
-      method: 'get',
-      url:data.url,
-      params: data.params,
-      cancelToken: new CancelToken(c => {
-        cancel = c
-      })
-    }).then(res => {
-      resolve(res)
-    })
-  })
-}
-
-//post请求
-let POST = (data = {}) =>
-{
-  return new Promise((resolve,reject) => {
-    axios({
-      method: 'post',
-      url:data.url,
-      // data:data.params,
-      data:qs.stringify(data.params),
-      cancelToken: new CancelToken(c => {
-        cancel = c
-      })
-    }).then(res => {
-      resolve(res)
-    })
-  })
-}
-
-// 文件上传请求
-let UPLOAD = (data = {}) =>
-{
-  return new Promise((resolve,reject) => {
-    axios({
-      method: 'post',
-      url:data.url,
-      data:data.params,
-      headers:{'Content-Type': 'multipart/form-data'},
-      cancelToken: new CancelToken(c => {
-        cancel = c
-      })
-    }).then(res => {
-      resolve(res)
-    })
-  })
-}
-
-//暴露口   
-export {
-  GET,
-  POST,
-  UPLOAD
-}
-```
-
-* 在src新建proxy/index.js 代理服务的
-
-```js
-// 代理接口
-//引用
-import {POST} from '../servers/request'    //引用请求 POST
-
-
-//定义一个空挂载对象
-let Proxy = {}
-
-//請求列表
-var ProxyList = {
-    // login 
-    login(data = {}){
-        return POST({				//admin 就是请求上面的 tp里面的模块
-            url:'login/login',     //http://www.vuetp.com/admin/login/login 提交地址
-            params:data,           //数据
-        })
-    },
-    
-}
-
-// 添加一个挂载的方法
-Proxy.install = Vue => {
-    Vue.prototype.$proxy = ProxyList
-}
-
-// 接口暴露
-export default Proxy
-
-
-// 在main.js 引入代理文件   ---- --- - -- -
-// 代理文件
-import proxy from './proxy/index'
-//挂载代理
-Vue.use(proxy)
-
-```
-
-```js
-//在组件login进行登录操作
-//v-mode="admin.password" //获取到对象里面的值
-//给登录按钮方法 @click="login()"
-export default {
-  name: "Login",
-  data(){
-    return {
-      admin:{
-        username :'',
-        password :'',
-      }
-    }
-  },
-  methods:{
-    login(){
-      console.log(this.admin);  //打印出对象
-    }
-  }
-};
-```
-
-```js
-// 引入element-ui 文件 在main.js  用法官方文档
-//引入element-ui
-import ElementUI from 'element-ui';
-import 'element-ui/lib/theme-chalk/index.css';  //css文件
-Vue.use(ElementUI); //挂载 我们就可以使用ui组件了
-```
-
-> 请求配置文件   后台地址
-
-```js
-module.exports = {
-    devServer:{
-      open:false,      // 是否打开浏览器;
-      hotOnly:true,    // 是否热更新;   
-      proxy:{
-        '/api':{   // 路径中有 /api 的请求都会走这个代理 , 可以自己定义一个,下面移除即可
-            target:'http://www.vuetp.com/',    // 目标代理接口地址,实际跨域要访问的接口,这个地址会替换掉 axios.defaults.baseURL
-            secure:false,
-            changeOrigin:true,  // 开启代理，在本地创建一个虚拟服务端
-            ws:false,       // 是否启用  websockets;
-            // pathRewrite:{   // 去掉 路径中的  /api  的这一截
-            //     '^/api':''
-            // }
-        },
-      },
-    }
-  }
-
-// 主要看调试工具，查看请求和响应  设置后台接受就可以拿到数据了
-```
-
-
-
-
-
-
-
-
-
-
 
 
 
