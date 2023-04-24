@@ -2,7 +2,7 @@
 title: Gnome
 description: gnome 桌面环境
 published: 1
-date: 2023-04-21T05:10:49.445Z
+date: 2023-04-24T10:27:39.707Z
 tags: desktop environment, gnome
 editor: markdown
 dateCreated: 2023-04-18T17:28:56.991Z
