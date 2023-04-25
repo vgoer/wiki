@@ -2,7 +2,7 @@
 title: CrossApp
 description: CrossApp
 published: 1
-date: 2023-04-25T12:13:34.036Z
+date: 2023-04-25T12:13:36.982Z
 tags: app
 editor: markdown
 dateCreated: 2023-04-25T12:13:34.036Z
