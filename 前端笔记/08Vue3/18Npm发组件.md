@@ -2,7 +2,7 @@
 title: 18.Npm发组件
 description: Npm发组件
 published: 1
-date: 2023-04-24T12:17:37.945Z
+date: 2023-04-25T12:11:11.593Z
 tags: vue3
 editor: markdown
 dateCreated: 2023-04-24T12:17:34.861Z
@@ -45,7 +45,7 @@ npm run dev
 
 >写一个小组件 
 
-```vue
+```html
 // 封装组件  新建 packages 文件
 go-button/index.vue
 <template>
