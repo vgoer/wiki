@@ -20,7 +20,7 @@ dateCreated: 2023-04-24T12:14:16.460Z
 
 
 
-
+### 1. less
 
 > 安装less
 
@@ -53,28 +53,42 @@ css: {
   },
 ```
 
+
+
+### 2.开发配置
+
 > 开发配置环境
 
 ```shell
 在根目录新建三个环节变量
 1、开发环境
 2、生产环境
-3、测试环境
 
-.env.dev
-.env.pro
-.env.test
+.env.development
+.env.production
 
-.env 内容
-VUE_APP_NAME = 'xxxapp'
-BASEURL = 'https:/xxx.com'
+.env.development 内容
+# 开发环境配置
+ENV = 'development'
+VITE_APP_API_HOST = 'http://localhost:8888'
+
+.env.production
+# 生产环境配置
+ENV = 'production'
+VITE_APP_API_HOST = 'http://localhost:8887'
 
 # 修改package.json
-"devview": "vite --mode dev",
-"buildpro": "vite build --mode pro"
+# dev 默认就是development环境
+"dev": "vite", 
+"build:pro": "vite build --mode production",
+
+# 使用的话就直接读取 修改api功能最多
+ baseURL: import.meta.env.VITE_APP_API_HOST,
 ```
 
 
+
+### 3. css 根据系统主题色
 
 > css 根据系统主题色
 
@@ -97,3 +111,67 @@ BASEURL = 'https:/xxx.com'
     }
 }
 ```
+
+
+
+### 4. 按需引入
+
+> 需要什么引入什么库
+
+```shell
+# 自动导入
+npm install -D unplugin-vue-components unplugin-auto-import
+
+# 安装UI
+npm i element-plus --save
+npm i ant-design-vue --save
+npm i vant
+```
+
+> vite配置
+
+```js
+import AutoImport from 'unplugin-auto-import/vite'
+import Components from 'unplugin-vue-components/vite'
+import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers'
+  // ...
+  plugins: [
+    // ...
+    AutoImport({
+      resolvers: [ElementPlusResolver()],
+    }),
+    Components({
+      resolvers: [ElementPlusResolver()],
+    }),
+  ],
+      
+// 如果是其他UI
+ElementPlusResolver 替换 AntDesignVueResolver,VantResolver
+```
+
+
+
+### 5. vite内网配置
+
+> 打开内网
+
+```js
+  server:{
+    host:true,  // 内网
+    cors:true,  //为开发服务器配置 CORS , 默认启用并允许任何源
+    open:true,  //服务启动时自动在浏览器中打开应用
+    port:'8888'
+  },
+  build:{
+    target:"modules",    //浏览器兼容性  "esnext"|"modules"
+    outDir: "dist",       //指定输出路径
+    cssCodeSplit:true,   //启用/禁用 CSS 代码拆分
+  }
+```
+
+
+
+
+
+
+
