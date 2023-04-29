@@ -2,7 +2,7 @@
 title: Archcraft OS
 description: archcraft linux
 published: 1
-date: 2023-04-24T10:27:32.917Z
+date: 2023-04-29T17:41:26.159Z
 tags: linux
 editor: markdown
 dateCreated: 2023-04-18T17:34:17.449Z

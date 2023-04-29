@@ -2,7 +2,7 @@
 title: 11.vue应用
 description: vue应用
 published: 1
-date: 2023-04-24T10:46:31.781Z
+date: 2023-04-29T17:46:35.791Z
 tags: vue2
 editor: markdown
 dateCreated: 2023-04-24T10:46:28.634Z

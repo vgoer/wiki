@@ -2,7 +2,7 @@
 title: App
 description: 好用的软件
 published: 1
-date: 2023-04-24T10:27:23.428Z
+date: 2023-04-29T17:41:09.271Z
 tags: app, linux
 editor: markdown
 dateCreated: 2023-04-19T15:34:24.370Z

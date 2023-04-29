@@ -2,7 +2,7 @@
 title: 03.Route路由
 description: Route路由
 published: 1
-date: 2023-04-24T10:33:32.419Z
+date: 2023-04-29T17:48:09.869Z
 tags: thinkphp
 editor: markdown
 dateCreated: 2023-04-22T18:17:23.779Z

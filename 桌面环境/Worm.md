@@ -2,7 +2,7 @@
 title: Worm
 description: worm桌面环境
 published: 1
-date: 2023-04-24T10:27:45.456Z
+date: 2023-04-29T17:41:42.031Z
 tags: desktop environment, worm
 editor: markdown
 dateCreated: 2023-04-19T15:31:24.022Z

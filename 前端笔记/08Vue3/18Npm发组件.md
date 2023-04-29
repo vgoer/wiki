@@ -2,7 +2,7 @@
 title: 18.Npm发组件
 description: Npm发组件
 published: 1
-date: 2023-04-25T12:11:13.736Z
+date: 2023-04-29T17:47:22.843Z
 tags: vue3
 editor: markdown
 dateCreated: 2023-04-24T12:17:34.861Z

@@ -2,7 +2,7 @@
 title: 12.vuecli
 description: vuecli
 published: 1
-date: 2023-04-24T10:48:21.103Z
+date: 2023-04-29T17:46:37.857Z
 tags: vue2
 editor: markdown
 dateCreated: 2023-04-24T10:47:47.119Z

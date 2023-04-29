@@ -2,7 +2,7 @@
 title: 01.beego简介
 description: beego简介
 published: 1
-date: 2023-04-24T10:28:35.480Z
+date: 2023-04-29T17:42:47.482Z
 tags: golang
 editor: markdown
 dateCreated: 2023-04-22T04:54:49.905Z

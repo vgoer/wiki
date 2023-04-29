@@ -2,7 +2,7 @@
 title: ConsoleApp
 description: 命令行工具
 published: 1
-date: 2023-04-24T10:27:25.969Z
+date: 2023-04-29T17:41:11.895Z
 tags: app, linux
 editor: markdown
 dateCreated: 2023-04-19T15:35:57.836Z
