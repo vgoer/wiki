@@ -127,7 +127,7 @@ const instance = axios.create({
 // 拦截器  -- 请求拦截
 
 
-axios.interceptors.request.use(function (config) {
+instance.interceptors.request.use(function (config) {
     // 在发送请求之前做些什么  有些接口需要带 token
     let token = localStorage.getItem('token')
     if(token){
@@ -144,7 +144,7 @@ axios.interceptors.request.use(function (config) {
 
 
 // 拦截器  -- 相应拦截
-axios.interceptors.response.use(function (config) {
+instance.interceptors.response.use(function (config) {
     // 在发送请求之前做些什么
 return config;
 }, function (error) {
