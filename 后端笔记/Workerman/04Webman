@@ -221,3 +221,38 @@ Route::group('/api',function(){
 
 
 
+
+
+
+
+
+### 二进制打包
+
+> webman支持将项目打包成一个二进制文件，这使得webman无需php环境也能在linux系统运行起来。
+
+```shell
+composer require webman/console ^1.2.24
+
+php webman build:bin
+php webman build:bin 8.1
+```
+
+> 将webman.bin上传至linux服务器，执行 `./webman.bin start` 或 `./webman.bin start -d` 即可启动。
+
+
+
+### Phar打包
+
+> phar是PHP里类似于JAR的一种打包文件
+
+```shell
+composer require webman/console
+
+php webman phar:pack
+
+php webman.phar start 或 php webman.phar start -d
+```
+
+
+
+
