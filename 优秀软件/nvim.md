@@ -2,7 +2,7 @@
 title: nvim
 description: nvim编辑器
 published: 1
-date: 2023-04-29T17:41:14.590Z
+date: 2023-05-05T11:43:17.944Z
 tags: app, nvim
 editor: markdown
 dateCreated: 2023-04-19T15:29:43.316Z

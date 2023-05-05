@@ -2,7 +2,7 @@
 title: 02.js和jq练习
 description: js和jq练习
 published: 1
-date: 2023-04-29T17:45:46.557Z
+date: 2023-05-05T11:49:19.354Z
 tags: javascript, jquery
 editor: markdown
 dateCreated: 2023-04-22T17:17:18.615Z

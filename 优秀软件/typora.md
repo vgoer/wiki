@@ -2,7 +2,7 @@
 title: Typora
 description: 笔记软件，所见所得
 published: 1
-date: 2023-04-29T17:41:20.813Z
+date: 2023-05-05T11:43:32.120Z
 tags: app, typora
 editor: markdown
 dateCreated: 2023-04-19T15:49:48.850Z

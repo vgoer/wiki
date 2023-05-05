@@ -2,7 +2,7 @@
 title: 05.xss
 description: xss安全
 published: 1
-date: 2023-04-29T17:48:46.521Z
+date: 2023-05-05T11:55:16.118Z
 tags: web safe, xss
 editor: markdown
 dateCreated: 2023-04-19T17:22:17.323Z

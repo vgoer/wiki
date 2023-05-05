@@ -2,7 +2,7 @@
 title: 01.vue简介
 description: vue简介
 published: 1
-date: 2023-04-29T17:46:01.505Z
+date: 2023-05-05T11:49:43.234Z
 tags: vue2
 editor: markdown
 dateCreated: 2023-04-24T10:34:57.816Z

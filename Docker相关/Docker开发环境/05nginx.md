@@ -2,7 +2,7 @@
 title: 05.nginx
 description: nginx
 published: 1
-date: 2023-04-29T17:42:33.230Z
+date: 2023-05-05T11:45:37.155Z
 tags: docker env
 editor: markdown
 dateCreated: 2023-04-22T05:19:45.705Z

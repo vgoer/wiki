@@ -2,7 +2,7 @@
 title: KDE
 description: kde桌面环境
 published: 1
-date: 2023-04-29T17:41:39.461Z
+date: 2023-05-05T11:44:20.035Z
 tags: desktop environment, kde
 editor: markdown
 dateCreated: 2023-04-18T17:30:52.881Z

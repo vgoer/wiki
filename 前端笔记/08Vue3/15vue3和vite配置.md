@@ -2,7 +2,7 @@
 title: 15.vue3和vite配置
 description: vue3和vite配置
 published: 1
-date: 2023-04-29T17:47:16.792Z
+date: 2023-05-05T11:51:30.685Z
 tags: vue3
 editor: markdown
 dateCreated: 2023-04-24T12:14:16.460Z

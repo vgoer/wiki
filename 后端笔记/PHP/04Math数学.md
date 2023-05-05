@@ -2,7 +2,7 @@
 title: 04.Math数学
 description: Math数学
 published: 1
-date: 2023-04-29T17:47:49.312Z
+date: 2023-05-05T11:52:35.028Z
 tags: php
 editor: markdown
 dateCreated: 2023-04-22T17:26:13.551Z

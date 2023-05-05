@@ -2,7 +2,7 @@
 title: 16.Pinia
 description: Pinia
 published: 1
-date: 2023-04-29T17:47:18.721Z
+date: 2023-05-05T11:51:34.471Z
 tags: vue3
 editor: markdown
 dateCreated: 2023-04-24T12:15:03.868Z

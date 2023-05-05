@@ -2,7 +2,7 @@
 title: 02.crud
 description: crud
 published: 1
-date: 2023-04-29T17:43:06.628Z
+date: 2023-05-05T11:46:37.048Z
 tags: golang
 editor: markdown
 dateCreated: 2023-04-22T04:50:57.248Z

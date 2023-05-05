@@ -2,7 +2,7 @@
 title: 14.Ajax异步
 description: Ajax异步
 published: 1
-date: 2023-04-29T17:48:02.491Z
+date: 2023-05-05T11:53:08.021Z
 tags: php
 editor: markdown
 dateCreated: 2023-04-22T17:38:11.633Z
