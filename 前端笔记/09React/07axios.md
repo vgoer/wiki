@@ -2,7 +2,7 @@
 title: 07.Axios
 description: axios
 published: 1
-date: 2023-05-05T17:23:17.768Z
+date: 2023-05-05T17:23:20.259Z
 tags: react
 editor: markdown
 dateCreated: 2023-05-05T17:23:17.768Z
