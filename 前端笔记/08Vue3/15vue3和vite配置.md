@@ -66,14 +66,14 @@ css: {
 .env.production
 
 .env.development 内容
-# 开发环境配置
-ENV = 'development'
-VITE_APP_API_HOST = 'http://localhost:8888'
+# 开发环境配置  env配置不能留空格
+ENV='development'
+VITE_APP_API_HOST='http://localhost:8888'
 
 .env.production
 # 生产环境配置
-ENV = 'production'
-VITE_APP_API_HOST = 'http://localhost:8887'
+ENV='production'
+VITE_APP_API_HOST='http://localhost:8887'
 
 # 修改package.json
 # dev 默认就是development环境
