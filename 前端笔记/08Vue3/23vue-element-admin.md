@@ -73,6 +73,10 @@ npx eslint yourfile.js
 // 安装插件 ESLint插件
 ```
 
+> ==vue和react==的配置 [blog](https://blog.csdn.net/GZZ__z/article/details/122006474)
+>
+> 下载这个插件：` Prettier ESLint`
+
 
 
 
