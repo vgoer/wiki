@@ -10,12 +10,13 @@ dateCreated: 2023-04-18T17:16:13.123Z
 
 # vgoer's Wiki
 > 这是我的笔记。记录我自己学习的点点滴滴。 [Github](https://github.com/vgoer)
+> let's go learn
 
 
 
 - 👋 Hi, I’m vgoer @ 阿浩 也可以叫我 千夜 小新
 - 👀 I’m interested in code, guitar, basketball, running @ 代码、吉他、篮球、跑步
-- 🌱 I’m currently learning go javascrpt vue php @ 总之啥都想学
+- 🌱 I’m currently learning go javascrpt vue php @ 总之啥都想学 
 - 📫 How to reach me goerblue@gmail.com @ 可以加我网站 `wechat: vuegoer`的联系方式
 
 <!---
