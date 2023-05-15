@@ -26,7 +26,7 @@ dateCreated: 2023-04-22T04:54:49.905Z
 
 ### 1. 安装
 
-> 安装了bee但是找不到 [bee](https://www.apude.com/blog/15471.html)
+> 安装了bee但是找不到 [bee](https://blog.csdn.net/qq_32421489/article/details/124610661)
 
 ```go
 // 打开go mode 
