@@ -262,9 +262,9 @@ getAsynData()
 
 
 
-### 4. Promse
+### 4. Promise
 
-> 上面有讲到使用`promse`,现在我们看看具体用法
+> 上面有讲到使用`Promise`,现在我们看看具体用法
 
 ```js
 //  基本用法
