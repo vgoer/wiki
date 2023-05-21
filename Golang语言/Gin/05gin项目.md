@@ -563,6 +563,284 @@ func AdminRoutesInit(r *gin.Engine) {
 
 
 
+### 7. 文件上传
+
+> 需要在上传文件的 form 表单中加入 `enctype=“multipart/form-data” `属性
+
+```go
+// 添加路由
+func AdminRoutesInit(r *gin.Engine) {
+
+	// admin 下面的文件
+	r.LoadHTMLGlob("templates/admin/*")
+	adminRoutes := r.Group("/admin", middlewares.InitMiddlewareOne, middlewares.InitMiddlewareTwo)
+	{
+		adminRoutes.GET("/", admin.AdminController{}.Admin)
+
+		adminRoutes.POST("/getFile", admin.AdminController{}.GetFile)
+	}
+}
+```
+
+```go
+// 控制器方法
+func (admin AdminController) Admin(ctx *gin.Context) {
+	// ctx.String(200, "后台页面")
+	// admin.success(ctx)
+
+	ctx.HTML(200, "admin/form.html", gin.H{"name": "form admin"})
+}
+
+func (admin AdminController) GetFile(ctx *gin.Context) {
+
+	userName := ctx.PostForm("username")
+	file, err := ctx.FormFile("file")
+
+	dist := path.Join("./static/upload", file.Filename)
+	if err != nil {
+		log.Fatal(err)
+	}
+	ctx.SaveUploadedFile(file, dist)
+
+	ctx.JSON(200, gin.H{
+		"success":  true,
+		"username": userName,
+		"dst":      dist,
+	})
+}
+```
+
+> 多文件上传 input添加`multiple`属性
+
+```js
+头  像 <input type="file" name="file[]" multiple><br><br>
+```
+
+```go
+func (admin AdminController) GetFile(ctx *gin.Context) {
+	// 获取多个文件
+	form, _ := ctx.MultipartForm()
+	files := form.File["file[]"]
+
+	for _, file := range files {
+		dist := path.Join("./static/upload", file.Filename)
+		ctx.SaveUploadedFile(file, dist)
+	}
+
+	ctx.JSON(200, gin.H{
+		"success": true,
+		"files":   files,
+	})
+}
+```
+
+> 判断类型和保存路径
+
+```go
+// 路由
+
+func (admin AdminController) GetFile(ctx *gin.Context) {
+
+	username := ctx.PostForm("username")
+	// 1、获取上层的文件
+	file, err := ctx.FormFile("file")
+	if err == nil {
+		// 2、获取文件的后缀名 判断类型是否正确
+		extName := path.Ext(file.Filename)
+		allowExtMap := map[string]bool{
+			".jpg":  true,
+			".png":  true,
+			".gif":  true,
+			".jpeg": true,
+		}
+		_, b := allowExtMap[extName]
+		if !b {
+			ctx.String(200, "上传的文件类型不合法")
+			return
+		}
+
+		// 3、创建图片保存目录 static/upload/...
+		day := models.GetDay()
+		dir := "./static/upload/" + day
+		// 如果当前目录不存在的话,一次会创建多层
+		err := os.MkdirAll(dir, 0666)
+
+		if err != nil {
+			fmt.Println("err==>", err)
+			ctx.String(200, "MkdirAll失败")
+			return
+		}
+		// 4、生成文件名称和文件保存的目录
+		fileName := strconv.FormatInt(models.GetUnix(), 10) + extName
+
+		// 5、执行上传
+		dst := path.Join(dir, fileName)
+		ctx.SaveUploadedFile(file, dst)
+	}
+	ctx.JSON(200, gin.H{
+		"success": true,
+		"name":    username,
+	})
+}
+```
+
+```go
+// models/utils.go
+package models
+
+import "time"
+
+// UnixToTime 时间戳转换成日期
+func UnixToTime(timestamp int) string {
+	t := time.Unix(int64(timestamp), 0)
+	return t.Format("2006-01-02 15:04:05")
+}
+
+// DateToUnix 日期转换成时间戳
+func DateToUnix(str string) int64 {
+	template := "2006-01-02 15:04:05"
+	t, err := time.ParseInLocation(template, str, time.Local)
+	if err != nil {
+		return 0
+	}
+	return t.Unix()
+}
+
+// GetUnix 获取时间戳
+func GetUnix() int64 {
+	return time.Now().Unix()
+}
+
+// GetDate 获取当前的日期
+func GetDate() string {
+	template := "2006-01-02 15:04:05"
+	return time.Now().Format(template)
+}
+
+// GetDay 获取年月日
+func GetDay() string {
+	template := "20060102"
+	return time.Now().Format(template)
+}
+```
+
+
+
+### 8.Cookie和Session
+
+> HTTP 是无状态协议,果想要实现多个页面之间共享数据的话可以使用 Cookie 或者 Session 实现。
+
+
+
+#### a.cookie
+
+> 设置
+
+```go
+c.SetCookie(name,value string, maxAge int, path,domain string, secure,httpOnly bool)
+```
+
+```shell
+第一个参数 key
+
+第二个参数 value
+
+第三个参数 过期时间，如果只想设置 Cookie 的保存路径而不想设置存活时间，可以在第三个参数中传递 nil
+
+第四个参数 cookie 的路径
+
+第五个参数 cookie 的路径 Domain 作用域 本地调试配置成 localhost ，正式上线配置成域名
+
+第六个参数 secure，当 secure 值为 true 时，cookie 在 HTTP 当中是无效的，在 HTTPS 当中才有效
+
+第七个参数 httpOnly，是微软对 Cookie 做的扩展。如果在 Cookie 中设置了 “httpOnly” 属性，则通过程序（JS 脚本等）将无法读取到 Cookie 信息，防止 XSS 攻击产生
+```
+
+```go
+	r.GET("/setCookie", func(c *gin.Context) {
+		c.SetCookie("username", "zhangsan", 3600, "/", "localhost", false, true)
+		c.String(http.StatusOK, "setCookie")
+	})
+	r.GET("/getCookie", func(c *gin.Context) {
+		cookie, err := c.Cookie("username")
+		if err == nil {
+			c.String(http.StatusOK, "Cookie="+cookie)
+		}
+	})
+	r.GET("/deleteCookie", func(c *gin.Context) {
+		c.SetCookie("username", "zhangsan", -1, "/", "localhost", false, false)
+		c.String(200, "删除Cookie")
+	})
+```
+
+#### b.Session
+
+> session 是另一种记录客户状态的机制，不同的是 Cookie 保存在客户端浏览器中，而 Session 保存在服务器上。
+
+```go
+go get github.com/gin-contrib/sessions
+```
+
+```go
+// 创建基于 cookie 的存储引擎，secret11111 参数是用于加密的密钥
+store := cookie.NewStore([]byte("secret11111"))
+// 设置 session 中间件，参数 mysession，指的是 session 的名字，也是 cookie 的名字
+// store 是前面创建的存储引擎，我们可以替换成其他存储引擎
+ginServer.Use(sessions.Sessions("mysession", store))
+
+ginServer.GET("/session", func(ctx *gin.Context) {
+
+    // 初始化 session对象
+    session := sessions.Default(ctx)
+    // 设置过期时间
+    session.Options(sessions.Options{
+        MaxAge: 3600 * 5, // 5h
+    })
+    // 设置session
+    session.Set("username", "张三")
+    session.Save()
+
+    // 获取 session.Get("")
+    ctx.JSON(http.StatusOK, gin.H{"msg": session.Get("username")})
+})
+```
+
+> 基于Redis存储Session [blog](https://blog.csdn.net/JN_HoweveR/article/details/129803452)
+
+
+
+### 9 GORM
+
+> GORM 是Golang 的一个 orm 框架。[grom](https://gorm.io/)
+>
+> GORM 支持的数据库类型有：MySQL、PostgreSQL、SQlite、SQL Server [blog](https://blog.csdn.net/qq_39280718)
+
+
+
+#### a.安装
+
+```shell
+go get -u gorm.io/gorm
+go get -u gorm.io/driver/mysql
+```
+
+#### b.连接数据库
+
+```go
+// models/core.go
+
+```
+
+
+
+
+
+
+
+
+
+
+
 
 
 
