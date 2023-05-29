@@ -2,7 +2,7 @@
 title: 30.errors包
 description: errors包
 published: 1
-date: 2023-05-05T11:47:39.640Z
+date: 2023-05-29T04:13:22.614Z
 tags: golang
 editor: markdown
 dateCreated: 2023-04-21T09:54:57.859Z

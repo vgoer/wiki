@@ -2,7 +2,7 @@
 title: 03.Magin魔术方法
 description: Magin魔术方法
 published: 1
-date: 2023-05-05T11:54:22.043Z
+date: 2023-05-29T04:16:30.803Z
 tags: oop, php
 editor: markdown
 dateCreated: 2023-04-22T18:07:23.640Z

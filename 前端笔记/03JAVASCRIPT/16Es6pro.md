@@ -2,10 +2,10 @@
 title: 16Es6pro
 description: 
 published: 1
-date: 2023-05-08T16:16:07.784Z
+date: 2023-05-29T04:14:15.483Z
 tags: 
 editor: markdown
-dateCreated: 2023-05-08T16:16:04.906Z
+dateCreated: 2023-05-15T17:21:13.938Z
 ---
 
 <center>Es6</center>

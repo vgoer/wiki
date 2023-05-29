@@ -2,7 +2,7 @@
 title: 17.Axios
 description: Axios
 published: 1
-date: 2023-05-05T11:51:38.083Z
+date: 2023-05-29T04:15:13.314Z
 tags: vue3
 editor: markdown
 dateCreated: 2023-04-24T12:16:08.240Z

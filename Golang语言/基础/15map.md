@@ -2,7 +2,7 @@
 title: 15.map
 description: map
 published: 1
-date: 2023-05-05T11:47:09.853Z
+date: 2023-05-29T04:13:00.836Z
 tags: golang
 editor: markdown
 dateCreated: 2023-04-21T09:29:14.930Z

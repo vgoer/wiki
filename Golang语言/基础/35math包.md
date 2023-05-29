@@ -2,7 +2,7 @@
 title: 35.math包
 description: math包
 published: 1
-date: 2023-05-05T11:47:47.491Z
+date: 2023-05-29T04:13:29.688Z
 tags: golang
 editor: markdown
 dateCreated: 2023-04-21T10:00:16.082Z

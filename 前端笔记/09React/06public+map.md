@@ -2,7 +2,7 @@
 title: 06.public+map
 description: public+map
 published: 1
-date: 2023-05-05T17:22:24.286Z
+date: 2023-05-29T04:15:32.200Z
 tags: react
 editor: markdown
 dateCreated: 2023-05-05T17:22:21.254Z

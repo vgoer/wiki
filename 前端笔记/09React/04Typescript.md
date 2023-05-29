@@ -2,7 +2,7 @@
 title: 04.Typescript
 description: Typescript
 published: 1
-date: 2023-05-05T12:28:18.352Z
+date: 2023-05-29T04:15:29.350Z
 tags: typescript
 editor: markdown
 dateCreated: 2023-05-05T12:28:15.633Z

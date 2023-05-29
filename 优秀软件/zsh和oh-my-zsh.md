@@ -2,7 +2,7 @@
 title: zsh和oh-my-zsh
 description: zsh和oh-my-zsh
 published: 1
-date: 2023-05-05T11:43:46.179Z
+date: 2023-05-29T04:08:53.007Z
 tags: zsh, oh-my-zsh
 editor: markdown
 dateCreated: 2023-04-30T03:33:13.080Z

@@ -2,7 +2,7 @@
 title: 05.Ts+React
 description: Ts+React
 published: 1
-date: 2023-05-05T12:29:09.102Z
+date: 2023-05-29T04:15:30.761Z
 tags: react, typescript
 editor: markdown
 dateCreated: 2023-05-05T12:29:06.598Z

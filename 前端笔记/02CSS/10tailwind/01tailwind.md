@@ -2,7 +2,7 @@
 title: 01.tailwind
 description: tailwind
 published: 1
-date: 2023-05-05T11:56:20.969Z
+date: 2023-05-29T04:17:20.086Z
 tags: tailwind
 editor: markdown
 dateCreated: 2023-04-30T18:24:14.303Z
