@@ -38,7 +38,7 @@
 
 ### 1. 安装
 
-> from [blog](https://blog.askk.cc/2022/09/18/nixos-installation/index.html)
+> from [blog ](https://blog.askk.cc/2022/09/18/nixos-installation/index.html)[blogg](https://blog.jogle.top/2022/06/19/nixos-get-started/) [bili](https://tech.aufomm.com/)
 
 
 
@@ -50,6 +50,7 @@
 下载一个最小化系统
 新建虚拟机
 进入 livecd 切换到sudo root 
+sudo -i
 查看连接网络，ip a
 ```
 
@@ -109,8 +110,8 @@ nixos-generate-config --root /mnt
 
 我们先修改配置文件（在这一步我踩了好多坑，改了好多次配置文件才通过），你不喜欢 `nano` 的话可以用 `vim`, 我自己也使用 `vim` (不会 `nano`)
 
-```
-SHELL
+```shell
+nano /mnt/etc/nixos/configuration.nix
 ```
 
 
