@@ -54,6 +54,8 @@ sudo -i
 查看连接网络，ip a
 ```
 
+
+
 #### b.磁盘分区
 
 然后我们就可以开始给磁盘分区了，官方教程用的 `gparted` 我更喜欢用 `fdisk`。先用 `fdisk -l` 看下我们的虚拟磁盘叫什么名字，不出意外是叫 `vda` (我打命令的时候老是打成 `sda`)。
@@ -219,8 +221,9 @@ ssh goer@ip  # 输入密码
 # 添加key
   users.users.goer = {
     extraGroups = [ "networkmanager" "wheel" "docker" ];
+    # 该用户的软件 
     packages = with pkgs; [
-      firefox
+      bat
     ];
   # Add ssh public key
     openssh.authorizedKeys.keys = [
@@ -230,12 +233,98 @@ ssh goer@ip  # 输入密码
   };
 ```
 
-> 修改nixos安装源 [mirrors](https://mirrors.ustc.edu.cn/help/nix-channels.html)
+这里这个 `192.168.122.50` 就是我们需要的 ip. 之后就可以在外部通过如下的命令连接虚拟机 (`~/.ssh/YOU_PRIVATE_KEY` 替换成你的私钥文件路径)
 
 ```shell
-sudo nix-channel --add https://mirrors.ustc.edu.cn/nix-channels/nixpkgs-unstable nixpkgs
-sudo nix-channel --update
+ssh root@192.168.122.50 -i ~/.ssh/YOU_PRIVATE_KEY
+
+# 哇哦，连接成功了 牛皮
+
+# 禁止使用密码登录
+services.openssh.settings.PasswordAuthentication = false
+
+# 给ssh 分类扩起来
+services.openssh = {
+    enable = true;
+    # Disable SSH password log in
+    passwordAuthentication = false;
+};
 ```
+
+> 修改nixos安装源 [nixos一些列问题](https://github.com/nixos-cn/NixOS-FAQ/blob/main/answers/how-to-mannually-download-file-while-nixos-rebuild.md)
+
+可以通过额外的 CLI 参数来指定 Binary Cache 的地址
+
+```shell
+sudo nixos-rebuild switch --option substituters "https://mirror.sjtu.edu.cn/nix-channels/store"
+```
+
+也可以把以下配置加到 `configuration.nix` 使得**后续**每次都优先走国内镜像, **若需要本次立即生效还是看上面**
+
+```shell
+  # 添加 lib模块 在顶部
+  { lib, ... }
+  
+  #注意, 旧版本的 nixos 里, 该选项叫 nix.binaryCaches
+  nix.settings.substituters = lib.mkBefore [
+    "https://mirror.sjtu.edu.cn/nix-channels/store"
+    #"https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
+    #"https://mirrors.bfsu.edu.cn/nix-channels/store"
+  ];
+```
+
+(选其中一个即可, 用多个镜像并不一定就能让速度变快...)
+
+
+
+
+
+### 3. docker安装
+
+> 安装docker 软件必备 [nixos系列](https://zhuanlan.zhihu.com/p/612323162)
+
+```shell
+# Install Docker
+virtualisation.docker.enable = true;
+
+
+# 添加用户到docker组
+  users.users.goer = {
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
+    # 该用户的软件
+    packages = with pkgs; [
+      bat
+    ];
+ };
+ 
+ # 然后退出系统进入 
+ docker ps 
+ docker composer 
+```
+
+
+
+
+
+### 4. 更新包
+
+```shell
+# 查看list
+sudo nix-channel --list
+# 更新
+sudo nix-channel --update
+sudo nixos-rebuild switch
+```
+
+
+
+
+
+
+
+
+
+
 
 
 
