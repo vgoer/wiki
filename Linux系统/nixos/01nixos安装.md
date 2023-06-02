@@ -114,9 +114,128 @@ nixos-generate-config --root /mnt
 nano /mnt/etc/nixos/configuration.nix
 ```
 
+我选择的是用 `grub` 启动，所以把 `grub` 相关的选项都启用了（删掉行首的 `#`）。值得注意的是，需要修改以下这些行
+
+```shell
+boot.loader.efi.efiSysMountPoint = "/boot" #这里本来是 /boot/efi
+boot.loader.grub.device = "/dev/vda" # 这里本来是 sda,但是我们是虚拟机，是 vda
+```
+
+其他的时区、键盘、网络这些我都先没有改。我下一个改的是
+
+```shell
+enviroment.systemPackages = with pkgs; [
+    vim
+    wget
+];
+```
+
+不然默认没有 `vim` 用，而且要记得取消掉最后那个`];` 的注释，我之前就是因为这个，安装的时候，配置文件检查始终不通过。
+
+我还启用了 OpenSSH daemon
+
+```shell
+services.openssh.enable =true
+```
+
+改好了之后退出（`nano` 下面提示的 `^` 表示 `Ctrl`）
+
+最后我们就可以运行 `nixos-install` 来安装啦。如果没成功，你可以使用如下命令来看哪里有问题
+
+```shell
+nixos-install --show-trace
+```
+
+并返回上一步去修改 `/mnt/etc/nixos/configuration.nix`，再重新执行 `nixos-install`。
+成功了的话，在最后一步， `nixos-install` 会提示你设置 root 密码。
+
+```shell
+setting root password...
+New password: ***
+Retype new password: ***
+```
+
+最后执行 `reboot` 重启就装好了。
+
+装好 Nix 之后我们仍然可以继续修改 `/etc/nixos/configuration.nix` ，要切换到修改后的配置需要手动运行
+
+```shell
+nixos-rebuild switch
+```
 
 
 
+
+
+### 2. 安装ssh
+
+> 安装配置ssh
+
+```shell
+# 添加用户和密码
+useradd goer
+passwd goer
+
+# 添加用户到sudoers文件
+vim /etc/sudoers
+root ALL = (ALL) ALL这一行，在下一行加入username ALL = (ALL) ALL。
+
+# 安装软件
+vim /etc/nixos/configuration.nix
+# 系统软件
+enviroment.systemPackages = with pkgs; [
+    vim
+    wget
+    neofetch
+    btop
+    htop
+];
+
+# 开启ssh 注释打开
+services.openssh.enable =true
+
+# 安装
+sudo nixos-rebuild switch
+```
+
+> 查看sshd服务和连接
+
+```shell
+# 查看
+systemctl status sshd
+
+# 查看ip
+ip a
+
+# 用主机连接服务器
+ssh goer@ip  # 输入密码
+```
+
+> 添加ssh的key
+>
+> 下面教我们找到结果的方法，而不是直接给你结果 [nixos](https://search.nixos.org/)
+
+```shell
+# 添加key
+  users.users.goer = {
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
+    packages = with pkgs; [
+      firefox
+    ];
+  # Add ssh public key
+    openssh.authorizedKeys.keys = [
+      "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDJG+12SoXKQcrdoEL3JR3mo35/EUyEF9+SzQ7XO8lUnHKCklG0pngS/I/tcsURIqz1wc17sLUqYoaILa4CKbhkFAA5/RhcmsAir/zKs8ndKS7cXSCJru9LoN0aZYIiubbnGYGGLa5l/RdDeBI5Hb1HhC2u8nNkVyyCKssVYwL2smGj8LkXTmXfKTcUS01ea1DPZP5f8g2vzr7gbxmMNG6OTx1QeM4b9BqZ5G4aUBSe0jClAcsFnhe+cwwEhCapy7tps8fstUmMyqhb/09Wlo3fAEqHCOGbYhKFipcXRg7oRHWl5VaZiitQVYVNhAgjFNdssonou877BDX0v/Ei3VLCSwLgGea+sHpla+0W62xGDqxP6mXfIK9FOQ6svpKHCSVhGiOkuoyTV+ZxnTBeFWMRZLGohFmnuloK4WdGXqxuynraywR1sjRCVMplfgRr4KMgWDIKYtfSLBuStsCrf3d/44mre1utI/tgqod3LoCMMqRyrCRKGPw0J2oiDeh4bE8= hi_goer@163.com
+"
+    ];
+  };
+```
+
+> 修改nixos安装源 [mirrors](https://mirrors.ustc.edu.cn/help/nix-channels.html)
+
+```shell
+sudo nix-channel --add https://mirrors.ustc.edu.cn/nix-channels/nixpkgs-unstable nixpkgs
+sudo nix-channel --update
+```
 
 
 
