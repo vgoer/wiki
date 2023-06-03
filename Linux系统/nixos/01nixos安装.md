@@ -267,10 +267,13 @@ sudo nixos-rebuild switch --option substituters "https://mirror.sjtu.edu.cn/nix-
   
   #注意, 旧版本的 nixos 里, 该选项叫 nix.binaryCaches
   nix.settings.substituters = lib.mkBefore [
-    "https://mirror.sjtu.edu.cn/nix-channels/store"
-    #"https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
+    #"https://mirror.sjtu.edu.cn/nix-channels/store"
+    "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
     #"https://mirrors.bfsu.edu.cn/nix-channels/store"
   ];
+  
+ # 更新
+ sudo nix-channel --update
 ```
 
 (选其中一个即可, 用多个镜像并不一定就能让速度变快...)
