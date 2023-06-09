@@ -1,0 +1,33 @@
+<center>连接github</center>
+
+[toc]
+
+
+## 密钥连接github
+> 不要使用不安全的用户名密码 使用ssh密钥
+
+
+
+### git密钥连接github
+
+> git
+
+```shell
+# 你的邮箱
+ssh-keygen -t rsa -b 4096 -C "hi_goer@163.com"
+
+# 查看公钥和私钥  id_rsa 私钥   id_rsa.pub 公钥
+~/.ssh 
+
+# 复制公钥到 github
+cat ~/.ssh/id_rsa.pub
+
+# 复制到
+Settings”>“SSH and GPG keys”>“New SSH key”
+```
+
+
+
+
+
+
