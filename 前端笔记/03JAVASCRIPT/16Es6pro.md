@@ -643,6 +643,45 @@ import { name as MyName,age } from "./data.js"
 
 
 
+#### 10 Proxy
+
+> 代理对象. **Proxy** 对象用于创建一个对象的代理，从而实现基本操作的拦截和自定义（如属性查找、赋值、枚举、函数调用等）。
+>
+> [mdn](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Proxy)
+
+```js
+// 试想下 vue3是如何，修改数据，就会渲染到页面的 Proxy
+
+// Proxy 对象用于创建一个对象的代理
+const obj = { name: "goer", age:10, love:"test" }
+const box = document.querySelector('.box')
+
+// 修改内容  页面没有发生改变
+box.textContent = obj.name
+
+const prox1 = new Proxy(obj,{
+    // 很多回调api
+
+    //get 获取时候调用
+    get(target,property){
+        return obj[property]
+    },
+
+    // set 设置时候调用
+    set(target,property,value){
+        obj[property] = value
+        box.textContent = obj.name
+    }
+
+})
+
+prox1.name = "goer sex"
+prox1.name = "chage goer"
+```
+
+
+
+
 
 
 
