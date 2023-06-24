@@ -46,6 +46,67 @@
 
 
 
+```shell
+# 安装
+sudo apt install tor
+
+
+# 修改配置文件
+sudo vim /etc/tor/torrc
+
+#密钥和域名路径
+HiddenServiceDir /var/lib/tor/hidden_service/
+#下面这行是开启最新v3版域名，默认是v2版，去掉前面#号即可开启，v3域名更长
+HiddenServiceVersion 3
+#下面是默认端口转发，如果服务器不干别的话，俺是建议直接用80端口的
+HiddenServicePort 80 127.0.0.1:8080
+
+
+# 重启服务
+sudo systemctl restart tor
+
+# 查看tor目录    查看域名
+cat /var/lib/tor/hidden_service/hostname 
+
+# 牛皮 
+aacc........dsfdsfasfsdafdsaf.onion
+```
+
+
+
+#### 3. 配置nginx
+
+> 安装网络服务器
+
+```shell
+# 安装
+sudo apt install nginx
+
+# 配置 配置到我们tor配置的端口转发
+
+vim /etc/nginx/nginx.conf
+#server段添加下面内容
+
+    server {
+        listen 8080;    #可以直接改用80端口
+        listen [::]:8080;
+        root /var/www/tor; #网站根目录，这里就是你的网站内容
+    }
+    
+# 重启
+sudo systemctl restart nginx
+
+# 在 /var/www/tor下创建web
+```
+
+
+
+> 访问： 记得用tor浏览器，不要用google之类的浏览器  
+>
+> > 我去。牛皮牛皮
+
+
+
 
 
 
