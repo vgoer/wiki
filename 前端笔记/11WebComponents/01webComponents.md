@@ -194,7 +194,8 @@ window.customElements.define('wc-card',Card)
 >
 > - lifecycle 生命周期
 > - event 事件注册
-> - 
+> - state 状态
+> - attribute 设置属性值
 
 > 子组件
 
@@ -288,11 +289,119 @@ class Card extends HTMLElement{
 }
 ```
 
+> state 状态
+
+```js
+// wc.js
+// wc.js
+/**
+ * 定义样式和标签
+ * @returns 字符串
+ */
+const cardHtml = () => `
+    <style>
+    div{
+        padding: 8em;
+        border: 1px solid blue;
+        border-radius: 10px;
+        box-shadow: 2px 2px 10px 2px blue inset;
+    }
+    h1{
+        text-align: center;
+        text-shadow: 2px 2px blue;
+    }
+    button{
+        padding: 10px;
+        width: 100px;
+        border: none;
+        cursor: pointer;
+        color: #008c8c;
+        transition: all 1s ease;
+    }
+    button:hover{
+        box-shadow: 3px 3px 2px 2px blue;
+    }
+    </style>
+    <div>
+        <h1>hello</h1>
+        
+        <p class="flag"></p>
+
+        <button>add</button>
+    </div>
+`;
+
+// 创建 template
+const template = document.createElement('template')
+
+template.innerHTML = cardHtml()
+
+class Card extends HTMLElement{
+    
+    constructor(){
+        super();
+
+        // state
+        this.flag = 0
+
+        // shadow 概念 重要 （自己的命令空间等)
+        this.attachShadow({mode:'open'})
+        this.shadowRoot.appendChild(template.content.cloneNode(true))
+    }
+    // 事件
+    myOnClick(){
+
+        this.flag++;
+        const flagEle = this.shadowRoot.querySelector('.flag')
+        // flagEle.innerHTML = this.flag
+        flagEle.innerText = this.flag.toString()
+    }
+
+    // lifecycle 
+    // 组件创建之后
+    connectedCallback(){
+        // 注册一个点击事件
+        this.shadowRoot.querySelector('button').addEventListener('click',()=>this.myOnClick())
+    }
+}
+// 定义一个自定义标签
+window.customElements.define('wc-card',Card)
+```
+
+> attribute 设置属性值
+
+```js
+    <wc-card class="box" title="One">
+        <div slot="child">我是子组件</div>
+    </wc-card>
+    <wc-card class="box" title="Tow"></wc-card>
+
+// wc.js
+
+class Card extends HTMLElement{
+    
+    constructor(){
+        super();
+
+        // state
+        this.flag = 0
+
+        // shadow 概念 重要 （自己的命令空间等)
+        this.attachShadow({mode:'open'})
+        this.shadowRoot.appendChild(template.content.cloneNode(true))
+
+
+        // attribute
+        this.shadowRoot.querySelector('h1').innerHTML = this.getAttribute('title')
+    }
+}
+```
 
 
 
 
 
+> web components的框架： Lit , Polymer 等
 
 
 
