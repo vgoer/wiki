@@ -238,6 +238,20 @@ const AsyncCop = defineAsyncComponent(() => import('./sunTest.vue'))
 </script>
 ```
 
+```js
+// watch
+const state = reactive({
+    num: 0,
+})
+watch(
+    // 监听多层对象
+    () => state.num,
+    (newValue,oldValue) => {
+        console.log(newValue)
+        console.log(oldValue)
+    }
+)
+```
 
 
 ### 4. 瞬移组件
