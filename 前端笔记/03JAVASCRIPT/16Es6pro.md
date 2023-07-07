@@ -683,6 +683,96 @@ prox1.name = "chage goer"
 
 
 
+### 11 对象方法
+
+> 对象的方法
+
+
+
+1. `Object.keys`
+
+> 获取对象的keys 返回一个数组
+
+```js
+let ojb = { name: 'goer', age: 20, lover: 'man'}
+
+// 获取对象的keys
+const arrKey = Object.keys(ojb)
+console.log(arrKey)  //  ['name', 'age', 'lover']
+```
+
+
+
+2. `Object.values`
+
+> 获取对象的values， 返回一个数组
+
+```js
+ let ojb = { name: 'goer', age: 20, lover: 'man'}
+ 
+ const arrValues = Object.values(ojb)
+ console.log(arrValues) // ['goer', 20, 'man']
+```
+
+
+
+3. `Object.assign`
+
+> 将源对象赋值给目标对象， 两者都会覆盖。target独有会保留，sourse独有会添加
+>
+> 合并具有相同属性的对象
+
+```js
+let ojb = { name: 'goer', age: 20, lover: 'man'}
+// 新对象
+const newObj = Object.assign({},ojb)
+console.log(newObj)
+```
+
+```js
+let persion1 = { name:'goer', age: 'yes' }
+let persion2 = { name:'java', num:'kkkk' }
+
+const newPerson = Object.assign(persion1,persion2)
+console.log(persion1)  // 源对象也会被改变 {name: 'java', age: 'yes', num: 'kkkk'}
+console.log(newPerson)
+```
+
+4. `Object.fromEntries`
+
+> 把键值对列表转为对象
+
+```js
+// map 转对象
+const map = new Map([['aa',"AA"],['bb',"BB"]])
+const obj = Object.fromEntries(map)
+console.log(obj)
+console.log(map)
+
+// 数组 转对象
+const arr = [['kk',"KKK"],['gg',"GGG"],['ff','FFF','FFFF']]
+
+const obj = Object.fromEntries(arr) 
+console.log(obj) // {kk: 'KKK', gg: 'GGG', ff: 'FFF'}
+console.log(arr)
+```
+
+5. `Object.entries`
+
+> 对象返回键值对数组 和上一个方法相反
+
+```js
+let obj = { name:'goer', age:20, lover:'txt' }
+
+const arr = Object.entries(obj)
+console.log(arr) //  [Array(2), Array(2), Array(2)]
+console.log(obj) // {name: 'goer', age: 20, lover: 'txt'}
+```
+
+
+
+
+
 
 
 
