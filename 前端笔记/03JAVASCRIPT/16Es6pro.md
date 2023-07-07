@@ -521,6 +521,17 @@ const sum = arr.reduce((acc,cur) => {
 console.log(sum)
 ```
 
+9. Array.of()
+
+> 将数值转为数组
+
+```js
+// 将数值转为数组
+const arr = Array.of(1,2,3,4,'kkkk','jjj')
+
+console.log(arr) //  [1, 2, 3, 4, 'kkkk', 'jjj']
+
+```
 
 
  
