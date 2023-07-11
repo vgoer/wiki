@@ -432,11 +432,68 @@ const {x,y} = useMouse()
 
 
 
+### 9. 监听
 
+> 监听 `watch` 每次响应式状态发生变化时触发回调函数：
 
+```js
+const x = ref(0)
+const y = ref(0)
 
+// 单个 ref
+watch(x, (newX) => {
+  console.log(`x is ${newX}`)
+})
 
+// getter 函数
+watch(
+  () => x.value + y.value,
+  (sum) => {
+    console.log(`sum of x + y is: ${sum}`)
+  }
+)
 
+// 多个来源组成的数组
+watch([x, () => y.value], ([newX, newY]) => {
+  console.log(`x is ${newX} and y is ${newY}`)
+})
+
+// 监听对象属性时
+const state = reactive({
+    num: 0,
+})
+watch(
+    // 监听多层对象
+    () => state.num,
+    (newValue,oldValue) => {
+        console.log(newValue)
+        console.log(oldValue)
+    }
+)
+```
+
+> `watchEffect`：自动追踪所有能访问到的响应式属性。代码更加简洁
+
+```js
+// watch
+const todoId = ref(1)
+const data = ref(null)
+
+watch(todoId, async () => {
+  const response = await fetch(
+    `https://jsonplaceholder.typicode.com/todos/${todoId.value}`
+  )
+  data.value = await response.json()
+}, { immediate: true })
+
+// watchEffect
+watchEffect(async () => {
+  const response = await fetch(
+    `https://jsonplaceholder.typicode.com/todos/${todoId.value}`
+  )
+  data.value = await response.json()
+})
+```
 
 
 

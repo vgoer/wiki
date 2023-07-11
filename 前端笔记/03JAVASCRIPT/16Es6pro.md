@@ -534,7 +534,7 @@ console.log(arr) //  [1, 2, 3, 4, 'kkkk', 'jjj']
 ```
 
 
- 
+
 
 ### 8.新数据类型
 
@@ -779,7 +779,6 @@ const arr = Object.entries(obj)
 console.log(arr) //  [Array(2), Array(2), Array(2)]
 console.log(obj) // {name: 'goer', age: 20, lover: 'txt'}
 ```
-
 
 
 
