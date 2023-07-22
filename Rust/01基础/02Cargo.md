@@ -48,6 +48,22 @@ cargo check  # 常用的 调试
 
 > rust 中 包和库成为 ==creat==
 
+```shell
+# 设置源
+set RUSTUP_DIST_SERVER=https://mirrors.tuna.tsinghua.edu.cn/rustup
+# 下载交叉编译的工具链
+rustup target add x86_64-unknown-linux-gnu
+# cargo 编译其他平台
+rustc --print target-list  # 查看可编译的平台
+
+cargo build --target <target-triple> # 指定平台
+
+# win linux mac
+cargo build --target x86_64-pc-windows-gnu  
+cargo build --target x86_64-unknown-linux-gnu
+cargo build --target x86_64-apple-darwin
+```
+
 
 
 
