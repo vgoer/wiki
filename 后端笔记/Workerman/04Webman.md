@@ -183,13 +183,11 @@ public function getjson(Request $request)
 
 ```php
 // config/route.php
-
 Route::group('/api',function(){
     Route::group('/admin',function(){
-
+        
         Route::any('/',[app\api\controller\AdminController::class,'index']);
     });
-
     // 设置中间件。
     Route::group('/index',function(){
         Route::any('/',[app\api\controller\IndexController::class,'index']);
