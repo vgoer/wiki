@@ -392,3 +392,20 @@ function error($code = null)
 }
 ```
 
+
+
+
+
+### 10. 验证码
+
+> larvael 验证码
+
+```shell
+composer require mews/captcha
+```
+
+```php
+// php 代码
+return ['src' => captcha_src('custom') ];
+```
+
