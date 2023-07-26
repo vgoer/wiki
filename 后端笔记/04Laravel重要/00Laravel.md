@@ -454,7 +454,6 @@ function rmb($money = 0, $int_unit = '元', $is_round = true, $is_extra_zero = f
     }
     return $res;
 }
-
 ```
 
 
