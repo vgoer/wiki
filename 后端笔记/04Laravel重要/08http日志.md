@@ -145,4 +145,5 @@ http://127.0.0.1:999/api/admin/login?id=100&name=goer
 
 > 3.  使用 `Log::channel('request')->info()`
 
-> 4. 我去，牛皮
+> 4. 我去，牛皮。芜湖起飞
+
