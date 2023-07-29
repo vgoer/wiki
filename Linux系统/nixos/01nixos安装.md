@@ -325,6 +325,26 @@ sudo nixos-rebuild switch
 
 
 
+### 5. 拓展
+
+> 腾讯云使用密钥登录
+
+```shell
+# 1. 生成ssh密钥对
+sudo -i
+ssh-keygen -t rsa
+
+# 2. 回车
+# 3. 复制本地公钥， 添加服务器的公钥里面
+nano /root/.ssh/authorized_keys 
+# 4. 重启ssh服务
+ssh root@192.168.122.50 -i ~/.ssh/YOU_PRIVATE_KEY
+```
+
+
+
+
+
 
 
 
