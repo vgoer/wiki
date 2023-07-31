@@ -53,6 +53,23 @@ php think run -H tp.com -p 80
 
 
 
+### 2. 开发和线上
+
+> 1. 开发
+
+```shell
+1. 本地pc安装BuildAdmin 作为开发环境
+2. 命令启动服务
+	php think run 
+3. 填写数据库文件 在安装 BuildAdmin 时您已经填写了系统的数据库资料，需要开启对应的数据库服务，数据库资料被保存在config/database.php文件。
+
+4. 在/web目录内，执行npm run dev命令，在浏览器打开localhost:1818 ，域名一定是localhost（后端已配置它允许跨域）。
+
+5. 开发时，建议开启TP框架的调试模式：找到网站根目录的.env-example重命名为.env。参：开启调试模式。
+```
+
+
+
 
 
 
