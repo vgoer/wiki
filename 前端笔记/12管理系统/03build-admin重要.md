@@ -68,6 +68,19 @@ php think run -H tp.com -p 80
 5. 开发时，建议开启TP框架的调试模式：找到网站根目录的.env-example重命名为.env。参：开启调试模式。
 ```
 
+> 2.线上
+
+```shell
+1. 删除 /install 目录
+2. 线上环境可以选择不上传/web目录，前端每次重新发布后，只将/public/assets 目录和/public/index.html 文件，同步到服务器上即可。
+3. 使用Nginx、Apache等服务器软件运行站点，而不再是php think run，请把BuildAdmin当做常规站点，站点的根目录配置为buildadmin目录，站点运行目录为buildadmin/public，如无运行目录配置项，请直接将根目录配置为buildadmin/public。
+4. 可以选择配置：隐藏index.html
+```
+
+
+
+
+
 
 
 
