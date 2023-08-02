@@ -51,7 +51,7 @@ npx create-next-app@latest
     "lint": "next lint"
 ```
 
-
+> next 是动静结合的 所以网站被build`index.html`和`index.js`
 
 
 
