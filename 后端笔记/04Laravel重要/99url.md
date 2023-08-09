@@ -20,5 +20,7 @@
 >
 > php类库，资源 [php](https://learnku.com/articles/40507) [github](https://github.com/ar414-com/php-source-lib)
 >
-> 
+> 优化： [opcache](https://learnku.com/articles/18782) 
+>
+> 压测工具 [wrk](https://learnku.com/articles/27979) [octance](https://learnku.com/articles/77337)
 
