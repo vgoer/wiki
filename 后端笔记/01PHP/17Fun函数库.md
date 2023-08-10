@@ -279,6 +279,60 @@ function rmb($money = 0, $int_unit = '元', $is_round = true, $is_extra_zero = f
 11. 函数用于获取当前的毫秒级时间戳
 
 ```php
+// 取微秒
+function mTime()
+{
+    list($msec, $sec) = explode(' ', microtime());
+    return $sec * 1000 + intval($msec * 1000);
+}
+
+# 获取token等 
+$token = encrypt(mTime());
+```
+
+12. 获取密码盐
+
+```php
+/**
+ * @ Salt 生成密码盐
+ * param len 默认长度 4
+ */
+function salt($len = 4)
+{
+    $rand_str = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $max = strlen($rand_str);
+    $str = '';
+    for ($i = 0; $i < $len; $i++) {
+        $str .= $rand_str[mt_rand(0, $max - 1)];
+    }
+    return $str;
+}
+```
+
+13. 发送请求
+
+```php
+
+function curl($method = 'get', $url, $header = [], $data = [])
+{
+    $curl = curl_init();
+    curl_setopt($curl, CURLOPT_URL, $url);
+    curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, FALSE);
+    curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, FALSE);
+    if ($header == []) {
+        curl_setopt($curl, CURLOPT_HEADER, 0);
+    } else {
+        curl_setopt($curl, CURLOPT_HEADER, $header);
+    }
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+    if ($method == 'post') {
+        curl_setopt($curl, CURLOPT_POST, 1);
+        curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+    }
+    $data = curl_exec($curl);
+    curl_close($curl);
+    return $data;
+}
 ```
 
 
