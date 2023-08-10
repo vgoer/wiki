@@ -307,6 +307,9 @@ function salt($len = 4)
     }
     return $str;
 }
+# 加密
+$salt = salt(10);
+$password = md5(md5($input['password']) . $salt);
 ```
 
 13. 发送请求
