@@ -23,4 +23,10 @@
 > 优化： [opcache](https://learnku.com/articles/18782) 
 >
 > 压测工具 [wrk](https://learnku.com/articles/27979) [octance](https://learnku.com/articles/77337)
+>
+> 设计模式 [设计](https://refactoringguru.cn/) [模式](https://learnku.com/docs/php-design-patterns/2018)
+>
+> cup [cpu ](https://learnku.com/blog/bossaiguo) 
+
+
 
