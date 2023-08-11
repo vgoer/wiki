@@ -338,6 +338,28 @@ function curl($method = 'get', $url, $header = [], $data = [])
 }
 ```
 
+14. 修改状态的函数
+
+```php
+/**
+ * 根据数据库状态返回一些值给前端
+ *
+ * @param Number $key
+ * @return void
+ */
+function rolesType($key){
+    switch($key){
+        // 0 admin |  1 user |  2 待定 |  3 监管部门
+        case 0: $value = ['admin'];      break;
+        case 1: $value = ['user'];       break;
+        // case 2: $value = ['user'];       break;
+        case 3: $value = ['supervise'];  break;
+    }
+    return $value;
+}
+
+```
+
 
 
 
