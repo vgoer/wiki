@@ -36,7 +36,7 @@
 ### 2. 安装
 
 ```shell
-npx create-next-app@latest
+npx create-next-app@latest my-app
 ```
 
 > `script`
@@ -52,6 +52,12 @@ npx create-next-app@latest
 ```
 
 > next 是动静结合的 所以网站被build`index.html`和`index.js`
+
+
+
+
+
+
 
 
 
