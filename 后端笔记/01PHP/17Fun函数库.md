@@ -360,6 +360,65 @@ function rolesType($key){
 
 ```
 
+12. 是否是中国的手机号
+
+```php
+function validate_phone_number($phone) {
+    // 去除字符串中的空格和特殊字符
+    $cleaned_phone = preg_replace('/[^0-9]/', '', $phone);
+
+    // 验证手机号码是否为11位数字
+    if (strlen($cleaned_phone) !== 11) {
+        return false;
+    }
+
+    // 验证手机号码是否符合中国的号码规则
+    $pattern = '/^(?:\+?86)?1(?:3\d{3}|4[5-9]\d{2}|5\d{3}|6[2389]\d{2}|7[0-8]\d{2}|8\d{3}|9[189]\d{2})\d{6}$/';
+    if (!preg_match($pattern, $cleaned_phone)) {
+        return false;
+    }
+
+    // 手机号码验证通过
+    return true;
+}
+
+```
+
+13. 用于验证IP地址（支持IPv4和IPv6）是否合法：
+
+```php
+function validate_ip_address($ip) {
+    // 验证IPv4地址
+    if (filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4)) {
+        return true;
+    }
+
+    // 验证IPv6地址
+    if (filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6)) {
+        return true;
+    }
+
+    // IP地址格式不正确
+    return false;
+}
+```
+
+14. 用于将 JSON 字符串转换为数组
+
+```php
+function convert_json_to_array($json) {
+    // 解码 JSON 字符串并转换为数组
+    $array = json_decode($json, true);
+
+    // 检查 JSON 解码是否成功
+    if ($array === null && json_last_error() !== JSON_ERROR_NONE) {
+        return null;
+    }
+
+    return $array;
+}
+```
+
 
 
 
