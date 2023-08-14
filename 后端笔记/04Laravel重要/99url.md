@@ -28,7 +28,9 @@
 >
 > cup [cpu ](https://learnku.com/blog/bossaiguo) 
 >
-> 
+> laravel最佳实践 [laravel最佳实践](https://learnku.com/articles/12762/eighteen-best-practices-of-laravel)
+>
+> 扩展包： [100个](https://learnku.com/laravel/t/2530/the-highest-amount-of-downloads-of-the-100-laravel-extensions-recommended) [推荐的 ](https://learnku.com/articles/5512/laravel-recommend-easy-to-use-integrated-version-of-the-expansion-package)[常见](https://learnku.com/articles/4805/in-laravel-your-most-commonly-used-extensions-pack)
 
 
 
