@@ -39,6 +39,10 @@
 > toSql扩展: [laravel-dump-sql](https://learnku.com/articles/62091)
 >
 > php获取设备类型: [设备类型](https://learnku.com/articles/17734)
+>
+> linux: [linux知识](https://learnku.com/articles/78462)
+>
+> 好用扩展: [blog](https://blog.csdn.net/weixin_43814458/article/details/105932459)
 
 
 
