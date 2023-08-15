@@ -31,6 +31,14 @@
 > laravel最佳实践 [laravel最佳实践](https://learnku.com/articles/12762/eighteen-best-practices-of-laravel)
 >
 > 扩展包： [100个](https://learnku.com/laravel/t/2530/the-highest-amount-of-downloads-of-the-100-laravel-extensions-recommended) [推荐的 ](https://learnku.com/articles/5512/laravel-recommend-easy-to-use-integrated-version-of-the-expansion-package)[常见](https://learnku.com/articles/4805/in-laravel-your-most-commonly-used-extensions-pack)
+>
+> php资源大全： [blog](https://www.cnblogs.com/taletao/p/4212916.html)
+>
+> php命令行音乐： [msic-php](https://learnku.com/articles/30014)
+>
+> toSql扩展: [laravel-dump-sql](https://learnku.com/articles/62091)
+>
+> php获取设备类型: [设备类型](https://learnku.com/articles/17734)
 
 
 
