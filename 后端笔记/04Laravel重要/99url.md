@@ -43,6 +43,14 @@
 > linux: [linux知识](https://learnku.com/articles/78462)
 >
 > 好用扩展: [blog](https://blog.csdn.net/weixin_43814458/article/details/105932459)
+>
+> php扩展: [php开发](https://learnku.com/laravel/t/10032/php-extension-development-detection-list-extended-development-required)
+>
+> 第三方登录： [第三方认证登录](https://learnku.com/laravel/t/1202/laravel51-achieve-third-party-login-authentication-including-micro-blog-qq-wechat-watercress)
+>
+> 简书: [laravel](https://www.jianshu.com/c/3dff40fa5135)
+
+
 
 
 
