@@ -49,6 +49,8 @@
 > 第三方登录： [第三方认证登录](https://learnku.com/laravel/t/1202/laravel51-achieve-third-party-login-authentication-including-micro-blog-qq-wechat-watercress)
 >
 > 简书: [laravel](https://www.jianshu.com/c/3dff40fa5135)
+>
+> docker: [docker](https://blog.csdn.net/qq_39135287/category_9492725.html) [docker+jenkins](https://juejin.cn/post/7007696221175316487)  [没有用docker](https://juejin.cn/post/6991291781195235365)  
 
 
 
