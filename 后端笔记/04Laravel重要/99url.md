@@ -51,6 +51,10 @@
 > 简书: [laravel](https://www.jianshu.com/c/3dff40fa5135)
 >
 > docker: [docker](https://blog.csdn.net/qq_39135287/category_9492725.html) [docker+jenkins](https://juejin.cn/post/7007696221175316487)  [没有用docker](https://juejin.cn/post/6991291781195235365)  
+>
+> arch install php : [php](https://zhuanlan.zhihu.com/p/405807169)
+>
+> 
 
 
 
