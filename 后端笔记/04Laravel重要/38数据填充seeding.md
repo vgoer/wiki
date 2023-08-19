@@ -21,6 +21,13 @@
 ### 1. 使用
 
 ```php
+# 创建 填充器
+php artisan make:seeder UsersTableSeeder
+```
+
+
+
+```php
 # 放在 database/seeds
 # 修改代码
 
