@@ -51,6 +51,11 @@ npx create-next-app@latest my-app
 
 > next 是动静结合的 所以网站被build`index.html`和`index.js`
 
+```shell
+npm run build # 后产生的.next需要放到服务器上
+npm run start # 启动服务
+```
+
 
 
 
