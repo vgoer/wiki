@@ -18,6 +18,8 @@
 >
 > 林纳斯·托瓦兹 [linux和git之父] [blog](https://zhuanlan.zhihu.com/p/348154124)
 >
+> 理查德·马修·斯托曼 [自由软件之父] [blog](https://zhuanlan.zhihu.com/p/74734649)
+>
 > 
 
 
