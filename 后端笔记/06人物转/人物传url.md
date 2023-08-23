@@ -14,7 +14,9 @@
 
 > **稚晖君** [华为天才少年] [blog](https://zhuanlan.zhihu.com/p/423387287)
 >
-> 丹尼斯-里奇 [c语言之父] [blog](https://zhuanlan.zhihu.com/p/80453841)
+> 丹尼斯·里奇 [c语言之父] [blog](https://zhuanlan.zhihu.com/p/80453841)
+>
+> 林纳斯·托瓦兹 [linux和git之父] [blog](https://zhuanlan.zhihu.com/p/348154124)
 >
 > 
 
