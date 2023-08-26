@@ -77,6 +77,42 @@ return [
 ];
 ```
 
+```php
+# 多个数据库
+return [
+    'default' => [
+        'host'     => '127.0.0.1',
+        'password' => null,
+        'port'     => 6379,
+        'database' => 0,
+    ],
+
+    'cache' => [
+        'host'     => '127.0.0.1',
+        'password' => null,
+        'port'     => 6379,
+        'database' => 1,
+    ],
+
+]
+```
+
+```php
+public function addUser()
+{
+    $redis = Redis::connection('cache');
+    $data = range(1,10000);
+
+    foreach($data as $k=>$v){
+        $redis->set($k,rand());
+    }
+
+    return json(['code' => 200, 'msg' => 'yes']);
+}
+```
+
+
+
 ## 二、创建控制器
 
 例如：
