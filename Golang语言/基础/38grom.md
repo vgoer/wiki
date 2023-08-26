@@ -19,6 +19,10 @@ dateCreated: 2023-04-21T10:05:32.630Z
 ## GORM
 
 > ORM：对象关系映射， 解决面向对象与关系数据库之间存在不匹配的现象的技术
+>
+> [blog](https://www.liwenzhou.com/posts/Go/gorm/)
+>
+> [官方](https://gorm.io/zh_CN/docs/)
 
 
 
@@ -28,4 +32,162 @@ dateCreated: 2023-04-21T10:05:32.630Z
 go get -u gorm.io/gorm
 go get -u gorm.io/driver/mysql
 ```
+
+```php
+# 李文周 大佬
+
+go get -u gorm.io/driver/mysql
+go get -u github.com/jinzhu/gorm
+```
+
+
+
+
+
+### 2. 连接数据库
+
+> 连接不同的数据库都需要导入对应数据的驱动程序，`GORM`已经贴心的为我们包装了一些驱动程序，只需要按如下方式导入需要的数据库驱动即可：
+
+```php
+import _ "github.com/jinzhu/gorm/dialects/mysql"
+// import _ "github.com/jinzhu/gorm/dialects/postgres"
+// import _ "github.com/jinzhu/gorm/dialects/sqlite"
+// import _ "github.com/jinzhu/gorm/dialects/mssql"
+```
+
+> #### mysql
+
+```go
+import (
+  "github.com/jinzhu/gorm"
+  _ "github.com/jinzhu/gorm/dialects/mysql"
+)
+
+func main() {
+    db, err := gorm.Open("mysql", "user:password@(localhost:port)/dbname?charset=utf8mb4&parseTime=True&loc=Local")
+  defer db.Close()
+}
+```
+
+> PostgreSql
+
+```go
+import (
+  "github.com/jinzhu/gorm"
+  _ "github.com/jinzhu/gorm/dialects/postgres"
+)
+
+func main() {
+  db, err := gorm.Open("postgres", "host=myhost port=myport user=gorm dbname=gorm password=mypassword")
+  defer db.Close()
+}
+```
+
+> sqlite3
+
+```php
+import (
+  "github.com/jinzhu/gorm"
+  _ "github.com/jinzhu/gorm/dialects/sqlite"
+)
+
+func main() {
+  db, err := gorm.Open("sqlite3", "/tmp/gorm.db")
+  defer db.Close()
+}
+```
+
+> SQL Server
+
+```go
+import (
+  "github.com/jinzhu/gorm"
+  _ "github.com/jinzhu/gorm/dialects/mssql"
+)
+
+func main() {
+  db, err := gorm.Open("mssql", "sqlserver://username:password@localhost:1433?database=dbname")
+  defer db.Close()
+}
+```
+
+
+
+
+
+
+
+### 3. 使用
+
+> ### 创建数据库
+
+```sql
+CREATE DATABASE learn_key
+```
+
+> 使用GORM连接上面的`learn_key`进行创建、查询、更新、删除操作。
+
+```go
+package main
+
+import (
+	"fmt"
+
+	"github.com/jinzhu/gorm"
+	_ "github.com/jinzhu/gorm/dialects/mysql"
+)
+
+type UserInfo struct {
+	ID     uint
+	Name   string
+	Gender string
+	Hobby  string
+	Lover  string
+}
+
+func main() {
+
+	// 创建链接
+	db, err := gorm.Open("mysql", "root:root123@(127.0.0.1:3306)/learn_key?charset=utf8mb4&parseTime=True&loc=Local")
+	if err != nil {
+		panic(err)
+	}
+	defer db.Close()
+
+	// 创建迁移
+	db.AutoMigrate(&UserInfo{})
+
+	u1 := UserInfo{1, "goer", "男", "篮球", "满"}
+	u2 := UserInfo{2, "vuegoer", "女", "足球", "燕"}
+
+	// 创建记录
+	db.Create(&u1)
+	db.Create(&u2)
+
+	// 查询记录
+	var u = new(UserInfo)
+	db.First(u)
+	fmt.Printf("u: %v\n", u)
+
+	// 条件查询
+	var uu UserInfo
+	db.Find(&uu, "hobby=?", "足球")
+	fmt.Printf("uu: %v\n", uu)
+
+	// 更新
+	db.Model(&u).Update("hobby", "双色球")
+
+	// 删除
+	db.Delete(&u)
+
+}
+```
+
+
+
+
+
+
+
+
 
