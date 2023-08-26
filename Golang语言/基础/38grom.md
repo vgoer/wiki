@@ -187,6 +187,49 @@ func main() {
 
 
 
+### 4. GORM Model定义
+
+> 在使用ORM工具时，通常我们需要在代码中定义模型（Models）与数据库中的数据表进行映射，在GORM中模型（Models）通常是正常定义的结构体、基本的go类型或它们的指针。 同时也支持`sql.Scanner`及`driver.Valuer`接口（interfaces）。
+
+> 为了方便模型定义，GORM内置了一个`gorm.Model`结构体。`gorm.Model`是一个包含了`ID`, `CreatedAt`, `UpdatedAt`, `DeletedAt`四个字段的Golang结构体。
+
+```go
+// gorm.Model 定义
+type Model struct {
+  ID        uint `gorm:"primary_key"`
+  CreatedAt time.Time
+  UpdatedAt time.Time
+  DeletedAt *time.Time
+}
+```
+
+> 你可以将它嵌入到你自己的模型中：
+
+```go
+// 将 `ID`, `CreatedAt`, `UpdatedAt`, `DeletedAt`字段注入到`User`模型中
+type User struct {
+  gorm.Model
+  Name string
+}
+
+db.AutoMigrate(&UserInfo{})
+
+user := UserInfo{
+    Name:  "goer",
+    Lover: "蛮子",
+}
+
+result := db.Create(&user)
+
+if result.Error != nil {
+    panic(result.Error)
+} else {
+    fmt.Printf("user.Name: %v ,插入成功\n", user.Name)
+}
+```
+
+> curd:[blog](https://www.liwenzhou.com/posts/Go/gorm-crud/)
+
 
 
 
