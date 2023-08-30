@@ -59,8 +59,48 @@
 > lar: [知乎](https://www.zhihu.com/column/fsdhub)
 >
 > blog: [码农老张](https://www.zyblog.com.cn/)
+
+
+
+
+
+
+
+
+
+
+
+### 2. go 
+
+> qimi: [李文周](https://www.liwenzhou.com/)
+>
+> 地鼠： [go cn](https://www.topgoer.cn/)
+>
+> 夜读： [talkgo](https://talkgo.org/)
+>
+> mojotv: [mojotv](https://mojotv.cn/) rust  go python docker 都有
+>
+> 煎鱼： [eddycjy](https://golang3.eddycjy.com/)
+>
+> go之路： [the-way-to-go](https://learnku.com/docs/the-way-to-go)
+>
+> go优秀开源项目： [go way](https://www.cnblogs.com/Can-daydayup/p/15178348.html)
 >
 > 
+
+
+
+
+
+
+
+
+
+
+
+### 
+
+
 
 
 
