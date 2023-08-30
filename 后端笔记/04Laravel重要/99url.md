@@ -98,7 +98,17 @@
 
 
 
-### 
+### 3. python 
+
+> vamei: [python快速](https://www.cnblogs.com/vamei/archive/2012/09/13/2682778.html) [首页](https://www.cnblogs.com/vamei/)
+>
+> Mr.Seven: [python 之路](https://www.cnblogs.com/wupeiqi/articles/4938499.html)
+>
+> 硬核python: [硬核python](https://zhuanlan.zhihu.com/p/421726412)
+>
+> 廖雪峰：[blog](https://www.liaoxuefeng.com/)
+>
+> 
 
 
 
