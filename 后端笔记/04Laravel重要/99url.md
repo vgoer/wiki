@@ -59,6 +59,10 @@
 > lar: [知乎](https://www.zhihu.com/column/fsdhub)
 >
 > blog: [码农老张](https://www.zyblog.com.cn/)
+>
+> php资源列表： [awesome php](https://juejin.cn/post/6844903475302645773?searchId=20230901145423E91A81D1D352FEB21C37)
+>
+> 
 
 
 
