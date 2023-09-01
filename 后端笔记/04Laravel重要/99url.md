@@ -62,7 +62,7 @@
 >
 > php资源列表： [awesome php](https://juejin.cn/post/6844903475302645773?searchId=20230901145423E91A81D1D352FEB21C37)
 >
-> 
+> 合集： [juejin](https://juejin.cn/post/6844903476418314253?searchId=202309011505156672064BA437EEB245C6)
 
 
 
