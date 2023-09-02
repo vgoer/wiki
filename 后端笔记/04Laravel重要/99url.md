@@ -54,11 +54,6 @@
 >
 > docker: [docker](https://blog.csdn.net/qq_39135287/category_9492725.html) [docker+jenkins](https://juejin.cn/post/7007696221175316487)  [没有用docker](https://juejin.cn/post/6991291781195235365)  
 >
-<<<<<<< HEAD
-> arch install php : [php](https://zhuanlan.zhihu.com/p/405807169)
->
-> 
-=======
 > laravel: [blog](https://learnku.com/blog/zhangsen) 
 >
 > lar: [知乎](https://www.zhihu.com/column/fsdhub)
@@ -68,7 +63,6 @@
 > php资源列表： [awesome php](https://juejin.cn/post/6844903475302645773?searchId=20230901145423E91A81D1D352FEB21C37)
 >
 > 合集： [juejin](https://juejin.cn/post/6844903476418314253?searchId=202309011505156672064BA437EEB245C6)
->>>>>>> cd121281ceaf220a74e5a3b0c1bbc397b31ce53b
 
 
 
