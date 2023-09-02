@@ -176,6 +176,8 @@ func main(){
 
 ### 3.屏幕
 
+
+
 ```go
 // 屏幕
 
@@ -198,7 +200,8 @@ func main(){
     // 第1、2个参数：截图的座标
     // 第3、4个参数：截图的宽高
     bitmap := robotgo.CaptureScreen(0, 0, 800, 400)
-    // 全屏截图
+    // 
+    全屏截图
     // bitmap := robotgo.CaptureScreen(0, 0, width, height)
 
     // 保存截图
