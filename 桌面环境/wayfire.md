@@ -16,9 +16,9 @@ dateCreated: 2023-04-19T15:32:40.930Z
 
 
 
-## wayfire
+## Wayfire 
 
->模块化和可扩展的 Wayland 合成器 [way](https://wayfire.org/)
+>模块化和可扩展的 Wayland 合成器 [way](https://wayfire.org/) 
 
 
 

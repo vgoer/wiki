@@ -200,3 +200,7 @@ class AuthController extends Controller
 }
 ```
 
+
+
+> by: [goer](https://vgoer.github.io/zh/notes/end/study/jwt/#jwt)
+

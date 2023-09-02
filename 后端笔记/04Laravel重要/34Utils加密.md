@@ -276,3 +276,49 @@ class RSAUtil
 ```
 
 > `encryptMap`加密 `decryptMap`解密
+
+
+
+
+
+
+
+### 2. laravel加密
+
+> Laravel 的加密服务提供了一个简单、方便的接口，使用 OpenSSL 所提供的 AES-256 和 AES-128 加密和解密文本。所有 Laravel 加密的结果都会使用消息认证码 (MAC) 进行签名，因此一旦加密，其底层值就不能被修改或篡改。
+>
+
+
+
+```php
+# 生成key
+php artisan key:generate
+    
+# 加密
+    /**
+     *  为用户存储一个 DigitalOcean API 令牌。
+     */
+    public function store(Request $request): RedirectResponse
+{
+    $request->user()->fill([
+        'token' => Crypt::encryptString($request->token),
+    ])->save();
+
+    return redirect('/secrets');
+}
+
+```
+
+> 解密
+
+```php
+use Illuminate\Contracts\Encryption\DecryptException;
+use Illuminate\Support\Facades\Crypt;
+
+try {
+    $decrypted = Crypt::decryptString($encryptedValue);
+} catch (DecryptException $e) {
+    // ...
+}
+```
+

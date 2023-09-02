@@ -12,7 +12,7 @@
 
 ## 
 
-> 一门赋予每个人构建可靠且搞笑软件的语言  [rust ](https://www.rust-lang.org/zh-CN) [github](https://github.com/rust-lang)
+> 一门赋予每个人构建可靠且高效软件的语言  [rust ](https://www.rust-lang.org/zh-CN) [github](https://github.com/rust-lang)
 >
 > 一门比较先进的语言： ==运行速度 内存安全  多处理器== 已经被应用到操作系统中
 
