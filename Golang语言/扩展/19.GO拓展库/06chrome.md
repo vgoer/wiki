@@ -124,12 +124,22 @@ func main() {
 	}
 
 	time.Sleep(5 * time.Second)
-
-	// 提交登录表单（可选）
-	err = passwordInput.Submit()
-	if err != nil {
-		log.Fatal("无法提交表单:", err)
+	
+    // 提交登录表单（可选）
+	button := page.FindByButton("登录") // 根据按钮文本查找按钮元素
+	if button == nil {
+		log.Fatalf("找不到按钮")
 	}
+
+	err = button.Click() // 点击按钮
+	if err != nil {
+		log.Fatalf("无法点击按钮：%v", err)
+	}
+	// 提交登录表单（可选）
+	//err = passwordInput.Submit()
+	//if err != nil {
+	//	log.Fatal("无法提交表单:", err)
+	//}
 
 	// 关闭 WebDriver 会话
 	// err = driver.Stop()
