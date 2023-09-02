@@ -74,19 +74,20 @@ func main() {
 package main
 
 import (
-	"fmt"
 	"log"
+	"time"
 
 	"github.com/sclevine/agouti"
 )
 
 func main() {
 	// 创建一个新的 WebDriver
-	driver := agouti.ChromeDriver(agouti.ChromeOptions("args", []string{
-		"--headless",       // 在后台运行 Chrome
-		"--no-sandbox",
-		"--disable-gpu",
-	}))
+	// driver := agouti.ChromeDriver(agouti.ChromeOptions("args", []string{
+	// 	"--headless",       // 在后台运行 Chrome
+	// 	"--no-sandbox",
+	// 	"--disable-gpu",
+	// }))
+	driver := agouti.ChromeDriver()
 
 	// 启动 WebDriver 会话
 	err := driver.Start()
@@ -99,25 +100,30 @@ func main() {
 	if err != nil {
 		log.Fatal("无法打开网页:", err)
 	}
-	err = page.Navigate("https://manage.baotong-soft.com/")
+	err = page.Navigate("https://xx.xx-xx.com/")
 	if err != nil {
 		log.Fatal("无法访问网页:", err)
 	}
 
 	// 使用 CSS 选择器查找用户名和密码输入框
-	usernameInput := page.FindByID("username")
-	passwordInput := page.FindByID("password")
+	// usernameInput := page.FindByID("username")
+	// passwordInput := page.FindByID("password")
+
+	usernameInput := page.FindByName("username")
+	passwordInput := page.FindByName("password")
 
 	// 输入登录信息
-	err = usernameInput.Fill("your_username")
+	err = usernameInput.Fill("admin")
 	if err != nil {
 		log.Fatal("无法填写用户名:", err)
 	}
 
-	err = passwordInput.Fill("your_password")
+	err = passwordInput.Fill("admin123...")
 	if err != nil {
 		log.Fatal("无法填写密码:", err)
 	}
+
+	time.Sleep(5 * time.Second)
 
 	// 提交登录表单（可选）
 	err = passwordInput.Submit()
@@ -126,10 +132,10 @@ func main() {
 	}
 
 	// 关闭 WebDriver 会话
-	err = driver.Stop()
-	if err != nil {
-		log.Fatal("无法停止 WebDriver:", err)
-	}
+	// err = driver.Stop()
+	// if err != nil {
+	// 	log.Fatal("无法停止 WebDriver:", err)
+	// }
 }
 
 ```
