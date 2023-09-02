@@ -53,6 +53,77 @@
 > 简书: [laravel](https://www.jianshu.com/c/3dff40fa5135)
 >
 > docker: [docker](https://blog.csdn.net/qq_39135287/category_9492725.html) [docker+jenkins](https://juejin.cn/post/7007696221175316487)  [没有用docker](https://juejin.cn/post/6991291781195235365)  
+>
+<<<<<<< HEAD
+> arch install php : [php](https://zhuanlan.zhihu.com/p/405807169)
+>
+> 
+=======
+> laravel: [blog](https://learnku.com/blog/zhangsen) 
+>
+> lar: [知乎](https://www.zhihu.com/column/fsdhub)
+>
+> blog: [码农老张](https://www.zyblog.com.cn/)
+>
+> php资源列表： [awesome php](https://juejin.cn/post/6844903475302645773?searchId=20230901145423E91A81D1D352FEB21C37)
+>
+> 合集： [juejin](https://juejin.cn/post/6844903476418314253?searchId=202309011505156672064BA437EEB245C6)
+>>>>>>> cd121281ceaf220a74e5a3b0c1bbc397b31ce53b
+
+
+
+
+
+
+
+
+
+
+
+### 2. go 
+
+> qimi: [李文周](https://www.liwenzhou.com/)
+>
+> 地鼠： [go cn](https://www.topgoer.cn/)
+>
+> 夜读： [talkgo](https://talkgo.org/)
+>
+> mojotv: [mojotv](https://mojotv.cn/) rust  go python docker 都有
+>
+> 煎鱼： [eddycjy](https://golang3.eddycjy.com/)
+>
+> go之路： [the-way-to-go](https://learnku.com/docs/the-way-to-go)
+>
+> go优秀开源项目： [go way](https://www.cnblogs.com/Can-daydayup/p/15178348.html)
+>
+> go: 学习路线 [go学习](https://juejin.cn/post/7119123646471208968?searchId=2023090114502013FF74D38E6FF1ABA5DD) [golang](https://juejin.cn/post/7061980386640789540?searchId=2023090114502013FF74D38E6FF1ABA5DD)
+>
+> 
+
+
+
+
+
+
+
+
+
+
+
+### 3. python 
+
+> vamei: [python快速](https://www.cnblogs.com/vamei/archive/2012/09/13/2682778.html) [首页](https://www.cnblogs.com/vamei/)
+>
+> Mr.Seven: [python 之路](https://www.cnblogs.com/wupeiqi/articles/4938499.html)
+>
+> 硬核python: [硬核python](https://zhuanlan.zhihu.com/p/421726412)
+>
+> 廖雪峰：[blog](https://www.liaoxuefeng.com/)
+>
+> 
+
+
+
 
 
 
