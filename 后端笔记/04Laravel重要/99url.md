@@ -63,6 +63,12 @@
 > php资源列表： [awesome php](https://juejin.cn/post/6844903475302645773?searchId=20230901145423E91A81D1D352FEB21C37)
 >
 > 合集： [juejin](https://juejin.cn/post/6844903476418314253?searchId=202309011505156672064BA437EEB245C6)
+>
+> api: [api ](https://learnku.com/articles/83316)api压力测试： [压力测试](https://learnku.com/articles/83173)
+>
+> 
+>
+> 
 
 
 
@@ -91,6 +97,8 @@
 > go优秀开源项目： [go way](https://www.cnblogs.com/Can-daydayup/p/15178348.html)
 >
 > go: 学习路线 [go学习](https://juejin.cn/post/7119123646471208968?searchId=2023090114502013FF74D38E6FF1ABA5DD) [golang](https://juejin.cn/post/7061980386640789540?searchId=2023090114502013FF74D38E6FF1ABA5DD)
+>
+> go安全： [go 安全](https://learnku.com/articles/83013)
 >
 > 
 
