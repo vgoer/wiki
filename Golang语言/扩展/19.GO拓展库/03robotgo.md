@@ -86,7 +86,7 @@ func main() {
     /* ========================= 位置操作 ======================== */
 
     // 将鼠标移动到屏幕 x:800 y:400 的位置（闪现到指定位置）
-    robotgo.MoveMouse(800, 400)
+        robotgo.MoveMouse(800, 400)
 
     // 将鼠标移动到屏幕 x:800 y:400 的位置（模仿人类操作）
     robotgo.MoveMouseSmooth(800, 400)
@@ -218,6 +218,154 @@ func main(){
 
 
 
+
+### 自动化
+
+> 类似按键精灵
+
+```go
+package main
+
+import (
+	"fmt"
+	"time"
+
+	"github.com/go-vgo/robotgo"
+)
+
+const (
+	AppIconPath  = "./img/appicon.png"
+	SendWinPath  = "./img/me.png"
+	SendBtnPath  = "./img/but.png"
+	IconFilePath = "./img/appicon.png"
+)
+
+type Trip struct {
+	Icon []int
+}
+
+func main() {
+	trip := Trip{
+		Icon: make([]int, 4),
+	}
+
+	for {
+		var a int
+		fmt.Println("请选择操作 1 获取图标截图 2 点击图标 3 锁定聊天窗口并发送内容")
+		fmt.Scanln(&a)
+
+		switch a {
+		case 1:
+			trip.getScreen()
+			trip.getShot()
+		case 2:
+			trip.clickIcon()
+		case 3:
+			trip.clickMessage()
+		}
+	}
+}
+
+func (t *Trip) getScreen() {
+	fmt.Println("请在要打开的程序图标左上角点击左键")
+	ok := robotgo.AddEvent("mleft")
+
+	if ok {
+		t.Icon[0], t.Icon[1] = robotgo.GetMousePos()
+		fmt.Println("---请在要截图右下角下左键---", t.Icon)
+	}
+
+	for i := 0; i < 5; i++ {
+		ok = robotgo.AddEvent("mleft")
+
+		if ok {
+			x, y := robotgo.GetMousePos()
+			t.Icon[2] = x - t.Icon[0]
+			t.Icon[3] = y - t.Icon[1]
+			fmt.Println("图片位置:", t.Icon)
+		}
+	}
+}
+
+func (t *Trip) getShot() {
+	fmt.Println("正在获取截图....")
+	bitMap := robotgo.CaptureScreen(t.Icon...)
+	robotgo.SaveBitmap(bitMap, AppIconPath)
+	fmt.Println("已保存截图")
+}
+
+func (t *Trip) clickIcon() {
+	x, y := t.getImgXY(IconFilePath)
+
+	if x < 0 || y < 0 {
+		fmt.Println("获取程序坐标失败")
+		return
+	}
+
+	t.clickShot(x, y)
+	t.clickMessage()
+}
+
+func (t *Trip) clickShot(x, y int) {
+	robotgo.MouseToggle("up")
+	robotgo.MoveClick(x, y, "left", true)
+}
+
+func (t *Trip) getImgXY(img string) (x, y int) {
+	bitMap := robotgo.OpenBitmap(img)
+	fx, fy := robotgo.FindBitmap(bitMap)
+	fmt.Println(fx, "--", fy)
+
+	if fx < 0 && fy < 0 {
+		fmt.Println("获取坐标失败，重试获取")
+		time.Sleep(time.Second * 2) // 延迟2秒等待图像资源准备
+		return t.getImgXY(img)
+	} else {
+		return fx, fy
+	}
+}
+
+func (t *Trip) clickMessage() {
+	x, y := t.getImgXY(SendWinPath)
+
+	if x < 0 || y < 0 {
+		fmt.Println("获取程序坐标失败")
+		return
+	}
+
+	t.clickShot(x, y)
+
+	msgs := []string{"golang", "python"}
+
+	for i := 0; i < len(msgs); i++ {
+		t.sendMessage(msgs[i])
+	}
+	// t.sendMessage("Hello World!")
+
+}
+
+func (t *Trip) sendMessage(msg string) {
+	time.Sleep(time.Second)
+	robotgo.TypeString(msg)
+	time.Sleep(time.Second)
+	robotgo.KeyTap("enter")
+	time.Sleep(time.Second)
+	robotgo.KeyTap("lctrl", "enter")
+	t.sendOut()
+}
+
+func (t *Trip) sendOut() {
+	x, y := t.getImgXY(SendBtnPath)
+
+	if x < 0 || y < 0 {
+		fmt.Println("获取程序坐标失败")
+		return
+	}
+
+	t.clickShot(x, y)
+}
+
+```
 
 
 
