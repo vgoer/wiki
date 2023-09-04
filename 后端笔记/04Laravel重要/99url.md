@@ -97,8 +97,9 @@
 > go优秀开源项目： [go way](https://www.cnblogs.com/Can-daydayup/p/15178348.html)
 >
 > go: 学习路线 [go学习](https://juejin.cn/post/7119123646471208968?searchId=2023090114502013FF74D38E6FF1ABA5DD) [golang](https://juejin.cn/post/7061980386640789540?searchId=2023090114502013FF74D38E6FF1ABA5DD)
+> [go学习](https://learnku.com/articles/58749)
 >
-> go安全： [go 安全](https://learnku.com/articles/83013)
+> go安全： [go 安全](https://learnku.com/articles/83013) 
 >
 > 
 
