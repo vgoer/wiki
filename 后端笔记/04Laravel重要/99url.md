@@ -137,7 +137,22 @@
 
 > rust: [rust cn](https://www.rustwiki.org.cn/)
 >
+> 知名软件：[rust](https://www.zhihu.com/question/512163948)
+>
 > 
 
 
 
+
+
+
+
+
+
+### 5. 优秀软件
+
+> 命令行工具： [命令行](https://www.zhihu.com/search?q=%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B7%A5%E5%85%B7&type=content)
+>
+> 必备软件： [必备](https://www.zhihu.com/search?type=content&q=github%E5%BF%85%E5%A4%87%E5%BC%80%E6%BA%90%E8%BD%AF%E4%BB%B6)
+>
+> 
