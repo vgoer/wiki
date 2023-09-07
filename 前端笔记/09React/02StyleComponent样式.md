@@ -35,6 +35,7 @@ dateCreated: 2023-05-03T13:00:04.941Z
 ```shell
 npm i styled-components
 
+npm i @types/styled-components
 # 安装插件
 vscode-styled-components
 ```
