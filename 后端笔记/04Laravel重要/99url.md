@@ -101,6 +101,8 @@
 >
 > go安全： [go 安全](https://learnku.com/articles/83013) 
 >
+> go bolg: [RiemannHypo](https://juejin.cn/user/1680474815073805/posts)
+>
 > 
 
 
@@ -154,5 +156,7 @@
 > 命令行工具： [命令行](https://www.zhihu.com/search?q=%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B7%A5%E5%85%B7&type=content)
 >
 > 必备软件： [必备](https://www.zhihu.com/search?type=content&q=github%E5%BF%85%E5%A4%87%E5%BC%80%E6%BA%90%E8%BD%AF%E4%BB%B6)
+>
+> 终端模拟器： [模拟器](https://mp.weixin.qq.com/s/puMuyIy8oYBU8KpMX1LgOQ)
 >
 > 
