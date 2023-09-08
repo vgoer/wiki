@@ -18,6 +18,17 @@
 
 
 
+### 0. 关闭debug
+
+> 打开`.env` 文件，把 `debug` 设置为 `false`
+
+```php
+APP_ENV=local
+APP_DEBUG=false
+```
+
+
+
 ### 1. 路由缓存
 
 > 每次服务器执行请求时，都会注册所有的路由，这会花费一些时间。但是，你可以选择缓存路由列表来跳过这个步骤。
@@ -75,8 +86,6 @@ php artisan config:cache
 ```php
 composer dump-autoload  -o
 ```
-
-
 
 
 
