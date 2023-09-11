@@ -57,8 +57,106 @@
 > laravel: [blog](https://learnku.com/blog/zhangsen) 
 >
 > lar: [知乎](https://www.zhihu.com/column/fsdhub)
+>
+> blog: [码农老张](https://www.zyblog.com.cn/)
+>
+> php资源列表： [awesome php](https://juejin.cn/post/6844903475302645773?searchId=20230901145423E91A81D1D352FEB21C37)
+>
+> 合集： [juejin](https://juejin.cn/post/6844903476418314253?searchId=202309011505156672064BA437EEB245C6)
+>
+> api: [api ](https://learnku.com/articles/83316)api压力测试： [压力测试](https://learnku.com/articles/83173)
+>
+> 
+>
+> 
 
 
 
 
 
+
+
+
+
+
+
+### 2. go 
+
+> qimi: [李文周](https://www.liwenzhou.com/)
+>
+> 地鼠： [go cn](https://www.topgoer.cn/)
+>
+> 夜读： [talkgo](https://talkgo.org/)
+>
+> mojotv: [mojotv](https://mojotv.cn/) rust  go python docker 都有
+>
+> 煎鱼： [eddycjy](https://golang3.eddycjy.com/)
+>
+> go之路： [the-way-to-go](https://learnku.com/docs/the-way-to-go)
+>
+> go优秀开源项目： [go way](https://www.cnblogs.com/Can-daydayup/p/15178348.html)
+>
+> go: 学习路线 [go学习](https://juejin.cn/post/7119123646471208968?searchId=2023090114502013FF74D38E6FF1ABA5DD) [golang](https://juejin.cn/post/7061980386640789540?searchId=2023090114502013FF74D38E6FF1ABA5DD)
+> [go学习](https://learnku.com/articles/58749)
+>
+> go安全： [go 安全](https://learnku.com/articles/83013) 
+>
+> go bolg: [RiemannHypo](https://juejin.cn/user/1680474815073805/posts)
+>
+> 
+
+
+
+
+
+
+
+
+
+
+
+### 3. python 
+
+> vamei: [python快速](https://www.cnblogs.com/vamei/archive/2012/09/13/2682778.html) [首页](https://www.cnblogs.com/vamei/)
+>
+> Mr.Seven: [python 之路](https://www.cnblogs.com/wupeiqi/articles/4938499.html)
+>
+> 硬核python: [硬核python](https://zhuanlan.zhihu.com/p/421726412)
+>
+> 廖雪峰：[blog](https://www.liaoxuefeng.com/)
+>
+> 
+
+
+
+
+
+
+
+
+
+### 4. rust
+
+> rust: [rust cn](https://www.rustwiki.org.cn/)
+>
+> 知名软件：[rust](https://www.zhihu.com/question/512163948)
+>
+> 
+
+
+
+
+
+
+
+
+
+### 5. 优秀软件
+
+> 命令行工具： [命令行](https://www.zhihu.com/search?q=%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B7%A5%E5%85%B7&type=content)
+>
+> 必备软件： [必备](https://www.zhihu.com/search?type=content&q=github%E5%BF%85%E5%A4%87%E5%BC%80%E6%BA%90%E8%BD%AF%E4%BB%B6)
+>
+> 终端模拟器： [模拟器](https://mp.weixin.qq.com/s/puMuyIy8oYBU8KpMX1LgOQ)
+>
+> 
