@@ -90,7 +90,7 @@ func main() {
 	driver := agouti.ChromeDriver()
 
 	// 启动 WebDriver 会话
-	err := driver.Start()
+ 	err := driver.Start()  
 	if err != nil {
 		log.Fatal("无法启动 WebDriver:", err)
 	}
