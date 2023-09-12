@@ -25,17 +25,9 @@
 ```php
 # User 模型中定义关联方法：
 
-public function phone()
+public function phone(): HasOne
 {
     return $this->hasOne(Phone::class);
-}
-```
-
-```php
-# Phone 模型中定义反向关联方法：
-public function user()
-{
-    return $this->belongsTo(User::class);
 }
 ```
 
@@ -45,6 +37,24 @@ public function user()
 // 获取用户的电话号码
 $user = User::find(1);
 $phone = $user->phone;
+```
+
+```php
+// 获取用户电话  findOrFail查id并过滤
+$user = User::query()->findOrFail(1,['id','name']);
+$profile = $user->profile;
+```
+
+
+
+> 反向关联
+
+```php
+# Phone 模型中定义反向关联方法：
+public function user()
+{
+    return $this->belongsTo(User::class);
+}
 ```
 
 
@@ -60,6 +70,12 @@ $phone = $user->phone;
 public function comments()
 {
     return $this->hasMany(Comment::class);
+}
+
+// 一对多 指定别名 article_id
+public function posts() : HasMany
+{
+    return $this->hasMany(Post::class,'article_id');
 }
 ```
 
@@ -80,6 +96,11 @@ $comments = $post->comments;
 // 获取用户的所有文章
 $user = User::find(1);
 $posts = $user->posts;
+
+$user = User::query()->findOrFail(1);
+
+$posts = $user->posts;
+dd($posts); //查出这个用户的所有记录
 ```
 
 
@@ -96,6 +117,7 @@ public function roles()
 {
     return $this->belongsToMany(Role::class);
 }
+
 ```
 
 ```php
