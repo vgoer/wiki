@@ -10,7 +10,7 @@
 
 ## JWT
 
-> 要在 Laravel 中使用 JWT（JSON Web Token）进行身份验证  [blog](https://blog.csdn.net/m0_50593634/article/details/118001170) [doc](https://learnku.com/docs/jwt-auth)
+> 要在 Laravel 中使用 JWT（JSON Web Token）进行身份验证  [blog](https://blog.csdn.net/m0_50593634/article/details/118001170) [doc](https://learnku.com/docs/jwt-auth) [learnku](https://learnku.com/articles/70414)
 
 
 
