@@ -473,3 +473,43 @@ composer require mews/captcha
 return ['src' => captcha_src('custom') ];
 ```
 
+
+
+
+
+
+
+
+
+### 11. 密码加盐验证
+
+> 验证密码和盐
+
+```php
+# 1. 生成随机盐和加密
+$salt = 'dafdsafdsf';
+$password = 'my_password'; // 用户的密码
+
+// 将盐值和密码进行拼接，并将结果进行多轮哈希加密
+$hashedPassword = Hash::make($password.$salt);
+```
+
+```php
+# 2. 验证
+// 从数据库或存储中检索哈希密码和盐值
+$hashedPassword = '...'; // 从存储中获取
+$salt = '...'; // 从存储中获取
+
+// 将用户输入的密码与盐值进行拼接，并进行多轮哈希加密
+$inputPassword = 'user_input_password'; // 用户输入的密码
+
+$hashedInput = Hash::make($inputPassword.$salt);
+
+// 将哈希后的密码进行比较
+if (Hash::check($inputPassword.$salt, $hashedPassword)) {
+   // 验证成功
+} else {
+   // 验证失败
+}
+```
+
