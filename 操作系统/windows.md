@@ -285,3 +285,12 @@ runas /user:administrator用户名 cmd    切换用户打开cmd
 
 ```
 
+
+
+
+
+
+
+### 7. win11+wsl
+
+> wsl: [wsl](https://www.cnblogs.com/miracle-luna/p/17077177.html)
