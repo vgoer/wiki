@@ -10,7 +10,7 @@
 
 > 学网: [最好的php博客网站](https://learnku.com/)
 >
-> 阿里云：[oss](https://blog.csdn.net/qq_43638176/article/details/96489427)
+> 阿里云：[oss](https://blog.csdn.net/qq_43638176/article/details/96489427) [分片上传](https://blog.csdn.net/daxianyu666/article/details/122948841)
 >
 > 阿里云：[sms](https://blog.csdn.net/maxiaojingabc/article/details/106015614) [sms2](https://blog.csdn.net/qq_42799116/article/details/103652336)
 >
@@ -66,7 +66,7 @@
 >
 > api: [api ](https://learnku.com/articles/83316)api压力测试： [压力测试](https://learnku.com/articles/83173)
 >
-> win11+docker: [docker](https://learnku.com/articles/83358)
+> win11+docker: [docker](https://learnku.com/articles/83358)  [docker+laravel](https://learnku.com/articles/83600)  
 >
 > 
 > 
