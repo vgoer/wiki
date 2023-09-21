@@ -67,6 +67,13 @@ Cache::forget('key');
 
 * 字符串的使用
 
+````php
+# hold on
+
+````
+
+
+
 ```php
 use Illuminate\Support\Facades\Redis;
 
