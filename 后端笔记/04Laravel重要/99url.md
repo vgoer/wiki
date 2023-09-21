@@ -142,7 +142,9 @@
 >
 > 知名软件：[rust](https://www.zhihu.com/question/512163948)
 >
-> 
+> rust: [圣经](https://course.rs/about-book.html) 
+>
+> rust杀手库：[杀手库](https://zhuanlan.zhihu.com/p/426329188)
 
 
 
