@@ -74,7 +74,7 @@
 >
 > Artisan入门： [Artisan入门](https://learnku.com/articles/77465)
 >
-> 
+> nginx：配置，反向代理，负载均衡。 [blog](https://blog.csdn.net/chrismurphy/article/details/120238216)
 
 
 
