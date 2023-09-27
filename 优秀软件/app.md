@@ -142,3 +142,15 @@ dateCreated: 2023-04-19T15:34:24.370Z
 > 
 > 一些配置 [scrcpy config](https://blog.csdn.net/weixin_39949894/article/details/110999911)
 
+18. Real-Time-Voice-Cloning
+
+> ai声音魔法，克隆
+>
+> 地址： [github ](https://github.com/CorentinJ/Real-Time-Voice-Cloning) [blog](https://blog.51cto.com/lanzao/3341674)
+
+
+
+
+
+
+
