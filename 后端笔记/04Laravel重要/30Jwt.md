@@ -1,3 +1,13 @@
+---
+title: 30Jwt
+description: 
+published: 1
+date: 2023-08-30T10:37:19.563Z
+tags: 
+editor: markdown
+dateCreated: 2023-08-17T11:17:54.525Z
+---
+
 <center>Jwt认证</center>
 
 
@@ -10,7 +20,7 @@
 
 ## JWT
 
-> 要在 Laravel 中使用 JWT（JSON Web Token）进行身份验证  [blog](https://blog.csdn.net/m0_50593634/article/details/118001170) [doc](https://learnku.com/docs/jwt-auth) [learnku](https://learnku.com/articles/70414)
+> 要在 Laravel 中使用 JWT（JSON Web Token）进行身份验证  [blog](https://blog.csdn.net/m0_50593634/article/details/118001170) [doc](https://learnku.com/docs/jwt-auth)
 
 
 

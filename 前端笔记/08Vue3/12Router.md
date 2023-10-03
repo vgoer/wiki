@@ -2,7 +2,7 @@
 title: 11.Router
 description: Router
 published: 1
-date: 2023-05-29T04:15:04.615Z
+date: 2023-06-09T10:14:30.340Z
 tags: vue3
 editor: markdown
 dateCreated: 2023-04-24T12:06:42.980Z

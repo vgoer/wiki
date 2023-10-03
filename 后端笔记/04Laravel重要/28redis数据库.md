@@ -1,3 +1,13 @@
+---
+title: 28redis数据库
+description: 
+published: 1
+date: 2023-08-17T11:17:50.395Z
+tags: 
+editor: markdown
+dateCreated: 2023-08-17T11:17:48.791Z
+---
+
 <center>Redis</center>
 
 
@@ -66,13 +76,6 @@ Cache::forget('key');
 > redis的使用
 
 * 字符串的使用
-
-````php
-# hold on
-
-````
-
-
 
 ```php
 use Illuminate\Support\Facades\Redis;

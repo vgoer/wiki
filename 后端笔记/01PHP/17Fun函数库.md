@@ -1,3 +1,13 @@
+---
+title: 17Fun函数库
+description: 
+published: 1
+date: 2023-08-17T11:17:30.480Z
+tags: 
+editor: markdown
+dateCreated: 2023-08-17T11:17:28.952Z
+---
+
 <center>php函数库</center>
 
 [toc]

@@ -2,7 +2,7 @@
 title: tmux
 description: tmux最全
 published: 1
-date: 2023-05-29T04:08:36.438Z
+date: 2023-06-09T10:10:22.760Z
 tags: app, tmux
 editor: markdown
 dateCreated: 2023-04-29T17:39:26.282Z

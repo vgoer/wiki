@@ -2,7 +2,7 @@
 title: i3wm
 description: i3wm桌面环境
 published: 1
-date: 2023-05-29T04:09:27.408Z
+date: 2023-06-09T10:10:50.848Z
 tags: desktop environment, i3wm
 editor: markdown
 dateCreated: 2023-04-18T17:32:10.340Z

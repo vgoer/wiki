@@ -1,3 +1,13 @@
+---
+title: 01nuxt安装
+description: 
+published: 1
+date: 2023-09-03T10:29:57.071Z
+tags: 
+editor: markdown
+dateCreated: 2023-09-03T10:29:55.756Z
+---
+
 <center>Nuxt</center>
 
 

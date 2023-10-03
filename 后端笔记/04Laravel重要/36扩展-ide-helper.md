@@ -1,3 +1,13 @@
+---
+title: 36扩展-ide-helper
+description: 
+published: 1
+date: 2023-08-17T11:18:14.173Z
+tags: 
+editor: markdown
+dateCreated: 2023-08-17T11:18:12.495Z
+---
+
 <center> Laravel-ide-helper</center>
 
 

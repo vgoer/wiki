@@ -1,3 +1,13 @@
+---
+title: 00kali下开发
+description: 
+published: 1
+date: 2023-09-02T03:25:15.379Z
+tags: 
+editor: markdown
+dateCreated: 2023-09-02T03:25:13.496Z
+---
+
 <center>kali</center>
 
 [toc]

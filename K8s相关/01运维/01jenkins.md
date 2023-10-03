@@ -2,7 +2,7 @@
 title: 01.jenkins
 description: jenkins
 published: 1
-date: 2023-05-29T04:56:39.114Z
+date: 2023-06-09T10:12:36.275Z
 tags: jenkins, k8s
 editor: markdown
 dateCreated: 2023-05-29T04:56:35.047Z

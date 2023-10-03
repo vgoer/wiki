@@ -1,3 +1,13 @@
+---
+title: 01Rust
+description: 
+published: 1
+date: 2023-08-21T03:46:20.257Z
+tags: 
+editor: markdown
+dateCreated: 2023-07-26T13:02:27.498Z
+---
+
 <center>Rust</center>
 
 

@@ -2,7 +2,7 @@
 title: Windows
 description: windows你真的会用么
 published: 1
-date: 2023-05-29T04:09:07.962Z
+date: 2023-06-09T10:10:38.899Z
 tags: windows
 editor: markdown
 dateCreated: 2023-04-19T15:46:12.006Z
@@ -285,12 +285,3 @@ runas /user:administrator用户名 cmd    切换用户打开cmd
 
 ```
 
-
-
-
-
-
-
-### 7. win11+wsl
-
-> wsl: [wsl](https://www.cnblogs.com/miracle-luna/p/17077177.html)

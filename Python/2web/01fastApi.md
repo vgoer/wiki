@@ -1,3 +1,13 @@
+---
+title: 01fastApi
+description: 
+published: 1
+date: 2023-08-30T10:37:00.915Z
+tags: 
+editor: markdown
+dateCreated: 2023-08-30T10:36:56.615Z
+---
+
 <center>FastApi</center>
 
 

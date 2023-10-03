@@ -2,7 +2,7 @@
 title: 27.log包
 description: log包
 published: 1
-date: 2023-05-29T04:13:18.321Z
+date: 2023-06-09T10:12:18.596Z
 tags: golang
 editor: markdown
 dateCreated: 2023-04-21T09:51:12.316Z

@@ -1,3 +1,13 @@
+---
+title: 03NixFlakes
+description: 
+published: 1
+date: 2023-06-17T01:21:26.132Z
+tags: 
+editor: markdown
+dateCreated: 2023-06-17T01:21:24.549Z
+---
+
 <center>Nix Flakes</center>
 
 

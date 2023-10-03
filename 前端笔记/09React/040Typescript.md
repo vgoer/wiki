@@ -2,7 +2,7 @@
 title: 040Typescript
 description: 
 published: 1
-date: 2023-05-29T04:15:27.890Z
+date: 2023-06-09T10:15:11.676Z
 tags: 
 editor: markdown
 dateCreated: 2023-05-11T10:53:56.344Z
