@@ -1,3 +1,13 @@
+---
+title: 04Emmet快速生成标签
+description: 
+published: 1
+date: 2023-06-27T18:48:16.262Z
+tags: 
+editor: markdown
+dateCreated: 2023-06-27T18:48:14.796Z
+---
+
 <center>html快速生成标签</center>
 
 

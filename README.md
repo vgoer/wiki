@@ -2,7 +2,7 @@
 title: README
 description: Readme
 published: 1
-date: 2023-05-29T04:07:51.133Z
+date: 2023-08-30T10:37:04.237Z
 tags: readme
 editor: markdown
 dateCreated: 2023-04-18T17:35:16.569Z
@@ -27,8 +27,7 @@ dateCreated: 2023-04-18T17:35:16.569Z
 > 关于仓库，都是自己的学习笔记。
 > 
 > 最好的文档就是官方的文档。大家记得学会看官方文档。
->
-> 闲话终日有，不停自然无。加油，奥力给！！！ yes
+
 
 ### 声明
 本仓库不参与商业行为，不向读者收取任何费用。(This repository is not engaging in business activities, and does not charge readers any fee.)

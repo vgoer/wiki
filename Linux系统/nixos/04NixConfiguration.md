@@ -1,3 +1,13 @@
+---
+title: 04NixConfiguration
+description: 
+published: 1
+date: 2023-06-17T01:21:28.339Z
+tags: 
+editor: markdown
+dateCreated: 2023-06-17T01:21:26.839Z
+---
+
 <center>NixConfiguration</center>
 
 

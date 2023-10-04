@@ -1,3 +1,13 @@
+---
+title: 99url
+description: 
+published: 1
+date: 2023-09-08T03:52:29.137Z
+tags: 
+editor: markdown
+dateCreated: 2023-08-17T11:18:17.880Z
+---
+
 
 
 
@@ -10,7 +20,7 @@
 
 > 学网: [最好的php博客网站](https://learnku.com/)
 >
-> 阿里云：[oss](https://blog.csdn.net/qq_43638176/article/details/96489427) [分片上传](https://blog.csdn.net/daxianyu666/article/details/122948841)
+> 阿里云：[oss](https://blog.csdn.net/qq_43638176/article/details/96489427)
 >
 > 阿里云：[sms](https://blog.csdn.net/maxiaojingabc/article/details/106015614) [sms2](https://blog.csdn.net/qq_42799116/article/details/103652336)
 >
@@ -19,8 +29,6 @@
 > laravel+nginx [laravel+n](https://blog.csdn.net/maxiaojingabc/article/details/106015614)
 >
 > laravel+支付 [pay](https://blog.csdn.net/weixin_56190532/article/details/130726573)
->
-> [laravel学院](https://laravelacademy.org/)
 >
 > php类库，资源 [php](https://learnku.com/articles/40507) [github](https://github.com/ar414-com/php-source-lib)
 >
@@ -68,13 +76,9 @@
 >
 > api: [api ](https://learnku.com/articles/83316)api压力测试： [压力测试](https://learnku.com/articles/83173)
 >
-> win11+docker: [docker](https://learnku.com/articles/83358)  [docker+laravel](https://learnku.com/articles/83600)  
+> 
 >
-> 穿透lar: [穿透lar](http://www.idocloud.net/) 
->
-> Artisan入门： [Artisan入门](https://learnku.com/articles/77465)
->
-> nginx：配置，反向代理，负载均衡。 [blog](https://blog.csdn.net/chrismurphy/article/details/120238216)
+> 
 
 
 
@@ -147,11 +151,7 @@
 >
 > 知名软件：[rust](https://www.zhihu.com/question/512163948)
 >
-> **rust**: [圣经](https://course.rs/about-book.html) 
->
-> rust杀手库：[杀手库](https://zhuanlan.zhihu.com/p/426329188)
->
-> rust周刊：[周刊](https://rustmagazine.github.io/rust_magazine_2021/index.html)
+> 
 
 
 

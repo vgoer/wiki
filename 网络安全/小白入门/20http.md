@@ -2,7 +2,7 @@
 title: 20.http
 description: http协议
 published: 1
-date: 2023-05-29T04:17:15.786Z
+date: 2023-06-09T10:17:17.738Z
 tags: http, web safe
 editor: markdown
 dateCreated: 2023-04-19T17:47:21.384Z

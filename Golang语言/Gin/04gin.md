@@ -2,7 +2,7 @@
 title: 04.gin
 description: gin
 published: 1
-date: 2023-05-29T04:11:51.043Z
+date: 2023-06-09T10:11:32.200Z
 tags: golang
 editor: markdown
 dateCreated: 2023-04-22T04:47:08.162Z

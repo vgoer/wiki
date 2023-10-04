@@ -2,7 +2,7 @@
 title: Wayfire
 description: wayfire桌面环境
 published: 1
-date: 2023-05-29T04:09:46.343Z
+date: 2023-06-09T10:10:56.392Z
 tags: desktop environment, wayfire
 editor: markdown
 dateCreated: 2023-04-19T15:32:40.930Z
@@ -16,9 +16,9 @@ dateCreated: 2023-04-19T15:32:40.930Z
 
 
 
-## Wayfire 
+## wayfire
 
->模块化和可扩展的 Wayland 合成器 [way](https://wayfire.org/) 
+>模块化和可扩展的 Wayland 合成器 [way](https://wayfire.org/)
 
 
 

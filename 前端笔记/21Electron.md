@@ -2,7 +2,7 @@
 title: 21Electron
 description: 
 published: 1
-date: 2023-05-29T04:08:57.914Z
+date: 2023-06-09T10:10:33.609Z
 tags: 
 editor: markdown
 dateCreated: 2023-05-11T10:46:13.034Z

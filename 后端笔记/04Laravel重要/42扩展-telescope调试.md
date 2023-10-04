@@ -1,3 +1,13 @@
+---
+title: 42扩展-telescope调试
+description: 
+published: 1
+date: 2023-08-30T10:37:22.869Z
+tags: 
+editor: markdown
+dateCreated: 2023-08-30T10:37:22.869Z
+---
+
 <center> Telescope 调试 </center>
 
 

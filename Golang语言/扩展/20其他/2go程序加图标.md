@@ -1,0 +1,49 @@
+---
+title: 2.go程序加图标
+description: 
+published: 1
+date: 2023-09-02T03:25:40.170Z
+tags: 
+editor: markdown
+dateCreated: 2023-09-02T03:25:34.550Z
+---
+
+<center>go加图标</center>
+
+
+
+[toc]
+
+
+
+## go icon
+
+> go build生成的exe文件,通常是一个默认的图标
+
+
+
+```go
+1. 找个图标 放到当前文件目录
+ak.ico
+
+2. 创建空白文本  命名 .rc 结尾
+ak.rc
+
+3. 在 .rc文件写入代码
+IDI_ICON1 ICON "ak.ico"
+
+4. 执行命令
+windres -o ak.syso ak.rc  // 生成了一个ak.syso
+
+5. 直接
+go build  //就生成文件了
+```
+
+> 参考：[术之多](https://www.shuzhiduo.com/A/KE5Q6PgLdL/)
+
+
+
+
+
+
+

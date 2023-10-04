@@ -2,7 +2,7 @@
 title: 01.xorm简介
 description: xorm简介
 published: 1
-date: 2023-05-29T04:12:10.231Z
+date: 2023-06-09T10:11:38.780Z
 tags: golang
 editor: markdown
 dateCreated: 2023-04-22T04:49:18.564Z

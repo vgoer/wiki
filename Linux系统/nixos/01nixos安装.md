@@ -1,3 +1,13 @@
+---
+title: 01nixos安装
+description: 
+published: 1
+date: 2023-07-29T14:47:28.809Z
+tags: 
+editor: markdown
+dateCreated: 2023-06-17T01:21:19.878Z
+---
+
 <center>nixos安装</center>
 
 

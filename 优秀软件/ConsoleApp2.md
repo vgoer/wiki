@@ -2,7 +2,7 @@
 title: ConsoleApp2
 description: ConsoleApp2
 published: 1
-date: 2023-05-29T04:08:06.720Z
+date: 2023-06-09T10:10:04.727Z
 tags: app
 editor: markdown
 dateCreated: 2023-04-25T12:14:41.963Z

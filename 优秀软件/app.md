@@ -2,7 +2,7 @@
 title: App
 description: 好用的软件
 published: 1
-date: 2023-05-29T04:08:21.495Z
+date: 2023-06-09T10:10:12.866Z
 tags: app, linux
 editor: markdown
 dateCreated: 2023-04-19T15:34:24.370Z
@@ -141,18 +141,4 @@ dateCreated: 2023-04-19T15:34:24.370Z
 > 地址 [scrcpy](https://github.com/Genymobile/scrcpy)
 > 
 > 一些配置 [scrcpy config](https://blog.csdn.net/weixin_39949894/article/details/110999911)
-
-18. Real-Time-Voice-Cloning
-
-> ai声音魔法，克隆
->
-> 地址： [github ](https://github.com/CorentinJ/Real-Time-Voice-Cloning) [blog](https://blog.51cto.com/lanzao/3341674)
-
-19. PoweToys
-
-> 微软自己的效率工具： [github](https://github.com/microsoft/PowerToys)
-
-
-
-
 
