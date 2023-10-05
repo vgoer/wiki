@@ -197,6 +197,9 @@ sudo pacman -S archcraft-berry
 sudo pacman -Sy archcraft-herbstluftwm
 #xmonad
 sudo pacman -Syyu && sudo pacman -S archcraft-xmonad
+
+# 其他软件与carccraft有关的
+sudo pacman -Ss archcraft # 老哥出品必属精品。
 ```
 
 
