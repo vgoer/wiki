@@ -173,6 +173,11 @@ sudo pacman -S ttf-fira-code
 ```
 
 
+13. 源码安装
+```shell
+    # 有时候包管理安装不上去，源码编译按照
+    https://digitalixy.com/linux/522223.html
+```
 
 ### 重要
 
