@@ -99,6 +99,7 @@ https://www.fkxxyz.com/d/cloverpinyin/
 
 1.  安装 fcitx 
 sudo pacman -S fcitx fcitx-qt5 fcitx-configtool
+https://zhuanlan.zhihu.com/p/393746270
 yay -S rime-cloverpinyin
 ```
 
