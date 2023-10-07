@@ -45,3 +45,15 @@ notify-send -u critical 'Hi goer!' 'Welcome, you are my BOOS.' -u normal
 
 ```
 
+
+
+
+
+### 3. 截图和操作图片
+
+> 截图： [grim](https://mephisto.cc/tech/wayland-screenshot/)
+
+```shell
+grim -g "`slurp`" - | ksnip -
+```
+
