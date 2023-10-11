@@ -99,6 +99,7 @@ https://www.fkxxyz.com/d/cloverpinyin/
 
 1.  安装 fcitx 
 sudo pacman -S fcitx fcitx-qt5 fcitx-configtool
+https://zhuanlan.zhihu.com/p/393746270
 yay -S rime-cloverpinyin
 ```
 
@@ -172,6 +173,11 @@ sudo pacman -S ttf-fira-code
 ```
 
 
+13. 源码安装
+```shell
+    # 有时候包管理安装不上去，源码编译按照
+    https://digitalixy.com/linux/522223.html
+```
 
 ### 重要
 
@@ -191,6 +197,9 @@ sudo pacman -S archcraft-berry
 sudo pacman -Sy archcraft-herbstluftwm
 #xmonad
 sudo pacman -Syyu && sudo pacman -S archcraft-xmonad
+
+# 其他软件与carccraft有关的
+sudo pacman -Ss archcraft # 老哥出品必属精品。
 ```
 
 
