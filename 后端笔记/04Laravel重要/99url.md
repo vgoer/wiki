@@ -170,3 +170,13 @@ dateCreated: 2023-08-17T11:18:17.880Z
 > 终端模拟器： [模拟器](https://mp.weixin.qq.com/s/puMuyIy8oYBU8KpMX1LgOQ)
 >
 > 
+
+
+
+
+### 6. Awesome
+
+> 
+> gpt: [free gpt](https://github.com/xx025/carrot)
+> 
+> mystart: [start](https://github.com/stars/vgoer/lists/snowflake-about-awesome)
