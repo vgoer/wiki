@@ -69,3 +69,5 @@ composer require dcat/laravel-admin:"2.*" -vvv
 ```php
 php artisan admin:publish
 ```
+
+> 修改：add
