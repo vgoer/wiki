@@ -19,6 +19,8 @@ dateCreated: 2023-04-22T04:47:08.162Z
 ## Gin
 
 > Gin:[gin](https://gin-gonic.com/)  golang的web框架，基于httpRouter. 
+>
+> [gin study](https://juejin.cn/column/7211357025484652604)
 
 
 
