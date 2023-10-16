@@ -21,6 +21,8 @@ dateCreated: 2023-04-22T18:36:24.368Z
 > Laravel是一个强大的MVC PHP框架.  
 >
 > 渐进式(会跟你一起成长)的web开发框架。
+>
+> [laravel core](https://juejin.cn/post/6844903423276482567?searchId=2023101613362743244108519C54146B13#heading-10)
 
 
 
