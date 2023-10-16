@@ -141,4 +141,4 @@ dateCreated: 2023-04-19T15:34:24.370Z
 > 地址 [scrcpy](https://github.com/Genymobile/scrcpy)
 > 
 > 一些配置 [scrcpy config](https://blog.csdn.net/weixin_39949894/article/details/110999911)
-
+> goer

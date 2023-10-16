@@ -35,6 +35,12 @@ dateCreated: 2023-05-03T18:03:30.765Z
 ```shell
 # index.js
 npm install react-router-dom@6
+
+# ts 
+npm install @types/react-router-dom --save-dev
+
+# 自己新建的文件找不到ts类型
+pnpm i -D ts-node
 ```
 
 
