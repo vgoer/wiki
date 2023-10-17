@@ -112,3 +112,39 @@ func main() {
 
 
 
+
+
+### gin热更新
+
+> gin没有自动更新的，需要第三方库。 ==fresh==
+
+```go
+// 安装 
+go get github.com/pilu/fresh
+
+// 如果没有找到， 需要自己去fresh源码 go build 放到$GOPATH
+```
+
+>  创建一个名为 ==runner.conf== 的配置文件 不要这个配置文件。
+
+```go
+root: ./    # 项目根目录路径
+build_name: myapp   # 可执行文件名
+patterns:
+- "**/*.go"
+ignored:
+- tmp/**/*
+- .git/**/*
+- .idea/**/*
+command: go run main.go    # 运行命令
+```
+
+```go
+fresh
+// 可以看到更新了。
+```
+
+
+
+
+
