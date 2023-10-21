@@ -26,7 +26,7 @@ dateCreated: 2023-09-08T03:52:29.188Z
 
 > go版MySQL binlog解析工具，通过解析MySQL binlog ，可以生成原始SQL、回滚SQL、去除主键的[INSERT](https://so.csdn.net/so/search?q=INSERT&spm=1001.2101.3001.7020) SQL等，也可以生成DML统计信息。 [github](https://github.com/liuhr/my2sql) [gitee](https://gitee.com/mirrors/my2sql)
 
-
+> binlog: [log](https://juejin.cn/post/7046590961614323726)
 
 
 
