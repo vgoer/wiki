@@ -19,6 +19,8 @@ dateCreated: 2023-04-19T15:29:43.316Z
 ## Nvim
 
 >nvim 编辑器 [nvim](https://github.com/neovim/neovim) [bili](https://www.bilibili.com/video/BV1Td4y1578E/?spm_id_from=333.1007.top_right_bar_window_history.content.click&vd_source=86b829d6caeffc65037786a84ec2cb17)
+>
+>配置： [zhihu](https://zhuanlan.zhihu.com/p/382092667) [github](https://github.com/nshen/learn-neovim-lua)
 
 
 
