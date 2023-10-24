@@ -204,6 +204,13 @@ sudo pacman -Ss archcraft # 老哥出品必属精品。
 
 
 
+> steam: 有steam就够了
+
+```shell
+yay -S steam
+ yay -S reshade-steam-proton-git  # steam play 
+```
+
 
 
 
