@@ -169,7 +169,7 @@ dateCreated: 2023-08-17T11:18:17.880Z
 >
 > 终端模拟器： [模拟器](https://mp.weixin.qq.com/s/puMuyIy8oYBU8KpMX1LgOQ)
 >
-> 
+> 命令行工具： [zhihu](https://zhuanlan.zhihu.com/p/51904179)  [zhihu2](https://zhuanlan.zhihu.com/p/401429004) [zhihu3](https://zhuanlan.zhihu.com/p/540920867)
 
 
 
