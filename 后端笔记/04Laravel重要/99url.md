@@ -114,6 +114,8 @@ dateCreated: 2023-08-17T11:18:17.880Z
 > go bolg: [RiemannHypo](https://juejin.cn/user/1680474815073805/posts)
 >
 > go 学习: [go study](https://zhuanlan.zhihu.com/p/624651254)
+>
+> go: [go book](https://learnku.com/articles/84100)
 
 
 
