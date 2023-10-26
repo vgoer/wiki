@@ -142,3 +142,9 @@ dateCreated: 2023-04-19T15:34:24.370Z
 > 
 > 一些配置 [scrcpy config](https://blog.csdn.net/weixin_39949894/article/details/110999911)
 > goer
+
+18. music
+
+> 音乐软件： [lx](https://github.com/lyswhut/lx-music-mobile) [free](https://github.com/maotoumao/MusicFree)
+>
+> 很赞的作者。
