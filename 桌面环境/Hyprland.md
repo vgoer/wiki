@@ -57,3 +57,12 @@ notify-send -u critical 'Hi goer!' 'Welcome, you are my BOOS.' -u normal
 grim -g "`slurp`" - | ksnip -
 ```
 
+
+
+
+
+```shell
+# shell
+
+```
+
