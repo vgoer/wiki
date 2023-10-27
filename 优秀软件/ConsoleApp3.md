@@ -41,6 +41,13 @@ tmux(screen nohub)
 >
 > bash: [bash](https://github.com/feherke/Bash-script/tree/master)
 >
-> 命令行翻译：[shell](https://blog.csdn.net/weixin_30542079/article/details/95775310) [shell1](https://www.clloz.com/programming/assorted/2019/11/19/translate-shell-usage/)
+> 命令行翻译：[shell](https://blog.csdn.net/weixin_30542079/article/details/95775310) [shell1](https://www.clloz.com/programming/assorted/2019/11/19/translate-shell-usage/) 
+>
+> ```go
+> trans -speak "goer" # 说话
+> trans -R  列出语言
+> ```
+>
+> 
 >
 > 
