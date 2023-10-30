@@ -285,3 +285,15 @@ map 使用快捷键
 
 
 ```
+
+
+
+5. vimdadbod 数据库管理
+
+> 数据库管理工具： 
+>
+> [vimdadbod](https://yaocc.cc/vimdadbod/)
+
+```shell
+```
+
