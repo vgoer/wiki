@@ -58,7 +58,7 @@
 >
 > [ctf导航]： [ctf导航](https://ctf.mzy0.com/)
 >
-> 
+> tidesec安全: [tidesec安全团队](https://www.tidesec.com/#)
 
 
 
@@ -99,6 +99,8 @@
 > 16. fuzzy: [url](https://fuzzysecurity.com/)   安全焦点BugTraq是一个出色的漏洞和Exploit数据源
 > 17. Hack This Site: [url](https://www.hackthissite.org)  黑客网站
 > 18. cybernews: [url](https://cybernews.com/) [中文](https://cn-sec.com/archives/tag/cybernews)  安全博客类
+> 19. nviso: [url](https://blog.nviso.eu/) 网络安全研究院
+> 20. 
 
 
 
@@ -117,6 +119,10 @@
 > fofa: [fofa](https://fofa.info/)     是一款网络空间测绘的搜索引擎   这些数据不仅包括像谷歌或百度一样的网页，还包括像摄像头、打印机、数据库、操作系统等资产。
 >
 > zoomEy: [zooEy](https://www.zoomeye.org/)   ZoomEye钟馗之眼  ZoomEye是一款针对网络空间的搜索引擎 
+>
+> 潮汐指纹：[潮汐指纹](http://finger.tidesec.net/) 可以查询网站的cms，框架，注册人信息，注册信息
+>
+> 
 
 
 
@@ -147,5 +153,7 @@
 > 好用的在线工具
 >
 > tool: [tool](https://tool.lu/)
+>
+> xss平台： [xss](https://xssaq.com/login/)
 >
 > 
