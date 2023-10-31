@@ -25,6 +25,24 @@
 > 360安全： [360](https://blogs.360.cn/) 
 >
 > 小米安全： [小米安全](https://xiaomi-info.github.io/)
+>
+> 伴鱼技术： [伴鱼技术](https://tech.ipalfish.com/blog/)
+>
+> 吾爱破解：[吾爱破解](https://www.52pojie.cn/forum.php)
+>
+> freebuf: [freebuf](https://www.freebuf.com/)
+>
+> 先知社区： [先知](https://xz.aliyun.com/)
+>
+> 看雪论坛： [看雪](https://bbs.pediy.com/)
+>
+> 安全客： [安全客](https://www.anquanke.com/)
+>
+> 土司论坛: [tools](https://www.t00ls.com/)
+>
+> 网安： [网安](https://www.wangan.com/)
+>
+> 
 
 
 
@@ -41,6 +59,7 @@
 ### 1. 国外
 
 > 0. form [阿里云安全](https://zhuanlan.zhihu.com/p/23701240)
+> 1. hacker news: [news](https://thehackernews.com/) 黑客新闻
 >
 > 1. **We Live Security**: [welive](https://www.welivesecurity.com/en/)   主要研究网络威胁和恶意软件。
 >
@@ -59,3 +78,7 @@
 > 11. **CSO Online**: [url](https://www.csoonline.com/) 提供一系列安全与风险管理的新闻、分析和研究主题。
 > 12. **Security Affairs**: [url](https://securityaffairs.co/)  Pierluigi Paganini的个人博客，一个道德黑客，安全传道者和分析师。
 > 13. **CIO Security**:  [url](https://www.cio.com/it-operations/) 主要提供数据泄露和互联网威胁的安全新闻、技术分析、行业洞察等内容。
+> 14. Hackone: [url](https://www.hackerone.com/) hackone一个漏洞提交平台，可以提交各种大厂的漏洞获得奖金。
+> 15. exploit-db: [url](https://www.exploit-db.com/) 提供了大量的Exploit程序和相关报告。
+> 16. fuzzy: [url](https://fuzzysecurity.com/)   安全焦点BugTraq是一个出色的漏洞和Exploit数据源
+> 17. 
