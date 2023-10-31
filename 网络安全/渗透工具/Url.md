@@ -51,6 +51,14 @@
 > 黑客搜： [黑客搜](https://www.hackerso.com/)
 >
 > 星际黑客： [星际黑客](https://xj.hk/)
+>
+> hacking8: [hacking8](https://www.hacking8.com/)
+>
+> 黑客街： [黑客街](https://www.hackjie.com/)
+>
+> [ctf导航]： [ctf导航](https://ctf.mzy0.com/)
+>
+> 
 
 
 
@@ -123,5 +131,21 @@
 > 关于csdn的博客
 >
 > kali与编程：[kali](https://blog.csdn.net/xiao1234oaix) Kali与编程 
+>
+> 是Mumuzi： [是Mumuzi](https://blog.csdn.net/qq_42880719)
+>
+> 
+
+
+
+
+
+
+
+### 4. 工具类
+
+> 好用的在线工具
+>
+> tool: [tool](https://tool.lu/)
 >
 > 
