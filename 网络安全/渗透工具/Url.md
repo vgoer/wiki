@@ -47,6 +47,10 @@
 > 渗透师: [渗透师导航](https://www.shentoushi.top/)
 >
 > 余弦 [evicos](https://evilcos.me/)
+>
+> 黑客搜： [黑客搜](https://www.hackerso.com/)
+>
+> 星际黑客： [星际黑客](https://xj.hk/)
 
 
 
@@ -105,3 +109,19 @@
 > fofa: [fofa](https://fofa.info/)     是一款网络空间测绘的搜索引擎   这些数据不仅包括像谷歌或百度一样的网页，还包括像摄像头、打印机、数据库、操作系统等资产。
 >
 > zoomEy: [zooEy](https://www.zoomeye.org/)   ZoomEye钟馗之眼  ZoomEye是一款针对网络空间的搜索引擎 
+
+
+
+
+
+
+
+
+
+### 3. csdn
+
+> 关于csdn的博客
+>
+> kali与编程：[kali](https://blog.csdn.net/xiao1234oaix) Kali与编程 
+>
+> 
