@@ -42,7 +42,11 @@
 >
 > 网安： [网安](https://www.wangan.com/)
 >
-> 
+> 圈子： [secquan](https://www.secquan.org/)
+>
+> 渗透师: [渗透师导航](https://www.shentoushi.top/)
+>
+> 余弦 [evicos](https://evilcos.me/)
 
 
 
@@ -81,4 +85,23 @@
 > 14. Hackone: [url](https://www.hackerone.com/) hackone一个漏洞提交平台，可以提交各种大厂的漏洞获得奖金。
 > 15. exploit-db: [url](https://www.exploit-db.com/) 提供了大量的Exploit程序和相关报告。
 > 16. fuzzy: [url](https://fuzzysecurity.com/)   安全焦点BugTraq是一个出色的漏洞和Exploit数据源
-> 17. 
+> 17. Hack This Site: [url](https://www.hackthissite.org)  黑客网站
+> 18. cybernews: [url](https://cybernews.com/) [中文](https://cn-sec.com/archives/tag/cybernews)  安全博客类
+
+
+
+
+
+
+
+
+
+### 3. 搜索引擎
+
+> google: [google](google.com) 谷歌搜索引擎。 最大的搜索平台   爬取网页信息
+>
+> shodan: [shodan](https://www.shodan.io/) 互联网上最可怕的搜索引擎。      联网设备搜索。
+>
+> fofa: [fofa](https://fofa.info/)     是一款网络空间测绘的搜索引擎   这些数据不仅包括像谷歌或百度一样的网页，还包括像摄像头、打印机、数据库、操作系统等资产。
+>
+> zoomEy: [zooEy](https://www.zoomeye.org/)   ZoomEye钟馗之眼  ZoomEye是一款针对网络空间的搜索引擎 
