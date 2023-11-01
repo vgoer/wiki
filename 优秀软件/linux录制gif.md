@@ -43,10 +43,11 @@ byzanz-record -x 0 -y 0 -w 1920 -h 1080 -d 10 --delay=3 -v ~/demo.gif
 命令行下是可以直接通过命令的形式, 但非常不方便 此时我们可以通过固化为一个脚本来使用命令
 `~/gif-recorder.sh`
 
-```shell
-#! /bin/bash
-byzanz-record -x 0 -y 0 -w 1920 -h 1080 -d 10 --delay=3 -v ~/demo.gif
-```
+> ```shell
+> #! /bin/bash
+> byzanz-record -x 0 -y 0 -w 1920 -h 1080 -d 10 --delay=3 -v ~/demo.gif
+> ```
+>
 
 
 
