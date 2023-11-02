@@ -160,6 +160,8 @@
 >
 > linux-tutorial: [bolg](https://turnon.gitee.io/linux-tutorial/)
 >
+> linux-software: [github](https://github.com/eniqiz/Awesome-Linux-Software-zh_CN)
+>
 > 
 
 
