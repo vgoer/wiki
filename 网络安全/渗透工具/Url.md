@@ -157,6 +157,10 @@
 > xss平台： [xss](https://xssaq.com/login/)
 >
 > pwntools: [github](https://github.com/Gallopsled/pwntools)
+>
+> linux-tutorial: [bolg](https://turnon.gitee.io/linux-tutorial/)
+>
+> 
 
 
 
