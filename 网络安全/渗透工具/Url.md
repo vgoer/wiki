@@ -162,7 +162,7 @@
 >
 > linux-software: [github](https://github.com/eniqiz/Awesome-Linux-Software-zh_CN)
 >
-> 
+> rust命令行工具： [github](https://lib.rs/command-line-utilities)   rust工具： [lib](https://lib.rs/)
 
 
 
