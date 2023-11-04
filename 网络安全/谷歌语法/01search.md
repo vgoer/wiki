@@ -17,6 +17,8 @@ dateCreated: 2023-04-29T17:54:11.114Z
 ## 简单的
 
 > 搜索引擎是生活和工作中必备的工具 [blog](https://zhuanlan.zhihu.com/p/136076792) [zhihu](https://zhuanlan.zhihu.com/p/136076792)
+>
+> [博客园](https://www.cnblogs.com/langtianya/p/4513408.html)
 
 #### 搜索语法：
 
