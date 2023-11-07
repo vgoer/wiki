@@ -17,6 +17,8 @@
 > **主服务器负责写的操作，也就是增删改，从服务器负责读的操作**
 >
 > [blog1](https://blog.csdn.net/qq_38225558/article/details/121025633) [blog2](https://blog.csdn.net/qq_58804301/article/details/130061985) [juejing](https://juejin.cn/post/6931529095457013773)
+>
+> sql优化： [sql](https://learnku.com/articles/71177)
 
 
 
