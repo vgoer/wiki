@@ -81,7 +81,7 @@ dateCreated: 2023-04-19T15:34:24.370Z
 
 10. screenkey
 
-> 按键显示的软件
+> 按键显示的软件 win:[Carnac](https://github.com/Code52/carnac)
 > 
 > 包管理工具安装 常用
 

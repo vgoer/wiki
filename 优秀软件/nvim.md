@@ -22,6 +22,11 @@ dateCreated: 2023-04-19T15:29:43.316Z
 >
 >配置： [zhihu](https://zhuanlan.zhihu.com/p/382092667) [github](https://github.com/nshen/learn-neovim-lua)
 
+```shell
+# win11 
+C:\Users\用户名\AppData\Local # 用户名换成你的， 配置文件clone到 nvim下。就可以了
+```
+
 
 
 ### 1. 安装
