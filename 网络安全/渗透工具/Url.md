@@ -174,4 +174,12 @@
 
 > web靶场： [blogs](https://www.cnblogs.com/-chenxs/p/11739883.html)
 >
+> ctf靶场： [csdn](https://blog.csdn.net/Appleteachers/article/details/117079022)
+>
+> 知乎博客： [知乎](https://zhuanlan.zhihu.com/p/613753819)
+>
+> htb: [Reebuf](https://www.freebuf.com/author/Thelion)   
+>
+> 渗透联系靶场: [csdn](https://blog.csdn.net/Thunderclap_/article/details/125565590) 
+>
 > 
