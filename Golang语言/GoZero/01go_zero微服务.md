@@ -167,3 +167,38 @@ goctl env check --verbose
 
 
 
+
+
+
+
+### 5. 快速生成api服务
+
+> 1. 命令
+
+```shell
+goctl api new api_one
+cd api_one
+go mod tidy
+go run apione.go -f etc/apione-api.yaml
+```
+
+> 2. 启动服务，访问
+
+```shell
+http://127.0.0.1:8888/from/goer
+```
+
+> 3. curl
+
+```go
+curl -i http://localhost:8888/from/you
+
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+Traceparent: 00-45fa9e7a7c505bad3a53a024e425ace9-eb5787234cf3e308-00
+Date: Thu, 22 Oct 2020 14:03:18 GMT
+Content-Length: 14
+```
+
+
+
