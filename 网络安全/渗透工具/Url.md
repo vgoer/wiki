@@ -141,6 +141,14 @@
 > 是Mumuzi： [是Mumuzi](https://blog.csdn.net/qq_42880719)
 >
 > micro8: [安全老兵](https://micro8.gitbook.io/micro8/)
+>
+> 安卓逆向： [Amo](https://blog.csdn.net/xw1680/category_12457452.html)
+>
+> 逆向入门：[逆向入门](https://blog.csdn.net/pangyemeng/article/details/69397789)
+>
+> 安全自学： [安全自学](https://blog.csdn.net/eastmount/category_9183790.html) [git](https://github.com/eastmountyxz/CSDNBlog-Security-Based)
+>
+> 
 
 
 
