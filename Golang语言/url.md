@@ -46,4 +46,4 @@ About go
 >
 > [gun](https://github.com/charmbracelet/gum): 迷人的 shell 脚本工具🎀
 >
-> 
+> [awesome-shell](https://github.com/alebcay/awesome-shell): shell 大全
