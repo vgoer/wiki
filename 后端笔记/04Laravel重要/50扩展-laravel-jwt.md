@@ -232,7 +232,7 @@ class AuthController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    protected function respondWithToken($token)
+    protected function respondWithToken($token, $data)
     {
         return response()->json([
             'data' => $data,
@@ -302,6 +302,21 @@ class AuthController extends Controller
 
         return error();
     }
+```
+
+```php
+$salt = salt(20);
+$password = '123456';
+Admin::factory()->create([
+    'account' => 'admin',
+    'truename' => '阿浩',
+    'avatar' => 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif',
+    'mobile' => '18287197725',
+    'salt' => $salt,
+    'roles' => 'admin',
+    'status' => 1,
+    'password' => Hash::make($password.$salt),
+]);
 ```
 
 
