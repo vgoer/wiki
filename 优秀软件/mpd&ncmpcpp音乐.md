@@ -19,3 +19,5 @@
 > 本地音乐： [zhihu](https://zhuanlan.zhihu.com/p/351064855)
 >
 > yaocc.cc: 这个大佬 [ncmpcpp](https://yaocc.cc/ncmpcpp/) [github](https://github.com/yaocccc)
+>
+> cava:  动画软件
