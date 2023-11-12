@@ -17,9 +17,9 @@
 
 
 ```shell
-    # 老哥已经配置好了，直接安装就行。 感谢
-    https://github.com/prasanthrangan/hyprdots
-    # 看步骤，超级简单的。
+# 老哥已经配置好了，直接安装就行。 感谢
+https://github.com/prasanthrangan/hyprdots
+# 看步骤，超级简单的。
 ```
 
 
