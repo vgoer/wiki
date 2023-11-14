@@ -87,7 +87,7 @@ php think run -H tp.com -p 80
 4. 可以选择配置：隐藏index.html
 ```
 
-
+> 3. ps xxx
 
 
 
