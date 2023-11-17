@@ -381,3 +381,12 @@ cmp.setup({
 
 ```
 
+
+
+
+
+### 5. neovim
+
+> nvim的gui,rust写的。带有gup加速
+>
+> [github](https://github.com/neovide/neovide) 
