@@ -40,6 +40,16 @@ docker network create test
 docker-compose up -d
 ```
 
+> 作者的这个compose文件有问题，用我们自己的 [github](https://github.com/vgoer/dockerLaravel.git)
+
+
+
+
+
+
+
+
+
 
 
 
