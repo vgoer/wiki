@@ -88,6 +88,7 @@ php think run -H tp.com -p 80
 ```
 
 > 3. ps xxx
+> 3. xxx```
 
 
 
