@@ -94,6 +94,12 @@ php think run -H tp.com -p 80
 
 
 
+### 3. 进阶功能
+
+> 进阶功能： [plus](https://doc.buildadmin.com/senior/)
+>
+> 
+
 
 
 
