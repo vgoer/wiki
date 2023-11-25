@@ -10,7 +10,7 @@
 
 ## wd-dist
 
-> 无道词典：有道词典的命令行版本，支持英汉互查和在线查询。 [github]()
+> 无道词典：有道词典的命令行版本，支持英汉互查和在线查询。 [github](https://github.com/chestnutheng/wudao-dict)
 
 
 
