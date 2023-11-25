@@ -19,6 +19,11 @@
 ### 1. 安装
 
 ```shell
+# install 
+yay -S wudao-dict-git
+```
+
+```shell
 # 安装python
 sudo pacman -S python3
 
