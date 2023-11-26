@@ -46,7 +46,7 @@ yay -S sddm
 >
 > [sugar](https://github.com/MarianArlt/sddm-sugar-light)
 >
-> [delicious](https://github.com/stuomas/delicious-sddm-theme)`
+> [delicious](https://github.com/stuomas/delicious-sddm-theme)
 >
 > [gokyo](https://github.com/rototrash/tokyo-night-sddm)
 
