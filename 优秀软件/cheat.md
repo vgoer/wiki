@@ -82,3 +82,8 @@ formatter: terminal256
 pager: less
 ```
 
+
+
+
+
+> 我自己创建的知识库。同步到github上。[cheat-goer](https://github.com/cheat/cheatsheets.git)
