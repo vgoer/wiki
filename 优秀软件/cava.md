@@ -38,6 +38,9 @@ yay -S cava-git   # kew-git 类似的
 
 ```shell
 # 下载config里面的文件，替换 cava的config
+
+# arch 没声音
+sudo alsactl restore
 ```
 
 
