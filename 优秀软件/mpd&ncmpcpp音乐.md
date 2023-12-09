@@ -25,5 +25,17 @@
 > cava:[doc](https://github.com/catppuccin/cava)
 
 ```shell
+# 安装
+yay -S mpd ncmpcpp
 ```
+
+
+
+
+
+
+
+
+
+
 
