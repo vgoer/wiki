@@ -30,4 +30,6 @@ from rust
 >
 > rust包： [crates](https://crates.io/)
 >
-> 
+> rust: [资源](pdo_mysql.default_socket= /tmp/mysqld.sock)
+>
+> [中文社区](https://rustcc.cn/)
