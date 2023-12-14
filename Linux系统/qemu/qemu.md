@@ -114,10 +114,9 @@ qemu-system-x86_64 -machine q35 \
 
 ```shell
 qemu-system-x86_64 -machine q35 \
-	-smp 4,sockets=1,cores=4,threads=1 \
-	-m 4096 \
-	-drive file=drive \
-	-cdrom <系统镜像，如ubuntu-22.04.2-live-server-amd64.iso>,media=cdrom
+        -smp 4,sockets=1,cores=4,threads=1 \
+        -m 4096 \
+        -drive file=ubuntu.img
 ```
 
 
