@@ -74,7 +74,9 @@ cargo build --target x86_64-unknown-linux-gnu
 cargo build --target x86_64-apple-darwin
 ```
 
-
+> 交叉编译报错： [csdn](https://blog.csdn.net/qq_40307379/article/details/119753360)
+>
+> `yay -S mingw-w64`
 
 
 
