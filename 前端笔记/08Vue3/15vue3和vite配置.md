@@ -50,6 +50,17 @@ css: {
     }
   },
       
+// 不用path
+//方法一
+ export default defineConfig({
+  resolve:{
+    alias:{
+      '@':'/src/',      //格式一定要写对喽不然没有代码提示或者报错
+    }
+  }
+})
+
+// 文章 https://juejin.cn/post/7134617656241422350
 ```
 
 > 安装 `sass`[scss](https://juejin.cn/post/7239585610862805051)
