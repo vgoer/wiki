@@ -56,7 +56,7 @@ https://zhuanlan.zhihu.com/p/51904179
 
 > 后面会持续更新并且介绍每个软件的使用。
 
-
+> 这个仓库： [很棒的工具](https://github.com/fosslife/awesome-ricing)
 
 
 
