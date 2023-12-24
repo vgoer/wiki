@@ -24,3 +24,25 @@
 
 
 
+### 1. newm-atha
+
+> 作者放弃了这个项目。这个是分支 [newm-atha](https://sr.ht/~atha/newm-atha/)
+
+```shell
+yay -S newm-atha-git
+
+
+# 启动
+start-newm -d
+
+#  配置文件 
+cd
+mkdir -p .config/newm
+cp .local/lib/pythonX.Y/site-packages/newm/default_config.py .config/newm/config.py
+vim .config/newm/config.py
+```
+
+> 或者： [config.py](https://git.sr.ht/~atha/newm-atha/tree/HEAD/newm/default_config.py)
+
+
+
