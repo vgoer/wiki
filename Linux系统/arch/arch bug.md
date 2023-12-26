@@ -28,3 +28,24 @@
  amixer sset Master unmute
 ```
 
+
+
+
+
+
+
+### 2. 设置屏幕亮度
+
+```shell
+# 安装工具
+sudo pacman -S light
+
+# 设置 50%
+light -S 50 
+
+```
+
+
+
+
+
