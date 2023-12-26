@@ -64,3 +64,26 @@ cp -r corners/ /usr/share/sddm/themes/
 >[Theme]
 >Current=corners
 >```
+
+
+
+
+
+
+
+### 2. delicious
+
+> delicious: sddm主题 [delicious](https://github.com/stuomas/delicious-sddm-theme)
+
+```shell
+git clone https://github.com/stuomas/delicious-sddm-theme.git
+
+cd delicious-sddm-theme
+
+./install.sh
+```
+
+
+
+
+
