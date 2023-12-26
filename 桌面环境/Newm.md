@@ -44,5 +44,14 @@ vim .config/newm/config.py
 
 > 或者： [config.py](https://git.sr.ht/~atha/newm-atha/tree/HEAD/newm/default_config.py)
 
+```shell
+# 背景和开启动画
+background = {
+    # 'path': os.path.dirname(os.path.realpath(__file__)) + '/resources/wallpaper.jpg',
+    'path': os.getcwd() + '/kali.jpg',
+    'anim': True
+}
+```
+
 
 
