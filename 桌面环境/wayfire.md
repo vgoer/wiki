@@ -38,7 +38,13 @@ wayfire -v  # 查看版本
 
 
 
-### 待完善
+
+
+### 2. 配置
+
+> 复制[`wayfire.ini`](https://github.com/WayfireWM/wayfire/blob/master/wayfire.ini)到`~/.config/wayfire.ini`。在运行 Wayfire 之前，您可能需要更改启动终端的命令。有关选项的信息，请参阅[配置文档。](https://github.com/WayfireWM/wayfire/wiki/Configuration)
+
+
 
 
 
