@@ -387,6 +387,6 @@ cmp.setup({
 
 ### 5. neovim
 
-> nvim的gui,rust写的。带有gup加速
+> nvim的gui,rust写的。带有gup加速 
 >
-> [github](https://github.com/neovide/neovide) 
+> [github](https://github.com/neovide/neovide)  配置文件是读去nvim的。共用的。所以，牛皮。哈哈
