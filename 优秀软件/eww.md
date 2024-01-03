@@ -102,6 +102,19 @@ eww close example
 
 
 
+> 添加一些有趣的部件
+
+```shell
+(defwidget greeter [?text name]
+  (box :orientation "horizontal"
+       :halign "center"
+    text
+    (button :onclick "notify-send 'Hello' 'Hello, ${name}'"
+      "Greet")))
+```
+
+
+
 
 
 
