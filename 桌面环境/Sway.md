@@ -14,7 +14,7 @@
 
 ## 1. 安装
 
-> install
+> install [blog](https://cascade.moe/posts/hyprland-configure/)
 
 ```shell
 # 安装好依赖
