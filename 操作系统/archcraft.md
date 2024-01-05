@@ -142,6 +142,7 @@ export XMODIFIERS="@im=fcitx"
 ```go
 sudo pacman -S shadowsocks-qt5
 sudo pacman -S proxychains-ng
+sudo  pacman -S  v2rayA
 ```
 
 
@@ -205,6 +206,8 @@ sudo pacman -Ss archcraft # 老哥出品必属精品。
 
 
 > steam: 有steam就够了
+>
+> 游戏看 另外一篇文章
 
 ```shell
 yay -S steam
