@@ -23,7 +23,7 @@ dateCreated: 2023-04-22T17:33:32.050Z
 data.json
 
 ```json
-[{"id":1,"username":"admin","pwd":"e10adc3949ba59abbe56e057f20f883e","createtime":"1627870642"}]"
+[{"id":1,"username":"admin","pwd":"e10adc3949ba59abbe56e057f20f883e","createtime":"1627870642"}]
 ```
 
 ```php
