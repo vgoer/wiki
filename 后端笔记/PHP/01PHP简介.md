@@ -463,7 +463,7 @@ function praStart($con){
     }
 
 }
-    //praStart(100);
+//praStart(100);
 ```
 
 4. `in_array($str,$arr)`判断是否在数组内
