@@ -98,7 +98,7 @@ require()  //路径  引入错误,会终止页面所有代码继续执行
 ```php
 // 累加
 fucntion addSup($num){
-   if($sum == 1){
+   if($num == 1){
        return 1;
    }else{
        return $num+addSup($num-1);
