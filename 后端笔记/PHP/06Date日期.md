@@ -36,7 +36,7 @@ echo (date("Y-m-d H:i:s",time()));
 > * `date_default_timezone_get() `函数==返回==脚本中所有日期时间函数所使用的默认时区。
 
 ```php
-echo(date_default_timezone-get());
+echo(date_default_timezone_get());
 ```
 
 > * `date_default_timezone_set() `函数==设置==用在脚本中所有日期/时间函数的默认时区。
