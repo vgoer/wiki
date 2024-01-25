@@ -220,7 +220,7 @@ $arr4 = array_splice($arr,2,4); //从第二个开始，删除4个
 
 ```php
 // 参数2 true 报持键名， false 键名丢弃
-array_reverse($arr,tren);  //保持键值，反转数组
+array_reverse($arr,true);  //保持键值，反转数组
 ```
 
 * in_array() 和 array_search() 和 array_key_exists()
