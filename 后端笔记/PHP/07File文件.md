@@ -246,7 +246,7 @@ echo date('Y-m-d H:i:s',fileatime('a.txt'));
    > 判断文件是否是文件夹
 
    ```php
-   var_dump(dir('a.txt'));//false
+   var_dump(is_dir('a.txt'));//false
    ```
 
 4. is_file()
