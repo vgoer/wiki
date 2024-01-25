@@ -21,9 +21,9 @@ dateCreated: 2023-04-22T17:30:33.027Z
 > 打开目录， 是一个资源
 
 ```php
-$res = opnedir('aaa');  //打开aaa文件夹
+$res = opendir('aaa');  //打开aaa文件夹
 
-/var_dump($res);//resource(4, stream)  //资源
+var_dump($res);//resource(4, stream)  //资源
 ```
 
 
