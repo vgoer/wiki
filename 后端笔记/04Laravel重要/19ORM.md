@@ -32,6 +32,85 @@ dateCreated: 2023-08-05T00:52:16.631Z
 
 > 1. 一对一关联（One-to-One Relationship）： 假设我们有两个模型：User 和 Phone。一个用户只拥有一个电话号码。
 
+> 定义模型和结构
+
+```php
+# user表
+php artisan make:model User -mc
+    
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('users', function (Blueprint $table) {
+            $table->id();
+            $table->string("name",100)->comment("姓名");
+            $table->string("passwd",255)->comment("密码");
+            $table->text("info")->comment("介绍");
+            $table->timestamps();
+        });
+    }
+
+# phone
+php artisan make:model Phone -mc
+
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('phones', function (Blueprint $table) {
+            $table->id();
+            # 关联字段类型和主键id类型保持一致
+            $table->unsignedBigInteger("user_id")->comment("user id");
+            $table->string('num')->comment("电话");
+            $table->timestamps();
+        });
+    }
+
+# 生成表
+php artisan migrate
+```
+
+> 关联字段类型和主键id类型保持一致  一般是`unsignedBigInteger`
+
+
+
+> 建立模型工程填充数据
+
+```shell
+php artisan make:factory UserFactory --model=User
+
+
+# 写入数据
+    protected $model = User::class;
+    /**
+     * Define the model's default state.
+     *
+     * @return array
+     */
+    public function definition()
+    {
+        return [
+            'name' => "goer",
+            'passwd' => bcrypt('password'),
+            'info' => "goer123...",
+        ];
+    }
+    
+# 执行 tinker
+php artisan tinker
+
+User::factory()->create();  
+```
+
+
+
 ```php
 # User 模型中定义关联方法：
 
@@ -44,7 +123,8 @@ public function phone()
 ```php
 # Phone 模型中定义反向关联方法：
 public function user()
-{
+{	
+    # 属于
     return $this->belongsTo(User::class);
 }
 ```
@@ -53,9 +133,18 @@ public function user()
 
 ```php
 // 获取用户的电话号码
-$user = User::find(1);
-$phone = $user->phone;
+php artisan tinker	
+    
+# 获取一个用户 和查电话。
+user = User::first();
+$user->phone;
+
+# 方向
+$phone = Phone::first();
+$phone->user;
 ```
+
+
 
 
 
@@ -63,68 +152,144 @@ $phone = $user->phone;
 
 ### 2. 一对多
 
-> 1. 一对多关联（One-to-Many Relationship）： 假设我们有两个模型：Post 和 Comment。一篇文章可以有多个评论。
+> 1. 一对多关联（One-to-Many Relationship）： 假设我们有两个模型：Post 和 User。一个用户有多篇文章。
 
 ```php
-# Post 模型中定义关联方法：
-public function comments()
+# 添加模型
+php artisan make:model Post -mc
+    
+   	    public function up()
+    {
+        Schema::create('posts', function (Blueprint $table) {
+            $table->id();
+            $table->string("title",255)->comment("标题");
+            $table->text("content")->comment("内容");
+            $table->timestamps();
+        });
+    }
+
+# 如果需要添加新的字段需要在建一个迁移，与第一个合并。
+php artisan make:migration add_user_id_to_blogs_table
+    
+    public function up()
+    {
+        Schema::table('blogs', function (Blueprint $table) {
+            //
+            $table->unsignedBigInteger("user_id")->nullable()->comment("关联id");
+        });
+    }
+
+    public function down()
+    {
+        Schema::table('blogs', function (Blueprint $table) {
+            //删除id
+            $table->dropColumn("user_id");
+        });
+    }
+
+# 生成表
+php artisan migrate
+```
+
+> ==import==迁移需要添加字段，可以使用这个方法
+
+```php
+# User 模型中定义关联方法：
+public function bolgs()
 {
-    return $this->hasMany(Comment::class);
+    return $this->hasMany(Blog::class);
 }
+
+
+# 使用  我去，牛皮。
+$user = User::first();
+# 还可以对集合对象操作 count()  
+# 加查询条件呀  ->where("") 常用的。 $user->bolgs->where("title","4");
+$user->bolgs
 ```
 
 ```php
-# Comment 模型中定义反向关联方法：
-public function post()
-{
-    return $this->belongsTo(Post::class);
-}
+# Blog 模型中定义反向关联方法：
+    public function user()
+    {
+        return $this->belongsTo(Blog::class);
+    }
+
+# 使用
+$blog = Blog::first();
+$blog->user
 ```
 
-> 使用
+> ==记得==关联字段加索引：提升查询效率
 
 ```php
-// 获取一篇文章的评论
-$post = Post::find(1);
-$comments = $post->comments;
-// 获取用户的所有文章
-$user = User::find(1);
-$posts = $user->posts;
+$table->unsignedBigInteger("user_id")->index()->comment("user id");
 ```
-
-
 
 
 
 ### 3. 多对多
 
-> 1. 多对多关联（Many-to-Many Relationship）： 假设我们有两个模型：User 和 Role。一个用户可以属于多个角色，一个角色也可以被多个用户拥有。
+> 1. 多对多关联（Many-to-Many Relationship）： 假设我们有两个模型：User 和 Groups表。一个用户可以属于多个角色，一个角色也可以被多个用户拥有。
+>
+>    这时候就需要中间表 group_user表。存放
+>
+>    [bilibili](https://www.bilibili.com/video/BV1st4y167je/)
 
 ```php
-#  User 模型中定义关联方法：
-public function roles()
-{
-    return $this->belongsToMany(Role::class);
-}
+# 创建群和 中间表
+php artisan make:model Group -mc
+    
+    Schema::create('groups', function (Blueprint $table) {
+        $table->id();
+        $table->string("name");
+        $table->timestamps();
+    });
+
+ php artisan make:migration create_group_user_table
+     
+      Schema::create('group_user', function (Blueprint $table) {
+            $table->id();
+            # 添加关联
+            $table->unsignedBigInteger("user_id")->index();
+            $table->unsignedBigInteger("group_id")->index();
+            $table->timestamps();
+
+            # 唯一索引
+            $table->unique(["user_id", "group_id"]);
+        });
+
+# 执行迁移
+php artisan migrate
 ```
 
 ```php
-# Role 模型中定义反向关联方法：
+#  Group 模型中定义关联方法：
 public function users()
 {
-    return $this->belongsToMany(User::class);
+    // 关联多个用户                模型             关联中间表名
+    return $this->belongsToMany(User::class, 'group_user');
 }
-```
 
-> 使用
+# 使用
+$user = User::find(1); 
+# 获取组  还可以对集合对象操作
+$user->groups 
+```
 
 ```php
-// 获取一个角色的所有用户
-$role = Role::find(1);
-$users = $role->users;
+# User 模型中定义反向关联方法：
+public function groups()
+{
+    return $this->belongsToMany(Group::class, 'group_user');
+}
+
+# 使用
+$groupA = Group::find(1); 
+$groupA->users 
 ```
 
-
+> 牛皮。哈哈
 
 
 
@@ -216,6 +381,44 @@ $comments = $video->comments;
 
 
 
+
+
+
+
+
+### 4. 捕获sql语句
+
+> `输出sql`语句
+>
+> `AppServiceProvider.php`
+
+```php
+public function boot()
+{
+    //
+    Schema::defaultStringLength(200);
+
+    \DB::listen(function ($query){
+        // 日志里面
+        // \Log::info(\Str::replaceArray("?", $query->bindings, $query->sql));
+
+        echo (\Str::replaceArray("?", $query->bindings, $query->sql));
+    });
+}
+```
+
+> 测试： 
+
+```shell
+$groupA = Group::find(1);                                                                                            
+[!] Aliasing 'Group' to 'App\Models\Group' for this Tinker session.
+sql: select * from `groups` where `groups`.`id` = 1 limit 1⏎
+```
+
+```log
+[2024-01-25 05:57:03] local.INFO: select * from `groups` where `groups`.`id` = 1 limit 1  
+[2024-01-25 05:57:08] local.INFO: select `users`.*, `group_user`.`group_id` as `pivot_group_id`, `group_user`.`user_id` as `pivot_user_id` from `users` inner join `group_user` on `users`.`id` = `group_user`.`user_id` where `group_user`.`group_id` = 1  
+```
 
 
 
