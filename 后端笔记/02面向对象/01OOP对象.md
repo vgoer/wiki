@@ -145,13 +145,13 @@ class test{
 
 
 
-##### counst
+##### const
 
 > 类中定义常量:  对象的整个生命周期中都保持不变的值
 
 ```php
 class math{
-    count PI = 3.1415; //定义一个常量
+    const PI = 3.1415; //定义一个常量
 	echo self::PI; //类内部访问    
 }
 
