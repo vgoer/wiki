@@ -102,6 +102,42 @@ uvicorn main:app --reload
 
 
 
+### 3. 项目
+
+> fastapi: 小项目  [youtube](https://www.youtube.com/watch?v=XnYYwcOfcn8)
+
+
+
+1. 新建项目
+
+```shell
+# 2. 创建虚拟环境
+python3 -m venv fast_api
+
+# 3. 进入虚拟环境
+# On Windows:
+.\fast_api\Scripts\activate
+# On macOS and Linux:
+source fast_api/bin/activate
+```
+
+2. 依赖
+
+> `requirements.txt`
+
+```txt
+fastapi
+uvicorn[standard]
+```
+
+> 安装： `pip install -r .\requirements.txt`
+
+
+
+
+
+
+
 
 
 
