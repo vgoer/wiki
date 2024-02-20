@@ -13,10 +13,10 @@
 
 
 ### 1. 安装
-> 
 > 报错： ` Error: Failed to download template from registry`, 原因是无法解析raw.githubusercontent.com的地址
-> 解决： 修改DNS为 `114.114,114,114`
+> 解决： 修改DNS为 `185.199.108.133 raw.githubusercontent.com`
 >
+> 直接下载： [blog](https://blog.csdn.net/qq_38347669/article/details/128849664)
 
 
 ```javascript
@@ -31,7 +31,6 @@ npm run dev
 >
 > 看到nuxt项目了。
 >
-
 
 
 
