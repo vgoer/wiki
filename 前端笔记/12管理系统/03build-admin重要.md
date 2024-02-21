@@ -87,8 +87,19 @@ php think run -H tp.com -p 80
 4. 可以选择配置：隐藏index.html
 ```
 
-> 3. ps xxx
-> 3. xxx```
+> ### 常见问题
+>
+> #### [#](https://doc.buildadmin.com/guide/other/developerMustSee.html#为什么开发环境一定是使用php-think-run启动的服务-而不是nginx或其他)为什么开发环境一定是使用`php think run`启动的服务，而不是`Nginx或其他`
+>
+> - 该服务通过执行一条命令启动，在执行这条命令时，我们能够读取到当前的`环境变量`，以此来实现`WEB终端`的命令执行功能，这条命令启动了站点的`服务端(API服务)`。
+>
+> #### [#](https://doc.buildadmin.com/guide/other/developerMustSee.html#web目录下执行npm-run-dev的意义)`web`目录下执行`npm run dev`的意义？
+>
+> - `vue`项目不同于传统`js、jQuery`项目，开发者所有的改动是需要`编译`的（工程化）；而该命令启动了`Vite`的热更新服务，热更新服务可以实现：`开发环境下无需编译快速查看修改效果`，执行该命令后打开的`localhost:1818`，就是具备热更新、热重载等功能的开发专用站点。
+>
+> #### [#](https://doc.buildadmin.com/guide/other/developerMustSee.html#每次改动都需要重新发布)每次改动都需要`重新发布`？
+>
+> - 错误。如以上的第`2`点所描述，只需要启动热更新服务进行开发工作即可，只在开发工作完成将要上线时，才进行重新发布。
 
 
 

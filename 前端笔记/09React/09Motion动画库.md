@@ -150,3 +150,72 @@ const Test :React.FC = () => {
 export default Test
 ```
 
+
+
+
+
+
+
+
+
+### 3. 详细使用
+
+> 使用Framer-motion库最基本的一个能力，我们就要从使用👉motion这个组件开始。
+
+> animate这个属性，最基本的用法就是传入一个对象。
+
+```tsx
+const Motion = () => {
+    return (
+        <motion.div
+            className=' max-w-lg bg-green-200 rounded-xl text-center h-10 leading-10'
+            // animate对象
+            animate={
+                    {
+                        x:100, // 向右移动100px
+                        y:200, // 向下移动200px
+                        scale:0.5, // 缩放至0.5倍
+                        rotate:45, // 旋转45度
+                        opacity:0.5  // 不透明度设置为0.5
+                    }
+            }
+        >
+            h3llo
+        </motion.div>
+    )
+}
+```
+
+> motion组件上还提供了一个initial的属性，这个属性跟style会有些类似的作用。它是用来设置一个元素的初始状态的。
+
+```tsx
+const Motion = () => {
+    return (
+        <motion.div
+            initial={
+                {
+                    width:100,
+                    height:100,
+                    backgroundColor:'blue',
+                    borderRadius:'30px',
+                    rotate:40,
+                    border: "2px soild black",
+                }
+            }
+            // animate对象
+            animate={
+                    {
+                        x:100, // 向右移动100px
+                        y:200, // 向下移动200px
+                        scale:0.5, // 缩放至0.5倍
+                        rotate:45, // 旋转45度
+                        opacity:0.5  // 不透明度设置为0.5
+                    }
+            }
+        >
+            
+        </motion.div>
+    )
+}
+```
+
