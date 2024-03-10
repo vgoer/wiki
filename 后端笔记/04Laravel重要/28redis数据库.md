@@ -33,7 +33,7 @@ dateCreated: 2023-08-17T11:17:48.791Z
 > 记得开redis扩展
 
 ```shell
-composer require predis/predis
+    composer require predis/predis
 ```
 
 1. 配置
