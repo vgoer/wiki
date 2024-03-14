@@ -344,6 +344,50 @@ Redis::hgetall('hash1'); // 返回 array('key1'=>'v1','key2'=>'v2','key3'=>'v3',
 
 
 
+> 简单实列： 
+
+```php
+/**
+     * 获取列表 redis 缓存
+     *
+     * @param Request $request
+     * @return void
+     */
+    public function areaGet(Request $request)
+    {
+        $input = $request->all();
+
+        $id = empty($input['id']) ? "1" : $input['id'];
+
+        $area = Area::query()->where("id", $id)->first();
+
+        $area_data = Cache::store("redis")->get("area_data_" . $area->id);
+
+        if(empty($area_data)){
+
+            $area_get = Area::query()->where("id", $area->id)->orderBy("id", "asc")->get(["id", "name"])->toArray();
+
+            $area_get = array_column($area_get, "name");
+            
+            $area_json = json_encode($area_get);
+
+            Cache::store('redis')->rememberForever('area_data_' . $area->id, function () use ($area_json) {
+                return $area_json;
+            });
+        }
+
+        $result = [
+            'code'   => 200,
+            'date'   => json_decode($area_data),
+        ];
+
+        return json_encode($result);
+
+    }
+```
+
+
+
 
 
 
