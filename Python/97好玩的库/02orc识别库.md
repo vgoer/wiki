@@ -91,4 +91,37 @@ with sync_playwright() as p:
     browser.close()
 
 ```
+> 哈哈牛皮
+
+
+```python
+    browser = p.chromium.launch(headless=False,slow_mo=1000)
+    # 打开一个标签页
+    page = browser.new_page()
+    # 打开百度
+    page.goto("http://xxxx.com")
+    # 打印当前页面title
+    print(page.title())
+    #定位验证码，截图验证码
+    page.locator(".vercode-icon").screenshot(path="example.png")
+    page.locator("#username").click()
+    page.locator("#username").fill("账号")
+    page.locator("#password").click()
+    page.locator("#password").fill("密码")
+    #实例化验证码识别的库
+    ocr = ddddocr.DdddOcr()
+    #打开截图的验证码
+    with open('example.png', 'rb') as f:
+        img_bytes = f.read()
+    result = ocr.classification(img_bytes)
+    print(result)
+    #输入验证码
+    page.locator("#jcaptcha_response").click()
+    
+    page.locator("#jcaptcha_response").fill(result)
+
+    page.get_by_text("登录", exact=True).click()
+
+
+```
 
