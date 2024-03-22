@@ -58,3 +58,86 @@ search.send_keys("hack")
 time.sleep(5)
 ```
 
+
+
+
+
+### 3. 页面元素定位
+
+> 提供多种定位策略
+
+```shell
+from selenium.webdriver.common.by import By
+
+# 定位元素并点击
+element = driver.find_element(by=By.ID, value='myId')
+element.click()
+
+# 获取元素文本
+text = driver.find_element(by=By.ID, value='myId').text
+
+# name
+input_field = driver.find_element(by=By.NAME, value='myInput')
+```
+
+
+
+
+
+### 4. 元素交互
+
+> 交互
+
+```shell
+# 键盘发送
+element.send_keys('Hello, Selenium!')
+```
+
+```shell
+# 点击
+element.click()
+```
+
+```shell
+# 清楚元素内容
+element.clear()
+```
+
+```shell
+# 获取文本
+text = element.text
+```
+
+```shell
+# 获取元素属性
+attribute_value = element.get_attribute('href')
+```
+
+
+
+
+
+### 5. 浏览器操作
+
+> 浏览器
+
+```shell
+# 刷新页面
+driver.refresh()
+
+# 回退一页
+driver.back()
+
+# 前进一页
+driver.forward()
+
+# 切换标签页
+driver.switch_to.window(handle)
+
+# 执行JavaScript
+driver.execute_script(script, args)
+
+# 关闭浏览器
+driver.quit()
+```
+
