@@ -123,3 +123,27 @@ qemu-system-x86_64 -machine q35 \
 
 
 
+### 3. 快照和恢复
+
+> 快照和恢复
+
+```shell
+# 创建快照
+
+qemu-img.exe snapshot -c snapshot_name arch.img
+
+# 恢复快照
+qemu-img.exe snapshot -a snapshot_name arch.img
+
+# 删除快照
+qemu-img.exe snapshot -d snapshot-name arch.img
+
+
+# 查看保存的快照
+qemu-img snapshot -l arch.img
+```
+
+
+
+
+

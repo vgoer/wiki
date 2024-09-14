@@ -22,7 +22,7 @@
 
 ```shell
 # 1. 创建镜像
-qemu-img qemu-img create -f qcow2 arch.img 20g
+qemu-img create -f qcow2 arch.img 20g
 
 # 2. 准备好镜像
 
@@ -44,6 +44,21 @@ shutdown -h now
 ```shell
 qemu-system-x86_64 --enable-kvm -machine type=pc,accel=kvm -device virtio-vga-gl -display sdl,gl=on -smp 12 -m 4096 arch.img
 ```
+
+
+
+
+
+### 3. 软件安装
+
+````shell
+yay -S fish  # 终端
+
+
+
+
+
+````
 
 
 
