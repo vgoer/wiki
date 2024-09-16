@@ -55,6 +55,41 @@ qemu-system-x86_64 --enable-kvm -machine type=pc,accel=kvm -device virtio-vga-gl
 yay -S fish  # 终端
 
 
+sudo pacman -S terminus-font # 字体
+setfont ter-v32n  # 设置字体
+
+
+# 添加 cn源
+sudo vim /etc/pacman.conf
+```shell
+Color  #开启颜色
+
+[archlinuxcn]
+Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/$arch
+
+```
+
+# 命令安装 archlinuxcn-keyring 包导入 GPG key。
+sduo pacman -Sy archlinuxcn-keyring
+
+
+#  yay 助手
+sudo pacman -S yay
+
+# 下载 wayfire
+yay -S wayfire-git
+
+# 添加环境变量
+sudo vim /etc/environment
+WLR_NO_HARDWARE_CURSORS=1
+
+
+# 开启 seatd 服务
+systemctl start seatd
+systemctl enable seatd
+systemctl status seatd
+
+
 
 
 
