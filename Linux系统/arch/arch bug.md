@@ -25,7 +25,10 @@
 > [blog](https://www.ucloud.cn/yun/15124.html)
 
 ```shell
- amixer sset Master unmute
+ amixer set Master unmute
+ 
+ #安装 ALSA 工具和一些固件
+ sudo pacman -S alsa-utils alsa-firmware sof-firmware alsa-ucm-conf
 ```
 
 
