@@ -49,3 +49,21 @@ light -S 50
 
 
 
+
+
+### 3. 密钥错误
+
+> 重新添加密钥
+
+```shell
+sudo killall gpg-agent  # 一定要先杀死这个进程
+sudo rm -rf /etc/pacman.d/gnupg/
+sudo pacman-key --init
+sudo pacman-key --populate archlinux && sudo pacman-key --populate archlinuxcn
+sudo pacman -Sy archlinux-keyring archlinuxcn-keyring
+sudo pacman-key --refresh-keys  # 更新密钥
+sudo pacman -Syu  # upgrades work as expected, and no more gpg errors on startup
+```
+
+
+
