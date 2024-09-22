@@ -80,6 +80,12 @@ esac
 ```shell
 file=$(ls | rofi -dmenu -window-title find)
 echo $file
+
+# 指定主题
+history | rofi -dmenu -config ~/.config/rofi/clipboard.rasi
+
+# fzf
+h=$(history | fzf) 
 ```
 
 
