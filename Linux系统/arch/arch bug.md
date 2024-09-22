@@ -70,3 +70,17 @@ sudo pacman -Syu  # upgrades work as expected, and no more gpg errors on startup
 
 
 
+
+
+
+
+### 4. code中文
+
+> wayland下vscode不能输入中文。[archwiki](https://bbs.archlinuxcn.org/viewtopic.php?id=13723)
+
+```shell
+# vscode
+# $editor = code --ozone-platform-hint=wayland --disable-gpu
+$editor = code --ozone-platform-hint=auto --enable-wayland-ime
+```
+
