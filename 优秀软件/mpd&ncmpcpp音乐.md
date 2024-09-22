@@ -29,7 +29,7 @@
 yay -S mpd ncmpcpp
 ```
 
-
+> 配置文件：[ncmpcpp]()
 
 
 
