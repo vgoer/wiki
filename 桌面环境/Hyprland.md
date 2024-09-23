@@ -210,6 +210,16 @@ Waybar 拥有**两个主要的配置文件**，它们分别是：
 
 
 
+### 5. 动态壁纸
+
+> hyprland动态壁纸
+
+```shell
+yay -S mpvpaper-git
+
+mpvpaper eDP-1 ~/bg/xxx.mp4 -o " --loop " -f --no-audio
+```
+
 
 
 
