@@ -41,6 +41,8 @@ yay -S wshowkeys
 
 ```shell
 wshowkeys -a bottom -a right -F "SourceHanSansCN-Light.otf 35" -f "#604351" -s "#6FA27D"
+
+wshowkeys  -a bottom -a right  -b '#00000000' -f "#FFF" -s "#6FA27D" -F 'monospace 24' & 
 ```
 
 
