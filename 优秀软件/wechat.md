@@ -29,6 +29,9 @@ yay -S linuxqq
 # 微信
 yay -S deepin-wine-wechat 
 
+# 如果不行  安装这个包
+yay -S wechat-universal-bwrap  
+
 # 飞书
 yay -S feishu-bin
 ```
