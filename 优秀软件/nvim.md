@@ -120,7 +120,7 @@ local keymap = vim.keymap
 
 
 -- 修改退出 esc
-keymap.set("i","jk","<ESC>")
+keymap.set("i","jk","<ESC>") 
 
 
 -- 移动单行和多行
@@ -390,3 +390,4 @@ cmp.setup({
 > nvim的gui,rust写的。带有gup加速 
 >
 > [github](https://github.com/neovide/neovide)  配置文件是读去nvim的。共用的。所以，牛皮。哈哈
+
