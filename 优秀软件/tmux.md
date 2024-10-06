@@ -56,7 +56,7 @@ sudo pacman -S tmux
 
 ```shell
 # 新建会话
-tmus new -s <session-name>
+tmux new -s <session-name>
     
 # 分离会话  ctrl+b d
 tmux detach  
@@ -146,5 +146,10 @@ cp .tmux/.tmux.conf.local .
 tmux source-file ~/.tmux.conf
 ```
 
+> 这个主题好看。 [github](git clone https://github.com/chaozwn/tmux.git ~/.config/tmux)
 
+```shell
+git clone https://github.com/chaozwn/tmux.git ~/.config/tmux
+
+```
 
