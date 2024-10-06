@@ -34,6 +34,9 @@ yay -S wechat-universal-bwrap
 
 # 飞书
 yay -S feishu-bin
+
+# 微信开发者工具
+yay -S wechat-devtools-bin
 ```
 
 > hyprland 下安装微信 [url](https://github.com/vufa/deepin-wine-wechat-arch/issues/305)
