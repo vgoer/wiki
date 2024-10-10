@@ -45,3 +45,11 @@ sudo alsactl restore
 
 
 
+> 指定配置文件
+
+```shell
+cava -p ~/.config/cava/theme/dracula
+```
+
+
+
