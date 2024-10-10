@@ -109,4 +109,21 @@ dateCreated: 2023-07-26T13:02:31.895Z
 <progress value="70" max="100">70 %</progress>
 ```
 
-> 
+
+
+
+### 4. 定义变量css
+
+> css定义变量
+
+```css
+:root{
+    --mian-corol: #3D2D6C;
+    --layout-color: #1294D8;
+}
+
+/* 使用 */
+background-color: var(--mian-corol);
+
+```
+
