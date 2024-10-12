@@ -73,3 +73,29 @@ return {
 }
 ```
 
+
+
+
+
+> bad-apple.nvim
+>
+> [github](https://github.com/seandewar/bad-apple.nvim?tab=readme-ov-file)
+
+```shell
+# 安装声音的库
+yay -Ss libcanberra
+
+-- badapple.lau
+
+return {
+  {
+    "seandewar/bad-apple.nvim",
+    config = function()
+      -- 可选配置，例如设置 libcanberra 的路径
+      -- require("bad-apple.sound").libcanberra_fname = "/path/to/libcanberra"
+    end,
+  },
+}
+```
+
+> 运行`:BadApple`
