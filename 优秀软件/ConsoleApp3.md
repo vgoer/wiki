@@ -59,9 +59,19 @@ tmux(screen nohub)
 
 > rust 的命令 
 >
-> [rust](https://www.zhihu.com/question/511866354)
+> [rust](https://www.zhihu.com/question/511866354)  
 
 ```shell
+```
+
+* Firework-rs 是一款跨平台的终端式 ascii-art 烟花模拟器
+
+```shell
+cargo install firework-rs
+firework -d 0
+# 该二进制文件现在有5 个演示，从0到4。
+# 启用循环
+firework -l -g -d 1
 ```
 
 
@@ -74,4 +84,6 @@ tmux(screen nohub)
 
 ```shell
 ```
+
+
 
