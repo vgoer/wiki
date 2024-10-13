@@ -17,6 +17,8 @@
 > [wayland软件](https://arewewaylandyet.com/) [github](https://github.com/mpsq/arewewaylandyet)
 >
 > 配置详情： [config](https://cascade.moe/posts/hyprland-configure/)
+>
+> pyprpanel: [hyprpanel](https://hyprpanel.com/)
 
 
 
