@@ -28,7 +28,7 @@ https://github.com/prasanthrangan/hyprdots
 # Hyde cil 工具
 yay -S hyde-cli-git
 
-# 安装主题
+# 安装主题 discord 上面很多主题。
 Hyde theme patch
 Hyde sddm list
 ```
