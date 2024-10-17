@@ -200,7 +200,7 @@ const logOut = () => {
 
 > axiox 封装
 
-```shell
+```js
 # request/service.js
 import axios from "axios"
 
