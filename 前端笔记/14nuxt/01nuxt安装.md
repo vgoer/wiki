@@ -33,7 +33,20 @@ dateCreated: 2023-09-03T10:29:55.756Z
 ### 1. 安装
 
 ```shell
+pnpm dlx nuxi@latest init <project-name>
+
+# 依赖
+pnpm install
+
+# 启动
+pnpm dev -o
 ```
+
+> 浏览器启动，就可以看到Nuxt项目了。
+
+
+
+
 
 
 
