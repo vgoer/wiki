@@ -33,6 +33,9 @@ yay -S hyde-cli-git
 # 安装主题 discord 上面很多主题。
 Hyde theme patch
 Hyde sddm list
+
+# telegram 主题
+https://github.com/HyDE-Project/telegram-hyde.git
 ```
 
 
