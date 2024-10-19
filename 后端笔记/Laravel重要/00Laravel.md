@@ -93,7 +93,7 @@ Route::get('/userinfo',UserController::class,'index');
 
 ### 4. 自定义路由
 
-```shell
+```php
 # 添加路由文件 routes/admin.php
 <?php
 
@@ -127,7 +127,7 @@ Route::prefix('admin') # 路由前缀
 
 > 自动生成数据表
 
-```shell
+```php
 #1.  配置你的数据库 .env
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
@@ -158,7 +158,7 @@ public function up()
 php artisan migrate
 ```
 
-```shell
+```php
 # 此时出现一个错误 需要配置 文件 app\Providers\AppServiceProvider.php 具体原因目前我还没研究明白
     public function boot()
     {
