@@ -74,6 +74,12 @@ firework -d 0
 firework -l -g -d 1
 ```
 
+* genact： 无意义的活动生成器
+
+```shell
+yay -S genact
+```
+
 
 
 
