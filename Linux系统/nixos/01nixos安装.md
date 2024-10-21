@@ -49,6 +49,8 @@ dateCreated: 2023-06-17T01:21:19.878Z
 ### 1. 安装
 
 > from [blog ](https://blog.askk.cc/2022/09/18/nixos-installation/index.html)[blogg](https://blog.jogle.top/2022/06/19/nixos-get-started/) [bili](https://tech.aufomm.com/)
+>
+> 网络连接看这个：[blog](https://www.bilibili.com/read/cv19791217/)
 
 
 
@@ -78,7 +80,7 @@ fdisk /dev/sda
 
 接下来在 新建一个`boot` 分区，输入 `n` (表示 new), 起始点默认，大小选择 `+512M` 然后回车。接着创建主分区，输入 `n` 然后一路回车（我们把剩下所有空间都分给它）。
 
-接着调整分区类型，输入 `t` (表示 type)，先选 `1`(这是我们的 `boot` 分区)， 然后类型输入 `EF` (表示 EFI)， 接着继续输入 `t`, 选择 `2`, 类型选择 `linux`。
+接着调整	区类型，输入 `t` (表示 type)，先选 `1`(这是我们的 `boot` 分区)， 然后类型输入 `EF` (表示 EFI)， 接着继续输入 `t`, 选择 `2`, 类型选择 `linux`。
 更改完类型之后输入 `w` (表示 write) 然后输入 `q` 退出。
 
 我们还要格式化磁盘，首先格式化 `boot` 分区为 `FAT32` 格式。
