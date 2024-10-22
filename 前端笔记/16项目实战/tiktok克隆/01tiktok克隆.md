@@ -159,6 +159,8 @@ npx prettier --check . #检查 ，写入到 package
 * nuxt-icon
 
 > icon: [icon](https://nuxt.com/modules/icon)
+>
+> 图标库：[icons](https://icones.js.org/)
 
 ```shell
 pnpm install --save-dev nuxt-icon
@@ -185,8 +187,7 @@ export default defineNuxtConfig({
 * pinia/nuxt
 
 ```shell
-pnpm i pinia -D
-pnpm i @pinia/nuxt
+pnpm i pinia @pinia/nuxt
 ```
 
 > Add it to the `modules` array in your `nuxt.config.ts`:
