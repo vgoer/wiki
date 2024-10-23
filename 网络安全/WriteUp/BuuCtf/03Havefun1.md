@@ -25,7 +25,7 @@ dateCreated: 2023-05-22T10:38:57.863Z
 > 查看源码发现
 
 ```php
-        <!--
+<!--
 $cat=$_GET['cat'];
 echo $cat;
 if($cat=='dog'){
