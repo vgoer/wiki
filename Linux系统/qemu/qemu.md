@@ -147,3 +147,26 @@ qemu-img snapshot -l arch.img
 
 
 
+### 4. 网络
+
+> 设置虚拟机和主机的网络
+
+* 桥接
+
+```shell
+# 在主机上创建一个桥接接口，例如 br0：
+sudo ip link add name br0 type bridge
+sudo ip link set dev br0 up
+
+# 假设物理网卡为 eth0，将其添加到桥接接口中：
+sudo ip link set dev eth0 master br0
+
+# 启动配置桥接网络
+qemu-system-x86_64 -enable-kvm -machine type=pc,accel=kvm \
+-device virtio-vga-gl -display sdl,gl=on -smp 12 -m 4096 \
+-netdev bridge,id=net0,br=br0 -device virtio-net-pci,netdev=net0 \
+arch.img
+```
+
+
+
