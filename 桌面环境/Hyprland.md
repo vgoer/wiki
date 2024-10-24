@@ -19,6 +19,8 @@
 > 配置详情： [config](https://cascade.moe/posts/hyprland-configure/)
 >
 > pyprpanel: [hyprpanel](https://hyprpanel.com/)
+>
+> awesome-hyprland: [github](https://github.com/hyprland-community/awesome-hyprland)
 
 
 
