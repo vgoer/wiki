@@ -38,6 +38,16 @@ Hyde sddm list
 https://github.com/HyDE-Project/telegram-hyde.git
 ```
 
+1. 将文件添加`/telegram.dcol`到以下任一目录：
+
+- `~/.config/hyde/wallbash/Wall-Ways`
+- `~/.config/hyde/wallbash/Wall-Dcol`
+
+1. 复制`./wallbash.telegram.sh`到 $PATH
+2. 使用电报的 GUI 将`Wallbash.tdesktop-theme`文件添加为主题。
+
+- 导航至**“设置”** > **“聊天设置”** > **“聊天壁纸”** > **“从文件中选择**”` ~/.cache/hyde/landing/Wallbash.tdesktop-theme`
+
 
 
 > hyprland详细介绍
@@ -228,4 +238,18 @@ mpvpaper eDP-1 ~/bg/xxx.mp4 -o " --loop " -f --no-audio
 
 
 
+
+### 6. 扩展
+
+1. hy3
+
+> Hyprland 插件，适用于 i3 / sway 等手动平铺布局。[github](https://github.com/outfoxxed/hy3)
+
+```shell
+# hyprland自己的插件管理
+hyprpm update
+
+# 安装 hy3
+hyprpm add https://github.com/outfoxxed/hy3
+```
 
