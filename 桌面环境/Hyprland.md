@@ -253,5 +253,69 @@ hyprpm update
 
 # 安装 hy3
 hyprpm add https://github.com/outfoxxed/hy3
+
+hyprpm enable outfoxxed/hy3
+
+```
+
+2. split-monitor-workspaces
+
+> 一个小型的 Hyprland 插件，提供出色的工作区行为 [github](https://github.com/Duckonaut/split-monitor-workspaces)
+
+```shell
+hyprpm add https://github.com/Duckonaut/split-monitor-workspaces # Add the plugin repository
+hyprpm enable split-monitor-workspaces # Enable the plugin
+hyprpm reload # Reload the plugins
+```
+
+```shell
+.hyprland.conf
+# 启动插件
+exec-once = hyprpm reload -n
+```
+
+```shell
+# 配置
+# Overview
+plugin {
+    wslayout {
+        default_layout=master
+    }
+    split-monitor-workspaces {
+        count = 5
+        keep_focused = 0
+        enable_notifications = 0
+        enable_persistent_workspaces = 1
+    }
+}
+```
+
+3. hyprNStack
+
+> 用于 N 堆栈平铺布局的 Hyprland 插件 [github](https://github.com/zakk4223/hyprNStack)
+
+```shell
+hyprpm add https://github.com/zakk4223/hyprNStack
+
+hyprpm enable hyprNStack
+```
+
+```shell
+plugin {
+  nstack {
+    layout {
+      orientation=left
+      new_on_top=0
+      new_is_master=1
+      no_gaps_when_only=0
+      special_scale_factor=0.8
+      inherit_fullscreen=1
+      stacks=2
+      center_single_master=0
+      mfact=0.5
+      single_mfact=0.5
+    }
+  }
+}
 ```
 
