@@ -43,3 +43,17 @@ musicfox
 
 
 
+
+
+### 3. spotifox
+
+> Spotifox 是另一个与 go-musicfox 类似的 spotify CLI 客户端  [github](https://github.com/go-musicfox/spotifox?tab=readme-ov-file)
+
+
+
+````shell
+paru -S spotifox-bin # Download and install the precompiled binary file
+
+spotifox
+````
+
