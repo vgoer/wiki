@@ -149,7 +149,7 @@ tmux source-file ~/.tmux.conf
 > 这个主题好看。 [github](git clone https://github.com/chaozwn/tmux.git ~/.config/tmux)
 
 ```shell
-git clone https://github.com/chaozwn/tmux.git ~/.config/tmux
+z~/.config/tmux
 
 ```
 
