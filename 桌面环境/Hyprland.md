@@ -319,3 +319,90 @@ plugin {
 }
 ```
 
+4. Hyprspace
+
+> Hyprland 的工作区概览插件  [github](https://github.com/KZDKM/Hyprspace)
+
+```shell
+hyprpm add https://github.com/KZDKM/Hyprspace
+hyprpm enable Hyprspace
+```
+
+```shell
+# keybindings.conf
+
+bind = $mainMod CTRL, W, overview:toggle # wrokspace overview
+
+# so cool
+```
+
+> 其他配置看github
+
+5. hypr-dynamic-cursors
+
+> 一个插件，使你的 hyprland 光标更加逼真，还添加了摇动功能
+
+```shell
+hyprpm add https://github.com/virtcode/hypr-dynamic-cursors
+hyprpm enable dynamic-cursors
+```
+
+```shell
+# hyprland.conf
+
+plugin{
+	# 鼠标特效
+    dynamic-cursors{
+        enable =true
+        # 模式
+        # mode = rotate
+        mode = tilt
+        # mode = stretch
+    }
+
+}
+```
+
+6. hyprfocus
+
+>  Hyprland 焦点动画插件 [github](https://github.com/pyt0xic/hyprfocus)
+
+```shell
+hyprpm add https://github.com/pyt0xic/hyprfocus
+hyprpm enable hyprfocus
+```
+
+```shell
+# hyprland.conf
+
+    hyprfocus {
+        enabled = yes
+        animate_floating = yes
+        animate_workspacechange = yes
+        focus_animation = shrink
+        # Beziers for focus animations
+        bezier = bezIn, 0.5,0.0,1.0,0.5
+        bezier = bezOut, 0.0,0.5,0.5,1.0
+        bezier = overshot, 0.05, 0.9, 0.1, 1.05
+        bezier = smoothOut, 0.36, 0, 0.66, -0.56
+        bezier = smoothIn, 0.25, 1, 0.5, 1
+        bezier = realsmooth, 0.28,0.29,.69,1.08
+        # Flash settings
+        flash {
+            flash_opacity = 0.95
+            in_bezier = realsmooth
+            in_speed = 0.5
+            out_bezier = realsmooth
+            out_speed = 3
+        }
+        # Shrink settings
+        shrink {
+            shrink_percentage = 0.95
+            in_bezier = realsmooth
+            in_speed = 1
+            out_bezier = realsmooth
+            out_speed = 2
+        }
+    }
+```
+
