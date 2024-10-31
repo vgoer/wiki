@@ -51,3 +51,10 @@ function y() {
 }
 ```
 
+
+
+
+
+### 2. 配置文件
+
+> [github](https://github.com/sxyazi/yazi/tree/shipped/yazi-config/preset) 复制到 `.config/yazi/`目录下
