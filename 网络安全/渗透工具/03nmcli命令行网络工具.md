@@ -129,3 +129,25 @@ nmcli connection modify <connection_name> <property> <value>
 
 nmcli connection modify MyWiFi ipv4.addresses 192.168.1.100/24
 ```
+
+
+
+
+
+### 2. 常用命令
+
+```shell
+安装：
+sudo apt install nmcli
+
+查看网络设备
+sudo nmcli dev
+
+开启wifi和查看wifi
+sudo nmcli r wifi on
+sudo nmcli dev wifi
+
+连接wifi
+sudo nmcli dev wifi connect "wifi名称" password "密码"
+```
+
