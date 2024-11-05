@@ -56,7 +56,7 @@ dateCreated: 2023-04-20T11:08:06.411Z
 
 >  **系统**   ==最重要==
 
-![image-20220320093901409.png](/linux/image-20220320093901409.png)![image-20220320093901409](E:\github\study\linux\01Linux简介.assets\image-20220320093901409.png)
+![image-20220320093901409.png](/linux/image-20220320093901409.png)![image-20220320093901409](/linux/image-20220320093901409.png)
 
 >  ==我是谁->我在哪-->我要干嘛==
 
