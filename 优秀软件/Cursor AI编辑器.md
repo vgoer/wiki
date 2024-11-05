@@ -26,3 +26,11 @@
 
 
 
+
+
+### 1. 安装
+
+```shell
+yay -S aur/cursor-bin
+```
+
