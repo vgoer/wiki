@@ -17,6 +17,8 @@ dateCreated: 2023-04-19T17:51:10.000Z
 > 超文本标记语言（HyperText Markup Language，简称：HTML）是一种用于创建网页的标准*标记语言*。
 >
 > > 超文本 （文本 + 图片 + 视频 + 音频 + 链接）
+> >
+> > MDN: [mdn web docs](https://developer.mozilla.org/zh-CN/docs/Web)
 
 ```tex	
 HTML5设计目的主要为了移动端支持多媒体
