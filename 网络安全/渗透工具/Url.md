@@ -190,4 +190,8 @@
 >
 > 渗透联系靶场: [csdn](https://blog.csdn.net/Thunderclap_/article/details/125565590)  [Thunderclap](https://blog.csdn.net/Thunderclap_/article/details/125565590) 
 >
-> 
+> 初级赏金猎人：[github](https://github.com/nahamsec/Resources-for-Beginner-Bug-Bounty-Hunters)
+>
+> ctf tools:[ctf tools](https://github.com/MrMugiwara/CTF-Tools)
+>
+> shodan-script: [shadan](https://github.com/random-robbie/My-Shodan-Scripts)
