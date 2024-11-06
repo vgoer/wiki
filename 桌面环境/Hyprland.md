@@ -21,6 +21,8 @@
 > pyprpanel: [hyprpanel](https://hyprpanel.com/)
 >
 > awesome-hyprland: [github](https://github.com/hyprland-community/awesome-hyprland)
+>
+> nwg: [nwg](https://github.com/nwg-piotr)
 
 
 
@@ -149,6 +151,41 @@ animations {
 
 
 
+
+> 解决hyprland下的一些缩放输入法问题：[blog](https://sonnycalcr.github.io/posts/resolve-wayland-or-hyprland-chrome-and-jetrains-scale-issue/)
+
+* vscode
+
+```shell
+touch /etc/code-flags.conf
+```
+
+````shell
+--ozone-platform-hint=wayland
+--enable-wayland-ime
+````
+
+* chrome
+
+```shlel
+# chrome-flags.conf
+
+--enable-features=UseOzonePlatform
+--ozone-platform=wayland
+--enable-wayland-ime
+```
+
+然后是一些我们不知道其 flags 文件怎么命名的软件，比如，Obsidian 和 Jetbrains 家的软件，那么，我们可以直接自制一份我们自己的 desktop file 来覆盖系统默认的，这里拿 Obsidian 举例，我们去 `/usr/share/applications` 下去复制一份 obsidian.desktop 文件到 `~/.local/share/applications/` 下面，然后在 Exec 那一行加一些启动参数即可，
+
+```yaml
+1Exec=/usr/bin/obsidian %U --enable-features=UseOzonePlatform --ozone-platform=wayland --enable-wayland-ime
+```
+
+Jetbrains 家的软件也是一样，加一下它们提供的 wayland 相关的参数即可，
+
+```yaml
+1Exec=intellij-idea-ultimate-edition %u -Dawt.toolkit.name=WLToolkit
+```
 
 
 
