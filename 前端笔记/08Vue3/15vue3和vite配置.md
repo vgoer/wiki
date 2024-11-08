@@ -63,7 +63,65 @@ css: {
 // 文章 https://juejin.cn/post/7134617656241422350
 ```
 
+> 如果使用了typescript，需要加额外配置 tsconfig.json
+
+```shell
+ "compilerOptions": {
+     "baseUrl": "./",                        
+     "paths": {
+         "@/*": ["./src/*"]
+     } 
+ }
+```
+
+
+
 > 安装 `sass`[scss](https://juejin.cn/post/7239585610862805051)
+
+```shell
+pnpm install sass  -D
+```
+
+> 全局变量
+
+```scss
+// assets/css/globalVar.scss
+
+$color: #f00;
+$bg-color: #00f;
+```
+
+> 重复之使用的样式
+
+```scss
+// assets/css/globlMinxin.scss
+h1{
+    font-size:  100px;
+    color: $bg-color;
+}
+```
+
+> vite.config.ts配置
+
+```ts
+  // css
+  css:{
+    preprocessorOptions:{
+      scss: {
+        additionalData: `
+          @use "@/assets/css/globalVar.scss" as *;
+          @use "@/assets/css/globalMinxin.scss" as *;
+        `
+      }
+    }
+  },
+```
+
+
+
+
+
+
 
 ### 2.开发配置
 
