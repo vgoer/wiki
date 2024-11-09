@@ -186,6 +186,218 @@ function delete($tables,$cond){
 
 
 
+> 代码全
+
+```php
+<?php
+
+namespace DB;
+
+class Database
+{
+    private string $host;
+    private string $username;
+    private string $password;
+    private string $database;
+    private $conn;
+    private string $sql;
+    private string $dbpre_fix;
+
+    public function __construct(string $host, string $username, string $password, string $database, string $dbpre_fix)
+    {
+        $this->host = $host;
+        $this->username = $username;
+        $this->password = $password;
+        $this->database = $database;
+        $this->dbpre_fix = $dbpre_fix;
+
+        $this->connect();
+    }
+
+
+    private function connect()
+    {
+        $this->conn = mysqli_connect($this->host, $this->username, $this->password, $this->database);
+
+        if(!$this->conn){
+            echo "网站升级中...";
+            exit;
+        }
+
+        mysqli_set_charset($this->conn, "utf8");
+    }
+
+    public function select(string $fields="*")
+    {
+        $this->sql = "SELECT $fields";
+        return $this;
+    }
+
+
+    public function from(string $table)
+    {
+        // SLECT * FROM pre_person
+        $this->sql .= " FROM {$this->dbpre_fix}{$table}";
+
+        return $this;
+    }
+
+    public function join(string $join_table, string $join_on, string $join_type="LEFT")
+    {
+        $this->sql .= " $join_type JOIN {$this->dbpre_fix}$join_table ON $join_on";
+
+        return $this;
+    }
+
+
+    public function where(string $condition)
+    {
+        $this->sql .= " WHERE $condition";
+
+        return $this;
+    }
+
+    public function group(string $group)
+    {
+        $this->sql .= " GROUP BY $group";
+
+        return $this;
+    }
+
+    public function order(string $order)
+    {
+        $this->sql .= " ORDER BY $order";
+
+        return $this;
+    }
+
+
+    public function limit(int $limit)
+    {
+        $this->sql .= " LIMIT $limit";
+    }
+
+
+    public function count()
+    {
+        $res = mysqli_query($this->conn, $this->sql);
+
+        if($res && mysqli_num_rows($res) > 0){
+            return mysqli_num_rows($res);
+        }
+        return 0;
+    }
+
+    public function get_one()
+    {
+        $res = mysqli_query($this->conn, $this->sql);
+
+        $data  = [];
+        if($res && mysqli_num_rows($res) > 0){
+            $data = mysqli_fetch_assoc($res);
+        }
+
+        return $data;
+    }
+
+    public function get_all()
+    {
+        $res = mysqli_query($this->conn, $this->sql);
+
+        $date = [];
+        if($res && mysqli_num_rows($res) > 0){
+            $data = mysqli_fetch_all($res, MYSQLI_ASSOC);
+        }
+
+        return $data;
+    }
+
+    public function insert(string $table, array $data)
+    {
+        // INSERT INTO pre_person (name, age) VALUES ('张三', 18)
+        $this->sql = "INSERT INTO {$this->dbpre_fix}$table";
+        $this->sql .= " (" . implode(",", array_keys($data)) . ")";
+        $this->sql .= " VALUES ('" . implode("','", array_values($data)) . "')";
+
+        return $this;
+    }
+
+    public function save(string $table, array $data)
+    {
+        $this->sql = "UPDATE {$this->dbpre_fix}$table SET ";
+        $this->sql .= implode(",", array_map(function($v, $k){
+            return "$k='$v'";
+        }, $data, array_keys($data)));
+
+        return $this;
+    }
+
+
+    public function delete(string $table, string $condition)
+    {
+        $this->sql = "DELETE FROM {$this->dbpre_fix}$table WHERE $condition";
+
+        return $this;
+    }
+
+    public function query()
+    {
+        $res = mysqli_query($this->conn, $this->sql);
+
+        if($res){
+            return $res;
+        }
+        echo mysqli_error($this->conn);
+        exit;
+    }
+
+    public function get_sql()
+    {
+        return $this->sql;
+    }
+
+    public function __destruct()
+    {
+        mysqli_close($this->conn);
+    }
+}
+
+```
+
+> 列子
+
+```php
+<?php
+
+// 实例化数据库类
+$db = new Database();
+$db->connect();
+
+// 查询示例
+$person = $db->getOne("SELECT * FROM v1_person WHERE id = ?", [1]);
+$allPersons = $db->getAll("SELECT * FROM v1_person WHERE depid = ?", [2]);
+
+// 插入示例
+$data = [
+    'name' => '张三',
+    'mobile' => '13800138000',
+    'sex' => '1',
+    'depid' => 1,
+    'create_time' => date('Y-m-d H:i:s')
+];
+$newId = $db->insert('v1_person', $data);
+
+// 更新示例
+$updateData = [
+    'name' => '李四',
+    'mobile' => '13900139000'
+];
+$affected = $db->update('v1_person', $updateData, 'id = 1');
+
+// 删除示例
+$deleted = $db->delete('v1_person', 'id = 1');
+```
+
 
 
 
