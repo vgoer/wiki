@@ -141,6 +141,38 @@ ajax.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 ajax.send("value=value");
 ```
 
+```php
+# all
+<form action="" method="post">
+        <input type="text" name="username" value="" id="user">
+        <input type="password" name="password" id="pass">
+        <input type="button" id="btn" name="" value="提交">
+    </form>
+
+    <script>
+        
+        let btn = document.getElementById("btn");
+        btn.addEventListener("click", function(){
+
+            let user = document.getElementById("user").value;
+            let pass = document.getElementById("pass").value;
+            // ajax
+            let ajax = new XMLHttpRequest();
+            ajax.onreadystatechange = function(){
+                if(ajax.readyState == 4 && ajax.status == 200){
+                    let obj = JSON.parse(ajax.responseText);
+                    console.log(obj);
+                }
+            }
+
+            ajax.open("post", "index.php");
+            ajax.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            ajax.send("username=" + user + "&password=" + pass);
+        })
+        
+    </script>
+```
+
 
 
 > 接受数据
