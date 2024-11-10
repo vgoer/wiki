@@ -174,8 +174,8 @@ php artisan make:migration add_user_id_to_blogs_table
     public function up()
     {
         Schema::table('blogs', function (Blueprint $table) {
-            //
-            $table->unsignedBigInteger("user_id")->nullable()->comment("关联id");
+            // nullable 可以为空  index 索引
+            $table->unsignedBigInteger("user_id")->nullable()->index->comment("关联id");
         });
     }
 
