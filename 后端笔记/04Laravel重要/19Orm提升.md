@@ -117,7 +117,7 @@ public function getRouteKeyName()
 
 ### 3. 模型黑魔法
 
-> 添加模型属性
+> 添加模型属性 ==重要==
 
 ```php
 # 添加路由规则
@@ -132,6 +132,51 @@ public function getPathAttribute()
 }
 
 $blog->path; 获取到path属性。
+```
+
+
+
+
+
+### 4. 批量赋值
+
+> 批量赋值，简化代码
+
+```php
+    public function store()
+    {
+        $input = request()->all();
+        
+        // 1. 
+        // $blog = new \App\Models\Blog();
+        // $blog->title = $input["title"];
+        // $blog->excerpt = $input["excerpt"];
+        // $blog->bg_img = "banner3.jpg";
+        // $blog->body = $input["body"];
+        // $blog->save();
+
+        // 2. 
+        Blog::create([
+            "title" => $input["title"],
+            "excerpt" => $input["excerpt"],
+            "bg_img" => "banner3.jpg",
+            "body" => $input["body"],
+        ]);
+
+
+        return redirect("/");
+    }
+}
+```
+
+> 模型修改
+
+```php
+// 允许可以直接修改的字段
+protected $fillable = ["title", "excerpt", "body", "bg_img"];
+
+// 保护的字段
+protected $guarded = [];
 ```
 
 
