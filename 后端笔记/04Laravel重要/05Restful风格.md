@@ -53,7 +53,11 @@ edit view:  GET  blogs/:id/edit
 > 生成资源控制器
 
 ```shell
+# 资源
 php artisan make:controller ProjectController -r 
+
+# 对应生成
+php artisan make:model -mr
 ```
 
 ```php
