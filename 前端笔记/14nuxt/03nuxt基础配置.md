@@ -121,3 +121,71 @@ if (import.meta.server){
   console.log("cilen...")
 }
 ```
+
+
+
+
+
+### 5. 引入tailwindcss
+
+> [css](https://www.tailwindcss.cn/docs/guides/nuxtjs)
+
+```shell
+npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init
+```
+
+````ts
+# nuxt.config.ts
+// https://nuxt.com/docs/api/configuration/nuxt-config
+export default defineNuxtConfig({
+  devtools: { enabled: true },
+  postcss: {
+    plugins: {
+      tailwindcss: {},
+      autoprefixer: {},
+    },
+  },
+})
+````
+
+```ts
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    "./components/**/*.{js,vue,ts}",
+    "./layouts/**/*.vue",
+    "./pages/**/*.vue",
+    "./plugins/**/*.{js,ts}",
+    "./app.vue",
+    "./error.vue",
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+```
+
+> 添加 tailwind css  `./assets/css/main.css` 
+
+```css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+
+```ts
+// https://nuxt.com/docs/api/configuration/nuxt-config
+export default defineNuxtConfig({
+  devtools: { enabled: true },
+  css: ['~/assets/css/main.css'],
+  postcss: {
+    plugins: {
+      tailwindcss: {},
+      autoprefixer: {},
+    },
+  },
+})
+```
+
