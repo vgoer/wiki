@@ -8,239 +8,158 @@ editor: markdown
 dateCreated: 2023-04-19T17:23:19.108Z
 ---
 
-<center>xss</center>
+<center>NoSql</center>
 
 [toc]
 
-## xss
+## NoSql
 
-> xss(Cross site script)  跨站脚本攻击
+> Nosql: 非关系型数据库。
+>
+> 用于超大规模数据存储。
 
-> 原理： 前端代码有问题 ==允许用户嵌入东西== `html css javascipt`
 
 
 
-### 分类
 
-```js
-反射型  --  前端-> 后端 -> 前端
-储存型  --  前端-> 后端 -> 数据-> 前端
-DOM型  --  前端
+### 1. 启动mongodb
+
+> `docker-compose.yaml`
+
+```yaml
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=password
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+
+volumes:
+  mongodb_data:
+```
+
+```shell
+# 启动
+docker-compose up -d
+
+# 进入容器：
+mongosh "mongodb://admin:password@localhost:27017"
+```
+
+> 方法二： arch
+
+```shell
+yay -S mongodb
+# 或者
+yay -S mongodb-bin
 ```
 
 
 
-### 反射型
-
-```php
-// 结束表单数据， echo出来
-$xss = $_POST['xss'];
-if($xss != null){
-    echo $xss;
-}
-<form action="" method="post">
-    <input type="text" name="xss"> 
-    <input type="submit">
-</form>
-
-// 这样我们就可以在input框输入任意代码 
-<script>alert(aaa)</script>
-<script>location.href="地址"</script> 链接劫持
-<h1 style="color:blue">xss</h1>
-// 插入beef (js学过)框架
-    
-// js设置cookie   setcookie('1','a',time()); php
-   // document.cookie = name+value;
-```
-
-把中了`hook.js的url生成短链接` --> 也会中招
-
-短链接：[站长之家](http://tool.chinaz.com/Tools/dwz.aspx)
 
 
 
-> 防御
 
-```php
-// 过滤  尖括号 <> 进攻 防御相辅相成的  你给他绕过
-```
+### 2. 使用
 
-> 赶紧学 html、css、js(*javascript*)==重点==
+```shell
+# 1. 查看数据库， 一般用前面的
+show dbs;   /  show databases;
 
-> 学习没有捷径  --- 加油
+# 2. 使用 和 新建数据库
+use 数据库;
+
+# 3. 查看表
+show collections;  / show tables;
+
+# 4. 查看
+db.数据表.find();
+# 格式化
+db.数据表.find().pretty();
+#  name=admin
+db.user.find({"name" : "user1"});
+
+# 5. 插入数据 和 新建表
+db.goods.insert({"name": "goer", "age": 18});
 
 
-
-### 存储型
-
-> 原理：前端代码 允许用户嵌入 代码
-
-```tex
-最常见： 留言功能-->（任何地方都可能存在）
-危害很大
-留言框 --> 存到数据库 --> 数据库返回给前端(显示所有用户留言)
-// 插入js代码  任意用户打开留言网页，都会执行代码
-```
-
-```php+HTML
-<body>
-    <form action="" method="get">
-        <input type="text" name="xss2">
-        <input type="submit" value="insert">
-    </form>
-</body>
-</html>
-
-<?php
-
-    function p($arr){
-        echo '<pre>';
-        print_r($arr);
-        echo '</pre>';
-    }
-
-    $name = $_GET['xss2'];
-    $sql = 'select * from admin';
-    $sqli = "insert into admin(username,password) values('".$name."','123')";
-
-    $link = mysqli_connect(
-        'localhost',    //连接mysql地址
-        'root',         // 连接用户名
-        'root',         //连接用户名密码
-        'test'         // 连接数据库名
-    );
-    if(!$link){
-        printf("cont's to mysql %s",mysqli_connect_errno());
-    }else{
-        echo 'hello'.'<br>';
-    }
-    // 插入数据
-    if($result = mysqli_query($link,$sqli)){
-        //p($result);
-        echo "ok";
-    }else{
-        echo 'no';
-    }
-    // 查询数据
-    if($result = mysqli_query($link,$sql)){
-        // 返回查询的数据
-        while($row = mysqli_fetch_assoc($result)){
-            echo $row['username']."<----->".$row['password'].'<br>';
-        }
-        //释放内存
-        mysqli_free_result($result);
-    }
-
-    //关闭连接
-    mysqli_close($link);
-
-?>
-```
-
-> 下面就可以插入你学过的js+css+html代码了
-
-```html
-<script>alert(1);</script>//从数据库拿出留言，所以每个字段都会执行
-// hock.js beef -- 钩子
-// 可以放任何的js代码 --> 键盘纪录 cookie盗取等等
 ```
 
 
 
-### DOM型
 
-> 原理：前端代码 允许用户嵌入东西
 
-```html
-<body>
-    <input type="text" id="text">
-    <p>this is xss</p>
-    <div id="xss"></div>
-    <input type="button" value="click" onclick="xssfun();">
-</body>
-<script>
-    function xssfun(){
-        // 创建节点
-        var a = document.createElement('a');
-        // 文本节点
-        var linktext = document.createTextNode('dom xss -html');
-        // 给节点  属性和值 任意
-        a.className = 'dom xss';
-        // 获取value
-        var link = document.getElementById('text').value;
-        console.log(link);
-        a.href = link;
 
-        document.getElementById('xss').innerHTML = '<a href="'+link+'">'+linktext.textContent+'</a>';
-        document.getElementById('xss').appendChild(a);
-    }
-</script>
-<!-- 跳出a链接 --!>
+
+
+<center>nosql注入</center>
+
+[toc]
+
+## nosql
+
+> `非关系型数据库`，  用于超大规模数据存储
+
+
+
+### mogod
+
+> 数据库：
+
+> docker搭建
+
+```shell
+docker run --name mongodb -p 27017:27017 -d mongo
+docker exec -it mongodb bash
+mongo
 ```
 
+```sql
+// 安装好
+// 开启服务
+mongod --dbpath /路径  // 指定数据存放的位置
 
+// 连接
+mongo
 
-### xss绕过
+//查看数据库
+show databases;
+show dbs;
 
-> 如果过滤了 `<  >` 符号怎么办
+//使用数据库
+use database;//数据库
 
-```php
-// 反射xss 过滤
-<form action="" method="post">
-    <input type="text" name="xss" id="">
-    <input type="submit" value="pass">
-    </form>
+// 查看数据库里的表
+show tables;
+show collections; //多用这个
 
-function str_pass($a){
-    $a = str_replace('<','aa',$a);  // 字符串替换
-    return $a;
-} 
-$xss = $_POST['xss'];
-if(!$xss == null){
-    // echo $_POST['xss'];
-    echo str_pass($xss);
-}
-// 可能会过滤的 script  <  >  26个英文字母一般不会过滤
+// 查看表中的数据
+db.user.find(); //user表   json格式的
+db.user.fint().pretty(); 格式好看些
+// 不能用 select * from user;
 
-// 正则匹配  更加强大 方法很多
-// 逻辑过滤 yara -> 逻辑强
+// 查看表中一组数据  
+db.user.find({"name":"user1"}); //查到name=user1这条数据
+// 类似 select * from user where name=user1;
 ```
 
-```php
-// 绕过
-比如上面过滤了小写s 我们就可以用大写的S绕过
-手法千奇百怪呀！
-总结常见绕过姿势，
-熟练js和闭合标签    
+> 滴滴-- 发车了
+
+```sql
+// 创建数据库
+use test; // 因为里面没有东西，所有看不见数据库
+
+// 插入表
+db.goods.insert({"name":"user","age":"20"}); 
+//新建表，插入两个字段
 ```
 
-> 分析过滤的内容
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+[博客](https://blog.szfszf.top/article/27/)
 
 
 
