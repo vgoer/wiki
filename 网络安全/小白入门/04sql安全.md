@@ -53,7 +53,14 @@ insert into admin(username,password) values("admin","password");
 // insert into 插到哪里  admin表的字段
 // values() 值
 
+// 删除
 delete from admin where id= ;  //删除字段id=
+
+// 修改
+update `table` set 字段1='值1',字段2='值2',...  where 条件 
+
+// 查询
+select * from `table`
 
 show full columns from admin;   // 查看字段 意义
 ```
@@ -93,8 +100,6 @@ select * from admin where id = 1 and exists(select username from student);
 # 这样也可以执行 UnioN  -> 大写绕过
 select * from admin UnioN select 1,2,3 from blogs 
 ```
-
-
 
 
 
@@ -138,6 +143,12 @@ if($result = mysqli_query($link,$sql)){
 
 mysqli_close($link); // 关闭连接
 ```
+
+
+
+
+
+
 
 ==函数==
 
