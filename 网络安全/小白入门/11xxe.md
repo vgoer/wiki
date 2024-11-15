@@ -26,7 +26,7 @@ dateCreated: 2023-04-19T17:30:32.118Z
 
 > 可扩展的标记语言：标签名很**随意**
 
-```
+```xml-dtd
 <?xml vsersion='1.0' encoding='utf-8'>
 <!DOCTYPE 家庭 SYSTEM 'a.dtd'// 引入a.dtd文件约束xml文件
 <家庭>
