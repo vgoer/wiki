@@ -82,3 +82,21 @@ mysqli_real_escape_string [菜鸟](https://www.runoob.com/php/func-mysqli-real-e
 
 
 
+### 3. high
+
+> 高级
+>
+> 源码：[url](http://192.168.0.111:8000/vulnerabilities/view_source.php?id=brute&security=high)
+
+```shell
+# token 校验
+    // Check Anti-CSRF token
+    checkToken( $_REQUEST[ 'user_token' ], $_SESSION[ 'session_token' ], 'index.php' );
+```
+
+> 服务端返回一个token给客户端，客户端隐藏的`input`提交给客户端校验
+
+```html
+<input type='hidden' name='user_token' value='42f15b92219b40fc0aa2f1f8215fdf56' />
+```
+
