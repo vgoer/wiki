@@ -148,6 +148,32 @@ http://192.168.0.111:8000/vulnerabilities/fi/?page=file:///etc/passwd
 
 
 
+### 4. impossible
+
+> 不可能
+>
+> 代码
+
+```php
+
+<?php
+
+// The page we wish to display
+$file = $_GET[ 'page' ];
+
+// Only allow include.php or file{1..3}.php
+if( $file != "include.php" && $file != "file1.php" && $file != "file2.php" && $file != "file3.php" ) {
+    // This isn't the page we want!
+    echo "ERROR: File not found!";
+    exit;
+}
+
+```
+
+> 文件只能是 `file1.php  file2.php  file13php`
+>
+> 比较安全：`白名单方式实现`
+
 
 
 
