@@ -65,8 +65,8 @@ net localgroup Administrators UserName /add
 
 
 # linux 等
-127.0.0.1 | ip addr
-127.0.0.1 | cat /etc/passwd 
+127.0.0.1 ; ip addr
+127.0.0.1 ; cat /etc/passwd 
 
 # 创建用户
 sudo useradd -m username    # -m 创建家目录
@@ -147,8 +147,6 @@ IF EXIST file.txt (
 dir file.txt && echo "存在" || echo "不存在"
 ```
 
-* 
-
 
 
 
@@ -169,8 +167,16 @@ dir file.txt && echo "存在" || echo "不存在"
 
     // Remove any of the charactars in the array (blacklist).
     $target = str_replace( array_keys( $substitutions ), $substitutions, $target );
-    
+```
 
+> 不使用`&&`和`;`字符
+
+```shell
+# win
+127.0.0.1 & ipconfig
+
+# linux
+127.0.0.1 | ip addr
 ```
 
 
