@@ -88,3 +88,38 @@ http://192.168.0.111:8000/vulnerabilities/csrf/?password_new=password&password_c
 
 
 
+### 2. medium
+
+> 中级
+>
+> 代码
+
+````php
+# 字符串判断
+    // Checks to see where the request came from
+    if( stripos( $_SERVER[ 'HTTP_REFERER' ] ,$_SERVER[ 'SERVER_NAME' ]) !== false ) {
+````
+
+> stripos 查找字符串出现的第一个位置
+
+```shell
+<?php
+echo stripos("I love php, I love php too!","PHP"); #  7
+?>
+```
+
+```shell
+$_SERVER[ 'HTTP_REFERER' ]  == Referer == http://192.168.0.111:8000/vulnerabilities/csrf/
+$_SERVER[ 'SERVER_NAME' ]   == host == 192.168.0.111
+```
+
+> Referer请求头： 告诉网站来自那里的。
+>
+> `$_SERVER[ 'SERVER_NAME' ]`只关注域名，所以我们Referer只要包含`SERVER_NAME`就可以绕过了
+
+```shell
+# 搭建一个网站，把404.html放到 192.168.0.111目录下就可以绕过了。
+
+# so cool
+```
+
