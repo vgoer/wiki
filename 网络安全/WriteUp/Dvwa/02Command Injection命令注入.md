@@ -87,9 +87,91 @@ sudo visudo
 username ALL=(ALL:ALL) ALL
 ````
 
+> 扩展：
+
+1. windows 的与或非
+
+* 单个 & (简单连接符)：
+
+```cmd
+# 无条件执行后续命令，不管前面的命令是否成功
+command1 & command2    # 两个命令都会执行
+
+# 示例
+dir & echo "这句话总会显示"
+```
 
 
 
+* 与操作 (AND)：
+
+```cmd
+# 使用 && 
+command1 && command2    # command1 成功才执行 command2
+
+# 示例
+dir && echo "目录列表完成"
+```
+
+* 或操作 (OR)：
+
+```cmd
+# 使用 ||
+command1 || command2    # command1 失败才执行 command2
+
+# 示例
+dir nonexist.txt || echo "文件不存在"
+```
+
+* 非操作 (NOT)：
+
+```cmd
+# 使用 NOT
+IF NOT EXIST file.txt echo "文件不存在"
+
+# 使用 !
+IF !ERRORLEVEL! EQU 0 echo "命令成功"
+```
+
+* if判断
+
+```cmd
+:: IF 语句中的与或非
+IF EXIST file.txt (
+    IF NOT EXIST backup.txt (
+        echo "file.txt 存在但 backup.txt 不存在"
+    )
+)
+
+:: 组合使用
+dir file.txt && echo "存在" || echo "不存在"
+```
+
+* 
+
+
+
+
+
+### 2. medium
+
+> 中级
+>
+> 代码直接点击 `view source`
+
+```shell
+# 做了过滤
+    // Set blacklist
+    $substitutions = array(
+        '&&' => '',
+        ';'  => '',
+    );
+
+    // Remove any of the charactars in the array (blacklist).
+    $target = str_replace( array_keys( $substitutions ), $substitutions, $target );
+    
+
+```
 
 
 
