@@ -67,5 +67,29 @@ net localgroup Administrators UserName /add
 # linux 等
 127.0.0.1 | ip addr
 127.0.0.1 | cat /etc/passwd 
+
+# 创建用户
+sudo useradd -m username    # -m 创建家目录
+# 设置密码
+sudo passwd username
+# 添加到 sudo 组
+sudo usermod -aG sudo username    # Ubuntu/Debian
+# 或
+sudo usermod -aG wheel usernam# 安全编辑 sudoers 文件
+sudo visudo
+
+# 添加以下行
+username ALL=(ALL:ALL) ALLe   # CentOS/RHEL/Arch Linux
+# 安全编辑 sudoers 文件
+sudo visudo
+
+# 添加以下行
+username ALL=(ALL:ALL) ALL
 ````
+
+
+
+
+
+
 
