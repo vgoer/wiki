@@ -96,6 +96,39 @@ Cookie: dvwaSession=1732164337; PHPSESSID=5skbhhtisu1kf4vfe8jvh4a2l5; security=m
 
 
 
+### 3. high
+
+> 高级
+
+```php
+<?php
+
+$html = "";
+
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
+    if (!isset ($_SESSION['last_session_id_high'])) {
+        $_SESSION['last_session_id_high'] = 0;
+    }
+    $_SESSION['last_session_id_high']++;
+    $cookie_value = md5($_SESSION['last_session_id_high']);
+    setcookie("dvwaSession", $cookie_value, time()+3600, "/vulnerabilities/weak_id/", $_SERVER['HTTP_HOST'], false, false);
+}
+
+```
+
+> 用了一个md5加密，还是不安全的。[md5](https://www.runoob.com/php/func-string-md5.html)
+
+````shell
+# 还是时间戳1732164416  应该是36位字符。
+Cookie: dvwaSession=1732164416; PHPSESSID=5skbhhtisu1kf4vfe8jvh4a2l5; security=high
+````
+
+
+
+
+
+
+
 
 
 
