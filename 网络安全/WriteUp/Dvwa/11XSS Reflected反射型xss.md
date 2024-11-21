@@ -141,3 +141,43 @@ if( array_key_exists( "name", $_GET ) && $_GET[ 'name' ] != NULL ) {
 <img src=1 onerror=alert(/xss/)>
 ```
 
+
+
+
+
+
+
+### 4. impossible
+
+> 不可能的
+
+```php
+
+<?php
+
+// Is there any input?
+if( array_key_exists( "name", $_GET ) && $_GET[ 'name' ] != NULL ) {
+    // Check Anti-CSRF token
+    checkToken( $_REQUEST[ 'user_token' ], $_SESSION[ 'session_token' ], 'index.php' );
+
+    // Get input
+    $name = htmlspecialchars( $_GET[ 'name' ] );
+
+    // Feedback for end user
+    echo "<pre>Hello ${name}</pre>";
+}
+
+// Generate Anti-CSRF token
+generateSessionToken();
+```
+
+> htmlspecialchars: htmlspecialchars() 函数把一些预定义的字符转换为 HTML 实体。
+>
+> 这样的话，xss就不好利用了。
+>
+> [runoob](https://www.runoob.com/php/func-string-htmlspecialchars.html)
+
+
+
+
+
