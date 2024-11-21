@@ -107,3 +107,37 @@ if( array_key_exists( "name", $_GET ) && $_GET[ 'name' ] != NULL ) {
 <img src=1 onerror=alert(/xss/)>
 ```
 
+
+
+
+
+### 3. high
+
+> 高级
+
+```php
+
+<?php
+
+header ("X-XSS-Protection: 0");
+
+// Is there any input?
+if( array_key_exists( "name", $_GET ) && $_GET[ 'name' ] != NULL ) {
+    // Get input
+    $name = preg_replace( '/<(.*)s(.*)c(.*)r(.*)i(.*)p(.*)t/i', '', $_GET[ 'name' ] );
+
+    // Feedback for end user
+    echo "<pre>Hello ${name}</pre>";
+}
+
+```
+
+> preg_replace: preg_replace 函数执行一个正则表达式的搜索和替换。
+>
+> [runoob](https://www.runoob.com/php/php-preg_replace.html)
+
+```shell
+# 过滤了script脚本，img插入又没啥用，能插入img的损人不利己的事
+<img src=1 onerror=alert(/xss/)>
+```
+
