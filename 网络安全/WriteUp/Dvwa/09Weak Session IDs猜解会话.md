@@ -68,6 +68,30 @@ Cookie: dvwaSession=9; PHPSESSID=5skbhhtisu1kf4vfe8jvh4a2l5; security=low
 
 
 
+### 2. medium
+
+> 中级
+
+```php
+
+<?php
+
+$html = "";
+
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
+    $cookie_value = time();
+    setcookie("dvwaSession", $cookie_value);
+}
+```
+
+> 时间戳，也容易被猜解。
+
+```shell
+Cookie: dvwaSession=1732164337; PHPSESSID=5skbhhtisu1kf4vfe8jvh4a2l5; security=medium
+```
+
+
+
 
 
 
