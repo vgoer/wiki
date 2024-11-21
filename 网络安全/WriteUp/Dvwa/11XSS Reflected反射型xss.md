@@ -181,3 +181,14 @@ generateSessionToken();
 
 
 
+
+
+### 5. 总结
+
+> xss利用代码： [csdn](https://blog.csdn.net/chk218/article/details/81878479)
+
+
+
+> 1. 想要查看是否存在xss,也不单只有一个标签可用，很多很多
+> 2. 最主要的还是能利用script标签代码
+
