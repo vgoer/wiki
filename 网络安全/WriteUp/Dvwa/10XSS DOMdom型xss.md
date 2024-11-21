@@ -130,3 +130,36 @@ if ( array_key_exists( "default", $_GET ) && !is_null ($_GET[ 'default' ]) ) {
 http://192.168.0.111:8000/vulnerabilities/xss_d/?default=French#%3Cscript%3Ealert(/xss/)%3C/script%3E
 ```
 
+
+
+
+
+
+
+### 4. impossible
+
+> 不可能的
+
+```php
+
+<?php
+
+# Don't need to do anything, protction handled on the client side
+
+```
+
+```js
+//前端做了过滤
+if (document.location.href.indexOf("default=") >= 0) {
+    var lang = document.location.href.substring(document.location.href.indexOf("default=")+8);
+    document.write("<option value='" + lang + "'>" + (lang) + "</option>");
+    document.write("<option value='' disabled='disabled'>----</option>");
+}
+
+document.write("<option value='English'>English</option>");
+document.write("<option value='French'>French</option>");
+document.write("<option value='Spanish'>Spanish</option>");
+document.write("<option value='German'>German</option>");
+
+```
+
