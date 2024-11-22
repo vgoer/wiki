@@ -143,7 +143,15 @@ export XMODIFIERS="@im=fcitx"
 sudo pacman -S shadowsocks-qt5
 sudo pacman -S proxychains-ng
 sudo  pacman -S  v2rayA
+
+# 更好的代码
+yay -S clash-for-windows-bin
+
+# 推荐
+yay -S clash-verge-rev-bin
 ```
+
+> clash: [github](https://github.com/clash-verge-rev/clash-verge-rev)
 
 
 
