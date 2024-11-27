@@ -105,6 +105,8 @@ root
 ### 2. 获取flage
 
 > telnet: [blog](https://www.cnblogs.com/WangJianqiu/p/16903331.html)
+>
+> `端口 23`
 
 > telnet服务端和客户端搭建。
 
