@@ -101,6 +101,8 @@ get
 
 > [ftp vs sftp](https://cloud.tencent.com/developer/article/2279327)文件服务器
 
+> `端口：21`
+
 > vsftpd服务端和客户端搭建。
 
 ```shell
