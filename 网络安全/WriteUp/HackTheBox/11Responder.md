@@ -207,11 +207,12 @@ nmap -v -p- --min-rate 5000 -sV -sC IP
 7680/tcp open  pando-pub?
 Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows
 
-
+# 安装Responder
 sudo apt install responder
 
 # 监听网卡
 sudo responder -I tun0
+
 ```
 
 
