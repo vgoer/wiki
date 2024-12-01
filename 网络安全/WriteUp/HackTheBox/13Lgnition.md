@@ -64,6 +64,97 @@ qwerty123
 
 
 
+### 2. magento
+
+> Magento 是一个开源的电子商务平台。 [github](https://github.com/magento/magento2)
+
+```shell
+强大的电商功能
+高度可定制
+多商店支持
+SEO 友好
+丰富的扩展生态
+```
+
+````shell
+1. 服务器
+
+
+#### Ubuntu/Debian 安装
+```bash
+# 更新系统
+sudo apt update
+sudo apt upgrade
+
+# 安装 LAMP
+sudo apt install apache2 mysql-server php php-cli php-fpm php-json php-common \
+php-mysql php-zip php-gd php-mbstring php-curl php-xml php-bcmath php-intl \
+php-soap
+
+# 或安装 LEMP
+sudo apt install nginx mysql-server php php-fpm php-json php-common \
+php-mysql php-zip php-gd php-mbstring php-curl php-xml php-bcmath php-intl \
+php-soap
+```
+
+
+### 4. 安装 Composer
+
+```bash
+# 下载 Composer
+php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+php composer-setup.php
+sudo mv composer.phar /usr/local/bin/composer
+```
+
+
+### 5. 安装 Elasticsearch
+
+```bash
+# 安装 Java
+sudo apt install default-jre
+
+# 添加 Elasticsearch 源
+wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
+echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | sudo tee /etc/apt/sources.list.d/elastic-7.x.list
+
+# 安装 Elasticsearch
+sudo apt update
+sudo apt install elasticsearch
+
+# 启动服务
+sudo systemctl start elasticsearch
+sudo systemctl enable elasticsearch
+```
+
+
+### 6. 安装 Magento
+
+```bash
+# 创建项目目录
+cd /var/www/html
+composer create-project --repository-url=https://repo.magento.com/ magento/project-community-edition magento2
+
+# 设置权限
+cd magento2
+find var generated vendor pub/static pub/media app/etc -type f -exec chmod g+w {} +
+find var generated vendor pub/static pub/media app/etc -type d -exec chmod g+ws {} +
+chown -R :www-data .
+chmod u+x bin/magento
+```
+````
+
+```shell
+docker 搭建。
+https://hub.docker.com/r/bitnami/magento
+```
+
+
+
+
+
+
+
 
 
 ### 3. flag
