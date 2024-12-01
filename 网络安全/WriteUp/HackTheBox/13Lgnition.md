@@ -60,3 +60,37 @@ http://ignition.htb/admin
 qwerty123
 ```
 
+
+
+
+
+
+
+### 3. flag
+
+> 获取flag
+
+```shell
+nmap -sC -sV IP
+```
+
+![image-20241201102755800](./assets/image-20241201102755800.png)
+
+```shell
+# 加入hosts文件
+vim /etc/hosts
+
+IP   ignition.htb
+```
+
+```shell
+# 目录扫描
+gobuster dir -u  http://ignition.htb/ -w directory-list-2.3-small.txt 
+
+
+http://ignition.htb/admin
+
+搜索Magento相关信息可知，默认账户admin，密码为7个及以上字符，但是反暴力破解，尝试手工测试常见密码。测试结果为admin：
+admin/qwerty123
+```
+
