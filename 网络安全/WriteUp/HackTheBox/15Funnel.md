@@ -270,3 +270,123 @@ select * from flag;
 
 
 
+### 4. PostgreSQL
+
+> PostgreSQL 是一个强大的开源关系型数据库。[github](https://github.com/postgres)
+
+```shell
+完全支持 ACID
+支持复杂查询
+可扩展性强
+支持多种数据类型
+地理信息支持
+```
+
+> 端口为==5432==
+
+````shell
+1. 服务端安装
+
+#### Ubuntu/Debian 安装
+```bash
+# 更新系统
+sudo apt update
+sudo apt upgrade
+
+# 安装 PostgreSQL
+sudo apt install postgresql postgresql-contrib
+
+# 启动服务
+sudo systemctl start postgresql
+sudo systemctl enable postgresql
+```
+
+
+#### CentOS/RHEL 安装
+```bash
+# 安装 PostgreSQL 仓库
+sudo dnf install -y https://download.postgresql.org/pub/repos/yum/reporpms/EL-8-x86_64/pgdg-redhat-repo-latest.noarch.rpm
+
+# 安装 PostgreSQL
+sudo dnf install -y postgresql14-server
+
+# 初始化数据库
+sudo postgresql-14-setup initdb
+
+# 启动服务
+sudo systemctl start postgresql-14
+sudo systemctl enable postgresql-14
+```
+
+
+
+#### PostgreSQL 配置文件
+```ini:/etc/postgresql/14/main/postgresql.conf
+# 监听地址
+listen_addresses = '*'
+
+# 最大连接数
+max_connections = 100
+
+# 内存设置
+shared_buffers = 256MB
+work_mem = 4MB
+maintenance_work_mem = 64MB
+
+# WAL 设置
+wal_level = replica
+max_wal_senders = 10
+```
+
+
+### 4. 用户和数据库管理
+
+```bash
+# 切换到 postgres 用户
+sudo -i -u postgres
+
+# 进入 psql
+psql
+
+# SQL 命令 添加用户名和密码
+postgres# CREATE USER xxxx1 WITH PASSWORD 'xxxx';
+postgres# CREATE DATABASE xxxx2 OWNER myuser;
+postgres# GRANT ALL PRIVILEGES ON DATABASE xxxx2 to xxxx1;
+```
+
+
+#### psql 命令行工具
+```bash
+# 安装客户端
+sudo apt install postgresql-client
+
+# 连接数据库
+psql -h localhost -U myuser -d mydb
+
+# 常用命令
+\l          # 列出数据库
+\dt         # 列出表
+\du         # 列出用户
+\q          # 退出
+```
+
+
+
+### 6. 数据库备份和恢复
+
+```bash
+# 备份数据库
+pg_dump dbname > backup.sql
+
+# 备份所有数据库
+pg_dumpall > all_backup.sql
+
+# 恢复数据库
+psql dbname < backup.sql
+
+# 压缩备份
+pg_dump dbname | gzip > backup.gz
+```
+
+````
+
