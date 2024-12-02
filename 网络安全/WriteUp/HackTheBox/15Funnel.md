@@ -72,6 +72,111 @@ yes
 
 
 
+### 2. SSH隧道
+
+> SSH 隧道是一种通过 SSH 协议建立的加密通道。
+>
+> 概念： [blog](https://blog.csdn.net/sycamorelg/article/details/134166718)
+
+```shell
+数据加密传输
+绕过防火墙
+端口转发
+代理访问
+```
+
+````shell
+
+#### 本地端口转发（Local Port Forwarding）
+```bash
+# 语法
+ssh -L [本地IP:]本地端口:目标IP:目标端口 用户名@SSH服务器
+
+# 示例：将本地3306端口转发到远程MySQL
+ssh -L 3306:localhost:3306 user@remote_server
+
+# 示例：访问内网服务
+ssh -L 8080:internal_server:80 user@gateway_server
+```
+
+
+#### 远程端口转发（Remote Port Forwarding）
+```bash
+# 语法
+ssh -R [远程IP:]远程端口:目标IP:目标端口 用户名@SSH服务器
+
+# 示例：将远程8080端口转发到本地80
+ssh -R 8080:localhost:80 user@remote_server
+
+# 示例：内网穿透
+ssh -R 80:localhost:3000 user@public_server
+```
+
+
+#### 动态端口转发（Dynamic Port Forwarding）
+```bash
+# 语法
+ssh -D [本地IP:]本地端口 用户名@SSH服务器
+
+# 示例：创建SOCKS代理
+ssh -D 1080 user@remote_server
+
+# 配置浏览器使用SOCKS代理
+# 代理地址：127.0.0.1
+# 端口：1080
+```
+
+
+### 3. 持久化配置
+
+```config:~/.ssh/config
+# 本地端口转发
+Host mysql-tunnel
+    HostName remote_server
+    User username
+    LocalForward 3306 localhost:3306
+
+# 远程端口转发
+Host web-tunnel
+    HostName public_server
+    User username
+    RemoteForward 8080 localhost:80
+
+# 动态端口转发
+Host proxy-tunnel
+    HostName remote_server
+    User username
+    DynamicForward 1080
+```
+
+
+### 5. 常见应用场景
+
+#### 数据库访问
+```bash
+# MySQL远程访问
+ssh -L 3306:database_server:3306 user@jump_server
+
+# Redis访问
+ssh -L 6379:redis_server:6379 user@jump_server
+```
+
+#### Web服务访问
+```bash
+# 访问内网Web服务
+ssh -L 8080:internal_web:80 user@gateway
+
+# 反向代理
+ssh -R 80:localhost:3000 user@public_server
+```
+
+
+````
+
+
+
+
+
 
 
 
