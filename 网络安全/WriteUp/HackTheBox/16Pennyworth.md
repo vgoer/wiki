@@ -82,6 +82,106 @@ reverse shell
 
 
 
+### 2. Jenkins
+
+> Jenkins 是一个开源的持续集成/持续部署（CI/CD）工具： [官网](https://www.jenkins.io/zh/)
+
+```shell
+自动化构建
+自动化测试
+自动化部署
+丰富的插件生态
+支持分布式构建
+```
+
+````shell
+1. 服务端搭建
+
+
+#### Ubuntu/Debian 安装
+```bash
+# 添加 Jenkins 源
+curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo tee \
+  /usr/share/keyrings/jenkins-keyring.asc > /dev/null
+
+echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
+  https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
+  /etc/apt/sources.list.d/jenkins.list > /dev/null
+
+# 安装 Jenkins
+sudo apt update
+sudo apt install jenkins
+
+# 启动服务
+sudo systemctl start jenkins
+sudo systemctl enable jenkins
+```
+
+
+#### Docker 安装（推荐）
+```bash
+# 创建 Jenkins 数据目录
+mkdir -p /data/jenkins_home
+chown -R 1000:1000 /data/jenkins_home
+
+# 运行 Jenkins 容器
+docker run -d \
+  --name jenkins \
+  -p 8080:8080 \
+  -p 50000:50000 \
+  -v /data/jenkins_home:/var/jenkins_home \
+  jenkins/jenkins:lts
+```
+
+
+### 3. 初始配置
+
+#### 获取初始密码
+```bash
+# Docker 安装
+docker logs jenkins
+
+# 系统安装
+sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+```
+
+
+#### Jenkins 配置文件
+```xml:/var/lib/jenkins/config.xml
+<?xml version='1.1' encoding='UTF-8'?>
+<hudson>
+  <disabledAdministrativeMonitors/>
+  <version>2.346.1</version>
+  <numExecutors>2</numExecutors>
+  <mode>NORMAL</mode>
+  <useSecurity>true</useSecurity>
+  <authorizationStrategy class="hudson.security.FullControlOnceLoggedInAuthorizationStrategy">
+    <denyAnonymousReadAccess>true</denyAnonymousReadAccess>
+  </authorizationStrategy>
+  ...
+</hudson>
+```
+
+
+### 4. 安装必要插件
+
+```groovy
+// 推荐安装的插件
+- Git plugin
+- Pipeline
+- Docker Pipeline
+- Blue Ocean
+- Credentials Plugin
+- SSH Build Agents
+- Workspace Cleanup
+```
+
+````
+
+
+
+
+
 
 
 
