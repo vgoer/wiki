@@ -72,7 +72,50 @@ psexec.py
 
 
 
+### 2. Psexec 工具
 
+> Psexec通过在远程系统的ADMIN$共享上上传一个随机命名的可执行文件来创建一个远程服务，然后将其注册为Windows服务。以此产生一个交互式shell，通过TCP端口445在远程Windows系统上执行。
+> Psexec要求具有本地管理员或更高权限的用户的凭据（可以读取/写入ADMIN），验证成功后，将获取一个 NT AUTHORITY\SYSTEM shell 。
+>
+> [github](https://github.com/fortra/impacket.git)  [blog](https://blog.csdn.net/qq_44159028/article/details/121289328)
+>
+> Impacket 使用： [blog](https://www.cnblogs.com/ciyze0101/p/15315811.html)
+
+```shell
+git clone https://github.com/CoreSecurity/impacket.git
+
+python3 -m pipx install .
+
+# docker
+docker build -t "impacket:latest" .
+docker run -it --rm "impacket:latest"
+
+
+# arch 
+yay -S impacket
+
+# debian 
+sudo apt update
+sudo apt install snapd
+sudo snap install snapd
+sudo systemctl restart snapd
+sudo systemctl enable snapd
+sudo snap install impacket
+
+# 使用
+impacket-命令
+```
+
+> 使用
+
+```shel
+impacket-psexec username:password@target_ip
+
+# 由于Administrator账号是空密码，执行如下：
+python3 psexec.py Administrator@10.129.251.55
+```
+
+![image-20241202165345939](./assets/image-20241202165345939.png)
 
 
 
