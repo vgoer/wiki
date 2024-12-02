@@ -238,5 +238,35 @@ psql
 apt install postgresql-client-common
 ```
 
+> 本地端口转发
+
+```shell
+ssh -L 1234:localhost:5432 christine@10.129.252.232
+```
+
+**使用SSH在我们本地机器上的4444端口上打开了一个套接字 ，我们可以访问4444端口，将我们想要转发的流量直接转发到目标机器上的5432端口。**
+
+1. **`在本地系统安装psql，在本地远程访问5432端口的postgresql服务`**
+
+```shell
+psql -U christine -h localhost -p 4444
+```
+
+2. **`现在已经成功使用ssh隧道连接到了postgresql服务，可以执行命令查看数据库信息`**
+
+```shell
+# \list 列出数据库
+\l
+
+# 连接数据库 
+\c secrets
+
+# 查看数据库中的表
+\dt
+
+# 查看flag
+select * from flag;
+```
+
 
 
