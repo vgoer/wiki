@@ -39,3 +39,11 @@ sudo pacman -S pipewire
 yay -s xdg-desktop-portal
 yay -S extra/xdg-desktop-portal-hyprland
 ```
+
+> 杂音的问题
+
+```shell
+# 安装这个
+yay -S EasyEffects
+```
+
