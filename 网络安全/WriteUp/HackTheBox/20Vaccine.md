@@ -27,36 +27,43 @@
 1. Besides SSH and HTTP, what other service is hosted on this box?
 
 ```shell
+FTP
 ```
 
 2. This service can be configured to allow login with any password for specific username. What is that username?
 
 ```shell
+anonymous
 ```
 
 3. What is the name of the file downloaded over this service?
 
 ```shell
+backup.zip
 ```
 
 4. What script comes with the John The Ripper toolset and generates a hash from a password protected zip archive in a format to allow for cracking attempts?
 
 ```shell
+zip2john
 ```
 
 5. What is the password for the admin user on the website?
 
 ```shell
+qwerty789
 ```
 
 6. What option can be passed to sqlmap to try to get command execution via the sql injection?
 
 ```shell
+--os-shell
 ```
 
 7. What program can the postgres user run as root using sudo?
 
 ```shell
+vi
 ```
 
 
