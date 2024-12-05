@@ -27,61 +27,73 @@
 1. Which are the first four open ports?
 
 ```shell
+22,6789,8080,8443
 ```
 
 2. What is the title of the software that is running running on port 8443?
 
 ```shell
+UniFi Network
 ```
 
 3. What is the version of the software that is running?
 
 ```shell
+6.4.54
 ```
 
 4. What is the CVE for the identified vulnerability?
 
 ```shell
+CVE-2021-44228
 ```
 
 5. What protocol does JNDI leverage in the injection?
 
 ```shell
+ldap
 ```
 
 6. What tool do we use to intercept the traffic, indicating the attack was successful?
 
 ```shell
+tcpdump
 ```
 
 7. What port do we need to inspect intercepted traffic for?
 
 ```shell
+389
 ```
 
 8. What port is the MongoDB service running on?
 
 ```shell
+27117
 ```
 
 9. What is the default database name for UniFi applications?
 
 ```shell
+ace
 ```
 
 10. What is the function we use to enumerate users within the database in MongoDB?
 
 ```shell
+db.admin.find()
 ```
 
 11. What is the function we use to update users within the database in MongoDB?
 
 ```shell
+db.admin.update()
 ```
 
 12. What is the password for the root user?
 
 ```shell
+NotACrackablePassword4U2022
 ```
 
 
@@ -121,7 +133,7 @@ PORT     STATE SERVICE         VERSION
 
 > cms: `unifi 6.4.54`
 >
-> 存在漏洞： [blog](https://www.sprocketsecurity.com/resources/another-log4j-on-the-fire-unifi)
+> 存在漏洞： CVE-2021-44228  [blog](https://www.sprocketsecurity.com/resources/another-log4j-on-the-fire-unifi)
 
 ```sell
 JNDI注入：
