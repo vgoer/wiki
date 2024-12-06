@@ -25,8 +25,14 @@ yay -S river-git
 
 # 复制配置文件
 cp /usr/share/river/example/init ~/.config/river/
-
-# 
-
 ```
 
+
+
+
+
+
+
+### 2. 配置
+
+> github: [river](https://github.com/theCode-Breaker/riverwm)
