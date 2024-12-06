@@ -68,3 +68,15 @@
 
 
 
+
+
+### 3. flag
+
+> 获取flag
+>
+> [blog](https://blog.csdn.net/sycamorelg/article/details/134317519)
+
+```shell
+namp -sC -sV ip
+```
+
