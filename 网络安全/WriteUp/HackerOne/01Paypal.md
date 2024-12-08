@@ -72,7 +72,16 @@ ffuf -u https://FUZZ.paypal.com -w /usr/share/seclists/Discovery/DNS/subdomains-
 sort -u paypal_sub.txt paypal_sub2.txt > paypal_domain.txt
 
 # 查看存活的子域名
+# 添加https://
+awk '{print "https://" $0}' paypal_domain.txt > paypal_s_domain.txt
+# httpx https://github.com/projectdiscovery/httpx/releases/tag/v1.6.9
+cat paypal_domain.txt| httpx -status-code -tech-detect -title > live_paypal.txt
+cat paypal_domain.txt | sudo  httpx > live_paypal.txt
+```
 
+```shell
+# 安装 Go
+sudo apt install golang-go
 ```
 
 
