@@ -82,7 +82,25 @@ cat paypal_domain.txt | sudo  httpx > live_paypal.txt
 ```shell
 # 安装 Go
 sudo apt install golang-go
+# subzy
+go install -v github.com/PentestPad/subzy@latest
+# 复制到环境变量中 
+sudo cp ~/go/bin/subzy /usr/local/bin
+# 使用
+subzy run --targets paypal_domain.txt
 ```
 
+```shell
+# 安装
+sudo apt install nuclei
+# git
+git clone https://github.com/projectdiscovery/nuclei-templates.git
+# 或者
+# 自动更新
+nuclei -update
+# 模板会自动下载到 .local目录下
+nuclei -ut
 
-
+# 使用 -t 模板
+nuclei -l paypal_domain.txt -t takeovers/ 
+```
