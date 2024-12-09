@@ -104,3 +104,40 @@ nuclei -ut
 # 使用 -t 模板
 nuclei -l paypal_domain.txt -t takeovers/ 
 ```
+
+> [nuclei](https://github.com/projectdiscovery/nuclei?tab=readme-ov-file)  [templates](https://github.com/projectdiscovery/nuclei-templates)
+
+```shell
+# 安装
+go install github.com/projectdiscovery/katana/cmd/katana@latest
+# 复制到环境变量中 
+sudo cp ~/go/bin/katana /usr/local/bin
+
+katana -u https://adjvendor.paypal.com -o urls.txt
+```
+
+> [oneforall](https://github.com/shmilylty/OneForAll)
+
+```shell
+# 安装虚拟环境工具
+sudo apt install python3-venv
+
+# git
+git clone https://github.com/shmilylty/OneForAll.git
+cd OneForAll/
+
+# 创建虚拟环境
+python3 -m venv myenv
+
+# 激活虚拟环境
+source myenv/bin/activate
+
+# 现在可以使用pip安装包了
+python3 -m pip install -U pip setuptools wheel -i https://mirrors.aliyun.com/pypi/simple/
+pip3 install -r requirements.txt -i https://mirrors.aliyun.com/pypi/simple/
+python3 oneforall.py --help
+
+# 使用
+python3 oneforall.py --targets ~/live_paypal.txt run 
+```
+
