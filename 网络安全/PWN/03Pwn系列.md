@@ -46,4 +46,35 @@ yay -S detect-it-easy
 
 
 
+### 3. ida分析
+
+> ida
+
+```shell
+yay -S ida-free
+```
+
+汇编代码
+
+![image-20241212110917502](./assets/image-20241212110917502.png)
+
+> `tab`伪代码
+
+![image-20241212110959440](./assets/image-20241212110959440.png)
+
+> 知道代码后，我们连接主机
+
+```shell
+# 连接靶场
+nc node5.buuoj.cn 26813 
+
+# 查看flag
+cat flag
+```
+
+
+
+
+
+
 
