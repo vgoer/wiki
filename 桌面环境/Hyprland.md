@@ -543,3 +543,26 @@ bind = $mainMod, Z, exec, pypr zoom                         # toggle zooming
 EOF
 ```
 
+>中心布局：
+
+```shell
+[layout_center]
+margin = 60
+offset = [0, 30]
+next = "movefocus r"
+prev = "movefocus l"
+next2 = "movefocus d"
+prev2 = "movefocus u"
+```
+
+> `hyprland.conf`
+
+```shell
+bind = $mainMod, M, exec, pypr layout_center toggle # toggle the layout
+## focus change keys
+bind = $mainMod, left, exec, pypr layout_center prev
+bind = $mainMod, right, exec, pypr layout_center next
+bind = $mainMod, up, exec, pypr layout_center prev2
+bind = $mainMod, down, exec, pypr layout_center next2
+```
+
