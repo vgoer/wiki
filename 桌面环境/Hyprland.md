@@ -489,3 +489,57 @@ plugin {
 > 使用pyprland开发hyprland插件。
 >
 > [官网](https://hyprland-community.github.io/pyprland/)
+
+```shell
+# 安装
+curl https://raw.githubusercontent.com/hyprland-community/pyprland/main/scripts/get-pypr | sh
+
+# 添加代码
+cat <<EOF > ~/.config/hypr/pyprland.toml
+```
+
+```shell
+[pyprland]
+plugins = [
+ "expose",
+ "fetch_client_menu",
+ "lost_windows",
+ "magnify",
+ "scratchpads",
+ "shift_monitors",
+ "toggle_special",
+ "workspaces_follow_focus",
+]
+
+# using variables for demonstration purposes (not needed)
+[pyprland.variables]
+term_classed = "kitty --class"
+
+[scratchpads.term]
+animation = "fromTop"
+command = "[term_classed] main-dropterm"
+class = "main-dropterm"
+size = "75% 60%"
+max_size = "1920px 100%"
+```
+
+```shell
+# 修改配置
+cat <<EOF >> ~/.config/hypr/hyprland.conf
+# pyprland log
+exec-once = pypr
+exec-once = /usr/local/bin/pypr --debug /tmp/pypr.log
+
+# bind
+bind = \$mainMod, A, exec, pypr toggle term                  # toggles the "term" scratchpad visibility
+bind = \$mainMod, B, exec, pypr expose                       # exposes every window temporarily or "jump" to the fucused one
+bind = \$mainMod, J, exec, pypr change_workspace -1          # alternative multi-monitor workspace switcher
+bind = \$mainMod, K, exec, pypr change_workspace +1          # alternative multi-monitor workspace switcher
+bind = \$mainMod, N, exec, pypr toggle_special minimized     # toggle a window from/to the "minimized" special workspace
+bind = \$mainMod SHIFT, N, togglespecialworkspace, minimized   # toggle the "minimized" special workspace visibility
+bind = \$mainMod SHIFT, O, exec, pypr shift_monitors +1      # swaps workspaces between monitors
+bind = \$mainMod SHIFT, Z, exec, pypr zoom ++0.5             # zooms in the focused workspace
+bind = \$mainMod, Z, exec, pypr zoom                         # toggle zooming
+EOF
+```
+
