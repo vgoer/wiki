@@ -566,3 +566,34 @@ bind = $mainMod, up, exec, pypr layout_center prev2
 bind = $mainMod, down, exec, pypr layout_center next2
 ```
 
+> 便筏博
+
+```shell
+[scratchpads.term_btop]
+animation = "fromRight"
+command = "kitty --config ~/.config/kitty/kitty.conf --class term_btop btop"
+class = "term_btop"
+size = "45% 60%"
+max_size = "1920px 100%"
+margin = 10
+
+[scratchpads.term_htop]
+animation = "fromLeft"
+command = "kitty --config ~/.config/kitty/kitty.conf --class term_htop htop"
+class = "term_htop"
+size = "45% 60%"
+max_size = "1920px 100%"
+margin = 10
+```
+
+> `hyprland.conf`
+
+```shell
+bind = $CONTROL SHIFT, H, exec, ~/.config/hypr/scripts/sysmonlaunch.sh
+
+# shell
+#!/bin/bash
+pypr toggle term_btop
+pypr toggle term_htop
+```
+
