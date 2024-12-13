@@ -443,3 +443,19 @@ hyprpm enable hyprfocus
     }
 ```
 
+7. 官方插件：
+
+> hyprland官方插件： [github](https://github.com/hyprwm/hyprland-plugins)
+
+```shell
+hyprpm add https://github.com/hyprwm/hyprland-plugins
+
+hyprpm enable hyprland-plugins
+
+plugin {
+    hyprtrails {
+        color = rgba(ffaa00ff)
+    }
+}
+```
+
