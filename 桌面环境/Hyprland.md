@@ -636,3 +636,10 @@ pypr toggle term_musicfox
 
 ```
 
+> 切换特殊
+
+```shell
+bind = $mainMod SHIFT, N, togglespecialworkspace, stash # toggles "stash" special workspace visibility
+bind = $mainMod, N, exec, pypr toggle_special stash # moves window to/from the "stash" workspace
+```
+
