@@ -597,3 +597,42 @@ pypr toggle term_btop
 pypr toggle term_htop
 ```
 
+> muisc
+
+```shell
+# music
+[scratchpads.term_musicfox]
+animation = "fromTop"
+command = "kitty --config ~/.config/kitty/kitty.conf --class term_musicfox musicfox"
+class = "term_musicfox"
+size = "60% 40%"        
+max_size = "1920px 100%"
+margin = 35
+
+[scratchpads.tcava]
+animation = "fromLeft"
+command = "kitty --config ~/.config/kitty/kitty.conf --class tcava cava"
+class = "tcava"
+size = "50% 50%"
+max_size = "1920px 100%"
+margin = 5
+
+[scratchpads.bcava]
+animation = "fromRight"
+command = "kitty --config ~/.config/kitty/kitty.conf --class bcava cava"
+class = "bcava"
+size = "50% 50%" 
+max_size = "1920px 100%"
+margin = 1
+
+# conf
+bind = $mainMod SHIFT, O, exec, ~/.config/hypr/scripts/hy_goer_toggle_music.sh # toggles the "musicsss" scratchpad visibility
+
+# shell
+#!/bin/bash
+pypr toggle tcava
+pypr toggle bcava
+pypr toggle term_musicfox
+
+```
+
