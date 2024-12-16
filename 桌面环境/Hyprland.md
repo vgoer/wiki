@@ -52,6 +52,11 @@ https://github.com/HyDE-Project/telegram-hyde.git
 
 - 导航至**“设置”** > **“聊天设置”** > **“聊天壁纸”** > **“从文件中选择**”` ~/.cache/hyde/landing/Wallbash.tdesktop-theme`
 
+> hyde: wall模板： [github](https://github.com/HyDE-Project/terminal-emulators)
+
+1. 将文件复制`/kitty.dcol`到`~/.config/hyde/wallbash/Wall-Ways`或`~/.config/hyde/wallbash/Wall-Dcol`。
+2. 运行`Hyde reload`生成文件。
+
 
 
 > hyprland详细介绍
@@ -147,8 +152,6 @@ animations {
     animation = workspaces, 1, 3, default   # 工作区切换动画
 }
 ```
-
-
 
 
 
