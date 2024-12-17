@@ -67,6 +67,12 @@ waydroid app install app.apk
 
 > 下载apk: [apk](https://apps.evozi.com/apk-downloader)
 
+```shell
+# 设置合适的宽高
+waydroid prop set persist.waydroid.width 506
+waydroid prop set persist.waydroid.height 1133
+```
+
 
 
 
