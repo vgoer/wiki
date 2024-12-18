@@ -70,3 +70,13 @@ yay -S burpsuite
 - [7] - 从 burpsuite 加载器复制激活响应并粘贴到 burpsuite 中（粘贴响应）
 
   > 最后，从步骤 4 中的加载程序命令创建一个快捷方式。
+
+
+
+
+
+
+
+### 3. burp双层代理和app抓包
+
+> [blog](https://blog.csdn.net/qq_45894840/article/details/130360596)
