@@ -24,3 +24,14 @@
 
 
 
+### 1. 信息收集
+
+> 子域名收集
+
+```shell
+subfinder -d  hilton.com  -all > hilton.txt
+
+# 目录扫描
+python3 dirsearch.py -l hilton.txt --deep-recursive -o outfile.txt
+```
+
