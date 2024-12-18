@@ -73,7 +73,7 @@ waydroid prop set persist.waydroid.width 506
 waydroid prop set persist.waydroid.height 1133
 ```
 
-
+> 网络配置： [blog](https://bbs.deepin.org/post/263051)
 
 
 
