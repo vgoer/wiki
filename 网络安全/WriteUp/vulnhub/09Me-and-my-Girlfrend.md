@@ -58,3 +58,60 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 ```
 
 > 获取到ip和端口
+
+
+
+> 访问web源码
+
+```shell 
+Who are you? Hacker? Sorry This Site Can Only Be Accessed local!<!-- Maybe you can search how to use x-forwarded-for -->
+```
+
+> x-forwarded-for : (XFF)是用来识别客户端最原始的IP地址和HTTP请求头字段。
+>
+> 浏览器插件： `X-Forwarded-For Header`
+
+修改xff,获取到代码了
+
+![image-20241219155037162](./assets/image-20241219155037162.png)
+
+> 注册一个用户，登陆
+>
+> 存在水平越权。
+
+![image-20241219155422630](./assets/image-20241219155422630.png)
+
+```shell
+id=6 获取到alice用户名和密码
+alice/4lic3
+
+# ssh登陆
+ssh alice@172.16.168.140
+
+# 查看隐藏文件
+ls -al
+
+# 查看flag1
+cd .my_secret
+cat flag1.txt
+
+Greattttt my brother! You saw the Alice's note! Now you save the record information to give to bob! I know if it's given to him then Bob will be hurt but this is better than Bob cheated!
+
+Now your last job is get access to the root and read the flag ^_^
+
+Flag 1 : gfriEND{2f5f21b2af1b8c3e227bcf35544f8f09}
+
+# 笔记
+cat my_notes.txt 
+Woahhh! I like this company, I hope that here i get a better partner than bob ^_^, hopefully Bob doesn't know my notes
+```
+
+
+
+
+
+### 2. 提权
+
+```shell
+```
+
