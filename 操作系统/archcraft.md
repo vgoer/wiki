@@ -109,6 +109,11 @@ yay -S rime-cloverpinyin
 
 ```shell
 sudo pacman -S google-chrome  
+
+# 设置默认浏览器
+unset BROWSER
+xdg-settings set default-web-browser google-chrome.desktop
+
 sudo pacman -S netease-cloud-music
 sudo pacman -S git
 # oh my szsh
