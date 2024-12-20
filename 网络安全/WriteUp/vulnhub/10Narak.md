@@ -115,3 +115,24 @@ python3 -c 'import pty;pty.spawn("/bin/bash")'
 
 ```
 
+> bf编码 ：[ook](https://www.splitbrain.org/services/ook)
+
+```shell
+cat /mnt/hell.sh
+#!/bin/bash
+
+echo"Highway to Hell";
+--[----->+<]>---.+++++.+.+++++++++++.--.+++[->+++<]>++.++++++.--[--->+<]>--.-----.++++.
+
+```
+
+> 解码： `chitragupt`
+
+```shell
+ssh inferno@172.16.168.141 
+
+cat user.txt
+Flag: {5f95bf06ce19af69bfa5e53f797ce6e2}
+
+```
+
