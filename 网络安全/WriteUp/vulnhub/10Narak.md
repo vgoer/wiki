@@ -142,7 +142,7 @@ Flag: {5f95bf06ce19af69bfa5e53f797ce6e2}
 
 ### 2. 提权
 
-> moto提权。
+> moto提权。[blog](https://www.cnblogs.com/zlgxzswjy/p/15899583.html)
 >
 > 修改文件： `/etc/update-motd.d/00-hrader`
 
