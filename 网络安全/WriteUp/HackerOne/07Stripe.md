@@ -21,6 +21,8 @@
 >  [stripe](https://stripe.com/)  [youtube](https://www.youtube.com/watch?v=X44t8tCXivI)
 >
 >  paylodebox: [github](https://github.com/payloadbox)
+>
+>  快速发现漏洞： [blog](https://gugesay.com/archives/1186)
 
 
 
