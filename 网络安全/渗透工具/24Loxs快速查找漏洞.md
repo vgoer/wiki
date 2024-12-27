@@ -67,3 +67,44 @@ go install github.com/KathanP19/Gxss@latest
 go install github.com/Emoe/kxss@latest
 ```
 
+> chrome安装
+
+```shell
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+
+
+# 依赖问题
+sudo apt -f install
+
+sudo dpkg -i google-chrome-stable_current_amd64.deb
+
+# 驱动
+wget https://storage.googleapis.com/chrome-for-testing-public/128.0.6613.119/linux64/chromedriver-linux64.zip
+
+unzip chromedriver-linux64.zip
+
+cd chromedriver-linux64 
+
+sudo mv chromedriver /usr/bin
+```
+
+
+
+
+
+
+
+
+
+### 2 . 使用
+
+```shell
+# 过滤
+./filter.sh
+
+# output文件下生成文件
+python3 loxs.py
+
+# 
+```
+
