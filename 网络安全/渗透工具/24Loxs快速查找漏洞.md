@@ -120,3 +120,24 @@ ghauri -u "http://testphp.vulnweb.com/comment.php?pid=*" --level 3 --dbs -v 3
 ```
 
 
+
+
+
+
+
+### 3. sql检测工具
+
+> 基于python的sqli检测工具 [github](https://github.com/R3DHULK/sqli-detector-in-python)
+
+```shell
+# Clone My Repository
+git clone https://github.com/R3DHULK/sqli-detector-in-python
+
+# Change Directory
+cd sqli-detector-in-python
+
+# Execute
+python sqli-detector-in-python.py
+```
+
+
