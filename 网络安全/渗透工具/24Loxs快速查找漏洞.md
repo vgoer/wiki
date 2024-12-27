@@ -105,6 +105,18 @@ sudo mv chromedriver /usr/bin
 # output文件下生成文件
 python3 loxs.py
 
-# 
+# xss 漏洞
+选择output/xss  和 payoud/xss
+
+# 开始攻击
+
+
+
+# 查看sql注入 cd sqli-detector-in-python
+python3 sqli-scanner.py 
+
+# sqlmap 或则 ghauri
+ghauri -u "http://testphp.vulnweb.com/comment.php?pid=*" --level 3 --dbs -v 3
 ```
+
 
