@@ -141,3 +141,25 @@ python sqli-detector-in-python.py
 ```
 
 
+
+
+
+
+
+### 4. Ghauri
+
+> 一种先进的跨平台工具，可自动检测和利用 SQL 注入安全漏洞 [github](https://github.com/r0oth3x49/ghauri)
+
+```shell
+git clone https://github.com/r0oth3x49/ghauri.git
+
+python3 -m venv ghauri
+
+source ghauri/bin/activate
+
+pip install setuptools
+pip install --upgrade -r requirements.txt
+
+ghauri --help
+```
+
