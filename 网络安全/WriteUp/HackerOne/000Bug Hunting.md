@@ -119,3 +119,26 @@ cat allurls.txt | Gxss | kxss | grep -oP '^URL: \K\S+' | sed 's/=.*/=/' | sort -
 
 
 
+### 4. lfi & open_redirect
+
+> lfi 漏洞和open_redirect漏洞
+>
+> gf: grep 的包装器，帮助你 grep 东西 [github](https://github.com/tomnomnom/gf)
+
+```shell
+go install github.com/tomnomnom/gf@latest
+
+cat allurls.txt | gf or | sed 's/=.*/=/' | sort -u > open_redirect.txt
+
+cat allurls.txt | gf lfi | sed 's/=.*/=/' | sort -u > lfi_output.txt
+
+```
+
+> 总结，找到一些可能存在漏洞的地方了。开始攻击了
+
+
+
+
+
+
+
