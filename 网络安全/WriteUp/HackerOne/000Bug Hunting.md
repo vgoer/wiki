@@ -103,3 +103,19 @@ cat allurls.txt | grep -E ".php|.asp|.aspx|.jspx|.jsp" | grep '=' | sed 's/=.*/=
 
 
 
+
+
+### 3. xss 漏洞
+
+> kxss:  [github](https://github.com/Emoe/kxss)
+>
+> gxss: [github](https://github.com/KathanP19/Gxss)
+
+```shell
+cat allurls.txt | Gxss | kxss | grep -oP '^URL: \K\S+' | sed 's/=.*/=/' | sort -u > xss.txt
+```
+
+
+
+
+
