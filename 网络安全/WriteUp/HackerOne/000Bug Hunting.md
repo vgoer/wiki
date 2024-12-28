@@ -52,3 +52,54 @@ cat subdomain1.txt subdomain2.txt  | sort | uniq > subdomains.txt
 
 
 
+### 2. 端口扫描
+
+```shell
+# 安装 为缺少 libpcap 开发库
+sudo apt-get install libpcap-dev -y
+go install -v github.com/projectdiscovery/naabu/v2/cmd/naabu@latest
+
+# 使用
+naabu -host hackerone.com
+
+# 常用
+naabu -list subdomains.txt -c 50 -nmap-cli 'nmap -sV -sC' -o naabu-full.txt
+
+# 存活主机 httpx-tookit
+sudo apt install httpx-toolkit
+cat subdomains.txt | httpx-toolkit -ports 80,443,8080,8000,8888 -threads 200 > subdomains_alive.txt
+```
+
+> naabu: 用 Go 编写的快速端口扫描程序，注重可靠性和简单性。[github](https://github.com/projectdiscovery/naabu)
+>
+> httpx: `httpx`是一款快速且用途广泛的 HTTP 工具包，允许使用[retryablehttp](https://github.com/projectdiscovery/retryablehttp-go)库运行多个探测。它旨在通过增加线程数量来保持结果的可靠性。   [github](https://github.com/projectdiscovery/httpx)
+
+```shell
+# 自动化工具： 用于查找 SQLi、XSS、LFi、OpenRedirect 的自动侦察工具  https://github.com/aungsanoo-usa/aungrecon
+
+git clone https://github.com/aungsanoo-usa/aungrecon.git
+cd aungrecon
+
+chmod +x install.sh
+chmod +x aungrecon.sh
+
+./install.sh
+./aungrecon.sh
+```
+
+> katana: 下一代爬行和蜘蛛框架  [github](https://github.com/projectdiscovery/katana)
+
+```shell
+go install github.com/projectdiscovery/katana/cmd/katana@latest
+
+# 爬去文件
+katana -u subdomains_alive.txt -d 5 -kf -jc -fx -ef woff,pdf,css,png,svg,jpg,woff2,jpeg,gif,svg -o allurls.txt
+
+# 查找配置文件
+cat allurls.txt | grep -E "\.txt|\.log|\.cache|\.secret|\.db|\.backup|\.yml|\.json|\.gz|\.rar|\.zip|\.config"
+
+cat allurls.txt | grep -E ".php|.asp|.aspx|.jspx|.jsp" | grep '=' | sed 's/=.*/=/' | sort | uniq > bsqli.txt
+```
+
+
+
