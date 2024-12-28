@@ -233,5 +233,56 @@ python3 corsy.py -i /home/goer/hackerone/facebook/subdomains_alive.txt -t 10 --h
 ```shell
 go install -v github.com/projectdiscovery/nuclei/v3/cmd/nuclei@latest
 
+# 下载作者的模块到  nuclei模块中 ~/.local
+git clone https://github.com/aungsanoo-usa/priv8-Nuclei.git ~/.local/nuclei-templates/priv8-nclei
+
+nuclei -list subdomains_alive.txt -t priv8-nclei/cors.yaml -v
+```
+
+> OpenRedireX 用于检测开放重定向漏洞的模糊测试器 [github](https://github.com/devanshbatham/OpenRedireX)
+
+```shell
+git clone https://github.com/devanshbatham/openredirex
+cd openredirex
+sudo chmod +x setup.sh
+./setup.sh
+
+# 全局安装依赖
+pip3 install aiohttp tqdm
+
+# python脚本安装到环境变量
+cat setup.sh 
+#!/bin/bash
+
+# Rename the openredirex.py file to openredirex
+mv openredirex.py openredirex
+
+
+# Move the openredirex file to /usr/local/bin
+sudo mv openredirex /usr/local/bin/
+
+# Make the openredirex file executable
+sudo chmod +x /usr/local/bin/openredirex
+
+# Remove the openredirex.pyc file if it exists
+if [ -f openredirex.pyc ]; then
+    rm openredirex.pyc
+fi
+
+echo "openredirex has been installed successfully!"
+```
+
+```shell
+# 使用
+cat allurls.txt | gf redirect | openredirex -p ~/Tools/openredirex/payloads.txt
+```
+
+> shortscan: IIS 短文件名枚举工具 [github](https://github.com/bitquark/shortscan)
+
+```shell
+go install github.com/bitquark/shortscan/cmd/shortscan@latest
+
+# 使用
+shortscan https://example.com/ -F
 ```
 
