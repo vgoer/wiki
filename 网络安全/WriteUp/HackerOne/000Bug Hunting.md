@@ -142,3 +142,56 @@ cat allurls.txt | gf lfi | sed 's/=.*/=/' | sort -u > lfi_output.txt
 
 
 
+
+
+### 5. 攻击
+
+> loxs: 查找 SQLi、CRLF、XSS、LFi、OpenRedirect 的最佳工具  [github](https://github.com/coffinxp/loxs)
+>
+> 安装： [文章](/网络安全/渗透工具/24Loxs快速查找漏洞.md)
+
+```shell
+python3 loxs.py 
+
+# 选择urls和攻击的payload
+│1] LFi Scanner                                               │
+│2] OR Scanner                                                │
+│3] SQLi Scanner                                              │
+│4] XSS Scanner                                               │
+│5] CRLF Scanner  
+```
+
+> xss_scanner: [github.com](https://github.com/aungsanoo-usa/xss_scanner)  。xss扫描
+>
+> 安装看redeme.
+
+```shell
+在xss_scanner中：
+# 查看存在xss
+python3 xss_scanner.py -l /home/goer/hackerone/facebook/bsqli.txt -p xss.txt -o output.txt
+```
+
+> 查找敏感信息
+>
+> SecretFinder:  一个用于查找敏感数据  [github](https://github.com/m4ll0k/SecretFinder)
+
+````shell
+# js文件
+cat allurls.txt | grep -E "\.js$" >> js.txt
+
+
+# 敏感信息
+git clone https://github.com/m4ll0k/SecretFinder.git secretfinder
+cd secretfinder
+python -m pip install -r requirements.txt or pip install -r requirements.txt
+python3 SecretFinder.py
+
+
+# 使用
+python3 SecretFinder.py -i js.txt -o secret.txt
+````
+
+
+
+
+
