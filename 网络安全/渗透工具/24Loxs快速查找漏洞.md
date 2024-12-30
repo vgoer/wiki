@@ -163,3 +163,20 @@ pip install --upgrade -r requirements.txt
 ghauri --help
 ```
 
+
+
+
+
+
+
+
+
+### 5. 自己的扩展
+
+> 自己写的扩展： [github](https://github.com/vgoer/loxs)
+
+```shell
+# install.sh
+
+```
+
