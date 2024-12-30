@@ -26,3 +26,17 @@
 
 
 
+
+
+### 1. 安装
+
+```shell
+# 安装
+go install -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest
+
+# 使用
+subfinder -h
+```
+
+
+
