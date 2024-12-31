@@ -100,7 +100,36 @@ https://www.fkxxyz.com/d/cloverpinyin/
 1.  安装 fcitx 
 sudo pacman -S fcitx fcitx-qt5 fcitx-configtool
 https://zhuanlan.zhihu.com/p/393746270
-yay -S rime-cloverpinyin
+yay -S rime-cloverpinyino
+```
+
+> 崭新的fcitx5安装 [archwiki](https://wiki.archlinuxcn.org/wiki/Fcitx5?rdfrom=https%3A%2F%2Fwiki.archlinux.org%2Findex.php%3Ftitle%3DFcitx5_%28%25E7%25AE%2580%25E4%25BD%2593%25E4%25B8%25AD%25E6%2596%2587%29%26redirect%3Dno)
+
+```shell
+# fcitx5 套件
+sudo pacman -S fcitx5-im
+
+# 中文输入模块
+sudo pacman -S fcitx5-chinese-addons
+
+# 安装 zhwiki词库 和 搜狗词库
+sudo pacman -S fcitx5-pinyin-zhwiki 
+yay -S  fcitx5-pinyin-sougou 
+
+# waylad下配置
+系统设置 > 输入设备 > 虚拟键盘，选择 Fcitx 5。
+
+# 配置
+sudo vim /etc/environment
+
+# wayland
+XMODIFIERS=@im=fcitx
+
+# x11
+# GTK_IM_MODULE=fcitx
+# QT_IM_MODULE=fcitx
+# SDL_IM_MODULE=fcitx
+
 ```
 
 
@@ -108,7 +137,7 @@ yay -S rime-cloverpinyin
 7. 软件 [up](https://linux265.com/news/3544.html)
 
 ```shell
-sudo pacman -S google-chrome  
+sudo pacman -S google-chrome 
 
 # 设置默认浏览器
 unset BROWSER
