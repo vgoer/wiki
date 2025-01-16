@@ -77,6 +77,28 @@ npm dev
 
 
 
+### 2. 安装
+
+```shell
+# 安装php iconv扩展
+extension=iconv
+
+# 重启
+sudo systemctl start php-fpm
+php -m | grep iconv
+
+git clone https://github.com/JaguarJack/catch-admin.git
+
+# 安装依赖
+composer install
+
+# 安装启动
+php artisan catch:install
+php artisan serve
+```
+
+
+
 
 
 
