@@ -46,6 +46,21 @@ yum install -yy glibc-devel.x86_64
 yum install -yy libpcap
 # mac os
 brew install libpcap
+
+# 直接安装
+go install github.com/GhostTroops/scan4all@2.8.9
+scan4all -h
 ```
 
 > 版本： [release](https://github.com/GhostTroops/scan4all/releases)
+
+
+
+
+
+
+
+### 2. 使用
+
+> 使用
+
