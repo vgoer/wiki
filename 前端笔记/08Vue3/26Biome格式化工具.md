@@ -114,3 +114,20 @@ pnpm biome check --write <files>
 pnpm biome format --write ./src
 ```
 
+
+
+
+
+
+
+### 3. Linter
+
+> Biome 的 linter 静态分析你的代码以捕获常见错误并帮助编写符合规范的代码。
+
+```shell
+biome lint ./src
+
+# 安全代码修复
+biome check --write ./src
+```
+
