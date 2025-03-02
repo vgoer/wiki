@@ -321,6 +321,135 @@ class StaticFile implements MiddlewareInterface
 
 
 
+### 10.session管理
+
+```php
+public function hello(Request $request)
+{
+    $name = $request->get('name');
+    $session = $request->session();
+    $session->set('name', $name);
+    return response('hello ' . $session->get('name'));
+}
+```
+
+```php
+# 获取所有session
+$session = $request->session();
+$all = $session->all();
+
+# 获取单个值
+$session = $request->session();
+$name = $session->get('name');
+
+# 存储session
+$session = $request->session();
+$session->set('name', 'tom');
+# 多个值
+$session->put(['name' => 'tom', 'age' => 12]);
+
+# 删除
+$session = $request->session();
+// 删除一项
+$session->forget('name');
+// 删除多项
+$session->forget(['name', 'age']);
+
+# 删除所有
+$request->session()->flush();
+
+# 判断session存在否
+$session = $request->session();
+$has = $session->has('name');
+```
+
+> 助手函数
+
+```php
+// 获取session实例
+$session = session();
+// 等价于
+$session = $request->session();
+
+// 获取某个值
+$value = session('key', 'default');
+// 等价与
+$value = session()->get('key', 'default');
+// 等价于
+$value = $request->session()->get('key', 'default');
+
+// 给session赋值
+session(['key1'=>'value1', 'key2' => 'value2']);
+// 相当于
+session()->put(['key1'=>'value1', 'key2' => 'value2']);
+// 相当于
+$request->session()->put(['key1'=>'value1', 'key2' => 'value2']);
+```
+
+> session配置
+>
+> session配置文件在`config/session.php`
+
+```php
+<?php
+/**
+ * This file is part of webman.
+ *
+ * Licensed under The MIT License
+ * For full copyright and license information, please see the MIT-LICENSE.txt
+ * Redistributions of files must retain the above copyright notice.
+ *
+ * @author    walkor<walkor@workerman.net>
+ * @copyright walkor<walkor@workerman.net>
+ * @link      http://www.workerman.net/
+ * @license   http://www.opensource.org/licenses/mit-license.php MIT License
+ */
+
+use Webman\Session\FileSessionHandler;
+use Webman\Session\RedisSessionHandler;
+use Webman\Session\RedisClusterSessionHandler;
+
+return [
+
+    'type' => 'file', // or redis or redis_cluster
+
+    'handler' => FileSessionHandler::class,
+
+    'config' => [
+        'file' => [
+            'save_path' => runtime_path() . '/sessions',
+        ],
+        'redis' => [
+            'host' => '127.0.0.1',
+            'port' => 6379,
+            'auth' => '',
+            'timeout' => 2,
+            'database' => '',
+            'prefix' => 'redis_session_',
+        ],
+        'redis_cluster' => [
+            'host' => ['127.0.0.1:7000', '127.0.0.1:7001', '127.0.0.1:7001'],
+            'timeout' => 2,
+            'auth' => '',
+            'prefix' => 'redis_session_',
+        ]
+    ],
+    'session_name' => 'PHPSID',        // 存储session_id的cookie名
+    'auto_update_timestamp' => false,  // 是否自动刷新session，默认关闭
+    'lifetime' => 7*24*60*60,          // session过期时间
+    'cookie_lifetime' => 365*24*60*60, // 存储session_id的cookie过期时间
+    'cookie_path' => '/',              // 存储session_id的cookie路径
+    'domain' => '',                    // 存储session_id的cookie域名
+    'http_only' => true,               // 是否开启httpOnly，默认开启
+    'secure' => false,                 // 仅在https下开启session，默认关闭
+    'same_site' => '',                 // 用于防止CSRF攻击和用户追踪，可选值strict/lax/none
+    'gc_probability' => [1, 1000],     // 回收session的几率
+
+];
+```
+
+
+
 
 
 
