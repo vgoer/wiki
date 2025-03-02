@@ -280,7 +280,44 @@ sudo systemctl restart php-fpm
 
 
 
+### 9. 静态文件
 
+> webman支持静态文件访问，静态文件都放置于`public`目录下
+>
+> 如果不需要静态文件支持，打开`config/static.php`将`enable`选项改成false。关闭后所有静态文件的访问会返回404。
+
+> 静态文件中间件：
+>
+> webman自带一个静态文件中间件，位置`app/middleware/StaticFile.php`。
+> 有时我们需要对静态文件做一些处理，例如给静态文件增加跨域http头，禁止访问以点(`.`)开头的文件可以使用这个中间件
+
+```php
+<?php
+namespace support\middleware;
+
+use Webman\MiddlewareInterface;
+use Webman\Http\Response;
+use Webman\Http\Request;
+
+class StaticFile implements MiddlewareInterface
+{
+    public function process(Request $request, callable $next) : Response
+    {
+        // 禁止访问.开头的隐藏文件
+        if (strpos($request->path(), '/.') !== false) {
+            return response('<h1>403 forbidden</h1>', 403);
+        }
+        /** @var Response $response */
+        $response = $next($request);
+        // 增加跨域http头
+        /*$response->withHeaders([
+            'Access-Control-Allow-Origin'      => '*',
+            'Access-Control-Allow-Credentials' => 'true',
+        ]);*/
+        return $response;
+    }
+}
+```
 
 
 
