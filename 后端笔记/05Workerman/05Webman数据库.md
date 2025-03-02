@@ -258,3 +258,202 @@ $users = Db::connection('mysql2')->table('users')->where('name', 'John')->first(
 $users = Db::connection('pgsql')->table('users')->where('name', 'John')->first();
 ```
 
+
+
+### 3. 查询构造器
+
+> 数据库查询
+
+```php
+# 查询所有行
+$all = Db::table("admin")->get();
+
+#  查询指定列 
+$all = Db::table("admin")->select("id","username")->get();
+
+# 查询指定列
+$all = Db::table("admin")->where("id", $id)->select("id","username")->get();
+
+# 获取第一行数据
+$all = Db::table("admin")->where("id", $id)->first();
+return response("name: " . $all->username);
+
+# 获取一列
+$username = Db::table("admin")->pluck("username");
+
+# 获取单个值
+$email = Db::table('users')->where('name', 'John')->value('email');
+
+# 去重
+$email = Db::table('user')->select('nickname')->distinct()->get();
+
+# 分块结果
+```
+
+> 如果你需要处理成千上万条数据库记录，一次性读取这些数据会很耗时，并且容易导致内存超限，这时你可以考虑使用 chunkById 方法。该方法一次获取结果集的一小块，并将其传递给 闭包 函数进行处理。例如，我们可以将全部 users 表数据切割成一次处理 100 条记录的一小块：
+
+```php
+Db::table('users')->orderBy('id')->chunkById(100, function ($users) {
+    foreach ($users as $user) {
+        //
+    }
+});
+
+# 聚合
+$username = Db::table("admin")->count();
+
+# 判断是否存在
+return Db::table('orders')->where('finalized', 1)->exists();
+return Db::table('orders')->where('finalized', 1)->doesntExist();
+```
+
+> 原生sql
+>
+> 有时候你可能需要在查询中使用原生表达式。你可以使用 `selectRaw()` 创建一个原生表达式：
+
+```php
+$orders = Db::table('orders')
+                ->selectRaw('price * ? as price_with_tax', [1.0825])
+                ->get();
+
+# join语句
+// join
+$users = Db::table('users')
+            ->join('contacts', 'users.id', '=', 'contacts.user_id')
+            ->join('orders', 'users.id', '=', 'orders.user_id')
+            ->select('users.*', 'contacts.phone', 'orders.price')
+            ->get();
+
+// leftJoin            
+$users = Db::table('users')
+            ->leftJoin('posts', 'users.id', '=', 'posts.user_id')
+            ->get();
+
+// rightJoin
+$users = Db::table('users')
+            ->rightJoin('posts', 'users.id', '=', 'posts.user_id')
+            ->get();
+
+// crossJoin    
+$users = Db::table('sizes')
+            ->crossJoin('colors')
+            ->get();
+
+# union语句
+$first = Db::table('users')
+            ->whereNull('first_name');
+
+$users = Db::table('users')
+            ->whereNull('last_name')
+            ->union($first)
+            ->get();
+
+
+# where语句
+$users = Db::table('users')->where('votes', '=', 100)->get();
+
+// 当运算符为 等号 时可省略，所以此句表达式与上一个作用相同
+$users = Db::table('users')->where('votes', 100)->get();
+
+$users = Db::table('users')
+                ->where('votes', '>=', 100)
+                ->get();
+
+$users = Db::table('users')
+                ->where('votes', '<>', 100)
+                ->get();
+
+$users = Db::table('users')
+                ->where('name', 'like', 'T%')
+                ->get();
+
+# 多个条件
+$users = Db::table('users')->where([
+    ['status', '=', '1'],
+    ['subscribed', '<>', '1'],
+])->get();
+
+# 多个条件
+$users = Db::table('users')
+                    ->where('votes', '>', 100)
+                    ->orWhere('name', 'John')
+                    ->get();
+// SQL: select * from users where votes > 100 or (name = 'Abigail' and votes > 50)
+$users = Db::table('users')
+            ->where('votes', '>', 100)
+            ->orWhere(function($query) {
+                $query->where('name', 'Abigail')
+                      ->where('votes', '>', 50);
+            })
+            ->get(); 
+
+# orderBy
+$users = Db::table('users')
+                ->orderBy('name', 'desc')
+                ->get();
+
+# groupBy / having
+$users = Db::table('users')
+                ->groupBy('account_id')
+                ->having('account_id', '>', 100)
+                ->get();
+// 你可以向 groupBy 方法传递多个参数
+$users = Db::table('users')
+                ->groupBy('first_name', 'status')
+                ->having('account_id', '>', 100)
+                ->get();
+
+# offset / limit
+$users = Db::table('users')
+                ->offset(10)
+                ->limit(5)
+                ->get();
+```
+
+> 增加，删除，修改
+
+```php
+# 插入
+Db::table('users')->insert(
+    ['email' => 'john@example.com', 'votes' => 0]
+);
+
+Db::table('users')->insert([
+    ['email' => 'taylor@example.com', 'votes' => 0],
+    ['email' => 'dayle@example.com', 'votes' => 0]
+]);
+
+
+# 更新
+$affected = Db::table('users')
+              ->where('id', 1)
+              ->update(['votes' => 1]);
+
+# 有时您可能希望更新数据库中的现有记录，或者如果不存在匹配记录则创建它：
+Db::table('users')
+    ->updateOrInsert(
+        ['email' => 'john@example.com', 'name' => 'John'],
+        ['votes' => '2']
+    );
+
+
+# 删除
+Db::table('users')->delete();
+
+Db::table('users')->where('votes', '>', 100)->delete();
+
+# 清空表
+Db::table('users')->truncate();
+```
+
+> ==调试==你可以使用 dd 或者 dump 方法输出查询结果或者 SQL 语句。 
+
+```php
+# 安装
+composer require symfony/var-dumper
+
+Db::table('users')->where('votes', '>', 100)->dd();
+Db::table('users')->where('votes', '>', 100)->dump();
+```
+
+> 打印在控制台。
