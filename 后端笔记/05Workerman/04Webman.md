@@ -541,6 +541,64 @@ config('payment.key');
 
 
 
+### 14. 多应用
+
+> 有时一个项目可能分为多个子项目，例如一个商城可能分为商城主项目、商城api接口、商城管理后台3个子项目，他们都使用相同的数据库配置。
+
+```
+app
+├── shop
+│   ├── controller
+│   ├── model
+│   └── view
+├── api
+│   ├── controller
+│   └── model
+└── admin
+    ├── controller
+    ├── model
+    └── view
+```
+
+当访问地址 `http://127.0.0.1:8787/shop/{控制器}/{方法}` 时访问`app/shop/controller`下的控制器与方法。
+
+当访问地址 `http://127.0.0.1:8787/api/{控制器}/{方法}` 时访问`app/api/controller`下的控制器与方法。
+
+#### 多应用配置中间件
+
+> 有时候你想为不同应用配置不同的中间件，例如`api`应用可能需要一个跨域中间件，`admin`需要一个检查管理员登录的中间件，则配置`config/midlleware.php`可能类似下面这样：
+
+```php
+return [
+    // 全局中间件
+    '' => [
+        support\middleware\AuthCheck::class,
+    ],
+    // api应用中间件
+    'api' => [
+         support\middleware\AccessControl::class,
+     ],
+    // admin应用中间件
+    'admin' => [
+         support\middleware\AdminAuthCheck::class,
+         support\middleware\SomeOtherClass::class,
+    ],
+];
+```
+
+#### 多应用配置异常处理
+
+> 同样的，你想为不同的应用配置不同的异常处理类，例如`shop`应用里出现异常你可能想提供一个友好的提示页面；`api`应用里出现异常时你想返回的并不是一个页面，而是一个json字符串。为不同应用配置不同的异常处理类的配置文件`config/exception.php`类似如下：
+
+```php
+return [
+    'shop' => support\exception\Handler::class,
+    'api' => support\exception\ApiHandler::class,
+];
+```
+
+
+
 
 
 
