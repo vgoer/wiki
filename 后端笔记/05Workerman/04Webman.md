@@ -204,7 +204,7 @@ Route::group('/api',function(){
 
 ### 7. 中间件
 
-> 中间件一般用于拦截请求或者响应。
+> 中间件一般用于拦截请求或者响应。 [中间件](https://www.workerman.net/doc/webman/middleware.html)
 
 ```php
 
@@ -226,6 +226,63 @@ Route::group('/api',function(){
             │                                                      │
             └──────────────────────────────────────────────────────┘
 ```
+
+```php
+php webman make:middleware test
+
+<?php
+namespace app\middleware;
+
+use Webman\MiddlewareInterface;
+use Webman\Http\Response;
+use Webman\Http\Request;
+
+class Test implements MiddlewareInterface
+{
+    public function process(Request $request, callable $handler) : Response
+    {
+        echo '这里是请求穿越阶段，也就是请求处理前';
+
+        $response = $handler($request); // 继续向洋葱芯穿越，直至执行控制器得到响应
+
+        echo '这里是响应穿出阶段，也就是请求处理后';
+
+        return $response;
+    }
+}
+```
+
+> 可以看下官方实例。
+
+
+
+### 8. 视图
+
+> webman默认使用的是php原生语法作为模版，在打开`opcache`后具有最好的性能。除了php原生模版，webman还提供了[Twig](https://twig.symfony.com/doc/3.x/)、 [Blade](https://learnku.com/docs/laravel/8.x/blade/9377)、 [think-template](https://www.kancloud.cn/manual/think-template/content) 模版引擎
+>
+> 强烈建议开启php.ini中`opcache.enable`和`opcache.enable_cli` 两个选项，以便模版引擎达到最好性能。
+
+```shell
+1763 [opcache]
+1764 ; Determines if Zend OPCache is enabled
+1765 opcache.enable=1
+1766 
+1767 ; Determines if Zend OPCache is enabled for the CLI version of PHP
+1768 opcache.enable_cli=0
+
+# 重启php服务
+sudo systemctl restart php-fpm
+```
+
+> 具体看文档哈：[view](https://www.workerman.net/doc/webman/view.html)
+
+
+
+
+
+
+
+
 
 
 
