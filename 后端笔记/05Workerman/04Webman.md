@@ -450,6 +450,32 @@ return [
 
 
 
+### 11.异常处理
+
+> webman中异常默认由 `support\exception\Handler` 类来处理。可修改配置文件`config/exception.php`来更改默认异常处理类。异常处理类必须实现`Webman\Exception\ExceptionHandlerInterface` 接口。
+
+```php
+interface ExceptionHandlerInterface
+{
+    /**
+     * 记录日志
+     * @param Throwable $e
+     * @return mixed
+     */
+    public function report(Throwable $e);
+
+    /**
+     * 渲染返回
+     * @param Request $request
+     * @param Throwable $e
+     * @return Response
+     */
+    public function render(Request $request, Throwable $e) : Response;
+}
+```
+
+
+
 
 
 
