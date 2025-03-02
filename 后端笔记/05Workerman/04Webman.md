@@ -476,7 +476,40 @@ interface ExceptionHandlerInterface
 
 
 
+### 12. 日志
 
+> webman使用 [monolog/monolog](https://github.com/Seldaek/monolog) 处理日志。
+
+```php
+<?php
+namespace app\controller;
+
+use support\Request;
+use support\Log;
+
+class FooController
+{
+    public function index(Request $request)
+    {
+        Log::info('log test');
+        return response('hello index');
+    }
+}
+```
+
+> 方法
+
+```php
+Log::log($level, $message, array $context = [])
+Log::debug($message, array $context = [])
+Log::info($message, array $context = [])
+Log::notice($message, array $context = [])
+Log::warning($message, array $context = [])
+Log::error($message, array $context = [])
+Log::critical($message, array $context = [])
+Log::alert($message, array $context = [])
+Log::emergency($message, array $context = []
+```
 
 
 
