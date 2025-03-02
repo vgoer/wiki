@@ -513,6 +513,34 @@ Log::emergency($message, array $context = []
 
 
 
+### 13. 配置文件
+
+> webman的配置文件在`config/`目录下，项目中可以通过`config()`函数来获取对应的配置。
+>
+> [所有配置](https://www.workerman.net/doc/webman/config.html)
+
+> 自定义配置
+
+**config/payment.php**
+
+```php
+<?php
+return [
+    'key' => '...',
+    'secret' => '...'
+];
+```
+
+**获取配置时使用**
+
+```php
+config('payment');
+config('payment.key');
+config('payment.key');
+```
+
+
+
 
 
 
