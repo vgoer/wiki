@@ -1027,3 +1027,95 @@ return [
 Cache::store('redis')->set('key', 'value');
 Cache::store('array')->set('key', 'value');
 ```
+
+
+
+
+
+### 8. MongoDB
+
+> webman默认使用 [mongodb/laravel-mongodb](https://github.com/mongodb/laravel-mongodb) 作为mongodb组件，它是从laravel项目中抽离出来的，用法与laravel相同。
+>
+> 使用`jenssegers/mongodb`之前必须先给`php-cli`安装mongodb扩展。
+
+```shell
+php -m | grep mongodb
+
+composer require -W webman/database mongodb/laravel-mongodb ^4.8
+```
+
+在 `config/database.php` 里增加 `mongodb` connection， 类似如下：
+
+```php
+return [
+
+    'default' => 'mysql',
+
+    'connections' => [
+
+         ...这里省略了其它配置...
+
+        'mongodb' => [
+            'driver'   => 'mongodb',
+            'host'     => '127.0.0.1',
+            'port'     =>  27017,
+            'database' => 'test',
+            'username' => null,
+            'password' => null,
+            'options' => [
+                // here you can pass more settings to the Mongo Driver Manager
+                // see https://www.php.net/manual/en/mongodb-driver-manager.construct.php under "Uri Options" for a list of complete parameters that you can use
+
+                'appname' => 'homestead'
+            ],
+        ],
+    ],
+];
+```
+
+>  [示例](https://www.workerman.net/doc/webman/db/mongo.html#示例)
+
+```php
+<?php
+namespace app\controller;
+
+use support\Request;
+use support\Db;
+
+class UserController
+{
+    public function db(Request $request)
+    {
+        Db::connection('mongodb')->table('test')->insert([1,2,3]);
+        return json(Db::connection('mongodb')->table('test')->get());
+    }
+}
+```
+
+>  [模型示例](https://www.workerman.net/doc/webman/db/mongo.html#模型示例)
+
+```php
+<?php
+namespace app\model;
+
+use DateTimeInterface;
+use support\MongoModel as Model;
+
+class Test extends Model
+{
+    protected $connection = 'mongodb';
+
+    protected $table = 'test';
+
+    public $timestamps = true;
+
+    /**
+     * @param DateTimeInterface $date
+     * @return string
+     */
+    protected function serializeDate(DateTimeInterface $date): string
+    {
+        return $date->format('Y-m-d H:i:s');
+    }
+}
+```
