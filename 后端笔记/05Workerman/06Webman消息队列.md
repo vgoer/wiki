@@ -200,3 +200,39 @@ class OrderController
 
 
 
+### 2. Stomp队列
+
+> Stomp是简单(流)文本定向消息协议，它提供了一个可互操作的连接格式，允许STOMP客户端与任意STOMP消息代理（Broker）进行交互。[workerman/stomp](https://github.com/walkor/stomp)实现了Stomp客户端，主要用于 RabbitMQ、Apollo、ActiveMQ 等消息队列场景。
+
+```shell
+# 安装
+composer require webman/stomp
+```
+
+配置文件在 `config/plugin/webman/stomp` 下
+
+> [投递消息](https://www.workerman.net/doc/webman/queue/stomp.html#投递消息)
+
+```php
+<?php
+namespace app\controller;
+
+use support\Request;
+use Webman\Stomp\Client;
+
+class Index
+{
+    public function queue(Request $request)
+    {
+        // 队列
+        $queue = 'examples';
+        // 数据（传递数组时需要自行序列化，比如使用json_encode，serialize等）
+        $data = json_encode(['to' => 'tom@gmail.com', 'content' => 'hello']);
+        // 执行投递
+        Client::send($queue, $data);
+
+        return response('redis queue test');
+    }
+
+}
+```
