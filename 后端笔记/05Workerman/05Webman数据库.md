@@ -457,3 +457,67 @@ Db::table('users')->where('votes', '>', 100)->dump();
 ```
 
 > 打印在控制台。
+
+
+
+
+
+### 3. 模型
+
+> webman模型 基于 [Eloquent ORM](https://laravel.com/docs/7.x/eloquent) 。每个数据库表都有一个对应的「模型」用来与该表交互。你可以通过模型查询数据表中的数据，以及在数据表中插入新记录。
+
+```php
+<?php
+namespace app\model;
+
+use support\Model;
+
+class User extends Model
+{
+    /**
+     * 与模型关联的表名
+     *
+     * @var string
+     */
+    protected $table = 'user';
+
+    /**
+     * 重定义主键，默认是id
+     *
+     * @var string
+     */
+    protected $primaryKey = 'uid';
+
+    /**
+     * 指示是否自动维护时间戳
+     *
+     * @var bool
+     */
+    public $timestamps = false;
+    
+        /**
+     * 模型的连接名称
+     *
+     * @var string
+     */
+    protected $connection = 'connection-name';
+    
+        /**
+     * 模型的默认属性值。
+     *
+     * @var array
+     */
+    protected $attributes = [
+        'delayed' => false,
+    ];
+    
+    
+}
+```
+
+> 模型关联和laravel一样的。
+>
+> [learnku](https://learnku.com/docs/laravel/11.x/eloquent-relationshipsmd/16703)
+
+
+
