@@ -963,3 +963,67 @@ Redis::expireAt($key, $timestamp)
 Redis::select($dbIndex)
 ```
 
+
+
+
+
+### 7. Cache
+
+> [webman/cache](https://github.com/webman-php/cache)是基于[symfony/cache](https://github.com/symfony/cache)开发的缓存组件，兼容协程和非协程环境，支持连接池。
+
+```shell
+composer require -W webman/cache
+```
+
+```php
+    public function db(Request $request)
+    {
+        $key = 'test_key';
+        Cache::set($key, rand());
+        return response(Cache::get($key));
+    }
+```
+
+`stores.driver`支持3种驱动，**file**、**redis**、**array**。
+
+[file 文件驱动](https://www.workerman.net/doc/webman/db/cache.html#file 文件驱动)
+
+此为默认驱动，不依赖其它组件，支持跨进程共享缓存数据，不支持多服务器共享缓存数据。
+
+[array 内存驱动](https://www.workerman.net/doc/webman/db/cache.html#array 内存驱动)
+
+内存存储，性能最好，但是会占用内存，不支持跨进程跨服务器共享数据，进程重启后失效，一般用于缓存数据量小的项目。
+
+[redis 驱动](https://www.workerman.net/doc/webman/db/cache.html#redis 驱动)
+
+依赖[webman/redis](https://www.workerman.net/doc/webman/db/redis.html)组件，支持跨进程跨服务器共享缓存数据。
+
+**建议在`config/redis.php`增加一个独立的配置，例如cache类似如下**
+
+```php
+<?php
+return [
+    'default' => [
+        'password' => 'abc123',
+        'host' => '127.0.0.1',
+        'port' => 6379,
+        'database' => 0,
+    ],
+    'cache' => [ // <==== 新增
+        'password' => 'abc123',
+        'host' => '127.0.0.1',
+        'port' => 6379,
+        'database' => 1,
+        'prefix' => 'webman_cache-',
+    ]
+];
+```
+
+然后将`stores.redis.connection`设置为`cache`，
+
+> 可以通过如下代码手动切store，从而使用不同的存储驱动，例如
+
+```php
+Cache::store('redis')->set('key', 'value');
+Cache::store('array')->set('key', 'value');
+```
