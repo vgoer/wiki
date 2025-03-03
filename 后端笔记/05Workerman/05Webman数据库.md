@@ -458,6 +458,42 @@ Db::table('users')->where('votes', '>', 100)->dump();
 
 > 打印在控制台。
 
+> 开启事务，加锁
+
+```php
+    public function create_case_no()
+    {
+        // 设置时区
+        date_default_timezone_set('Asia/Shanghai');
+
+        // 获取日期
+        $today = date('Y-m-d 00:00:00', time());
+        $tomorrow = date('Y-m-d 00:00:00', strtotime('+1 day'));
+
+        // 生成案件号
+        \DB::beginTransaction();
+        $count = CaseModel::where('created_at', '>', $today)->where('created_at', '<', $tomorrow)->count();
+        if ($count == 0) {
+            $no = sprintf('%04d', 1);
+        } else {
+            $last = CaseModel::lockForUpdate()->where('created_at', '>', $today)->where('created_at', '<', $tomorrow)->orderBy('id', 'desc')->first();
+            $last_no = substr($last->case_no, -4);
+            $no = sprintf('%04d', ((int) $last_no + 1));
+        }
+        $case_no = 'DZBH03' . date('Ymd', time()) . $no;
+        try {
+            $case = new CaseModel;
+            $case->case_no = $case_no;
+            $case->save();
+            \DB::commit();
+            return $case_no;
+        } catch (\Exception $e) {
+            \DB::rollBack();
+            return False;
+        }
+    }
+```
+
 
 
 
@@ -518,6 +554,67 @@ class User extends Model
 > 模型关联和laravel一样的。
 >
 > [learnku](https://learnku.com/docs/laravel/11.x/eloquent-relationshipsmd/16703)
+
+
+
+
+
+### 4. 分页
+
+> Laravel的`illuminate/database`提供了方便的分页功能。
+
+```php
+# 安装
+composer require illuminate/pagination
+    
+# 使用
+    $per_page = 10;
+    $users = Db::table('user')->paginate($per_page);
+    return view('index/index', ['users' => $users]);
+```
+
+```php
+# 查询用户
+    public function userList(Request $request)
+    {
+        $input = $request->all();
+        $page_size = empty($input['page_size']) ? 10 : $input['page_size'];
+        $page_number = empty($input['page_number']) ? 1 : $input['page_number'];
+    
+        // 根据需求修改查询条件
+        $conditions = [];
+        if (isset($input['enterprise_name'])) {
+            $conditions[] = ['enterprise_name', 'like', '%' . $input['enterprise_name'] . '%'];
+        }
+        
+        if (isset($input['status'])) {
+            $conditions[] = ['status', $input['status']];
+        }
+        // 查询数据
+        $query = FrontUser::query();
+        if (!empty($conditions)) {
+            $query->where($conditions);
+        }
+        
+        // 获取总条数
+        $countQuery = clone $query;
+        $total_count = $countQuery->count();
+    
+        // 获取分页数据
+        $data = $query->forPage($page_number, $page_size)
+            ->get(['id', 'step', 'mobile', 'enterprise_name', 'cert_no', 'area', 'status', 'address', 'license', 'permit', 'created_at']);
+        
+        $url_prefix = "https://baotongdzbh.oss-cn-guangzhou.aliyuncs.com/";
+        
+        foreach ($data as &$item) {
+            $item['license'] = $item['license'] ? $url_prefix . $item['license'] : null;
+            $item['permit']  = $item['permit'] ? $url_prefix . $item['permit'] : null;
+        }
+        
+        // 返回结果
+        return success($data, 200, '操作成功', $total_count);
+    }
+```
 
 
 
