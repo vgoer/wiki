@@ -1041,7 +1041,7 @@ Cache::store('array')->set('key', 'value');
 ```shell
 php -m | grep mongodb
 
-composer require -W webman/database mongodb/laravel-mongodb ^4.8
+composer require -W webman/database mongodb/laravel-mongodb
 ```
 
 在 `config/database.php` 里增加 `mongodb` connection， 类似如下：
