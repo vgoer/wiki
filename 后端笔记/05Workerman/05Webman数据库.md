@@ -869,3 +869,97 @@ composer require fzaninotto/faker
     }
 ```
 
+
+
+
+
+### 6. Redis
+
+> [webman/redis](https://github.com/webman-php/redis)是在[illuminate/redis](https://github.com/illuminate/redis)的基础上添加了连接池功能，支持协程和非协程环境，用法与laravel相同。
+>
+> 使用`illuminate/redis`之前必须先给`php-cli`安装redis扩展。
+
+```shell
+php -m | grep redis
+
+# 安装
+# 安装 PECL
+sudo apt install php-pear  # Ubuntu/Debian
+# 或
+sudo yum install php-pear  # CentOS/RHEL
+
+# 通过 PECL 安装 Redis 扩展
+sudo pecl install redis
+
+# 启用扩展
+sudo vim /etc/php/php.ini
+"extension=redis"
+
+# 重启php
+sudo systemctl restart php-fpm 
+```
+
+```php
+# 安装
+composer require -W webman/redis illuminate/events
+```
+
+redis配置文件在`config/redis.php`
+
+```php
+return [
+    'default' => [
+        'host'     => '127.0.0.1',
+        'password' => null,
+        'port'     => 6379,
+        'database' => 0,
+        'pool' => [ // 连接池配置
+            'max_connections' => 10,     // 连接池最大连接数
+            'min_connections' => 1,      // 连接池最小连接数
+            'wait_timeout' => 3,         // 从连接池获取连接最大等待时间
+            'idle_timeout' => 50,        // 连接池中连接空闲超时时间，超过该时间会被关闭，直到连接数为min_connections
+            'heartbeat_interval' => 50,  // 心跳检测间隔，不要小于60秒
+        ],
+    ]
+];
+```
+
+> 使用
+
+```php
+    public function db(Request $request)
+    {
+        $key = 'test_key';
+        Redis::set($key, rand());
+        return response(Redis::get($key));
+    }
+
+Redis::append($key, $value)
+Redis::bitCount($key)
+Redis::decr($key, $value)
+Redis::decrBy($key, $value)
+Redis::get($key)
+Redis::getBit($key, $offset)
+Redis::getRange($key, $start, $end)
+Redis::getSet($key, $value)
+Redis::incr($key, $value)
+Redis::incrBy($key, $value)
+Redis::incrByFloat($key, $value)
+Redis::mGet(array $keys)
+Redis::getMultiple(array $keys)
+Redis::mSet($pairs)
+Redis::mSetNx($pairs)
+Redis::set($key, $value, $expireResolution = null, $expireTTL = null, $flag = null)
+Redis::setBit($key, $offset, $value)
+Redis::setEx($key, $ttl, $value)
+Redis::pSetEx($key, $ttl, $value)
+Redis::setNx($key, $value)
+Redis::setRange($key, $offset, $value)
+Redis::strLen($key)
+Redis::del(...$keys)
+Redis::exists(...$keys)
+Redis::expire($key, $ttl)
+Redis::expireAt($key, $timestamp)
+Redis::select($dbIndex)
+```
+
