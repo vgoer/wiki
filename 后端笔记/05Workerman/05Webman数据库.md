@@ -618,3 +618,254 @@ composer require illuminate/pagination
 
 
 
+
+
+### 5. 数据库迁移
+
+> Phinx 可以让开发者简洁的修改和维护数据库。 它避免了人为的手写 SQL 语句，它使用强大的 PHP API 去管理数据库迁移。
+>
+> [github](https://github.com/cakephp/phinx) [doc](https://tsy12321.gitbooks.io/phinx-doc)
+
+```shell
+# 安装
+composer require robmorgan/phinx
+
+# 初始化
+vendor/bin/phinx init
+
+# 新建目录文件
+mkdir -p db/migrations
+mkdir -p db/seeds
+```
+
+迁移脚本
+
+```php
+# 生成迁移
+php vendor/bin/phinx create UserNewMigration
+```
+
+> Phinx 0.2.0 介绍了一个新功能-逆迁移（回滚）。现在这个功能成为了脚本的默认方法。在这个方法中，你只需要定义 `up` 的逻辑，Phinx 可以在回滚的时候自动识别出如何down。比如：
+
+```php
+<?php
+
+declare(strict_types=1);
+
+use Phinx\Migration\AbstractMigration;
+
+final class UserNewMigration extends AbstractMigration
+{
+    /**
+     * Change Method.
+     *
+     * Write your reversible migrations using this method.
+     *
+     * More information on writing migrations is available here:
+     * https://book.cakephp.org/phinx/0/en/migrations.html#the-change-method
+     *
+     * Remember to call "create()" or "update()" and NOT "save()" when working
+     * with the Table class.
+     */
+    public function change(): void
+    {
+        // 创建表
+        $table = $this->table("users");
+        $table->addColumn("user_id", "integer")
+            ->addColumn("created","datetime")
+            ->create();
+    }
+
+    /**
+     * Migrate Up.
+     */
+    public function up()
+    {
+
+    }
+
+    /**
+     * Migrate Down.
+     */
+    public function down()
+    {
+
+    }
+}
+
+```
+
+> 当执行这个迁移脚本，Phinx 将创建 `users` 表，并且在回滚的时候自动删除该表。注意，当 `change` 方法存在的时候，`up` 和 `down` 方法会被自动忽略。如果你想用这些方法建议你创建另外一个迁移脚本。
+
+```shell
+# 执行迁移
+php vendor/bin/phinx migrate
+```
+
+> 对比
+
+```php
+# laravel
+    public function up()
+    {
+        Schema::create('v7_admins', function (Blueprint $table) {
+            $table->id()->comment('id');
+            $table->string('account', 50)->nullable()->comment('用户名');
+            $table->string('truename', 50)->nullable()->comment('真实姓名');
+            $table->string('avatar', 255)->nullable()->comment('头像');
+            $table->string('mobile',50)->nullable()->comment('电话');
+            $table->string('password', 500)->nullable()->comment('密码');
+            $table->string('salt', 255)->nullable()->comment('密码盐');
+            $table->string('token', 500)->nullable()->comment('token认证');
+            $table->string('roles', 50)->nullable()->comment('admin-超级管理员 servicer-客服 insurance_admin-管理员 insurance_servicer-审单人员');
+            $table->integer('status')->default(0)->comment('0:禁用, 1正常');
+            $table->timestamps();
+
+            $table->comment('管理员表');
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('v7_admins');
+    }
+
+
+# phinx
+	public function change(): void
+    {
+
+        $table = $this->table('v1_admins', [
+            'id' => true, 
+            'signed' => false,
+            'comment' => '管理员表'
+        ]);
+        
+        $table->addColumn('account', 'string', [
+                'limit' => 50,
+                'null' => true,
+                'comment' => '用户名'
+            ])
+            // 添加索引
+            ->addColumn('email', 'string', [
+                'limit' => 100,
+                'null' => true,
+                'comment' => '邮箱地址'
+            ])
+            ->addIndex(['email'], ['unique' => true], [
+                'comment' => '邮件'
+            ])
+            ->addColumn('truename', 'string', [
+                'limit' => 50,
+                'null' => true,
+                'comment' => '真实姓名'
+            ])
+            ->addColumn('avatar', 'string', [
+                'limit' => 255,
+                'null' => true,
+                'comment' => '头像'
+            ])
+            ->addColumn('mobile', 'string', [
+                'limit' => 50,
+                'null' => true,
+                'comment' => '电话'
+            ])
+            ->addColumn('password', 'string', [
+                'limit' => 500,
+                'null' => true,
+                'comment' => '密码'
+            ])
+            ->addColumn('salt', 'string', [
+                'limit' => 255,
+                'null' => true,
+                'comment' => '密码盐'
+            ])
+            ->addColumn('token', 'string', [
+                'limit' => 500,
+                'null' => true,
+                'comment' => 'token认证'
+            ])
+            ->addColumn('roles', 'string', [
+                'limit' => 50,
+                'null' => true,
+                'comment' => 'admin-超级管理员 servicer-客服 insurance_admin-管理员 insurance_servicer-审单人员'
+            ])
+            ->addColumn('status', 'integer', [
+                'default' => 0,
+                'comment' => '0:禁用, 1正常'
+            ])
+            // 时间戳  Laravel: $table->timestamps()
+            ->addColumn('created_at', 'timestamp', [
+                'null' => true
+            ])
+            ->addColumn('updated_at', 'timestamp', [
+                'null' => true
+            ])
+            ->create();
+    }
+```
+
+> 数据填充
+>
+> Phinx 0.5.0 支持数据库中使用seeding插入测试数据
+
+```php
+# 新建填充
+php vendor/bin/phinx seed:create UserSeeder
+
+    
+public function run(): void
+{
+    $data = array(
+        array(
+            'body'    => 'foo',
+            'created' => date('Y-m-d H:i:s'),
+        ),
+        array(
+            'body'    => 'bar',
+            'created' => date('Y-m-d H:i:s'),
+        )
+    );
+
+    $posts = $this->table("v1_users");
+    $posts->insert($data)
+        ->save();
+}
+
+
+# 执行
+php vendor/bin/phinx seed:run
+```
+
+> 可以使用 [Faker library](https://github.com/fzaninotto/Faker) 方法来注入测试数据。首先使用 Composer 安装 Faker：
+
+```shell
+composer require fzaninotto/faker
+```
+
+```php
+    public function run(): void
+    {
+        $faker = Faker\Factory::create();
+        $data = [];
+        for ($i = 0; $i < 100; $i++) {
+            $data[] = [
+                'username'      => $faker->userName,
+                'password'      => sha1($faker->password),
+                'password_salt' => sha1('foo'),
+                'email'         => $faker->email,
+                'first_name'    => $faker->firstName,
+                'last_name'     => $faker->lastName,
+                'created'       => date('Y-m-d H:i:s'),
+            ];
+        }
+
+        $this->insert('users', $data);
+    }
+```
+
