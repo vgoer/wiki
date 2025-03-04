@@ -224,3 +224,59 @@ Route::any("/getInfo", [app\controller\AuthJwtController::class, "getInfo"]);
 Route::any("/refresh", [app\controller\AuthJwtController::class, "refresh"]);
 ```
 
+
+
+
+
+### 2. 算法
+
+> 其他算法
+>
+> RS256算法。
+
+```php
+    'enable' => true,
+    'jwt' => [
+        /** 算法类型 HS256、HS384、HS512、RS256、RS384、RS512、ES256、ES384、Ed25519 */
+        'algorithms' => 'RS256',
+```
+
+```shell
+# 生成密钥对
+ssh-keygen -t rsa -b 4096 -E SHA256 -m PEM -P "" -f RS256.key
+openssl rsa -in RS256.key -pubout -outform PEM -out RS256.key.pub
+```
+
+> 生成了私钥和公钥，替换到配置文件中
+
+```php
+        /** access令牌私钥 */
+        'access_private_key' => <<<EOD
+-----BEGIN RSA PRIVATE KEY-----
+...
+-----END RSA PRIVATE KEY-----
+EOD,
+
+        /** access令牌公钥 */
+        'access_public_key' => <<<EOD
+-----BEGIN PUBLIC KEY-----
+...
+-----END PUBLIC KEY-----
+EOD,
+
+        /** refresh令牌私钥 */
+        'refresh_private_key' => <<<EOD
+-----BEGIN RSA PRIVATE KEY-----
+...
+-----END RSA PRIVATE KEY-----
+EOD,
+
+        /** refresh令牌公钥 */
+        'refresh_public_key' => <<<EOD
+-----BEGIN PUBLIC KEY-----
+...
+-----END PUBLIC KEY-----
+EOD,
+```
+
+> 执行接口，`就生成了RS256加密的jwt了`
