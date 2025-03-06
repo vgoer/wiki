@@ -38,7 +38,7 @@ composer require saithink/saiadmin
 >
 > 如果是全新安装的：只需要将saiadmin.sql文件导入数据库。
 >
-> 导入完成后需要在config/thinkorm.php文件中配置数据库信息
+> 导入完成后需要在`config/thinkorm.php文件`中配置数据库信息
 
 ```php
 return [
