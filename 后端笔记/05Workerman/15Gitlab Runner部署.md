@@ -88,7 +88,9 @@ sudo gitlab-runner register \
   
 ```
 
+> 提示ci没配置的话就是没有`运行打标签作业`
 
+![image-20250310174902704](./assets/image-20250310174902704.png)
 
 
 
