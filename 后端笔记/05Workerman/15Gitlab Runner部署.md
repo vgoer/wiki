@@ -36,7 +36,7 @@
 
 2. 新建runner实例
 
-![image-20250309161929261](./assets/image-20250309161929261.png)
+![image-20250320182308634](.\assets\image-20250320182308634.png)
 
 ```shell
 # Download the binary for your system
@@ -102,7 +102,7 @@ sudo gitlab-runner register \
 
 1. 创建流水线
 
-![image-20250309163054630](./assets/image-20250309163054630.png)
+![image-20250320182350160](.\assets\image-20250320182350160.png)
 
 ```shell
 # This file is a template, and might need editing before it works on your project.
