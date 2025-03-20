@@ -22,6 +22,30 @@
 
 
 
+> php需要下载`redis`扩展： 
+>
+> [url](https://pecl.php.net/package/redis)
+>
+> 版本： `php8.0`, `redis6.1`
+
+1. 下载： DDL
+
+![image-20250320112755195](.\assets\image-20250320112755195-17424412769713.png)
+
+2. 下载对应版本：
+
+![image-20250320112833313](.\assets\image-20250320112833313-17424413147715.png)
+
+3. 移动配置文件和修改配置文件
+
+> 复制： `php_redis.dll`和 `php_redis.pdb`到 `php版本/ext/`目录下
+
+> 修改配置文件： `php.ini`
+
+```ini
+extension=redis
+```
+
 
 
 ### 1. 开启服务端
