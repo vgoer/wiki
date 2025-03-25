@@ -83,6 +83,33 @@ for result in results:
 
 
 
+### 2. 使用gpu
+
+> 使用cuda训练
+>
+> [pytorch](hhttps://pytorch.org/get-started/locally/)
+
+```shell
+pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu126
+```
+
+> 一定要下载对应版本的。
+
+```python
+import torch
+print('CUDA版本:',torch.version.cuda)
+print('Pytorch版本:',torch.__version__)
+print('显卡是否可用:','可用' if(torch.cuda.is_available()) else '不可用')
+print('显卡数量:',torch.cuda.device_count())
+print('当前显卡型号:',torch.cuda.get_device_name())
+print('当前显卡的CUDA算力:',torch.cuda.get_device_capability())
+print('当前显卡的总显存:',torch.cuda.get_device_properties(0).total_memory/1024/1024/1024,'GB')
+print('是否支持TensorCore:','支持' if (torch.cuda.get_device_properties(0).major >= 7) else '不支持')
+print('当前显卡的显存使用率:',torch.cuda.memory_allocated(0)/torch.cuda.get_device_properties(0).total_memory*100,'%')
+```
+
+
+
 
 
 ### 2. 值作数据集
@@ -92,3 +119,13 @@ for result in results:
 数据目录结构：
 
 ![image-20250324170932676](.\assets\image-20250324170932676.png)
+
+> - Labelimg是一款开源的数据标注工具，可以标注三种格式。
+>   - VOC标签格式，保存为xml文件。
+>   - yolo标签格式，保存为txt文件。
+>   - createML标签格式，保存为json格式。
+
+```shell
+pip install labelimg -i https://pypi.doubanio.com/simple
+```
+
