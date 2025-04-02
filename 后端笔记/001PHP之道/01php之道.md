@@ -27,6 +27,10 @@ dateCreated: 2023-08-30T10:37:15.571Z
 > 如果你刚开始学习 PHP，请使用最新的稳定版本 [PHP 8.0](http://php.net/downloads.php)。
 >
 > [doc](https://learnku.com/docs/php-the-right-way/PHP8.0/welcome/11458)
+>
+> 快速安装PHP+Composer: [doc](https://www.workerman.net/download)
+>
+> 携程：[doc](https://www.workerman.net/u/chaz6chez)
 
 
 
