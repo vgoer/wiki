@@ -1097,3 +1097,408 @@ public function setBucketCors(
 }
 ```
 
+
+
+
+
+### 4. 整合
+
+> 整合代码
+
+```php
+<?php
+require __DIR__.'/aws/aws-autoloader.php';
+
+use Aws\S3\S3Client;
+use Aws\Exception\AwsException;
+use Aws\S3\Exception\S3Exception;
+
+class ZosClient {
+    private $s3Client;
+    private $defaultBucket;
+    private $defaultOptions;
+
+    /**
+     * 初始化客户端
+     * @param string $accessKey     访问密钥
+     * @param string $secretKey     私有密钥
+     * @param string $endpoint      服务端点
+     * @param string $region        区域（默认us-east-1）
+     * @param string $defaultBucket 默认存储桶
+     * @param array  $defaultOptions 默认配置选项：
+     *     - storage_class: 存储类型（STANDARD/STANDARD_IA/GLACIER）
+     *     - acl: 访问权限（private/public-read等）
+     *     - auto_create_bucket: 自动创建桶（默认false）
+     */
+    public function __construct(
+        string $accessKey,
+        string $secretKey,
+        string $endpoint,
+        string $region = 'us-east-1',
+        string $defaultBucket = '',
+        array $defaultOptions = []
+    ) {
+        $this->s3Client = new S3Client([
+            'credentials' => [
+                'key'    => $accessKey,
+                'secret' => $secretKey,
+            ],
+            'region'   => $region,
+            'version'  => 'latest',
+            'endpoint' => $endpoint,
+            'http'    => [
+                'connect_timeout' => 10,
+                'timeout'        => 60
+            ]
+        ]);
+
+        $this->defaultBucket = $defaultBucket;
+        $this->defaultOptions = array_merge([
+            'storage_class'    => 'STANDARD',
+            'acl'              => 'private',
+            'auto_create_bucket' => false
+        ], $defaultOptions);
+    }
+
+    /******************* 基础操作 *******************/
+    
+    /**
+     * 上传文件
+     * @param string $localFile 本地文件路径
+     * @param string $objectKey 对象键
+     * @param array  $options   可选参数：
+     *     - bucket: 指定存储桶
+     *     - metadata: 元数据数组
+     *     - tags: 标签数组 [['Key'=>'','Value'=>''], ...]
+     * @return array 操作结果
+     */
+    public function upload(string $localFile, string $objectKey, array $options = []): array {
+        try {
+            $params = $this->buildParams($options) + [
+                'Key'           => $objectKey,
+                'Body'          => file_get_contents($localFile),
+                'StorageClass'  => $options['storage_class'] ?? $this->defaultOptions['storage_class'],
+                'ACL'           => $options['acl'] ?? $this->defaultOptions['acl'],
+                'Metadata'      => $options['metadata'] ?? [],
+                'Tagging'       => !empty($options['tags']) ? http_build_query(array_combine(
+                    array_column($options['tags'], 'Key'),
+                    array_column($options['tags'], 'Value')
+                )) : null
+            ];
+
+            $this->checkBucket($params['Bucket']);
+            $result = $this->s3Client->putObject($params);
+            return $this->success([
+                'object_url' => $result['ObjectURL'],
+                'etag'       => $result['ETag'],
+                'version_id' => $result['VersionId'] ?? null
+            ]);
+        } catch (\Exception $e) {
+            return $this->error($e);
+        }
+    }
+
+    /**
+     * 下载文件
+     * @param string $objectKey 对象键
+     * @param string $savePath  保存路径
+     * @param array  $options   可选参数：
+     *     - bucket: 指定存储桶
+     *     - version_id: 版本ID
+     * @return array 操作结果
+     */
+    public function download(string $objectKey, string $savePath, array $options = []): array {
+        try {
+            $params = $this->buildParams($options) + [
+                'Key' => $objectKey,
+                'VersionId' => $options['version_id'] ?? null
+            ];
+
+            $this->prepareDir($savePath);
+            
+            $result = $this->s3Client->getObject($params);
+            file_put_contents($savePath, $result['Body']);
+            
+            return $this->success([
+                'path'          => realpath($savePath),
+                'size'          => $result['ContentLength'],
+                'last_modified' => $result['LastModified']->format('c'),
+                'metadata'      => $result['Metadata']->toArray()
+            ]);
+        } catch (\Exception $e) {
+            return $this->error($e);
+        }
+    }
+
+    /******************* 高级操作 *******************/
+
+    /**
+     * 分片上传（大文件）
+     * @param string $localFile   本地文件路径
+     * @param string $objectKey   对象键
+     * @param array  $options     可选参数：
+     *     - bucket: 指定存储桶
+     *     - part_size: 分片大小（字节，默认10MB）
+     *     - progress: 进度回调函数
+     */
+    public function multipartUpload(string $localFile, string $objectKey, array $options = []): array {
+        try {
+            $params = $this->buildParams($options) + ['Key' => $objectKey];
+            $partSize = $options['part_size'] ?? 10 * 1024 * 1024;
+            $progress = $options['progress'] ?? null;
+
+            // 初始化上传
+            $uploadId = $this->s3Client->createMultipartUpload($params)['UploadId'];
+            $parts = [];
+            $fileSize = filesize($localFile);
+            $bytesUploaded = 0;
+
+            // 执行分片上传
+            $fp = fopen($localFile, 'rb');
+            for ($i = 1; !feof($fp); $i++) {
+                $data = fread($fp, $partSize);
+                $result = $this->s3Client->uploadPart([
+                    'Bucket'     => $params['Bucket'],
+                    'Key'        => $objectKey,
+                    'UploadId'   => $uploadId,
+                    'PartNumber' => $i,
+                    'Body'       => $data
+                ]);
+
+                $parts[] = ['PartNumber' => $i, 'ETag' => $result['ETag']];
+                $bytesUploaded += strlen($data);
+
+                // 进度回调
+                if ($progress) {
+                    $progress($bytesUploaded, $fileSize);
+                }
+            }
+            fclose($fp);
+
+            // 完成上传
+            $result = $this->s3Client->completeMultipartUpload([
+                'Bucket'   => $params['Bucket'],
+                'Key'      => $objectKey,
+                'UploadId' => $uploadId,
+                'MultipartUpload' => ['Parts' => $parts]
+            ]);
+
+            return $this->success([
+                'etag'       => $result['ETag'],
+                'version_id' => $result['VersionId'] ?? null
+            ]);
+        } catch (\Exception $e) {
+            if (isset($uploadId)) {
+                $this->s3Client->abortMultipartUpload([
+                    'Bucket'   => $params['Bucket'],
+                    'Key'      => $objectKey,
+                    'UploadId' => $uploadId
+                ]);
+            }
+            return $this->error($e);
+        }
+    }
+
+    /******************* 管理操作 *******************/
+
+    /**
+     * 删除对象
+     * @param string|array $objects 对象键或对象数组（批量删除）
+     * @param array $options 可选参数：
+     *     - bucket: 指定存储桶
+     *     - version_id: 版本ID（单对象）
+     */
+    public function delete($objects, array $options = []): array {
+        try {
+            $params = $this->buildParams($options);
+
+            // 批量删除
+            if (is_array($objects)) {
+                $params['Delete'] = ['Objects' => array_map(function($obj) {
+                    return is_string($obj) ? ['Key' => $obj] : $obj;
+                }, $objects)];
+
+                $result = $this->s3Client->deleteObjects($params);
+                return $this->success([
+                    'deleted' => $result['Deleted'],
+                    'errors'  => $result['Errors'] ?? []
+                ]);
+            }
+
+            // 单对象删除
+            $params['Key'] = $objects;
+            if (isset($options['version_id'])) {
+                $params['VersionId'] = $options['version_id'];
+            }
+
+            $result = $this->s3Client->deleteObject($params);
+            return $this->success([
+                'delete_marker' => $result['DeleteMarker'],
+                'version_id'    => $result['VersionId'] ?? null
+            ]);
+        } catch (\Exception $e) {
+            return $this->error($e);
+        }
+    }
+
+    /**
+     * 生成预签名URL
+     * @param string $objectKey 对象键
+     * @param string $method    请求方法（GET/PUT）
+     * @param int    $expires   有效期（秒）
+     * @param array  $options   可选参数：
+     *     - bucket: 指定存储桶
+     */
+    public function presignedUrl(string $objectKey, string $method = 'GET', int $expires = 3600, array $options = []): array {
+        try {
+            $command = $this->s3Client->getCommand(
+                strtoupper($method) === 'PUT' ? 'PutObject' : 'GetObject',
+                $this->buildParams($options) + ['Key' => $objectKey]
+            );
+
+            $request = $this->s3Client->createPresignedRequest($command, "+$expires seconds");
+            return $this->success(['url' => (string)$request->getUri()]);
+        } catch (\Exception $e) {
+            return $this->error($e);
+        }
+    }
+
+    /******************* 辅助方法 *******************/
+
+    private function buildParams(array $options): array {
+        $params = ['Bucket' => $options['bucket'] ?? $this->defaultBucket];
+        if ($this->defaultOptions['auto_create_bucket']) {
+            $this->createBucketIfNotExists($params['Bucket']);
+        }
+        return $params;
+    }
+
+    private function checkBucket(string $bucket): void {
+        if (!$this->s3Client->doesBucketExist($bucket)) {
+            if ($this->defaultOptions['auto_create_bucket']) {
+                $this->s3Client->createBucket(['Bucket' => $bucket]);
+            } else {
+                throw new \RuntimeException("Bucket $bucket 不存在");
+            }
+        }
+    }
+
+    private function prepareDir(string $path): void {
+        $dir = dirname($path);
+        if (!file_exists($dir) && !mkdir($dir, 0755, true)) {
+            throw new \RuntimeException("无法创建目录: $dir");
+        }
+        if (!is_writable($dir)) {
+            throw new \RuntimeException("目录不可写: $dir");
+        }
+    }
+
+    private function success(array $data = []): array {
+        return ['status' => 'success', 'data' => $data];
+    }
+
+    private function error(\Throwable $e): array {
+        $error = ['status' => 'error', 'message' => $e->getMessage()];
+        if ($e instanceof AwsException) {
+            $error['code'] = $e->getAwsErrorCode();
+            $error['request_id'] = $e->getAwsRequestId();
+        }
+        return $error;
+    }
+}
+
+/* 使用示例：
+$zos = new ZosClient(
+    'your_ak',
+    'your_sk',
+    'your_endpoint',
+    'us-east-1',
+    'default-bucket',
+    ['auto_create_bucket' => true]
+);
+
+// 简单上传
+$result = $zos->upload('/data/file.txt', 'docs/file.txt');
+if ($result['status'] === 'success') {
+    echo "上传成功，ETag: ".$result['data']['etag'];
+}
+
+// 分片上传（带进度）
+$zos->multipartUpload('/data/bigfile.iso', 'backups/bigfile.iso', [
+    'part_size' => 100 * 1024 * 1024, // 100MB分片
+    'progress' => function ($uploaded, $total) {
+        echo "进度: ".round($uploaded/$total*100, 1)."%\n";
+    }
+]);
+
+// 生成下载链接
+$url = $zos->presignedUrl('files/private.txt', 'GET', 300);
+echo "下载链接（5分钟有效）: ".$url['data']['url'];
+
+// 批量删除
+$result = $zos->delete([
+    'file1.txt',
+    ['Key' => 'file2.txt', 'VersionId' => 'xxx']
+]);
+*/
+```
+
+> 高级功能
+
+1. 带标签和元数据上传
+
+```php
+$zos->upload('photo.jpg', 'user_uploads/avatar.jpg', [
+    'metadata' => ['user_id' => '12345'],
+    'tags' => [
+        ['Key' => 'Category', 'Value' => 'Avatar'],
+        ['Key' => 'Status', 'Value' => 'Unverified']
+    ]
+]);
+```
+
+2. 断点续传分片上传
+
+```php
+// 第一次上传（失败）
+try {
+    $zos->multipartUpload('bigfile.zip', 'backups/bigfile.zip');
+} catch (\Exception $e) {
+    // 记录UploadId
+    $uploadId = $e->getUploadId(); // 需要扩展异常处理
+}
+
+// 恢复上传
+$zos->resumeMultipartUpload('bigfile.zip', 'backups/bigfile.zip', $uploadId, [
+    'part_size' => 50 * 1024 * 1024
+]);
+```
+
+> 3. 加密上传
+
+```php
+$zos->upload('secret.txt', 'encrypted/secret.txt', [
+    'server_side_encryption' => 'AES256'
+]);
+```
+
+4. 预上传后端前端
+
+```php
+$policy = $zos->generatePostPolicy('user_uploads/', [
+    'expires' => '+1 hour',
+    'conditions' => [
+        ['content-length-range', 0, 10485760] // 限制10MB
+    ]
+]);
+
+// 前端表单示例：
+// <form action="https://your-endpoint" method="post" enctype="multipart/form-data">
+//   <input type="hidden" name="key" value="user_uploads/${filename}">
+//   <input type="hidden" name="policy" value="<?= $policy['policy'] ?>">
+//   <input type="hidden" name="signature" value="<?= $policy['signature'] ?>">
+//   <input type="file" name="file">
+//   <button>Upload</button>
+// </form>
+```
+
