@@ -107,3 +107,10 @@ npm run dev
 npm run build
 ```
 
+
+
+
+
+### 3. 插件安装
+
+> 插件： [app](https://saas.saithink.top/#/appStore)
