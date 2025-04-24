@@ -392,3 +392,134 @@ function error($code = null)
 }
 ```
 
+```php
+<?php
+
+if (!function_exists('success')) {
+    /**
+     * 成功返回json内容
+     * @param array|string $data
+     * @param int $code
+     * @param string $msg
+     * @return Response
+     */
+    function success(array|string $data = [], int $code = 200, string $msg = '操作成功'): Response
+    {
+        // 类型分流处理
+        if (is_string($data)) {
+            $parsed = parseJsonOrReturnString($data);
+            // 当输入是字符串且解析出数组时升级为数据
+            if (is_array($parsed)) {
+                $data = $parsed;
+            }
+            // 当输入是字符串且解析出字符串时作为消息
+            if (is_string($parsed)) {
+                $msg = $parsed;
+            }
+        }
+        return json(['code' => $code, 'message' => $msg, 'data' => $data]);
+    }
+}
+
+if (!function_exists('fail')) {
+    /**
+     * 失败返回json内容
+     * @param string|array $msg
+     * @param int $code
+     * @return Response
+     */
+    function fail(string|array $msg = 'fail', int $code = CommonEnum::RETURN_CODE_FAIL): Response
+    {
+        return json(['code' => $code, 'message' => $msg]);
+    }
+}
+
+
+function parseJsonOrReturnString(string $str): mixed
+{
+    try {
+        return json_decode($str, true, 512, JSON_THROW_ON_ERROR);
+    } catch (JsonException $e) {
+        return $str;
+    }
+}
+
+
+if (!function_exists('convertAmountToCn')) {
+    /**
+     * 将数值金额转换为中文大写金额
+     * @param float $amount 金额(支持到分)
+     * @param bool $isRound 是否对小数进行四舍五入
+     * @return string 中文大写金额
+     */
+    function convertAmountToCn($amount, $isRound = true) {
+        // 判断输出的金额是否为数字或数字字符串
+        if (!is_numeric($amount)) {
+            return "要转换的金额只能为数字!";
+        }
+
+        // 金额为 0,则直接输出"零元整"
+        if ($amount == 0) {
+            return "人民币零元整";
+        }
+
+        // 金额不能为负数
+        if ($amount < 0) {
+            return "要转换的金额不能为负数!";
+        }
+
+        // 金额不能超过万亿,即 12 位
+        if (strlen($amount) > 12) {
+            return "要转换的金额不能为万亿及更高金额!";
+        }
+
+        // 预定义中文转换的数组
+        $digital = array('零', '壹', '贰', '叁', '肆', '伍', '陆', '柒', '捌', '玖');
+        // 预定义单位转换的数组
+        $position = array('仟', '佰', '拾', '亿', '仟', '佰', '拾', '万', '仟', '佰', '拾', '元');
+
+        // 将金额的数值字符串拆分成数组
+        $amountArr = explode('.', $amount);
+
+        // 将整数位的数值字符串拆分成数组
+        $integerArr = str_split($amountArr[0], 1);
+
+        // 将整数部分替换成大写汉字
+        $result = '';
+        $integerArrLength = count($integerArr);     // 整数位数组的长度
+        $positionLength = count($position);         // 单位数组的长度
+        for ($i = 0; $i < $integerArrLength; $i++) {
+            // 如果数值不为 0,则正常转换
+            if ($integerArr[$i] != 0) {
+                $result = $result . $digital[$integerArr[$i]] . $position[$positionLength - $integerArrLength + $i];
+            } else {
+                // 如果数值为 0, 且单位是亿,万,元这三个的时候,则直接显示单位
+                if (($positionLength - $integerArrLength + $i + 1) % 4 == 0) {
+                    $result = $result . $position[$positionLength - $integerArrLength + $i];
+                }
+            }
+        }
+
+        // 如果小数位也要转换
+        if (count($amountArr) > 1) {
+            // 将小数位的数值字符串拆分成数组
+            $decimalArr = str_split($amountArr[1], 1);
+            // 将角替换成大写汉字. 如果为 0,则不替换
+            if ($decimalArr[0] != 0) {
+                $result = $result . $digital[$decimalArr[0]] . '角';
+            }
+            // 将分替换成大写汉字. 如果为 0,则不替换
+            if (count($decimalArr) > 1 && $decimalArr[1] != 0) {
+                $result = $result . $digital[$decimalArr[1]] . '分';
+            }
+        } else {
+            $result = $result . '整';
+        }
+
+        return $result;
+    }
+}
+
+
+```
+
