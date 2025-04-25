@@ -308,7 +308,7 @@ php artisan key:generate
     /**
      *  为用户存储一个 DigitalOcean API 令牌。
      */
-    public function store(Request $request): RedirectResponse
+public function store(Request $request): RedirectResponse
 {
     $request->user()->fill([
         'token' => Crypt::encryptString($request->token),
