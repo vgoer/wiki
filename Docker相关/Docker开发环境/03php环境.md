@@ -67,3 +67,57 @@ chmod -R 775 /var/www/example-app/bootstrap/cache
 
 
 
+
+
+
+
+
+
+
+
+### 2. webman
+
+> 构建容器
+
+
+
+
+
+
+
+```shell
+# 构建容器
+docker build -t xdly/webman:8.1 .
+
+# 如果有php和composer则直接启动项目 注意映射路径 /home/goer/docker_data/webman:/app
+docker run -itd -p 8787:8787 -v /home/goer/docker_data/webman:/app --name webman xdly/webman:8.1
+
+# 没有php环境需要先进入容器，安装webman
+docker exec -it webman bash
+composer create-project workerman/webman xdly_api
+#退出容器
+exit
+# 重新找到安装好的webman路径，启动项目
+docker run -itd -p 8787:8787 -v /home/goer/docker_data/webman/xdly_api/:/app/xdly_api --name webman xdly/webman:8.1
+# 修改项目属组 就有权限可以修改了
+sudo chown -R $USER:$USER /home/goer/docker_data/webman/xdly_api/
+```
+
+
+
+
+
+> 公司的构建
+
+```shell
+# 导入容器 容器名和标签 xdly/webman:8.1
+docker load -i xdly_webman_docker.tar
+
+# 有webman项目 确定路径/home/goer/docker_data/webman
+docker run -itd -p 8787:8787 -v /home/goer/docker_data/webman:/app --name webman xdly/webman:8.1
+
+# 如果要安装依赖的话 进入容器
+docker exec -it webman bash
+composer requeire xxxx
+```
+
