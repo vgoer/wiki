@@ -99,7 +99,7 @@ class Test{
 
 ```php
 // b.php
-namespace bb
+namespace bb  
 class Test{
 	public $name = 'bb';
     
