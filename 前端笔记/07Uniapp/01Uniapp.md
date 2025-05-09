@@ -17,6 +17,8 @@ dateCreated: 2023-04-24T10:52:11.797Z
 ## uin app
 
 > 是一个使用 [Vue.js](https://vuejs.org/) 开发所有前端应用的框架，开发者编写一套代码，可发布到iOS、Android、Web（响应式）、以及各种小程序（微信/支付宝/百度/头条/QQ/快手/钉钉/淘宝）、快应用等多个平台。
+>
+> [doc](https://uniapp.dcloud.net.cn/quickstart-cli.html)
 
 
 
@@ -41,6 +43,15 @@ vue create -p dcloudio/uni-preset-vue 项目名称
 
 
 ### 开始
+
+```shell
+# 安装 js/ts
+npx degit dcloudio/uni-preset-vue#vite my-vue3-project
+
+npx degit dcloudio/uni-preset-vue#vite-ts my-vue3-project
+```
+
+
 
 ```shell
 npm run serve // 开启app   
@@ -337,5 +348,3 @@ header("Access-Control-Allow-Headers:DNT,X-Mx-ReqToken,Keep-Alive,User-Agent,X-R
 
 
 
-
-****
