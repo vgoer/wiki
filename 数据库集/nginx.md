@@ -22,39 +22,38 @@
 
 > `docker-compose.yml`准备4个Nginx容器，1个用来做负载均衡服务器，3个是App Server 
 
-```yaml
-version: '3'
-services:
-  nginx-load-balancing:
-    image: nginx:alpine
-    container_name: nginx-load-balancing
-    ports:
-      - "9090:80"
-    volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf
-    depends_on:
-      - app-server1
-      - app-server2
-      - app-server3
+```shell
+# 1. 新建文件
+rmdir nginx-load app1 app2 app3
 
-  app-server1:
-    image: nginx:alpine
-    container_name: app-server1
+# 2. 复制 nginx-load/nginx.conf
 
-  app-server2:
-    image: nginx:alpine
-    container_name: app-server2
+# 3. 复制 ./app1和2和3/html/index.html
 
-  app-server3:
-    image: nginx:alpine
-    container_name: app-server3
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome to nginx!</title>
+<style>
+html { color-scheme: light dark; }
+body { width: 35em; margin: 0 auto;
+font-family: Tahoma, Verdana, Arial, sans-serif; }
+</style>
+</head>
+<body>
+<h1>Welcome to nginx!</h1>
+<p>If you see this page, the nginx web server is successfully installed and
+working. Further configuration is required.</p>
 
-networks:
-  default:
-    driver: bridge
+<p>For online documentation and support please refer to
+<a href="http://nginx.org/">nginx.org</a>.<br/>
+Commercial support is available at
+<a href="http://nginx.com/">nginx.com</a>.</p>
 
+<p><em>Thank you for using nginx.</em></p>
+</body>
+</html>
 ```
-
 > 负载均衡服务器配置 `nginx.conf` 如下：
 
 ```shell
@@ -102,13 +101,67 @@ http {
 
 ```
 
+
+```yaml
+services:
+  nginx-load-balancing:
+    image: nginx:alpine
+    container_name: nginx-load-balancing
+    ports:
+      - 9090:80
+    volumes:
+      - ./nginx-load/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx-load/nginx_logs:/var/log/nginx
+    depends_on:
+      - app-server1
+      - app-server2
+      - app-server3
+
+  app-server1:
+    image: nginx:alpine
+    container_name: app-server1
+    volumes:
+      - ./app1/nginx_logs:/var/log/nginx
+      - ./app1/html:/usr/share/nginx/html
+
+  app-server2:
+    image: nginx:alpine
+    container_name: app-server2
+    volumes:
+      - ./app2/nginx_logs:/var/log/nginx
+      - ./app2/html:/usr/share/nginx/html
+
+  app-server3:
+    image: nginx:alpine
+    container_name: app-server3
+    volumes:
+      - ./app3/nginx_logs:/var/log/nginx
+      - ./app3/html:/usr/share/nginx/html
+    
+networks:
+  default:
+    driver: bridge
+
+
+```
+
+
+
 > 由于4个容器都在同一docker网络中，因此在配置 `upstream` 模块时，可以直接使用容器名称
 >
 > 使用 `docker-compose up -d` 启动应用
 
 
 
+### 测试
 
+> 分别进入容器 `app-server1` ， `app-server2` ，`app-server3` ，在 `/usr/share/nginx/html/index.html` 中标注当前的容器名称，使用浏览器访问 `http://localhost:9090` 
+
+```shell
+docker exec -it app-server1 sh
+
+vi /usr/share/nginx/html/index.html
+```
 
 
 
