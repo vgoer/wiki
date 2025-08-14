@@ -201,7 +201,7 @@ subbox();
 $mes = 'hello';
 $res = function() use ($mes){
     var_dump($mes);
-}
+};
 // 这样我们不能改变传入的参数
 $res();
 $mes = 'word';
@@ -215,3 +215,4 @@ $res = function() use (&$mes){ //加一个&符
 //这有重复改变值
 ```
 
+> [blog ](https://blog.csdn.net/m0_61505785/article/details/146993305)[掘金](https://juejin.cn/post/7517227110244925492)
