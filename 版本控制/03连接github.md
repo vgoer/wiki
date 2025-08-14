@@ -34,6 +34,18 @@ cat ~/.ssh/id_rsa.pub
 
 # 复制到
 Settings”>“SSH and GPG keys”>“New SSH key”
+
+# 测试
+ssh -T git@github.com
+
+# 提交
+echo "# hyperf-redis-mysql" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M master
+git remote add origin git@github.com:vgoer/hyperf-redis-mysql.git
+git push -u origin master
 ```
 
 
