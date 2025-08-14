@@ -263,7 +263,7 @@ var_dump(100>300); // boolean false
 
 > 空值，没有定义或者声明的变量返回null
 
-```
+```php
 echo $bb;  //没有定义
 $cc;
 echo $cc; //没有赋值 null
