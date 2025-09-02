@@ -59,7 +59,7 @@ pip3 install torch torchvision torchaudio --index-url https://download.pytorch.o
 
 > 下载模型
 
-![image-20250330205228673](.\assets\image-20250330205228673-17433391511711.png)
+![image-20250330205228673](.\assets\image-20250330205228673.png)
 
 > 准备好需要训练的数据集。 图片和视频
 
