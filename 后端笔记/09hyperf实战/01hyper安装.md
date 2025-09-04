@@ -61,78 +61,27 @@ php bin/hyperf.php start
 
 
 
+> 热更新：**重要**
 
+```shell
+composer require hyperf/watcher
 
+# 生成配置文件
+php bin/hyperf.php vendor:publish hyperf/watcher
 
-
-
-### 2. 路由
-
-> `config/routes.php`下面是一些常用的用法示例。
-
-```php
-use Hyperf\HttpServer\Router\Router;
-// 此处代码示例为每个示例都提供了三种不同的绑定定义方式，实际配置时仅可采用一种且仅定义一次相同的路由
-
-// 设置一个 GET 请求的路由，绑定访问地址 '/get' 到 App\Controller\IndexController 的 get 方法
-Router::get('/get', 'App\Controller\IndexController::get');
-Router::get('/get', 'App\Controller\IndexController@get');
-Router::get('/get', [\App\Controller\IndexController::class, 'get']);
-
-// 设置一个 POST 请求的路由，绑定访问地址 '/post' 到 App\Controller\IndexController 的 post 方法
-Router::post('/post', 'App\Controller\IndexController::post');
-Router::post('/post', 'App\Controller\IndexController@post');
-Router::post('/post', [\App\Controller\IndexController::class, 'post']);
-
-// 设置一个允许 GET、POST 和 HEAD 请求的路由，绑定访问地址 '/multi' 到 App\Controller\IndexController 的 multi 方法
-Router::addRoute(['GET', 'POST', 'HEAD'], '/multi', 'App\Controller\IndexController::multi');
-Router::addRoute(['GET', 'POST', 'HEAD'], '/multi', 'App\Controller\IndexController@multi');
-Router::addRoute(['GET', 'POST', 'HEAD'], '/multi', [\App\Controller\IndexController::class, 'multi']);
+# 热更新
+php bin/hyperf.php server:watch
 ```
 
 
 
-> 路由注解
 
-> 1. ``#[AutoController]`
 
-```php
-use Hyperf\HttpServer\Annotation\AutoController;
-use Hyperf\HttpServer\Contract\RequestInterface;
 
-#[AutoController]
-class IndexController extends AbstractController
-{
-    // Hyperf 会自动为此方法生成一个 /index/index 的路由，允许通过 GET 或 POST 方式请求
-    public function index(RequestInterface $request)
-    {
-        // 从请求中获得 id 参数
-        $id = $request->input('id', 1);
-        return (string)$id;
-    }
-}
-```
 
-> 2. `#[Controller]`
 
-```php
-use Hyperf\HttpServer\Contract\RequestInterface;
-use Hyperf\HttpServer\Annotation\Controller;
-use Hyperf\HttpServer\Annotation\RequestMapping;
 
-#[Controller]
-class IndexController
-{
-    // Hyperf 会自动为此方法生成一个 /index/index 的路由，允许通过 GET 或 POST 方式请求
-    #[RequestMapping(path: "index", methods: "get,post")]
-    public function index(RequestInterface $request)
-    {
-        // 从请求中获得 id 参数
-        $id = $request->input('id', 1);
-        return (string)$id;
-    }
-}
-```
+
 
 
 
