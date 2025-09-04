@@ -146,6 +146,84 @@ $phone->user;
 
 
 
+> 项目中使用：
+
+```shell
+# model
+    public function productInfo(): HasOne
+    {
+        return $this->hasOne(ProductInfo::class, 'id', 'product_id')->field('id,price,name,product_id,product_table');
+
+    }
+    public function terminalUser(): HasOne
+    {
+        return $this->hasOne(TerminalUser::class, 'id', 'terminal_user_id')->field('id,name,phone');
+
+    }
+    public function terminalUserInfo(): HasOne
+    {
+        return $this->hasOne(TerminalUser::class, 'id', 'terminal_user_id')->field('id,name,phone,share_amount');
+    }
+    
+    public function TerminalFile()
+    {
+        return $this->hasMany(TerminalFiles::class, 'terminal_id', 'id');
+    }
+
+    public function saleOder(): HasMany
+    {
+        return $this->hasMany(SaleOrder::class, 'terminal_user_id', 'id')
+            ->field('terminal_user_id, product_id, create_time');
+    }
+
+    public function saleUser(): HasOne
+    {
+        $field = ['id', 'name', 'phone'];
+        return $this->hasOne(SaleUser::class, 'id', 'created_by')->field($field);
+
+    }
+```
+
+```php
+# service 
+        // 环境 php设置内存和响应时间
+        ini_set('memory_limit', '256M');
+        set_time_limit(30000);
+
+        $tList = TerminalUser::query()
+            ->field(['name','province_str','city_str','district_str','address','full_name','phone','share_amount','id','create_time','created_by'])
+            // 这里with
+            ->with(['saleUser', 'TerminalFile'])
+            ->where('full_name', "!=",'')
+            ->select()->toArray();
+
+# 事务
+try {
+    \support\think\Db::startTrans();
+
+    foreach ($tList as $k => $value) {
+
+        $aaa = $this->generateContract111(['htmlstr' => $content_file_content]);
+        $iii = [
+            'file_id' => $aaa['id'],
+            'file_table' => $aaa['system_type'],
+            'file_name' => 'contract_photos',
+            'terminal_id' => $value['id'],
+            'create_time' => Date::now()
+        ];
+        TerminalFiles::query()->save($iii);
+
+        Log::info("写入成功：" . $k);
+    }
+
+    \support\think\Db::commit();
+} catch (Exception $e) {
+    \support\think\Db::rollback();
+
+    Log::error("合同数据添加写入失败：" . $e->getMessage());
+}
+```
+
 
 
 
