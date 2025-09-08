@@ -20,7 +20,7 @@
 >
 > [sms](https://www.aliyun.com/product/sms)
 
-
+> 不使用官方的sdk： [easy-sms](https://github.com/overtrue/easy-sms)
 
 
 
