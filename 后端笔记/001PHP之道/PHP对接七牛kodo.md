@@ -268,12 +268,15 @@ class QiniuKodo {
             'scope' => "{$this->bucketName}:{$key}", // 指定存储空间和文件名
             'deadline' => time() + $expires, // 设置有效期
             'returnBody' => json_encode([  // 自定义返回体，包含文件的完整访问路径和访问时间限制
-                // 'key' => '$(key)',  // 路径
-                'url' => $this->auth->privateDownloadUrl("http://{$this->bucketDomain}/{$key}", $expires),  // 路径
-                'deadline' => time() + $expires, // 有效时间
-                 'hash' => '$(etag)', //  hash
-                 'bucket' => '$(bucket)', // bucket name
-                'fsize' => '$(fsize)' // 文件大小
+                 'key' => '$(key)',  // 路径
+                 'url' => $this->auth->privateDownloadUrl("http://{$this->bucketDomain}/{$key}", $expires),  // 路径
+                 'deadline' => time() + $expires, // 有效时间
+                 // 'bucket' => '$(bucket)',   // bucket name
+                 // 'mimeType' => '$(mimeType)',  // 获取文件类型
+                 // 'ext'      => '$(ext)',       // 自定义提取后缀参数
+                 'fsize' => '$(fsize)',        // 文件大小
+                 'hash' => '$(etag)',         //  hash
+
             ]),
             'insertOnly' => 1, // 不允许覆盖文件
         ];
@@ -315,16 +318,16 @@ class QiniuKodo {
      * 获取有时间限制的路径
      * @param string $key 路径
      * @param int $expires 过期时间
-     * @return string 路径
+     * @return array 路径
      */
-    public function getLifeFile(string $key, int $expires = 3600) : string
+    public function getLifeFile(string $key, int $expires = 3600) : array
     {
         // 生成带签名的私有链接
         $baseUrl = "http://{$this->bucketDomain}/{$key}";
 
         $privateUrl = $this->auth->privateDownloadUrl($baseUrl, 3600); // 有效时间为 3600 秒
 
-        return $privateUrl ?  $privateUrl : '';
+        return ['status' => 'success', 'url' => $privateUrl];
     }
 
 
