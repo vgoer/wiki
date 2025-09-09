@@ -29,6 +29,8 @@
 > Hyperf 对系统环境有一些要求，当您使用 Swoole 网络引擎驱动时.
 >
 > windows不能直接安装，需要使用`wsl`
+>
+> [snap](https://blog.enianteam.com/u/sun/content/265) [换源](https://www.cnblogs.com/test-gang/p/18809935)
 
 ```shell
 # docker
