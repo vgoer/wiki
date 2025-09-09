@@ -355,6 +355,7 @@ show slave status\G;
 # 查看主库ip "IPAddress": "172.17.0.5",
 docker inspect mysql_master 
     
+-- 2.1 执行同步
 change master to master_host='172.17.0.5',master_user='slave',master_password='slave',master_auto_position=1;
 
 -- 3. 执行同步
