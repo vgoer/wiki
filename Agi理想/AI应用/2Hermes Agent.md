@@ -32,3 +32,14 @@ source ~/.bashrc   # or: source ~/.zshrc
 hermes             # Start chatting!
 ```
 
+
+
+### 2. 配置
+
+```shell
+# 交互配置
+hermes gateway setup
+```
+
+
+
